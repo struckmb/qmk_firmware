@@ -14,6 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
+ * adopted by Björn Struckmeier
+ */
+
 #pragma once
 
 // #define NO_ACTION_ONESHOT // frees 274B
