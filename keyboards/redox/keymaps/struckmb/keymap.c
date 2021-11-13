@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
-#include "keymap_us_international.h"
-#include "sendstring_us_international.h"
+#include "keymap_german.h"
+#include "sendstring_german.h"
 
 enum layer_names {
     // - Base layers:
@@ -19,14 +19,13 @@ enum custom_keycodes {
     KM_BONE,
     KM_NEO2,
     // other special or replaced symbols
+    SY_SALT, // oldstlye german long s
     SY_HELL, // horizontal ellipsis
     SY_CIRC, // caret (non dead)
-    SY_SALT, // german long s (outdated)
     SY_TILD, // tilde (non dead)
     SY_BKTK, // backtick (non dead gravis)
-    SY_MINS, // no shift minus
-    SY_DQUO, // double quote
-    SY_QUOT, // single quote
+    SY_LSQU,
+    SY_RSQU,
     // number keys in symbol layer
     BN3_4,
     BN3_5,
@@ -40,9 +39,10 @@ enum custom_keycodes {
     BN4_5
 };
 
-#define SY_UNDO C(KC_Z)
-#define SY_REDO RCS(KC_Z)
-#define SY_REDO2 C(KC_Y)
+#define SY_UNDO C(DE_Z)
+#define SY_REDO RCS(DE_Z)
+#define SY_REDO2 C(DE_Y)
+#define DE_SUP1 ALGR(DE_1)    // ¹
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
@@ -50,15 +50,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_QWER] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_CIRC ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,SY_MINS ,
+     KC_CIRC ,DE_1    ,DE_2    ,DE_3    ,DE_4    ,DE_5    ,                                            DE_6    ,DE_7    ,DE_8    ,DE_9    ,DE_0    ,DE_MINS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB  ,KC_Q    ,KC_W    ,KC_E ,MEH_T(KC_R),KC_T    ,KC_GRV  ,                          KC_QUOT ,KC_Z  ,MEH_T(KC_U),KC_I   ,KC_O    ,KC_P    ,US_UDIA ,
+     KC_TAB  ,DE_Q    ,DE_W    ,DE_E ,MEH_T(DE_R),DE_T    ,DE_GRV  ,                          DE_QUOT ,DE_Z  ,MEH_T(DE_U),DE_I   ,DE_O    ,DE_P    ,DE_UDIA ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-LGUI_T(KC_ESC),KC_A,LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),LGUI_T(KC_G),KC_LCTL, KC_LALT,LGUI_T(KC_H),RSFT_T(KC_J),RCTL_T(KC_K),LALT_T(KC_L),US_ODIA,US_ADIA,
+LGUI_T(KC_ESC),DE_A,LALT_T(DE_S),LCTL_T(DE_D),LSFT_T(DE_F),LGUI_T(DE_G),KC_LCTL, KC_LALT,LGUI_T(DE_H),RSFT_T(DE_J),RCTL_T(DE_K),LALT_T(DE_L),DE_ODIA,DE_ADIA,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-LSFT_T(KC_BSPC),KC_Y  ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,TT(_ADJ),TT(_MFN),        TT(_MFN),TT(_ADJ),KC_N  ,KC_M ,KC_COMM ,KC_DOT ,US_SS   ,RSFT_T(KC_DEL),
+LSFT_T(KC_BSPC),DE_Y  ,DE_X    ,DE_C    ,DE_V    ,DE_B    ,TT(_ADJ),TT(_MFN),        TT(_MFN),TT(_ADJ),DE_N  ,DE_M ,DE_COMM ,DE_DOT ,DE_SS   ,RSFT_T(KC_DEL),
   //├────────┼────────┼────────┼────────┼────────┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    KC_LGUI,C(KC_A),C(KC_INS),S(KC_INS),TT(_NAV),LT(_SYM,KC_ENT),LALT_T(KC_SPC), RCTL_T(KC_BSPC),LT(_SYM,KC_SPC),TT(_NAV),KC_APP ,KC_PWR  ,KC_PSCR ,KC_RGUI
+    KC_LGUI,C(DE_A),C(KC_INS),S(KC_INS),TT(_NAV),LT(_SYM,KC_ENT),LT(_MFN,KC_SPC), LT(_ADJ,KC_ENT),LT(_SYM,KC_SPC),TT(_NAV),KC_APP ,KC_PWR  ,KC_PSCR ,KC_RGUI
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -67,15 +67,15 @@ LSFT_T(KC_BSPC),KC_Y  ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,TT(_ADJ),TT(_MFN),   
  */
   [_BONE] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_CIRC ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,SY_MINS ,
+     KC_CIRC ,DE_1    ,DE_2    ,DE_3    ,DE_4    ,DE_5    ,                                            DE_6    ,DE_7    ,DE_8    ,DE_9    ,DE_0    ,DE_MINS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB  ,KC_J    ,KC_D    ,KC_U ,MEH_T(KC_A),KC_X    ,KC_GRV  ,                          KC_QUOT ,KC_P ,MEH_T(KC_H),KC_L    ,KC_M    ,KC_W    ,US_SS   ,
+     KC_TAB  ,DE_J    ,DE_D    ,DE_U ,MEH_T(DE_A),DE_X    ,DE_GRV  ,                          DE_QUOT ,DE_P ,MEH_T(DE_H),DE_L    ,DE_M    ,DE_W    ,DE_SS   ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-LGUI_T(KC_ESC),KC_C,LALT_T(KC_T),LCTL_T(KC_I),LSFT_T(KC_E),LGUI_T(KC_O),KC_LCTL, KC_LALT,LGUI_T(KC_B),RSFT_T(KC_N),RCTL_T(KC_R),LALT_T(KC_S),KC_G  ,KC_Q    ,
+LGUI_T(KC_ESC),DE_C,LALT_T(DE_T),LCTL_T(DE_I),LSFT_T(DE_E),LGUI_T(DE_O),KC_LCTL, KC_LALT,LGUI_T(DE_B),RSFT_T(DE_N),RCTL_T(DE_R),LALT_T(DE_S),DE_G  ,DE_Q    ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-LSFT_T(KC_BSPC),KC_F  ,KC_V    ,US_UDIA ,US_ADIA ,US_ODIA ,TT(_ADJ),TT(_MFN),        TT(_MFN),TT(_ADJ),KC_Y    ,KC_Z  ,KC_COMM ,KC_DOT ,KC_K ,RSFT_T(KC_DEL),
+LSFT_T(KC_BSPC),DE_F  ,DE_V    ,DE_UDIA ,DE_ADIA ,DE_ODIA ,TT(_ADJ),TT(_MFN),        TT(_MFN),TT(_ADJ),DE_Y    ,DE_Z  ,DE_COMM ,DE_DOT ,DE_K ,RSFT_T(KC_DEL),
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    KC_LGUI,C(KC_A),C(KC_INS),S(KC_INS),TT(_NAV),LT(_SYM,KC_ENT),LALT_T(KC_SPC), RCTL_T(KC_BSPC),LT(_SYM,KC_SPC),TT(_NAV),KC_APP ,KC_PWR  ,KC_PSCR ,KC_RGUI
+    KC_LGUI,C(DE_A),C(KC_INS),S(KC_INS),TT(_NAV),LT(_SYM,KC_ENT),LT(_MFN,KC_SPC), LT(_ADJ,KC_ENT),LT(_SYM,KC_SPC),TT(_NAV),KC_APP ,KC_PWR  ,KC_PSCR ,KC_RGUI
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -84,15 +84,15 @@ LSFT_T(KC_BSPC),KC_F  ,KC_V    ,US_UDIA ,US_ADIA ,US_ODIA ,TT(_ADJ),TT(_MFN),   
  */
   [_NEO2] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_CIRC ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,SY_MINS ,
+     KC_CIRC ,DE_1    ,DE_2    ,DE_3    ,DE_4    ,DE_5    ,                                            DE_6    ,DE_7    ,DE_8    ,DE_9    ,DE_0    ,DE_MINS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB  ,KC_X    ,KC_V    ,KC_L    ,KC_C    ,KC_W    ,KC_GRV  ,                          KC_QUOT ,KC_K ,MEH_T(KC_H),KC_G    ,KC_F    ,KC_Q    ,US_SS   ,
+     KC_TAB  ,DE_X    ,DE_V    ,DE_L    ,DE_C    ,DE_W    ,DE_GRV  ,                          DE_QUOT ,DE_K ,MEH_T(DE_H),DE_G    ,DE_F    ,DE_Q    ,DE_SS   ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-LGUI_T(KC_ESC),KC_U,LALT_T(KC_I),LCTL_T(KC_A),LSFT_T(KC_E),LGUI_T(KC_O),KC_LCTL, KC_LALT,LGUI_T(KC_S),RSFT_T(KC_N),RCTL_T(KC_R),LALT_T(KC_T),KC_D  ,KC_Y    ,
+LGUI_T(KC_ESC),DE_U,LALT_T(DE_I),LCTL_T(DE_A),LSFT_T(DE_E),LGUI_T(DE_O),KC_LCTL, KC_LALT,LGUI_T(DE_S),RSFT_T(DE_N),RCTL_T(DE_R),LALT_T(DE_T),DE_D  ,DE_Y    ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-LSFT_T(KC_BSPC),US_UDIA,US_ODIA,US_ADIA ,KC_P    ,KC_Z    ,TT(_ADJ),TT(_MFN),        TT(_MFN),TT(_ADJ),KC_B    ,KC_M  ,KC_COMM ,KC_DOT ,KC_J ,RSFT_T(KC_DEL),
+LSFT_T(KC_BSPC),DE_UDIA,DE_ODIA,DE_ADIA ,DE_P    ,DE_Z    ,TT(_ADJ),TT(_MFN),        TT(_MFN),TT(_ADJ),DE_B    ,DE_M  ,DE_COMM ,DE_DOT ,DE_J ,RSFT_T(KC_DEL),
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    KC_LGUI,C(KC_A),C(KC_INS),S(KC_INS),TT(_NAV),LT(_SYM,KC_ENT),LALT_T(KC_SPC), RCTL_T(KC_BSPC),LT(_SYM,KC_SPC),TT(_NAV),KC_APP ,KC_PWR  ,KC_PSCR ,KC_RGUI
+    KC_LGUI,C(DE_A),C(KC_INS),S(KC_INS),TT(_NAV),LT(_SYM,KC_ENT),LT(_MFN,KC_SPC), LT(_ADJ,KC_ENT),LT(_SYM,KC_SPC),TT(_NAV),KC_APP ,KC_PWR  ,KC_PSCR ,KC_RGUI
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -101,32 +101,32 @@ LSFT_T(KC_BSPC),US_UDIA,US_ODIA,US_ADIA ,KC_P    ,KC_Z    ,TT(_ADJ),TT(_MFN),   
  */
   [_SYM] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______ ,US_SUP1 ,US_SUP2 ,US_SUP3 ,BN3_4   ,BN3_5   ,                                            BN3_6   ,BN3_7   ,BN3_8   ,US_LSQU ,US_RSQU ,SY_SALT ,
+     _______ ,DE_SUP1 ,DE_SUP2 ,DE_SUP3 ,BN3_4   ,BN3_5   ,                                            BN3_6   ,BN3_7   ,BN3_8   ,SY_LSQU ,SY_RSQU ,SY_SALT ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LEAD ,SY_HELL ,KC_UNDS ,KC_LBRC ,KC_RBRC ,SY_CIRC ,_______ ,                          _______ ,KC_EXLM ,KC_LABK ,KC_RABK ,KC_EQL  ,KC_AMPR ,US_EURO ,
+     KC_LEAD ,SY_HELL ,DE_UNDS ,DE_LBRC ,DE_RBRC ,SY_CIRC ,_______ ,                          _______ ,DE_EXLM ,DE_LABK ,DE_RABK ,DE_EQL  ,DE_AMPR ,DE_EURO ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_BSLS ,KC_SLSH ,KC_LCBR ,KC_RCBR ,KC_ASTR ,_______ ,                          _______ ,KC_QUES ,KC_LPRN ,KC_RPRN ,KC_MINS ,KC_COLN ,KC_AT   ,
+     _______ ,DE_BSLS ,DE_SLSH ,DE_LCBR ,DE_RCBR ,DE_ASTR ,_______ ,                          _______ ,DE_QUES ,DE_LPRN ,DE_RPRN ,DE_MINS ,DE_COLN ,DE_AT   ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_HASH ,KC_DLR  ,KC_PIPE ,SY_TILD ,SY_BKTK ,KC_CAPS ,_______ ,        _______ ,KC_PSCR ,KC_PLUS ,KC_PERC ,SY_DQUO ,SY_QUOT ,KC_SCLN ,_______ ,
+     _______ ,DE_HASH ,DE_DLR  ,DE_PIPE ,SY_TILD ,SY_BKTK ,KC_CAPS ,_______ ,        _______ ,KC_PSCR ,DE_PLUS ,DE_PERC ,DE_DQUO ,DE_QUOT ,DE_SCLN ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______,S(KC_DEL),US_DCIR ,     US_DTIL ,    KC_TRNS ,_______ ,        _______ ,KC_TRNS ,    US_DGRV ,     US_ACUT ,US_DIAE ,_______ ,_______
+     _______ ,_______,S(KC_DEL),DE_CIRC ,     DE_TILD ,    KC_TRNS ,_______ ,        _______ ,KC_TRNS ,    DE_GRV ,      DE_ACUT ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
 /*
  * Navigation Layer: Arrow keys, Number pad
  */
-  [_NAV] = LAYOUT( // BN4_4 originally is undefined, I inserted a ©
+  [_NAV] = LAYOUT( // BN4_4 is undefined
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______ ,BN4_1   ,BN4_2   ,BN4_3   ,US_COPY ,BN4_5   ,                                            US_PND  ,US_CURR ,KC_TAB  ,KC_PSLS ,KC_PAST ,_______ ,
+     _______ ,BN4_1   ,BN4_2   ,BN4_3   ,XXXXXXX ,BN4_5   ,                                            XXXXXXX ,DE_DLR  ,KC_TAB  ,KC_PSLS ,KC_PAST ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    A(KC_TAB),KC_PGUP ,KC_BSPC ,KC_UP   ,KC_DEL  ,KC_INS  ,_______ ,                          _______ ,US_IEXL ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PPLS ,KC_PMNS ,
+    A(KC_TAB),KC_PGUP ,KC_BSPC ,KC_UP   ,KC_DEL  ,KC_INS  ,_______ ,                          _______ ,XXXXXXX ,DE_7    ,DE_8    ,DE_9    ,KC_PPLS ,KC_PMNS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_HOME ,KC_LEFT ,KC_DOWN ,KC_RIGHT,KC_END  ,_______ ,                          _______ ,US_IQUE ,KC_P4   ,KC_P5   ,KC_P6   ,KC_COMM ,KC_PDOT ,
+     _______ ,KC_HOME ,KC_LEFT ,KC_DOWN ,KC_RIGHT,KC_END  ,_______ ,                          _______ ,XXXXXXX ,DE_4    ,DE_5    ,DE_6    ,DE_COMM ,KC_PDOT ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_ESC  ,SY_UNDO ,SY_REDO ,KC_ENT  ,KC_PGDN ,KC_WHOM ,_______ ,        _______ ,_______ ,KC_COLN ,KC_P1   ,KC_P2   ,KC_P3   ,KC_SCLN ,_______ ,
+     _______ ,KC_ESC  ,SY_UNDO ,SY_REDO ,KC_ENT  ,KC_PGDN ,KC_WHOM ,_______ ,        _______ ,_______ ,DE_COLN ,DE_1    ,DE_2    ,DE_3    ,DE_SCLN ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______,S(KC_DEL),SY_REDO2,     KC_TRNS ,    KC_WBAK ,KC_WFWD ,        _______ ,KC_P0   ,    KC_TRNS ,     KC_PSCR ,_______ ,_______ ,_______
+     _______ ,_______,S(KC_DEL),SY_REDO2,     KC_TRNS ,    KC_WBAK ,KC_WFWD ,        _______ ,DE_0    ,    KC_TRNS ,     KC_PSCR ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -141,9 +141,9 @@ LSFT_T(KC_BSPC),US_UDIA,US_ODIA,US_ADIA ,KC_P    ,KC_Z    ,TT(_ADJ),TT(_MFN),   
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,XXXXXXX ,KC_MPRV ,KC_VOLD ,KC_MPLY ,KC_MNXT ,_______ ,                          _______ ,XXXXXXX ,KC_F4   ,KC_F5   ,KC_F6   ,KC_F11  ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX,S(KC_MINS),XXXXXXX,_______ ,KC_TRNS ,        KC_TRNS ,_______ ,XXXXXXX ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F12  ,_______ ,
+     _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX,S(DE_MINS),XXXXXXX,_______ ,KC_TRNS ,        KC_TRNS ,_______ ,XXXXXXX ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F12  ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,_______ ,_______ ,     _______ ,    _______ ,_______ ,     RALT_T(KC_ENT),_______,   _______,     KC_PWR  ,_______ ,_______ ,KC_MUTE
+     _______ ,_______ ,_______ ,_______ ,     _______ ,    _______ ,KC_TRNS ,        KC_TRNS ,_______ ,    _______ ,     KC_PWR  ,_______ ,_______ ,KC_MUTE
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -162,7 +162,7 @@ LSFT_T(KC_BSPC),US_UDIA,US_ODIA,US_ADIA ,KC_P    ,KC_Z    ,TT(_ADJ),TT(_MFN),   
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      RGB_VAD ,KM_QWER ,KM_NEO2 ,KM_BONE ,XXXXXXX ,KC_WH_D ,KC_TRNS ,_______ ,        KC_PAUSE,KC_TRNS ,KC_ACL1 ,KC_ACL2 ,KM_BONE ,KM_NEO2 ,KM_QWER ,_______ ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     RGB_SAD ,RGB_M_P ,RGB_MOD ,RGB_HUI ,     KC_BTN3 ,    KC_BTN1 ,KC_BTN2 ,        KC_ACL0 ,XXXXXXX ,    XXXXXXX ,     UC_MOD  ,_______ ,_______ ,RESET
+     RGB_SAD ,RGB_M_P ,RGB_MOD ,RGB_HUI ,     KC_BTN3 ,    KC_BTN1 ,KC_BTN2 ,        KC_TRNS ,KC_ACL0 ,    XXXXXXX ,     UC_MOD  ,_______ ,_______ ,RESET
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   )
 
@@ -175,17 +175,17 @@ void matrix_scan_user(void) {
   LEADER_DICTIONARY() {
     leading = false;
     leader_end();
-    SEQ_TWO_KEYS(KC_C, KC_O) {
-        tap_code16(US_COPY);
+    SEQ_TWO_KEYS(DE_C, DE_O) {
+        send_string("©");
     }
     SEQ_TWO_KEYS(KC_O, KC_C) {
-        tap_code16(US_COPY);
+        send_string("©");
     }
     SEQ_TWO_KEYS(KC_O, KC_R) {
-        tap_code16(US_REGD);
+        send_string("®");
     }
     SEQ_TWO_KEYS(KC_R, KC_O) {
-        tap_code16(US_REGD);
+        send_string("®");
     }
   }
 }
@@ -276,43 +276,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (active_modifiers & MOD_MASK_SHIFT) {
         switch (keycode) {
             // number row
-            case KC_1:
-                if (record->event.pressed) tap_code16(US_DEG);
+            case DE_1:
+                if (record->event.pressed) tap_code16(DE_DEG);
                 break;
-            case KC_2:
-                if (record->event.pressed) tap_code16(US_SECT);// §
+            case DE_2:
+                if (record->event.pressed) tap_code16(DE_SECT);// §
                 break;
-            case KC_3:
+            case DE_3:
                 if (record->event.pressed) send_unicode_string("ℓ");
                 break;
-            case KC_4:
-                if (record->event.pressed) tap_code16(US_RDAQ);
+            case DE_4:
+                if (record->event.pressed) send_string("»");
                 break;
-            case KC_5:
-                if (record->event.pressed) tap_code16(US_LDAQ);
+            case DE_5:
+                if (record->event.pressed) send_string("«");
                 break;
-            case KC_6:
-                if (record->event.pressed) tap_code16(US_DLR); // $
+            case DE_6:
+                if (record->event.pressed) tap_code16(DE_DLR); // $
                 break;
-            case KC_7:
-                if (record->event.pressed) tap_code16(US_EURO); // €
+            case DE_7:
+                if (record->event.pressed) tap_code16(DE_EURO); // €
                 break;
-            case KC_8:
+            case DE_8:
                 if (record->event.pressed) send_unicode_string("„");
                 break;
-            case KC_9:
+            case DE_9:
                 if (record->event.pressed) send_unicode_string("“");
                 break;
-            case KC_0:
+            case DE_0:
                 if (record->event.pressed) send_unicode_string("”");
                 break;
-            case US_SUP1:
+            case DE_SUP1:
                 if (record->event.pressed) send_unicode_string("₁");
                 break;
-            case US_SUP2:
+            case DE_SUP2:
                 if (record->event.pressed) send_unicode_string("₂");
                 break;
-            case US_SUP3:
+            case DE_SUP3:
                 if (record->event.pressed) send_unicode_string("₃");
                 break;
             case BN3_4:
@@ -330,92 +330,92 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case BN3_8:
                 if (record->event.pressed) send_unicode_string("⟨");
                 break;
-            case US_LSQU:
+            case SY_LSQU:
                 if (record->event.pressed) send_unicode_string("⟩");
                 break;
-            case US_RSQU:
+            case SY_RSQU:
                 if (record->event.pressed) send_unicode_string("₀");
                 break;
             // default layer
-            case SY_MINS:
+            case DE_MINS:
                 if (record->event.pressed) send_unicode_string("—"); // em dash
                 break;
-            case KC_COMM:
+            case DE_COMM:
                 if (record->event.pressed) send_unicode_string("–"); // en dash
                 break;
-            case KC_DOT:
+            case DE_DOT:
                 if (record->event.pressed) send_unicode_string("•");
                 break;
-            case US_SS:
+            case DE_SS:
                 if (record->event.pressed) send_unicode_string("ẞ"); // capital german sharp s
                 break;
             // symbol layer
             // left hand
-            case KC_HASH:
+            case DE_HASH:
                 if (record->event.pressed) send_unicode_string("⇑");
                 break;
-            // case KC_LBRC:
+            // case DE_LBRC:
             //     if (record->event.pressed) send_unicode_string("«");
             //     break;
-            case KC_BSLS:
+            case DE_BSLS:
                 if (record->event.pressed) send_unicode_string("↑");
                 break;
-            // case KC_RBRC:
+            // case DE_RBRC:
             //     if (record->event.pressed) send_unicode_string("»");
             //     break;
             case SY_CIRC:
                 if (record->event.pressed) send_unicode_string("⇐");
                 break;
-            case KC_LCBR:
+            case DE_LCBR:
                 if (record->event.pressed) send_unicode_string("←");
                 break;
             case SY_TILD:
                 if (record->event.pressed) send_unicode_string("↓");
                 break;
-            case KC_RCBR:
+            case DE_RCBR:
                 if (record->event.pressed) send_unicode_string("→");
                 break;
-            case KC_DLR:
+            case DE_DLR:
                 if (record->event.pressed) send_unicode_string("⇒");
                 break;
-            case US_EURO:
+            case DE_EURO:
                 if (record->event.pressed) send_unicode_string("¢");
                 break;
             case SY_BKTK:
                 if (record->event.pressed) send_unicode_string("‹");
                 break;
-            case KC_PIPE:
+            case DE_PIPE:
                 if (record->event.pressed) send_unicode_string("⇔");
                 break;
-            case KC_QUES:
+            case DE_QUES:
                 if (record->event.pressed) send_unicode_string("›");
                 break;
-            case KC_ASTR:
+            case DE_ASTR:
                 if (record->event.pressed) send_unicode_string("⇓");
                 break;
             // right hand
-            // case KC_LABK:
+            // case DE_LABK:
             //     if (record->event.pressed) send_unicode_string("„");
             //     break;
-            // case KC_SLSH:
+            // case DE_SLSH:
             //     if (record->event.pressed) send_unicode_string("“");
             //     break;
-            // case KC_RABK:
+            // case DE_RABK:
             //     if (record->event.pressed) send_unicode_string("”");
             //     break;
-            case KC_MINS:
-                if (record->event.pressed) send_unicode_string("—"); // em dash
-                break;
-            case KC_RPRN:
+            // case DE_MINS:
+            //     if (record->event.pressed) send_unicode_string("—"); // em dash
+            //     break;
+            case DE_RPRN:
                 if (record->event.pressed) send_unicode_string("λ");
                 break;
-            case KC_EXLM:
+            case DE_EXLM:
                 if (record->event.pressed) send_unicode_string("‚");
                 break;
-            case SY_DQUO:
+            case DE_DQUO:
                 if (record->event.pressed) send_unicode_string("‘");
                 break;
-            case SY_QUOT:
+            case DE_QUOT:
                 if (record->event.pressed) send_unicode_string("’");
                 break;
             default:
@@ -444,7 +444,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) send_unicode_string("…"); // horizontal ellipsis
             break;
         case SY_CIRC:
-            if (record->event.pressed) send_string("^");
+            if (record->event.pressed) send_string("^ ");
             break;
         case SY_SALT:
             if (record->event.pressed) send_unicode_string("ſ"); // german long s
@@ -453,15 +453,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) send_string("~");
             break;
         case SY_BKTK:
-            if (record->event.pressed) send_string("`");
+            if (record->event.pressed) send_string("` ");
             break;
-        case SY_MINS:
-            if (record->event.pressed) tap_code16(KC_MINS);
+        case DE_MINS:
+            if (record->event.pressed) tap_code16(DE_MINS);
             break;
-        case SY_DQUO:
+        case DE_DQUO:
             if (record->event.pressed) send_string("\"");
             break;
-        case SY_QUOT:
+        case DE_QUOT:
             if (record->event.pressed) send_string("'");
             break;
         // keys of NAVP layer
