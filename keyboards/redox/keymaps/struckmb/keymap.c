@@ -276,36 +276,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (active_modifiers & MOD_MASK_SHIFT) {
         switch (keycode) {
             // number row
-            case DE_1:
-                if (record->event.pressed) tap_code16(DE_DEG);
-                break;
-            case DE_2:
-                if (record->event.pressed) tap_code16(DE_SECT);// §
-                break;
-            case DE_3:
-                if (record->event.pressed) send_unicode_string("ℓ");
-                break;
-            case DE_4:
-                if (record->event.pressed) send_string("»");
-                break;
-            case DE_5:
-                if (record->event.pressed) send_string("«");
-                break;
-            case DE_6:
-                if (record->event.pressed) tap_code16(DE_DLR); // $
-                break;
-            case DE_7:
-                if (record->event.pressed) tap_code16(DE_EURO); // €
-                break;
-            case DE_8:
-                if (record->event.pressed) send_unicode_string("„");
-                break;
-            case DE_9:
-                if (record->event.pressed) send_unicode_string("“");
-                break;
-            case DE_0:
-                if (record->event.pressed) send_unicode_string("”");
-                break;
             case DE_SUP1:
                 if (record->event.pressed) send_unicode_string("₁");
                 break;
