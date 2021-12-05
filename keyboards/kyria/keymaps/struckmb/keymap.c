@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_QWER] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_TAB  ,DE_Q    ,DE_W    ,DE_E   ,MEH_T(DE_R), DE_T ,                                            DE_Z  ,MEH_T(DE_U), DE_I  ,DE_O    ,DE_P    ,DE_UDIA ,
+     KC_TAB,DE_Q,DE_W,LGUI_T(DE_E),MEH_T(DE_R),LALT_T(DE_T),                                           LALT_T(DE_Z),MEH_T(DE_U),LGUI_T(DE_I),DE_O,DE_P,DE_UDIA,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                                           ├────────┼────────┼────────┼────────┼────────┼────────┤
 LGUI_T(KC_ESC),DE_A,LALT_T(DE_S),LCTL_T(DE_D),LSFT_T(DE_F),LGUI_T(DE_G),                 LGUI_T(DE_H),RSFT_T(DE_J),RCTL_T(DE_K),LALT_T(DE_L),DE_ODIA,DE_ADIA,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┬────────┐       ┌────────┬────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -66,7 +66,7 @@ LSFT_T(KC_BSPC), DE_Y ,DE_X    ,DE_C    ,DE_V    ,DE_B    ,TT(_ADJ),TT(_MFN),   
  */
   [_BONE] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_TAB  ,DE_J    ,DE_D    ,DE_U   ,MEH_T(DE_A), DE_X ,                                            DE_P  ,MEH_T(DE_H), DE_L  ,DE_M    ,DE_W    ,DE_SS   ,
+     KC_TAB,DE_J,DE_D,LGUI_T(DE_U),MEH_T(DE_A),LALT_T(DE_X),                                           LALT_T(DE_P),MEH_T(DE_H),LGUI_T(DE_L),DE_M,DE_W,DE_SS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                                           ├────────┼────────┼────────┼────────┼────────┼────────┤
 LGUI_T(KC_ESC),DE_C,LALT_T(DE_T),LCTL_T(DE_I),LSFT_T(DE_E),LGUI_T(DE_O),                       LGUI_T(DE_B),RSFT_T(DE_N),RCTL_T(DE_R),LALT_T(DE_S),DE_G,DE_Q,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┬────────┐       ┌────────┬────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -81,7 +81,7 @@ LSFT_T(KC_BSPC), DE_F ,DE_V    ,DE_UDIA ,DE_ADIA ,DE_ODIA ,TT(_ADJ),TT(_MFN),   
  */
   [_NEO2] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_TAB  ,DE_X    ,DE_V    ,DE_L   ,MEH_T(DE_C), DE_W ,                                            DE_K  ,MEH_T(DE_H), DE_G  ,DE_F    ,DE_Q    ,DE_SS   ,
+     KC_TAB,DE_X,DE_V,LGUI_T(DE_L),MEH_T(DE_C),LALT_T(DE_W),                                           LALT_T(DE_K),MEH_T(DE_H),LGUI_T(DE_G),DE_F,DE_Q,DE_SS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                                           ├────────┼────────┼────────┼────────┼────────┼────────┤
 LGUI_T(KC_ESC),DE_U,LALT_T(DE_I),LCTL_T(DE_A),LSFT_T(DE_E),LGUI_T(DE_O),                       LGUI_T(DE_S),RSFT_T(DE_N),RCTL_T(DE_R),LALT_T(DE_T),DE_D,DE_Y,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┬────────┐       ┌────────┬────────┼────────┼────────┼────────┼────────┼────────┼────────┤
