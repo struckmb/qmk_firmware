@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTZ] = LAYOUT(
      KC_TAB  , DE_Q ,  DE_W   , QE_GUI ,   DE_R ,  DE_T ,                                        DE_Z,   DE_U , QI_GUI ,   DE_O ,   DE_P , DE_UDIA,
      CTL_ESC , DE_A , QS_ALT  , QD_CTL , QF_SFT ,  DE_G ,                                        DE_H, QJ_SFT , QK_CTL , QL_ALT , DE_ODIA, DE_ADIA,
-     SFT_BSP , DE_Y ,  DE_X   ,  DE_C  ,   DE_V ,  DE_B , DE_LBRC, KC_CAPS,     MFN    , DE_RBRC, DE_N,   DE_M , KC_COMM, KC_DOT ,  DE_SS , KC_RSFT,
+     SFT_BSP , DE_Y ,  DE_X   ,  DE_C  ,   DE_V ,  DE_B , DE_LBRC, KC_CAPS,     MFN    , DE_RBRC, DE_N,   DE_M , DE_COMM, DE_DOT ,  DE_SS , KC_RSFT,
                                 SY_CUT ,SY_PASTE,  NAV  , SYM_ENT, MFN_SPC,     ADJ_ENT, SYM_SPC, NAV, KC_PSCR, KC_APP//ENC
     ),
 
@@ -250,6 +250,121 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 //     ),
 };
+
+// Send custom strings or change default base layer
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    uint8_t active_modifiers = get_mods();
+    clear_mods();
+    if (active_modifiers & MOD_MASK_SHIFT) {
+        switch (keycode) {
+//            // default layer
+//            // case SY_MINS:
+//            //     if (record->event.pressed) send_unicode_string("—"); // em dash
+//            //     break;
+//            case DE_COMM:
+//                if (record->event.pressed) send_unicode_string("–"); // en dash
+//                break;
+//            case DE_DOT:
+//                if (record->event.pressed) send_unicode_string("•");
+//                break;
+//            case DE_SS:
+//                if (record->event.pressed) send_unicode_string("ẞ"); // capital german sharp s
+//                break;
+//            // symbol layer
+//            // left hand
+//            case DE_HASH:
+//                if (record->event.pressed) send_unicode_string("⇑");
+//                break;
+//            case DE_LBRC:
+//                if (record->event.pressed) send_unicode_string("«");
+//                break;
+//            case DE_BSLS:
+//                if (record->event.pressed) send_unicode_string("↑");
+//                break;
+//            case DE_RBRC:
+//                if (record->event.pressed) send_unicode_string("»");
+//                break;
+//            case SY_CIRC:
+//                if (record->event.pressed) send_unicode_string("⇐");
+//                break;
+//            case DE_LCBR:
+//                if (record->event.pressed) send_unicode_string("←");
+//                break;
+//            case DE_TILD:
+//                if (record->event.pressed) send_unicode_string("↓");
+//                break;
+//            case DE_RCBR:
+//                if (record->event.pressed) send_unicode_string("→");
+//                break;
+//            case DE_DLR:
+//                if (record->event.pressed) send_unicode_string("⇒");
+//                break;
+//            case DE_EURO:
+//                if (record->event.pressed) send_unicode_string("¢");
+//                break;
+//            case SY_BKTK:
+//                if (record->event.pressed) send_unicode_string("‹");
+//                break;
+//            case DE_PIPE:
+//                if (record->event.pressed) send_unicode_string("⇔");
+//                break;
+//            case DE_QUES:
+//                if (record->event.pressed) send_unicode_string("›");
+//                break;
+//            case DE_ASTR:
+//                if (record->event.pressed) send_unicode_string("⇓");
+//                break;
+//            // right hand
+//            case DE_LABK:
+//                if (record->event.pressed) send_unicode_string("„");
+//                break;
+//            case DE_SLSH:
+//                if (record->event.pressed) send_unicode_string("“");
+//                break;
+//            case DE_RABK:
+//                if (record->event.pressed) send_unicode_string("”");
+//                break;
+//            case DE_MINS:
+//                if (record->event.pressed) send_unicode_string("—"); // em dash
+//                break;
+//            case DE_RPRN:
+//                if (record->event.pressed) send_unicode_string("λ");
+//                break;
+//            case DE_EXLM:
+//                if (record->event.pressed) send_unicode_string("‚");
+//                break;
+//            case DE_DQUO:
+//                if (record->event.pressed) send_unicode_string("‘");
+//                break;
+//            case DE_QUOT:
+//                if (record->event.pressed) send_unicode_string("’");
+//                break;
+            default:
+                set_mods(active_modifiers);
+                return true;
+        }
+    }
+    // unshifted
+    else switch (keycode) {
+        case SY_HELL:
+            if (record->event.pressed) send_string("…");
+            break;
+        case SY_CIRC:
+            if (record->event.pressed) send_string("^");
+            break;
+        case SY_TILD:
+            if (record->event.pressed) send_string("~");
+            break;
+        case SY_BKTK:
+            if (record->event.pressed) send_string("`");
+            break;
+        default:
+            set_mods(active_modifiers);
+            return true;
+    }
+    set_mods(active_modifiers);
+    return false;
+}
 
 /* The default OLED and rotary encoder code can be found at the bottom of qmk_firmware/keyboards/splitkb/kyria/rev1/rev1.c
  * These default settings can be overriden by your own settings in your keymap.c

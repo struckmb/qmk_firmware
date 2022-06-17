@@ -25,7 +25,16 @@
 #    define RGBLIGHT_SAT_STEP  8
 #    define RGBLIGHT_VAL_STEP  8
 #    define RGBLIGHT_LIMIT_VAL 150
+// additions
+    #define RGBLIGHT_LAYERS
+    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL   // (670B)  Enable rainbow swirl animation mode.
 #endif
 
 // Lets you roll mod-tap keys
 #define IGNORE_MOD_TAP_INTERRUPT
+
+#ifdef UNICODE_ENABLE
+    // enable unicode for linux or windows
+    #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
+#endif
+
