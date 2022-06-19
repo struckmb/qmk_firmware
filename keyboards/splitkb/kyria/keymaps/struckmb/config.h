@@ -32,9 +32,16 @@
 
 // Lets you roll mod-tap keys
 #define IGNORE_MOD_TAP_INTERRUPT
+#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+
+#ifdef MOUSEKEY_ENABLE
+    #define MOUSEKEY_MAX_SPEED 4
+    #define MOUSEKEY_TIME_TO_MAX 45
+    #define MOUSEKEY_WHEEL_MAX_SPEED 20
+    #define MOUSEKEY_WHEEL_TIME_TO_MAX 60
+#endif
 
 #ifdef UNICODE_ENABLE
     // enable unicode for linux or windows
     #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
 #endif
-
