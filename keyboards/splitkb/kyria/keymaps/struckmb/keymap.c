@@ -217,20 +217,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Nav Layer: Media, navigation
  *
  * ┌────────┬──────┬──────┬──────┬──────┬──────┐                              ┌──────┬──────┬──────┬──────┬──────┬────────┐
- * │ A-TAB  │ PgUp │ BSpc │   ↑  │ Del  │ Ins  │                              │      │   7  │   8  │   9  │   /  │    *   │
+ * │ A-TAB  │ PgUp │ BSpc │   ↑  │ Del  │ Ins  │                              │   *  │   7  │   8  │   9  │   /  │    ;   │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤                              ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │ Home │  ←   │   ↓  │   →  │ End  │                              │   -  │   4  │   5  │   6  │   0  │    ;   │
+ * │        │ Home │  ←   │   ↓  │   →  │ End  │                              │   0  │   4  │   5  │   6  │   .  │    :   │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┬──────┐  ┌──────┬──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │ ESC  │ Undo │ Redo │Enter │ PgDn │WHome │NumLk │  │      │      │   +  │   1  │   2  │   3  │   :  │        │
+ * │        │ ESC  │ Undo │ Redo │Enter │ PgDn │WHome │NumLk │  │      │      │   +  │   1  │   2  │   3  │   ,  │    -   │
  * └────────┴──────┴──┬───┴──┬───┴──┬─┬─┴────┬─┼──────┼──────┤  ├──────┼──────┼─┬────┴─┬─┬──┴───┬──┴───┬──┴──────┴────────┘
- *                    │ Cut  │Redo2 │ │      │ │ WBAK │ WFWD │  │   ,  │   .  │ │      │ │   ;  │PrtScr│
+ *                    │ Cut  │Redo2 │ │      │ │ WBAK │ WFWD │  │      │      │ │      │ │      │PrtScr│
  *                    └──────┴──────┘ └──────┘ └──────┴──────┘  └──────┴──────┘ └──────┘ └──────┴──────┘
  */
     [_NAV] = LAYOUT(
-            SY_ATAB, KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_INS,                                             XXXXXXX, DE_7,    DE_8,    DE_9,    KC_PSLS, KC_PAST,
-            _______, KC_HOME, KC_LEFT, KC_DOWN,KC_RIGHT, KC_END,                                             KC_PMNS, DE_4,    DE_5,    DE_6,    DE_0,    DE_SCLN,
-            _______, KC_ESC,  SY_UNDO, SY_REDO, KC_ENT,  KC_PGDN, KC_WHOM, KC_NUM,         _______, _______, KC_PPLS, DE_1,    DE_2,    DE_3,    DE_COLN, _______,
-                               SY_CUT, SY_RYDO,     KC_TRNS,      KC_WBAK, KC_WFWD,        DE_COMM, KC_PDOT,     KC_TRNS,      _______, _______
+            SY_ATAB, KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_INS,                                             DE_ASTR, DE_7,    DE_8,    DE_9,    DE_SLSH, DE_SCLN,
+            _______, KC_HOME, KC_LEFT, KC_DOWN,KC_RIGHT, KC_END,                                             DE_0,    DE_4,    DE_5,    DE_6,    DE_DOT,  DE_COLN,
+            _______, KC_ESC,  SY_UNDO, SY_REDO, KC_ENT,  KC_PGDN, KC_WHOM, KC_NUM,         _______, _______, DE_PLUS, DE_1,    DE_2,    DE_3,    DE_COMM, DE_MINS,
+                               SY_CUT, SY_RYDO,     KC_TRNS,      KC_WBAK, KC_WFWD,        _______, _______,     KC_TRNS,      _______, _______
     ),
 
 /*

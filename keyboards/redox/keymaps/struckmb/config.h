@@ -25,30 +25,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define EE_HANDS
 
 #ifdef MOUSEKEY_ENABLE
-    #define MK_3_SPEED
-    #define MK_MOMENTARY_ACCEL
-    #define MOUSEKEY_DELAY 0
-    #define MOUSEKEY_INTERVAL 16
-    #define MOUSEKEY_MAX_SPEED 7
-    #define MOUSEKEY_TIME_TO_MAX 60
-    #define MK_C_OFFSET_0 2
-    #define MK_C_INTERVAL_0 24
-    #define MK_C_OFFSET_1 8
-    #define MK_C_INTERVAL_1 24
-    #define MK_W_INTERVAL_0 200
-    #define MOUSEKEY_WHEEL_DELAY 0
+    #define MOUSEKEY_MAX_SPEED 4
+    #define MOUSEKEY_TIME_TO_MAX 45
+    #define MOUSEKEY_WHEEL_MAX_SPEED 20
+    #define MOUSEKEY_WHEEL_TIME_TO_MAX 60
 #endif
 
 /* tapping config */
-#define TAPPING_TOGGLE 2
-// #define TAPPING_TERM 175
-// #define TAPPING_TERM_PER_KEY
-// #define PERMISSIVE_HOLD
-// #define PERMISSIVE_HOLD_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
-// #define TAPPING_FORCE_HOLD
-// #define TAPPING_FORCE_HOLD_PER_KEY
 
 #ifdef LEADER_ENABLE
     // leader key cofiguration
