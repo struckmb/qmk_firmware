@@ -113,16 +113,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │LSft/BSP│   Y  │   X  │   C  │   V  │   B  │ Adj  │CapsLk│  │  MFn │  Adj │   N  │   M  │   ,  │   .  │ ß  ? │RSft/DEL│
  * ├────────┼──────┼──────┼──────┼──┬───┴──┬───┼──────┼──────┤  ├──────┼──────┼───┬──┴───┬──┼──────┼──────┼──────┼────────┤
- * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │PrtScr│ Menu │ Power│  R-GUI │
+ * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │ Menu │PrtScr│ Power│  R-GUI │
  * │        │  All │      │      │  │      │   │ Enter│ Space│  │ Enter│ Space│   │      │  │      │      │      │        │
  * └────────┴──────┴──────┴──────┘  └──────┘   └──────┴──────┘  └──────┴──────┘   └──────┘  └──────┴──────┴──────┴────────┘
  */
   [_QWER] = LAYOUT(
      KC_CIRC, DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                                DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    DE_MINS,
      KC_TAB,  DE_Q,    DE_W,    HE_GUI,  HR_MEH,  DE_T,    DE_GRV,                            DE_QUOT, DE_Z,    HU_MEH,  HI_GUI,  DE_O,    DE_P,    DE_UDIA,
-     CTL_ESC, DE_A,    HS_ALT,  HD_CTL,  HF_SFT,  DE_G,    KC_LCTL,                           KC_LALT, DE_H,    HJ_SFT,  HK_CTL,  HL_ALT,  DE_ODIA, DE_ADIA,
+     CTL_ESC, DE_A,    HS_ALT,  HD_CTL,  HF_SFT,  DE_G,    DE_LBRC,                           DE_RBRC, DE_H,    HJ_SFT,  HK_CTL,  HL_ALT,  DE_ODIA, DE_ADIA,
      SFT_BSP, DE_Y,    DE_X,    DE_C,    DE_V,    DE_B,    ADJ,     KC_CAPS,         MFN,     ADJ,     DE_N,    DE_M,    DE_COMM, DE_DOT,  DE_SS,   SFT_DEL,
-     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_PSCR, KC_APP,  KC_PWR,  KC_RGUI
+     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_APP, KC_PSCR,  KC_PWR,  KC_RGUI
   ),
 
 /*
@@ -137,16 +137,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │LSft/BSP│   F  │   V  │   Ü  │   Ä  │   Ö  │ Adj  │CapsLk│  │  MFn │  Adj │   Y  │   Z  │   ,  │   .  │   K  │RSft/DEL│
  * ├────────┼──────┼──────┼──────┼──┬───┴──┬───┼──────┼──────┤  ├──────┼──────┼───┬──┴───┬──┼──────┼──────┼──────┼────────┤
- * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │PrtScr│ Menu │ Power│  R-GUI │
+ * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │ Menu │PrtScr│ Power│  R-GUI │
  * │        │  All │      │      │  │      │   │ Enter│ Space│  │ Enter│ Space│   │      │  │      │      │      │        │
  * └────────┴──────┴──────┴──────┘  └──────┘   └──────┴──────┘  └──────┴──────┘   └──────┘  └──────┴──────┴──────┴────────┘
  */
   [_BONE] = LAYOUT(
      KC_CIRC, DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                                DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    DE_MINS,
      KC_TAB,  DE_J,    DE_D,    HU_GUI,  HA_MEH,  DE_X,    DE_GRV,                            DE_QUOT, DE_P,    HH_MEH,  HL_GUI,  DE_M,    DE_W,    DE_SS,
-     CTL_ESC, DE_C,    HT_ALT,  HI_CTL,  HE_SFT,  DE_O,    KC_LCTL,                           KC_LALT, DE_B,    HN_SFT,  HR_CTL,  HS_ALT,  DE_G,    DE_Q,
+     CTL_ESC, DE_C,    HT_ALT,  HI_CTL,  HE_SFT,  DE_O,    DE_LBRC,                           DE_RBRC, DE_B,    HN_SFT,  HR_CTL,  HS_ALT,  DE_G,    DE_Q,
      SFT_BSP, DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA, ADJ,     KC_CAPS,         MFN,     ADJ,     DE_Y,    DE_Z,    DE_COMM, DE_DOT,  DE_K,    SFT_T(KC_DEL),
-     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_PSCR, KC_APP,  KC_PWR,  KC_RGUI
+     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_APP, KC_PSCR,  KC_PWR,  KC_RGUI
   ),
 
 /*
@@ -161,16 +161,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │LSft/BSP│   Ü  │   Ö  │   Ä  │   P  │   Z  │ Adj  │CapsLk│  │  MFn │  Adj │   B  │   M  │   ,  │   .  │   J  │RSft/DEL│
  * ├────────┼──────┼──────┼──────┼──┬───┴──┬───┼──────┼──────┤  ├──────┼──────┼───┬──┴───┬──┼──────┼──────┼──────┼────────┤
- * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │PrtScr│ Menu │ Power│  R-GUI │
+ * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │ Menu │PrtScr│ Power│  R-GUI │
  * │        │  All │      │      │  │      │   │ Enter│ Space│  │ Enter│ Space│   │      │  │      │      │      │        │
  * └────────┴──────┴──────┴──────┘  └──────┘   └──────┴──────┘  └──────┴──────┘   └──────┘  └──────┴──────┴──────┴────────┘
  */
   [_NEO2] = LAYOUT(
      KC_CIRC, DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                                DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    DE_MINS,
      KC_TAB,  DE_X,    DE_V,    HL_GUI,  HC_MEH,  DE_W,    DE_GRV,                            DE_QUOT, DE_K,    HH_MEH,  HG_GUI,  DE_F,    DE_Q,    DE_SS,
-     CTL_ESC, DE_U,    HI_ALT,  HA_CTL,  HE_SFT,  DE_O,    KC_LCTL,                           KC_LALT, DE_S,    HN_SFT,  HR_CTL,  HT_ALT,  DE_D,    DE_Y,
+     CTL_ESC, DE_U,    HI_ALT,  HA_CTL,  HE_SFT,  DE_O,    DE_LBRC,                           DE_RBRC, DE_S,    HN_SFT,  HR_CTL,  HT_ALT,  DE_D,    DE_Y,
      SFT_BSP, DE_UDIA, DE_ODIA, DE_ADIA, DE_P,    DE_Z,    ADJ,     MFN,             MFN,     ADJ,     DE_B,    DE_M,    DE_COMM, DE_DOT,  DE_J,    SFT_DEL,
-     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_PSCR, KC_APP,  KC_PWR,  KC_RGUI
+     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_APP, KC_PSCR,  KC_PWR,  KC_RGUI
   ),
 
 /*
@@ -185,16 +185,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │LSft/BSP│   Z  │   X  │   C  │   D  │   V  │ Adj  │CapsLk│  │  MFn │  Adj │   K  │   H  │  , ; │  . : │   ß  │RSft/DEL│
  * ├────────┼──────┼──────┼──────┼──┬───┴──┬───┼──────┼──────┤  ├──────┼──────┼───┬──┴───┬──┼──────┼──────┼──────┼────────┤
- * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │PrtScr│ Menu │ Power│  R-GUI │
+ * │ L-GUI  │Select│ Copy │ Paste│  │ Nav  │   │ Symb/│ MFn  │  │ Adj/ │ Symb/│   │  Nav │  │ Menu │PrtScr│ Power│  R-GUI │
  * │        │  All │      │      │  │      │   │ Enter│ Space│  │ Enter│ Space│   │      │  │      │      │      │        │
  * └────────┴──────┴──────┴──────┘  └──────┘   └──────┴──────┘  └──────┴──────┘   └──────┘  └──────┴──────┴──────┴────────┘
  */
   [_COLE] = LAYOUT(
      KC_CIRC, DE_1,    DE_2,    DE_3,    DE_4,    DE_5,                                                DE_6,    DE_7,    DE_8,    DE_9,    DE_0,    DE_MINS,
      KC_TAB,  DE_Q,    DE_W,    HF_GUI,  HP_GUI,  DE_B,    DE_GRV,                            DE_QUOT, DE_J,    HL_MEH,  HU_GUI,  DE_Y,    DE_ODIA, DE_UDIA,
-     CTL_ESC, DE_A,    HR_ALT,  HS_CTL,  HT_SFT,  DE_G,    KC_LCTL,                           KC_LALT, DE_M,    HN_SFT,  HE_CTL,  HI_ALT,  DE_O,    DE_ADIA,
+     CTL_ESC, DE_A,    HR_ALT,  HS_CTL,  HT_SFT,  DE_G,    DE_LBRC,                           DE_RBRC, DE_M,    HN_SFT,  HE_CTL,  HI_ALT,  DE_O,    DE_ADIA,
      SFT_BSP, DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,    ADJ, KC_CAPS,                 MFN,     ADJ, DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_SS,   SFT_DEL,
-     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_PSCR, KC_APP,  KC_PWR,  KC_RGUI
+     KC_LGUI, SY_SALL, SY_COPY, SY_PASTE,     NAV,         SYM_ENT, MFN_SPC,         ADJ_ENT, SYM_SPC,     NAV,          KC_APP, KC_PSCR,  KC_PWR,  KC_RGUI
   ),
 
 /*
