@@ -172,7 +172,7 @@ const uint16_t PROGMEM combo_exclam[] = {DE_T, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_caps[] = {L_B_A, DE_Y, DE_I, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_adia[] = {L_B_A, KC_ENT, COMBO_END};
 const uint16_t PROGMEM combo_odia[] = {DE_O, KC_ENT, COMBO_END};
-const uint16_t PROGMEM combo_udia[] = {DE_U, KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_udia[] = {DE_Y, DE_I,  KC_ENT, COMBO_END};
 const uint16_t PROGMEM combo_szett[] = {L_N_S, KC_ENT, COMBO_END};
 // layer combos
 const uint16_t PROGMEM combo_nav1[] = {DE_R, L_S_E, DE_I, COMBO_END};
