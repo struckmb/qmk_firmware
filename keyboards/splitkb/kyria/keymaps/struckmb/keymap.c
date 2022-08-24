@@ -277,117 +277,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Send custom strings or change default base layer
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    uint8_t active_modifiers = get_mods();
-    clear_mods();
-    if (active_modifiers & MOD_MASK_SHIFT) {
-        switch (keycode) {
-//            // default layer
-//            case SY_MINS:
-//                if (record->event.pressed) send_unicode_string("—"); // em dash
-//                break;
-//            case DE_COMM:
-//                if (record->event.pressed) send_unicode_string("–"); // en dash
-//                break;
-//            case DE_DOT:
-//                if (record->event.pressed) send_unicode_string("•");
-//                break;
-//            case DE_SS:
-//                if (record->event.pressed) send_unicode_string("ẞ"); // capital german sharp s
-//                break;
-//            // symbol layer
-//            // left hand
-//            case DE_HASH:
-//                if (record->event.pressed) send_unicode_string("⇑");
-//                break;
-//            case DE_LBRC:
-//                if (record->event.pressed) send_unicode_string("«");
-//                break;
-//            case DE_BSLS:
-//                if (record->event.pressed) send_unicode_string("↑");
-//                break;
-//            case DE_RBRC:
-//                if (record->event.pressed) send_unicode_string("»");
-//                break;
-//            case SY_CIRC:
-//                if (record->event.pressed) send_unicode_string("⇐");
-//                break;
-//            case DE_LCBR:
-//                if (record->event.pressed) send_unicode_string("←");
-//                break;
-//            case DE_TILD:
-//                if (record->event.pressed) send_unicode_string("↓");
-//                break;
-//            case DE_RCBR:
-//                if (record->event.pressed) send_unicode_string("→");
-//                break;
-//            case DE_DLR:
-//                if (record->event.pressed) send_unicode_string("⇒");
-//                break;
-//            case DE_EURO:
-//                if (record->event.pressed) send_unicode_string("¢");
-//                break;
-//            case SY_BKTK:
-//                if (record->event.pressed) send_unicode_string("‹");
-//                break;
-//            case DE_PIPE:
-//                if (record->event.pressed) send_unicode_string("⇔");
-//                break;
-//            case DE_QUES:
-//                if (record->event.pressed) send_unicode_string("›");
-//                break;
-//            case DE_ASTR:
-//                if (record->event.pressed) send_unicode_string("⇓");
-//                break;
-//            // right hand
-//            case DE_LABK:
-//                if (record->event.pressed) send_unicode_string("„");
-//                break;
-//            case DE_SLSH:
-//                if (record->event.pressed) send_unicode_string("“");
-//                break;
-//            case DE_RABK:
-//                if (record->event.pressed) send_unicode_string("”");
-//                break;
-//            case DE_MINS:
-//                if (record->event.pressed) send_unicode_string("—"); // em dash
-//                break;
-//            case DE_RPRN:
-//                if (record->event.pressed) send_unicode_string("λ");
-//                break;
-//            case DE_EXLM:
-//                if (record->event.pressed) send_unicode_string("‚");
-//                break;
-//            case DE_DQUO:
-//                if (record->event.pressed) send_unicode_string("‘");
-//                break;
-//            case DE_QUOT:
-//                if (record->event.pressed) send_unicode_string("’");
-//                break;
-            default:
-                set_mods(active_modifiers);
-                return true;
-        }
+    if (get_mods() & MOD_MASK_SHIFT) {
+        return true;
     }
     // unshifted
     else switch (keycode) {
         case SY_HELL:
             if (record->event.pressed) send_string("…");
-            break;
+            return false;
         case SY_CIRC:
             if (record->event.pressed) send_string("^");
-            break;
+            return false;
         case SY_TILD:
             if (record->event.pressed) send_string("~");
-            break;
+            return false;
         case SY_BKTK:
             if (record->event.pressed) send_string("`");
-            break;
-        default:
-            set_mods(active_modifiers);
-            return true;
+            return false;
     }
-    set_mods(active_modifiers);
-    return false;
+    return true;
 }
 
 #ifdef IGNORE_MOD_TAP_INTERRUPT_PER_KEY
