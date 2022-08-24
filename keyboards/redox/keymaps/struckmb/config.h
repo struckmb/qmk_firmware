@@ -41,10 +41,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define LEADER_TIMEOUT 250
 #endif
 
-#ifdef UNICODE_ENABLE
-    // enable unicode for linux or windows
-    #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
-#endif
+/* #ifdef UNICODE_ENABLE */
+/*     // enable unicode for linux or windows */
+/*     #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC */
+/* #endif */
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM

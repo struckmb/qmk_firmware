@@ -19,10 +19,9 @@
 #include "sendstring_german.h"
 
 enum layers {
-    _DEFAULT = 0,
-//    _SYM, // symbols (neo based)
+    _DEF = 0,
     _BRA, // braces
-    _PCT, // punctuation
+    _SYM, // symbols
     _NUM, // key pad
     _FNC, // function keys
     _NAV, // navigation
@@ -32,119 +31,152 @@ enum layers {
 };
 
 enum custom_keycodes {
-    SY_HELL = SAFE_RANGE, // horizontal ellipsis
-    SY_CIRC, // caret (non dead)
-    SY_TILD, // tilde (non dead)
-    SY_BKTK, // backtick (non dead gravis)
-    L_NUM,
-    L_FNC,
+    NUM_X = SAFE_RANGE,
+    NUM_Y,
+    /* L_NUM, */
+    /* L_FNC, */
 };
 
 // Aliases for base layers
-#define L_BRA  OSL(_BRA)
-#define L_PCT  OSL(_PCT)
-#define L_DEF  TO(_DEFAULT)
-#define KC_DN KC_DOWN
+#define L_BRA  LT(_BRA, DE_A)
+#define L_SYM  LT(_SYM, DE_E)
+#define L_NUM  LT(_NUM, DE_S)
+#define T_NUM  TG(_NUM)
+#define L_DEF  TO(_DEF)
+#define L_FNC  OSL(_FNC)
+#define OS_SFT  OSM(MOD_LSFT)
+#define OS_CTL  OSM(MOD_LCTL)
+#define OS_ALT  OSM(MOD_LALT)
+#define OS_GUI  OSM(MOD_LGUI)
+#define KC_DN  KC_DOWN
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_DEFAULT] = LAYOUT(
-     KC_NO, DE_S,  DE_T,  DE_R,  DE_A,  L_BRA,                                  L_BRA, DE_A,  DE_R,  DE_T,  DE_S, KC_NO,
-     KC_NO, DE_O,  DE_I,  DE_Y,  DE_E,  L_PCT,                                  L_PCT, DE_E,  DE_Y,  DE_I,  DE_O, KC_NO,
-     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                      KC_NO, KC_NO,   KC_NO,   L_NUM, L_FNC,      L_FNC, L_NUM,   KC_NO,   KC_NO, KC_NO//ENC
+    [_DEF] = LAYOUT(
+     KC_NO, L_NUM,   DE_T,    DE_R,    L_BRA,   DE_SS,                                  DE_SS, L_BRA,   DE_R,    DE_T,    L_NUM,   KC_NO,
+     KC_NO, DE_O,    DE_I,    DE_Y,    L_SYM,   OS_SFT,                                OS_SFT, L_SYM,   DE_Y,    DE_I,    DE_O,    KC_NO,
+     KC_NO, OS_CTL,  DE_AT,   KC_DEL,  DE_EQL,  KC_TAB,  KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO,   OS_CTL,  KC_NO,
+                               KC_NO, KC_NO,   T_NUM,   KC_ENT, L_FNC,      L_FNC, KC_ENT,   T_NUM,   KC_NO, KC_NO//ENC
     ),
     [_BRA] = LAYOUT(
-     KC_NO, DE_LCBR, DE_LBRC, DE_LPRN, DE_LABK, KC_NO,                                KC_NO, DE_LABK, DE_LPRN, DE_LBRC, DE_LCBR, KC_NO,
-     KC_NO, DE_RCBR, DE_RBRC, DE_RPRN, DE_RABK, KC_NO,                                KC_NO, DE_RABK, DE_RPRN, DE_RBRC, DE_RCBR, KC_NO,
-     KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                            KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,      KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO//ENC
+     KC_NO, DE_LCBR, DE_LPRN, DE_RPRN, KC_TRNS, KC_TRNS,                              KC_TRNS, KC_TRNS, DE_RPRN, DE_LPRN, DE_LCBR, KC_NO,
+     KC_NO, DE_RCBR, DE_LBRC, DE_RBRC, KC_NO,   KC_TRNS,                              KC_TRNS, KC_NO,   DE_RBRC, DE_LBRC, DE_RCBR, KC_NO,
+     KC_NO, DE_SLSH, DE_LABK, DE_RABK, KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   DE_RABK, DE_LABK, DE_SLSH, KC_NO,
+                      KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
     ),
-    [_PCT] = LAYOUT(
-     KC_NO, DE_GRV, DE_SCLN, DE_BSLS, DE_EXLM, KC_NO,                                KC_NO, DE_EXLM, DE_BSLS, DE_SCLN, DE_GRV, KC_NO,
-     KC_NO, DE_EQL, DE_MINS, DE_QUES, XXXXXXX, KC_NO,                                KC_NO, XXXXXXX, DE_QUES, DE_MINS, DE_EQL,  KC_NO,
-     KC_NO, KC_NO,  KC_NO,   KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,
-                            KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,      KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO//ENC
+    [_SYM] = LAYOUT(
+     KC_NO, DE_GRV,  DE_SCLN, DE_BSLS, DE_EXLM, KC_HASH,                              KC_TRNS, DE_EXLM, DE_BSLS, DE_SCLN, DE_GRV,  KC_NO,
+     KC_NO, DE_EQL,  DE_MINS, DE_QUES, KC_TRNS, DE_DQUO,                              KC_TRNS, XXXXXXX, DE_QUES, DE_MINS, DE_EQL,  KC_NO,
+     KC_NO, DE_BSLS, DE_PLUS, DE_PIPE, KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,
+                      KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS, KC_NO//ENC
     ),
     [_NUM] = LAYOUT(
-     KC_NO, DE_8,  DE_7,  DE_6,  DE_5,  KC_NO,                                  KC_NO, DE_5,  DE_6,  DE_7,  DE_8,  KC_NO,
-     KC_NO, DE_4,  DE_3,  DE_2,  DE_1,  KC_NO,                                  KC_NO, DE_1,  DE_2,  DE_3,  DE_4,  KC_NO,
-     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                     KC_NO, KC_NO,   KC_NO,  KC_TRNS, KC_NO,      KC_NO, KC_TRNS,  KC_NO,   KC_NO, KC_NO//ENC
+     QK_RBT, NUM_X,  DE_3,    DE_2,    DE_1,    KC_TRNS,                              KC_TRNS, DE_1,    DE_2,    DE_3,    NUM_X,   KC_NO,
+     KC_NO,  NUM_Y,  DE_7,    DE_6,    DE_5,    KC_TRNS,                              KC_TRNS, DE_5,    DE_6,    DE_7,    NUM_Y,   KC_NO,
+     KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                      KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS, KC_NO//ENC
     ),
     [_FNC] = LAYOUT(
-     KC_NO, KC_F8, KC_F7, KC_F6, KC_F5, KC_NO,                                  KC_NO, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO,
-     KC_NO, KC_F4, KC_F3, KC_F2, KC_F1, KC_NO,                                  KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO,
-     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                     KC_NO, KC_NO,   KC_NO,  KC_TRNS, KC_NO,      KC_NO, KC_TRNS,  KC_NO,   KC_NO, KC_NO//ENC
+     KC_NO, KC_F11, KC_F3,   KC_F2,   KC_F1,   KC_TRNS,                              KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F11,   KC_NO,
+     KC_NO, KC_F12, KC_F7,   KC_F6,   KC_F5,   KC_TRNS,                              KC_TRNS, KC_F5,   KC_F6,   KC_F7,   KC_F12,   KC_NO,
+     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                      KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS, KC_NO//ENC
     ),
     [_NAV] = LAYOUT(
-     KC_NO, KC_PGUP, KC_HOME, KC_UP, KC_END,  KC_NO,                                  KC_NO, KC_HOME, KC_UP, KC_END,  KC_PGUP, KC_NO,
-     KC_NO, KC_PGDN, KC_LEFT, KC_DN, KC_RGHT, KC_NO,                                  KC_NO, KC_LEFT, KC_DN, KC_RGHT, KC_PGUP, KC_NO,
-     KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,
-                            KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,      KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO//ENC
+     KC_NO, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TRNS,                              KC_TRNS, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_NO,
+     KC_NO, KC_PGDN, KC_LEFT, KC_DN,   KC_RGHT, KC_TRNS,                              KC_TRNS, KC_LEFT, KC_DN,   KC_RGHT, KC_PGDN, KC_NO,
+     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                        KC_TRNS, KC_TRNS,   KC_TRNS,   TO(0), TO(0),      TO(0), TO(0),   KC_TRNS,   KC_TRNS, KC_TRNS//ENC
     ),
     [_MOUSE] = LAYOUT(
-     KC_NO, KC_WH_U, KC_BTN2, KC_MS_U, KC_BTN1, KC_NO,                                KC_NO, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, KC_NO,
-     KC_NO, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,                                KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_NO,
-     KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,
-                            KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO,      KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO//ENC
+     KC_NO, KC_WH_U, KC_BTN2, KC_MS_U, KC_BTN1, KC_TRNS,                              KC_TRNS, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, KC_NO,
+     KC_NO, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,                              KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_NO,
+     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,
+                        KC_TRNS, KC_TRNS,   KC_TRNS,   TO(0), TO(0),      TO(0), TO(0),   KC_TRNS,   KC_TRNS, KC_TRNS//ENC
     ),
 };
 
 // combos definitions
+// global combos
+const uint16_t PROGMEM combo_DEF_space[] = {L_SYM, DE_Y, DE_I, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_DEF_enter[] = {L_BRA, L_SYM, COMBO_END};
+const uint16_t PROGMEM combo_DEF_tab[] = {L_BRA, DE_R, DE_T, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_DEF_bspc[] = {DE_R, L_SYM, COMBO_END};
+const uint16_t PROGMEM combo_DEF_del[] = {DE_R, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_DEF_shift[] = {DE_R, DE_T, L_NUM, L_SYM, COMBO_END};
+const uint16_t PROGMEM combo_DEF_ctrl[] = {L_NUM, L_SYM, COMBO_END};
+const uint16_t PROGMEM combo_DEF_alt[] = {L_NUM, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_DEF_gui[] = {L_NUM, DE_Y, COMBO_END};
+const uint16_t PROGMEM combo_DEF_esc[] = {L_BRA, DE_R, DE_O, COMBO_END};
+
+const uint16_t PROGMEM combo_FNC_shift[] = {NUM_X, KC_F2, KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM combo_FNC_ctrl[] = {NUM_X, KC_F1, COMBO_END};
+const uint16_t PROGMEM combo_FNC_gui[] = {NUM_X, KC_F2, COMBO_END};
+const uint16_t PROGMEM combo_FNC_alt[] = {NUM_X, KC_F3, COMBO_END};
+const uint16_t PROGMEM combo_FNC_esc[] = {NUM_Y, KC_F2, KC_F3, COMBO_END};
+
+const uint16_t PROGMEM combo_NAV_shift[] = {KC_PGUP, KC_HOME, KC_UP, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_NAV_ctrl[] = {KC_PGUP, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_NAV_alt[] = {KC_PGUP, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM combo_NAV_gui[] = {KC_PGUP, KC_DOWN, COMBO_END};
+const uint16_t PROGMEM combo_NAV_esc[] = {KC_PGDN, KC_HOME, KC_UP, COMBO_END};
+
+const uint16_t PROGMEM combo_MSE_shift[] = {KC_MS_U, KC_BTN2, KC_WH_U, KC_MS_L, COMBO_END};
+const uint16_t PROGMEM combo_MSE_ctrl[] = {KC_WH_U, KC_MS_L, COMBO_END};
+const uint16_t PROGMEM combo_MSE_alt[] = {KC_WH_U, KC_MS_R, COMBO_END};
+const uint16_t PROGMEM combo_MSE_gui[] = {KC_WH_U, KC_MS_D, COMBO_END};
+const uint16_t PROGMEM combo_MSE_esc[] = {KC_BTN1, KC_MS_U, KC_WH_D, COMBO_END};
 // character combos
-const uint16_t PROGMEM combo_nine[] = {DE_1, DE_2, COMBO_END};
-const uint16_t PROGMEM combo_zero[] = {DE_2, DE_3, COMBO_END};
-const uint16_t PROGMEM combo_b[] = {DE_E, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_c[] = {DE_E, DE_Y, COMBO_END};
-const uint16_t PROGMEM combo_d[] = {DE_A, DE_R, DE_T, COMBO_END};
-const uint16_t PROGMEM combo_f[] = {DE_A, DE_R,  COMBO_END};
+const uint16_t PROGMEM combo_b[] = {L_SYM, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_c[] = {L_SYM, DE_Y, COMBO_END};
+const uint16_t PROGMEM combo_d[] = {L_BRA, DE_R, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_f[] = {L_BRA, DE_R,  COMBO_END};
 const uint16_t PROGMEM combo_g[] = {DE_R, DE_T, COMBO_END};
-const uint16_t PROGMEM combo_h[] = {DE_E, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_j[] = {DE_T, DE_S, COMBO_END};
+const uint16_t PROGMEM combo_h[] = {L_SYM, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_j[] = {DE_T, L_NUM, COMBO_END};
 const uint16_t PROGMEM combo_k[] = {DE_Y, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_l[] = {DE_E, DE_Y, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_l[] = {L_SYM, DE_Y, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_m[] = {DE_Y, DE_I,DE_O, COMBO_END};
 const uint16_t PROGMEM combo_n[] = {DE_I, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_p[] = {DE_E, DE_I, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_q[] = {DE_A, DE_T, DE_S, COMBO_END};
+const uint16_t PROGMEM combo_p[] = {L_SYM, DE_I, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_q[] = {L_BRA, DE_T, L_NUM, COMBO_END};
 const uint16_t PROGMEM combo_u[] = {DE_Y, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_v[] = {DE_R, DE_S, COMBO_END};
-const uint16_t PROGMEM combo_w[] = {DE_A, DE_S, COMBO_END};
-const uint16_t PROGMEM combo_x[] = {DE_R, DE_T, DE_S, COMBO_END};
-const uint16_t PROGMEM combo_z[] = {DE_A, DE_R, DE_T, DE_S, COMBO_END};
-const uint16_t PROGMEM combo_F9[] = {KC_F1, KC_F2, COMBO_END};
-const uint16_t PROGMEM combo_F10[] = {KC_F2, KC_F3, COMBO_END};
-const uint16_t PROGMEM combo_F11[] = {KC_F5, KC_F6, COMBO_END};
-const uint16_t PROGMEM combo_F12[] = {KC_F6, KC_F7, COMBO_END};
+const uint16_t PROGMEM combo_v[] = {DE_R, L_NUM, COMBO_END};
+const uint16_t PROGMEM combo_w[] = {L_BRA, L_NUM, COMBO_END};
+const uint16_t PROGMEM combo_x[] = {DE_R, DE_T, L_NUM, COMBO_END};
+const uint16_t PROGMEM combo_z[] = {L_BRA, DE_R, DE_T, L_NUM, COMBO_END};
+const uint16_t PROGMEM combo_four[] = {DE_1, DE_2, COMBO_END};
+const uint16_t PROGMEM combo_eight[] = {DE_5, DE_6, COMBO_END};
+const uint16_t PROGMEM combo_nine[] = {DE_6, DE_7, COMBO_END};
+const uint16_t PROGMEM combo_zero[] = {DE_2, DE_3, COMBO_END};
+const uint16_t PROGMEM combo_F4[] = {KC_F1, KC_F2, COMBO_END};
+const uint16_t PROGMEM combo_F8[] = {KC_F5, KC_F6, COMBO_END};
+const uint16_t PROGMEM combo_F9[] = {KC_F6, KC_F7, COMBO_END};
+const uint16_t PROGMEM combo_F0[] = {KC_F2, KC_F3, COMBO_END};
 // special char combos
-const uint16_t PROGMEM combo_quot[] = {DE_A, DE_Y, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_dot[] = {DE_A, DE_Y, COMBO_END};
-const uint16_t PROGMEM combo_comma[] = {DE_A, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_slash[] = {DE_A, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_quot[] = {L_BRA, DE_Y, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_dot[] = {L_BRA, DE_Y, COMBO_END};
+const uint16_t PROGMEM combo_comma[] = {L_BRA, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_slash[] = {L_BRA, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_exclam[] = {DE_T, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_space[] = {DE_E, DE_Y, DE_I, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_enter[] = {DE_A, DE_E, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {DE_A, DE_R, DE_T, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_bspc[] = {DE_R, DE_E, COMBO_END};
-const uint16_t PROGMEM combo_del[] = {DE_R, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_shift[] = {DE_R, DE_T, DE_S, DE_E, COMBO_END};
-const uint16_t PROGMEM combo_caps[] = {DE_A, DE_Y, DE_I, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_ctrl[] = {DE_S, DE_E, COMBO_END};
-const uint16_t PROGMEM combo_alt[] = {DE_S, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_gui[] = {DE_S, DE_Y, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {DE_A, DE_R, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_caps[] = {L_BRA, DE_Y, DE_I, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_adia[] = {L_BRA, KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_odia[] = {DE_O, KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_udia[] = {DE_U, KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_szett[] = {L_NUM, KC_ENT, COMBO_END};
 // layer combos
-const uint16_t PROGMEM combo_nav1[] = {DE_R, DE_E, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_nav0[] = {KC_LEFT, KC_UP, KC_RGHT, COMBO_END};
-const uint16_t PROGMEM combo_mouse1[] = {DE_A, DE_T, DE_Y, COMBO_END};
+const uint16_t PROGMEM combo_nav1[] = {DE_R, L_SYM, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_mouse0[] = {KC_BTN2, KC_MS_D, KC_BTN1, COMBO_END};
+const uint16_t PROGMEM combo_mouse1[] = {L_BRA, DE_T, DE_Y, COMBO_END};
 
 /* const uint16_t PROGMEM test_combo2[] = {KC_C, KC_D, COMBO_END}; */
 combo_t key_combos[COMBO_COUNT] = {
+    COMBO(combo_four, DE_4),
+    COMBO(combo_eight, DE_8),
     COMBO(combo_nine, DE_9),
     COMBO(combo_zero, DE_0),
+    COMBO(combo_adia, DE_ADIA),
     COMBO(combo_b, DE_B),
     COMBO(combo_c, DE_C),
     COMBO(combo_d, DE_D),
@@ -156,64 +188,56 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_l, DE_L),
     COMBO(combo_m, DE_M),
     COMBO(combo_n, DE_N),
+    COMBO(combo_odia, DE_ODIA),
     COMBO(combo_p, DE_P),
     COMBO(combo_q, DE_Q),
+    COMBO(combo_szett, DE_SS),
     COMBO(combo_u, DE_U),
+    COMBO(combo_udia, DE_UDIA),
     COMBO(combo_v, DE_V),
     COMBO(combo_w, DE_W),
     COMBO(combo_x, DE_X),
     COMBO(combo_z, DE_Z),
+    COMBO(combo_F4, KC_F4),
+    COMBO(combo_F8, KC_F8),
     COMBO(combo_F9, KC_F9),
-    COMBO(combo_F10, KC_F10),
-    COMBO(combo_F11, KC_F11),
-    COMBO(combo_F12, KC_F12),
+    COMBO(combo_F0, KC_F10),
     COMBO(combo_quot, DE_QUOT),
     COMBO(combo_dot, DE_DOT),
     COMBO(combo_comma, DE_COMM),
     COMBO(combo_slash, DE_SLSH),
     COMBO(combo_exclam, DE_EXLM),
-    COMBO(combo_space, KC_SPC),
-    COMBO(combo_enter, KC_ENT),
-    COMBO(combo_tab, KC_TAB),
-    COMBO(combo_bspc, KC_BSPC),
-    COMBO(combo_del, KC_DEL),
-    COMBO(combo_shift, OSM(MOD_LSFT)),
     COMBO(combo_caps, KC_CAPS),
-    COMBO(combo_ctrl, OSM(MOD_LCTL)),
-    COMBO(combo_alt, OSM(MOD_LALT)),
-    COMBO(combo_gui, OSM(MOD_LGUI)),
-    COMBO(combo_esc, KC_ESC),
-    COMBO(combo_nav1, TG(_NAV)),
-    COMBO(combo_nav0, TG(_NAV)),
-    COMBO(combo_mouse1, TG(_MOUSE)),
-    COMBO(combo_mouse0, TG(_MOUSE)),
+    COMBO(combo_nav0, TO(_DEF)),
+    COMBO(combo_nav1, TO(_NAV)),
+    COMBO(combo_mouse0, TO(_DEF)),
+    COMBO(combo_mouse1, TO(_MOUSE)),
+    COMBO(combo_DEF_space, KC_SPC),
+    COMBO(combo_DEF_enter, KC_ENT),
+    COMBO(combo_DEF_tab, KC_TAB),
+    COMBO(combo_DEF_bspc, KC_BSPC),
+    COMBO(combo_DEF_del, KC_DEL),
+    COMBO(combo_DEF_shift, OS_SFT),
+    COMBO(combo_DEF_ctrl, OS_CTL),
+    COMBO(combo_DEF_alt, OS_ALT),
+    COMBO(combo_DEF_gui, OS_GUI),
+    COMBO(combo_DEF_esc, KC_ESC),
+    COMBO(combo_FNC_shift, OS_SFT),
+    COMBO(combo_FNC_ctrl, OS_CTL),
+    COMBO(combo_FNC_alt, OS_ALT),
+    COMBO(combo_FNC_gui, OS_GUI),
+    COMBO(combo_FNC_esc, KC_ESC),
+    COMBO(combo_NAV_shift, OS_SFT),
+    COMBO(combo_NAV_ctrl, OS_CTL),
+    COMBO(combo_NAV_alt, OS_ALT),
+    COMBO(combo_NAV_gui, OS_GUI),
+    COMBO(combo_NAV_esc, KC_ESC),
+    COMBO(combo_MSE_shift, OS_SFT),
+    COMBO(combo_MSE_ctrl, OS_CTL),
+    COMBO(combo_MSE_alt, OS_ALT),
+    COMBO(combo_MSE_gui, OS_GUI),
+    COMBO(combo_MSE_esc, KC_ESC),
 };
-
-// alternative TT implementation
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case L_NUM:
-        case L_FNC:
-            static bool isToggeled = 0;
-            static uint32_t toggle_timer = 0;
-            static bool isNum = false;
-            if (keycode == L_NUM) isNum = true;
-            if (record->event.pressed) {
-                toggle_timer = timer_read32();
-                layer_off(isNum ? _FNC : _NUM);
-                layer_on(!isNum ? _FNC : _NUM);
-            } else {
-                if (timer_elapsed32(toggle_timer) < TAPPING_TERM) {
-                    isToggeled = !isToggeled;
-                }
-                if (!isToggeled) {
-                layer_off(isNum ? _NUM : _FNC );
-                }
-            }
-            return false;
-    }
-    return true;
-}
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
@@ -228,16 +252,16 @@ bool oled_task_user(void) {
         // clang-format on
         oled_write_P(qmk_logo, false);
         // Host Keyboard Layer Status
-        oled_write_P(PSTR("\nLayer: "), false);
+        oled_write_P(PSTR("\nARTSEYIO: "), false);
         switch (get_highest_layer(layer_state|default_layer_state)) {
-            case _DEFAULT:
+            case _DEF:
                 oled_write_P(PSTR("Default\n"), false);
                 break;
             case _BRA:
                 oled_write_P(PSTR("Braces\n"), false);
                 break;
-            case _PCT:
-                oled_write_P(PSTR("Punctuation\n"), false);
+            case _SYM:
+                oled_write_P(PSTR("Symbols\n"), false);
                 break;
             case _NUM:
                 oled_write_P(PSTR("Numbers\n"), false);
@@ -256,12 +280,32 @@ bool oled_task_user(void) {
         }
         // Write host Keyboard LED Status to OLEDs
         led_t led_usb_state = host_keyboard_led_state();
-        oled_write_P(PSTR("\nLOCK: "), false);
-        oled_write_P(PSTR("NUM"), led_usb_state.num_lock);
-        oled_write_P(PSTR("  "), false);
-        oled_write_P(PSTR("CAPS"), led_usb_state.caps_lock);
-        oled_write_P(PSTR("  "), false);
-        oled_write_P(PSTR("SCR"), led_usb_state.scroll_lock);
+        uint8_t osm_mod = mod_config(get_oneshot_mods());
+        oled_write_P(PSTR("\nOSMs: "), false);
+        if (osm_mod > 0) {
+            oled_write_P(PSTR("^"), true);
+            if (osm_mod & MOD_MASK_SHIFT) { // if shift is held, flash rather than compile
+                oled_write_P(PSTR("S"), true);
+            }
+            if (osm_mod & MOD_MASK_CTRL) { // if shift is held, flash rather than compile
+                oled_write_P(PSTR("C"), true);
+            }
+            if (osm_mod & MOD_MASK_ALT) { // if shift is held, flash rather than compile
+                oled_write_P(PSTR("A"), true);
+            }
+            if (osm_mod & MOD_MASK_GUI) { // if shift is held, flash rather than compile
+                oled_write_P(PSTR("G"), true);
+            }
+            oled_write_P(PSTR("   "), false);
+        }
+        else {
+                oled_write_P(PSTR("     "), false);
+        }
+        oled_write_P(PSTR("\n     "), false);
+        if (led_usb_state.caps_lock)
+            oled_write_P(PSTR(" CAPS-LOCK "), true);
+        else
+            oled_write_P(PSTR("           "), false);
     } else {
         // clang-format off
         // 'Kyria_OLED_mini_display', 128x32px

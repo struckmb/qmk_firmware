@@ -19,9 +19,9 @@
 /* Select hand configuration */
 #define EE_HANDS
 
-#define COMBO_COUNT 44
-
-#define TAPPING_TERM 200
+#define COMBO_COUNT 65
+#define ONESHOT_TAP_TOGGLE 2
+/* #define TAPPING_TERM 200 */
 
 #ifdef MOUSEKEY_ENABLE
     #define MOUSEKEY_MAX_SPEED 4

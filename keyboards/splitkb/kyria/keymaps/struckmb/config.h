@@ -43,5 +43,5 @@
 
 #ifdef UNICODE_ENABLE
     // enable unicode for linux or windows
-    #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
+    #define UNICODE_SELECTED_MODES UC_LNX
 #endif
