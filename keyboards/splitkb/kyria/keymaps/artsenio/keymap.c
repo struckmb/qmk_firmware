@@ -40,7 +40,6 @@ enum custom_keycodes {
 #define LSY_E  LT(_SYM, DE_E)
 #define T_SYM  OSL(_SYM)
 #define T_DEF  DF(_DEF)
-#define T_NUM  DF(_NUM)
 #define OS_SFT  OSM(MOD_LSFT)
 #define OS_CTL  OSM(MOD_LCTL)
 #define OS_ALT  OSM(MOD_LALT)
@@ -69,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
     [_NUM] = LAYOUT(
             QK_RBT, T_DEF,   DE_1,    DE_2,    DE_3,    DE_PLUS,                                 DE_PLUS, DE_1,    DE_2,    DE_3,    T_DEF,  QK_RBT,
-            KC_NO,  T_NUM,   DE_4,    DE_5,    DE_6,    DE_MINS,                                 DE_MINS, DE_4,    DE_5,    DE_6,    T_NUM,   KC_NO,
+            KC_NO,  KC_BSPC, DE_4,    DE_5,    DE_6,    DE_MINS,                                 DE_MINS, DE_4,    DE_5,    DE_6,    KC_BSPC, KC_NO,
             KC_NO,  KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_NO,
             KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
@@ -154,6 +153,7 @@ const uint16_t PROGMEM combo_equal[] = {DE_PLUS, DE_MINS, COMBO_END};
 const uint16_t PROGMEM combo_tilde[] = {DE_SLSH, DE_HASH, COMBO_END};
 const uint16_t PROGMEM combo_caret[] = {DE_MINS, DE_QUES, COMBO_END};
 // layer combos
+const uint16_t PROGMEM combo_numLock[] = {DE_2, DE_3, COMBO_END};
 const uint16_t PROGMEM combo_nav1[] = {DE_R, LSY_E, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_nav0[] = {KC_LEFT, KC_UP, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_navmse[] = {KC_HOME, KC_DN, KC_END, COMBO_END};
@@ -161,6 +161,8 @@ const uint16_t PROGMEM combo_mse1[] = {LPA_A, DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_mse0[] = {KC_BTN2, KC_MS_D, KC_BTN1, COMBO_END};
 const uint16_t PROGMEM combo_msenav[] = {KC_MS_L, KC_MS_U, KC_MS_R, COMBO_END};
 const uint16_t PROGMEM combo_fnc1[] = {DE_O, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_fncLock[] = {KC_F12, KC_F4, COMBO_END};
+const uint16_t PROGMEM combo_fncRelease[] = {KC_F5, KC_F6, COMBO_END};
 
 /* const uint16_t PROGMEM test_combo2[] = {KC_C, KC_D, COMBO_END}; */
 combo_t key_combos[COMBO_COUNT] = {
@@ -227,6 +229,9 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_mse0, TO(_DEF)),
     COMBO(combo_msenav, TO(_NAV)),
     COMBO(combo_fnc1, OSL(_FNC)),
+    COMBO(combo_fncLock, TO(_FNC)),
+    COMBO(combo_fncRelease, TO(_DEF)),
+    COMBO(combo_numLock, DF(_NUM)),
 };
 
 #ifdef OLED_ENABLE
