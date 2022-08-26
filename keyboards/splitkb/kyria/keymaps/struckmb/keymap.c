@@ -443,6 +443,7 @@ void keyboard_post_init_user(void) {
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
+    uint8_t active_modifiers = get_mods();
     switch (get_highest_layer(layer_state)) {
         case _MFN:
             // audio control
@@ -456,7 +457,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             // (browser) tabbing
             tap_code16(clockwise ? C(KC_TAB) : RCS(KC_TAB));
         case _SYM:
-            uint8_t active_modifiers = get_mods();
             // Line/Page up/down
             if (active_modifiers & MOD_MASK_CTRL) {
                 clear_mods();
