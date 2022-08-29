@@ -31,10 +31,6 @@ enum layers {
 //    _ADJ  // kb adjustment
 };
 
-enum custom_keycodes {
-    LLOCK = SAFE_RANGE,
-};
-
 // Aliases for base layers
 #define LNU_S  LT(_NUM, DE_S)
 #define LPA_A  LT(_PAR, DE_A)
@@ -47,55 +43,57 @@ enum custom_keycodes {
 #define OS_ALT  OSM(MOD_LALT)
 #define OS_GUI  OSM(MOD_LGUI)
 #define KC_DN  KC_DOWN
+#define ESCTL  MT(MOD_LCTL, KC_ESC)
+#define L_SFT  KC_LSFT
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_DEF] = LAYOUT(
             KC_NO,  LNU_S,   DE_T,    DE_R,    LPA_A,   DE_SS,                                   DE_SS,  LPA_A,   DE_R,    DE_T,    LNU_S,   KC_NO,
-            KC_NO,  LCU_O,   DE_I,    DE_N,    LSY_E,   OS_SFT,                                  OS_SFT, LSY_E,   DE_N,    DE_I,    LCU_O,   KC_NO,
-            KC_NO,  OS_CTL,  DE_AT,   KC_DEL,  DE_EQL,  KC_TAB,  KC_NO, KC_NO,     KC_NO, KC_NO, KC_TAB, DE_EQL,  KC_DEL,  DE_AT,   OS_CTL,  KC_NO,
-            KC_NO,   KC_NO,     T_SYM,     KC_ENT, KC_SPC,     KC_SPC, KC_ENT,     T_SYM,     KC_NO, KC_NO//ENC
+            ESCTL,  LCU_O,   DE_I,    DE_N,    LSY_E,   OS_SFT,                                  OS_SFT, LSY_E,   DE_N,    DE_I,    LCU_O,   ESCTL,
+            L_SFT,  OS_CTL,  DE_AT,   KC_DEL,  DE_EQL,  KC_TAB,  KC_NO, KC_NO,     KC_NO, KC_NO, KC_TAB, DE_EQL,  KC_DEL,  DE_AT,   OS_CTL,  L_SFT,
+                                KC_NO,   KC_NO,    T_SYM,    KC_ENT,   KC_SPC,     KC_SPC, KC_ENT,     T_SYM,   KC_NO,   KC_NO//ENC
             ),
     [_PAR] = LAYOUT(
             KC_NO,  DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, DE_LPRN, DE_LBRC, DE_LCBR, KC_NO,
-            KC_NO,  DE_RCBR, DE_RBRC, DE_RPRN, KC_NO,   KC_TRNS,                                 KC_TRNS, KC_NO,   DE_RPRN, DE_RBRC, DE_RCBR, KC_NO,
-            KC_NO,  KC_TRNS, DE_SLSH, KC_TRNS, KC_NO,   KC_NO,   KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_TRNS, DE_SLSH, KC_TRNS, KC_NO,
+            KC_TRNS,DE_RCBR, DE_RBRC, DE_RPRN, KC_NO,   KC_TRNS,                                 KC_TRNS, KC_NO,   DE_RPRN, DE_RBRC, DE_RCBR, KC_TRNS,
+            KC_TRNS,KC_TRNS, DE_SLSH, KC_TRNS, KC_NO,   KC_NO,   KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_TRNS, DE_SLSH, KC_TRNS, KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
     [_SYM] = LAYOUT(
             KC_NO,  DE_BSLS, DE_SLSH, DE_HASH, DE_EXLM, KC_NO,                                   KC_NO,   DE_EXLM, DE_HASH, DE_SLSH, DE_BSLS, KC_NO,
-            KC_NO,  DE_PLUS, DE_MINS, DE_QUES, KC_TRNS, DE_DQUO,                                 DE_DQUO, KC_TRNS, DE_QUES, DE_MINS, DE_PLUS, KC_NO,
-            KC_NO,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,
+            KC_TRNS,DE_PLUS, DE_MINS, DE_QUES, KC_TRNS, DE_DQUO,                                 DE_DQUO, KC_TRNS, DE_QUES, DE_MINS, DE_PLUS, KC_TRNS,
+            KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                 KC_TRNS, KC_TRNS,    KC_TRNS,    TO(0), TO(0),     TO(0), TO(0),    KC_TRNS,    KC_TRNS, KC_NO//ENC
             ),
     [_NUM] = LAYOUT(
-            QK_RBT, T_DEF,   DE_1,    DE_2,    DE_3,    DE_PLUS,                                 DE_PLUS, DE_1,    DE_2,    DE_3,    T_DEF,  QK_RBT,
-            KC_NO,  KC_BSPC, DE_4,    DE_5,    DE_6,    DE_MINS,                                 DE_MINS, DE_4,    DE_5,    DE_6,    KC_BSPC, KC_NO,
-            KC_NO,  KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_NO,
+            QK_RBT, T_DEF,   DE_1,    DE_2,    DE_3,    DE_PLUS,                                 DE_PLUS, DE_1,    DE_2,    DE_3,    T_DEF,   QK_RBT,
+            KC_TRNS,KC_BSPC, DE_4,    DE_5,    DE_6,    DE_MINS,                                 DE_MINS, DE_4,    DE_5,    DE_6,    KC_BSPC, KC_TRNS,
+            KC_TRNS,KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
     [_FNC] = LAYOUT(
             KC_NO,  KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_F10,                                  KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_F10,  KC_NO,
-            KC_NO,  KC_F12,  KC_F4,   KC_F5,   KC_F6,   KC_F11,                                  KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_F12,  KC_NO,
-            KC_NO,  KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F12,  KC_NO, KC_NO,     KC_NO, KC_NO, KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_TRNS ,KC_NO,
+            KC_TRNS,KC_F12,  KC_F4,   KC_F5,   KC_F6,   KC_F11,                                  KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_F12,  KC_TRNS,
+            KC_TRNS,KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F12,  KC_NO, KC_NO,     KC_NO, KC_NO, KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_TRNS ,KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
     [_CUS] = LAYOUT(
             KC_NO,  KC_NO,   KC_NO,   KC_PWR,  KC_APP,  KC_NO,                                   KC_NO,   KC_APP,  KC_PWR,  KC_NO,   KC_NO,   KC_NO,
-            KC_NO,  KC_NO,   KC_NO,   KC_INS,  KC_PSCR, KC_NO,                                   KC_NO,   KC_PSCR, KC_INS,  KC_NO,   KC_NO,   KC_NO,
-            KC_NO,  KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS ,KC_NO,
+            KC_TRNS,KC_NO,   KC_NO,   KC_INS,  KC_PSCR, KC_NO,                                   KC_NO,   KC_PSCR, KC_INS,  KC_NO,   KC_NO,   KC_TRNS,
+            KC_TRNS,KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS ,KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
     [_NAV] = LAYOUT(
             KC_NO,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TRNS,                                 KC_TRNS, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_NO,
-            KC_NO,  KC_PGDN, KC_LEFT, KC_DN,   KC_RGHT, KC_TRNS,                                 KC_TRNS, KC_LEFT, KC_DN,   KC_RGHT, KC_PGDN, KC_NO,
-            KC_NO,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,
+            KC_TRNS,KC_PGDN, KC_LEFT, KC_DN,   KC_RGHT, KC_TRNS,                                 KC_TRNS, KC_LEFT, KC_DN,   KC_RGHT, KC_PGDN, KC_TRNS,
+            KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
     [_MSE] = LAYOUT(
             KC_NO,  KC_WH_U, KC_BTN2, KC_MS_U, KC_BTN1, KC_TRNS,                                 KC_TRNS, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, KC_NO,
-            KC_NO,  KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,                                 KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_NO,
-            KC_NO,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,
+            KC_TRNS,KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,                                 KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_TRNS,
+            KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
 };
@@ -161,7 +159,6 @@ const uint16_t PROGMEM combo_equal[] = {DE_PLUS, DE_MINS, COMBO_END};
 const uint16_t PROGMEM combo_tilde[] = {DE_SLSH, DE_HASH, COMBO_END};
 const uint16_t PROGMEM combo_caret[] = {DE_MINS, DE_QUES, COMBO_END};
 // layer combos
-const uint16_t PROGMEM combo_numLock[] = {DE_2, DE_3, COMBO_END};
 const uint16_t PROGMEM combo_nav1[] = {DE_R, LSY_E, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_nav0[] = {KC_LEFT, KC_UP, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_navmse[] = {KC_HOME, KC_DN, KC_END, COMBO_END};
@@ -169,8 +166,11 @@ const uint16_t PROGMEM combo_mse1[] = {LPA_A, DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_mse0[] = {KC_BTN2, KC_MS_D, KC_BTN1, COMBO_END};
 const uint16_t PROGMEM combo_msenav[] = {KC_MS_L, KC_MS_U, KC_MS_R, COMBO_END};
 const uint16_t PROGMEM combo_fnc1[] = {LCU_O, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_fncLock[] = {KC_F12, KC_F4, COMBO_END};
-const uint16_t PROGMEM combo_fncRelease[] = {KC_F5, KC_F6, COMBO_END};
+const uint16_t PROGMEM combo_fncnav[] = {KC_F2, KC_F4, KC_F6, COMBO_END};
+const uint16_t PROGMEM combo_fncmse[] = {KC_F1, KC_F3, KC_F5, COMBO_END};
+const uint16_t PROGMEM combo_fncLock[] = {KC_F1, KC_F2, KC_F3, COMBO_END};
+const uint16_t PROGMEM combo_fncRelease[] = {KC_F4, KC_F5, KC_F6, COMBO_END};
+const uint16_t PROGMEM combo_numLock[] = {DE_1, DE_2, DE_3, COMBO_END};
 
 /* const uint16_t PROGMEM test_combo2[] = {KC_C, KC_D, COMBO_END}; */
 combo_t key_combos[COMBO_COUNT] = {
@@ -237,6 +237,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_mse0, TO(_DEF)),
     COMBO(combo_msenav, TO(_NAV)),
     COMBO(combo_fnc1, OSL(_FNC)),
+    COMBO(combo_fncmse, TO(_MSE)),
+    COMBO(combo_fncnav, TO(_NAV)),
     COMBO(combo_fncLock, TO(_FNC)),
     COMBO(combo_fncRelease, TO(_DEF)),
     COMBO(combo_numLock, DF(_NUM)),

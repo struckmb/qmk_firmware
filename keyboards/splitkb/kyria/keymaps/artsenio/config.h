@@ -19,7 +19,7 @@
 /* Select hand configuration */
 #define EE_HANDS
 
-#define COMBO_COUNT 66
+#define COMBO_COUNT 68
 #define ONESHOT_TAP_TOGGLE 2
 /* #define TAPPING_TERM 200 */
 
