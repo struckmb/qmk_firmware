@@ -1,4 +1,4 @@
-/* Copyright 2022 Thomas Baart <thomas@splitkb.com>
+/* Copyright 2023 Thomas Baart <thomas@splitkb.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 /* Select hand configuration */
 #define EE_HANDS
 
-#define COMBO_COUNT 68
+#define COMBO_COUNT 75
 #define ONESHOT_TAP_TOGGLE 2
 /* #define TAPPING_TERM 200 */
 

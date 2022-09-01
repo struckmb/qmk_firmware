@@ -32,27 +32,28 @@ enum layers {
 };
 
 // Aliases for base layers
-#define LNU_S  LT(_NUM, DE_S)
-#define LPA_A  LT(_PAR, DE_A)
-#define LSY_E  LT(_SYM, DE_E)
-#define LCU_O  LT(_CUS, DE_O)
-#define T_SYM  OSL(_SYM)
-#define T_DEF  DF(_DEF)
-#define OS_SFT  OSM(MOD_LSFT)
-#define OS_CTL  OSM(MOD_LCTL)
-#define OS_ALT  OSM(MOD_LALT)
-#define OS_GUI  OSM(MOD_LGUI)
-#define KC_DN  KC_DOWN
+#define ALNU_S LT(_NUM, DE_S)
+#define ALPA_A LT(_PAR, DE_A)
+#define ALSY_E LT(_SYM, DE_E)
+#define ALCU_O LT(_CUS, DE_O)
+#define SPCNUM LT(_NUM, KC_SPC)
+#define AOS_SY OSL(_SYM)
+#define AT_DEF DF(_DEF)
+#define OS_ALT OSM(MOD_LALT)
+#define OS_CTL OSM(MOD_LCTL)
+#define OS_GUI OSM(MOD_LGUI)
+#define OS_SFT OSM(MOD_LSFT)
 #define ESCTL  MT(MOD_LCTL, KC_ESC)
-#define L_SFT  KC_LSFT
+#define KC_DN  KC_DOWN
+#define KC_SFT KC_LSFT
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_DEF] = LAYOUT(
-            KC_NO,  LNU_S,   DE_T,    DE_R,    LPA_A,   DE_SS,                                   DE_SS,  LPA_A,   DE_R,    DE_T,    LNU_S,   KC_NO,
-            ESCTL,  LCU_O,   DE_I,    DE_N,    LSY_E,   OS_SFT,                                  OS_SFT, LSY_E,   DE_N,    DE_I,    LCU_O,   ESCTL,
-            L_SFT,  OS_CTL,  DE_AT,   KC_DEL,  DE_EQL,  KC_TAB,  KC_NO, KC_NO,     KC_NO, KC_NO, KC_TAB, DE_EQL,  KC_DEL,  DE_AT,   OS_CTL,  L_SFT,
-                                KC_NO,   KC_NO,    T_SYM,    KC_ENT,   KC_SPC,     KC_SPC, KC_ENT,     T_SYM,   KC_NO,   KC_NO//ENC
+            KC_NO,  ALNU_S,  DE_T,    DE_R,    ALPA_A,  DE_SS,                                   DE_SS,  ALPA_A,  DE_R,    DE_T,    ALNU_S,  KC_NO,
+            ESCTL,  ALCU_O,   DE_I,    DE_N,    ALSY_E,   OS_SFT,                                  OS_SFT, ALSY_E,   DE_N,    DE_I,    ALCU_O,   ESCTL,
+            OS_SFT, OS_CTL,  DE_AT,   KC_DEL,  DE_EQL,  KC_TAB,  KC_NO, KC_NO,     KC_NO, KC_NO, KC_TAB, DE_EQL,  KC_DEL,  DE_AT,   OS_CTL,  OS_SFT,
+                                KC_NO,   KC_NO,   AOS_SY,    KC_ENT,   SPCNUM,     SPCNUM, KC_ENT,    AOS_SY,   KC_NO,   KC_NO//ENC
             ),
     [_PAR] = LAYOUT(
             KC_NO,  DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, DE_LPRN, DE_LBRC, DE_LCBR, KC_NO,
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_TRNS, KC_TRNS,    KC_TRNS,    TO(0), TO(0),     TO(0), TO(0),    KC_TRNS,    KC_TRNS, KC_NO//ENC
             ),
     [_NUM] = LAYOUT(
-            QK_RBT, T_DEF,   DE_1,    DE_2,    DE_3,    DE_PLUS,                                 DE_PLUS, DE_1,    DE_2,    DE_3,    T_DEF,   QK_RBT,
+            QK_RBT, AT_DEF,  DE_1,    DE_2,    DE_3,    DE_PLUS,                                 DE_PLUS, DE_1,    DE_2,    DE_3,    AT_DEF,  QK_RBT,
             KC_TRNS,KC_BSPC, DE_4,    DE_5,    DE_6,    DE_MINS,                                 DE_MINS, DE_4,    DE_5,    DE_6,    KC_BSPC, KC_TRNS,
             KC_TRNS,KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_NO, KC_NO,     KC_NO, KC_NO, KC_TRNS, DE_7,    DE_8,    DE_9,    KC_TRNS, KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
@@ -100,28 +101,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // combo definitions
 // character combos
-const uint16_t PROGMEM combo_b[] = {LSY_E, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_c[] = {LSY_E, DE_N, COMBO_END};
-const uint16_t PROGMEM combo_d[] = {LPA_A, DE_R, DE_T, COMBO_END};
-const uint16_t PROGMEM combo_f[] = {LPA_A, DE_R,  COMBO_END};
+const uint16_t PROGMEM combo_b[] = {ALSY_E, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_c[] = {ALSY_E, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_d[] = {ALPA_A, DE_R, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_f[] = {ALPA_A, DE_R,  COMBO_END};
 const uint16_t PROGMEM combo_g[] = {DE_R, DE_T, COMBO_END};
-const uint16_t PROGMEM combo_h[] = {LSY_E, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_j[] = {DE_T, LNU_S, COMBO_END};
-const uint16_t PROGMEM combo_k[] = {DE_N, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_l[] = {LSY_E, DE_N, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_m[] = {DE_N, DE_I,LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_p[] = {LSY_E, DE_I, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_q[] = {LPA_A, DE_T, LNU_S, COMBO_END};
+const uint16_t PROGMEM combo_h[] = {ALSY_E, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_j[] = {DE_T, ALNU_S, COMBO_END};
+const uint16_t PROGMEM combo_k[] = {DE_N, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_l[] = {ALSY_E, DE_N, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_m[] = {DE_N, DE_I,ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_p[] = {ALSY_E, DE_I, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_q[] = {ALPA_A, DE_T, ALNU_S, COMBO_END};
 const uint16_t PROGMEM combo_u[] = {DE_N, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_v[] = {DE_R, LNU_S, COMBO_END};
-const uint16_t PROGMEM combo_w[] = {LPA_A, LNU_S, COMBO_END};
-const uint16_t PROGMEM combo_x[] = {DE_R, DE_T, LNU_S, COMBO_END};
-const uint16_t PROGMEM combo_y[] = {DE_T, LPA_A, COMBO_END};
-const uint16_t PROGMEM combo_z[] = {LPA_A, DE_R, DE_T, LNU_S, COMBO_END};
-const uint16_t PROGMEM combo_adia[] = {LPA_A, DE_R, LNU_S, COMBO_END};
-const uint16_t PROGMEM combo_udia[] = {LSY_E, DE_R, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_odia[] = {LSY_E, DE_N, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_szett[] = {LSY_E, DE_N, LNU_S, COMBO_END};
+const uint16_t PROGMEM combo_v[] = {DE_R, ALNU_S, COMBO_END};
+const uint16_t PROGMEM combo_w[] = {ALPA_A, ALNU_S, COMBO_END};
+const uint16_t PROGMEM combo_x[] = {DE_R, DE_T, ALNU_S, COMBO_END};
+const uint16_t PROGMEM combo_y[] = {DE_T, ALPA_A, COMBO_END};
+const uint16_t PROGMEM combo_z[] = {ALPA_A, DE_R, DE_T, ALNU_S, COMBO_END};
+const uint16_t PROGMEM combo_adia[] = {ALPA_A, DE_R, ALNU_S, COMBO_END};
+const uint16_t PROGMEM combo_udia[] = {ALSY_E, DE_R, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_odia[] = {ALSY_E, DE_N, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_szett[] = {ALSY_E, DE_N, ALNU_S, COMBO_END};
 const uint16_t PROGMEM combo_seven[] = {DE_1, DE_4, COMBO_END};
 const uint16_t PROGMEM combo_eight[] = {DE_2, DE_5, COMBO_END};
 const uint16_t PROGMEM combo_nine[] = {DE_3, DE_6, COMBO_END};
@@ -132,47 +133,53 @@ const uint16_t PROGMEM combo_F8[] = {KC_F2, KC_F5, COMBO_END};
 const uint16_t PROGMEM combo_F9[] = {KC_F3, KC_F6, COMBO_END};
 const uint16_t PROGMEM combo_F11[] = {KC_F10, KC_F12, COMBO_END};
 // command combos
-const uint16_t PROGMEM combo_space[] = {LSY_E, DE_N, DE_I, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_enter[] = {LPA_A, LSY_E, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {LPA_A, DE_R, DE_T, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_bspc[] = {DE_R, LSY_E, COMBO_END};
+const uint16_t PROGMEM combo_space[] = {ALSY_E, DE_N, DE_I, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_enter[] = {ALPA_A, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {ALPA_A, DE_R, DE_T, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {DE_R, ALSY_E, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {DE_R, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_ctrl[] = {LNU_S, LSY_E, COMBO_END};
-const uint16_t PROGMEM combo_alt[] = {LNU_S, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_ctrl[] = {ALNU_S, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_alt[] = {ALNU_S, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_alt_big[] = {KC_ENT, OS_CTL, COMBO_END};
-const uint16_t PROGMEM combo_gui[] = {LNU_S, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_gui[] = {ALNU_S, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_gui_big[] = {KC_ENT, OS_SFT, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {LPA_A, DE_R, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_shift[] = {DE_R, DE_T, LNU_S, LSY_E, COMBO_END};
-const uint16_t PROGMEM combo_caps[] = {LPA_A, DE_N, DE_I, LCU_O, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {ALPA_A, DE_R, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_shift[] = {DE_R, DE_T, ALNU_S, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_caps[] = {ALPA_A, DE_N, DE_I, ALCU_O, COMBO_END};
 // special char combos
+const uint16_t PROGMEM combo_quot[] = {ALPA_A, DE_N, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_dot[] = {ALPA_A, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_comma[] = {ALPA_A, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_slash[] = {ALPA_A, ALCU_O, COMBO_END};
+const uint16_t PROGMEM combo_exclam[] = {DE_I, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_lt[] = {DE_LCBR, DE_LPRN, COMBO_END};
 const uint16_t PROGMEM combo_gt[] = {DE_RCBR, DE_RPRN, COMBO_END};
-const uint16_t PROGMEM combo_quot[] = {LPA_A, DE_N, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_dot[] = {LPA_A, DE_N, COMBO_END};
-const uint16_t PROGMEM combo_comma[] = {LPA_A, DE_I, COMBO_END};
-const uint16_t PROGMEM combo_slash[] = {LPA_A, LCU_O, COMBO_END};
-const uint16_t PROGMEM combo_exclam[] = {DE_I, DE_T, COMBO_END};
-const uint16_t PROGMEM combo_at[] = {DE_PLUS, DE_MINS, DE_QUES, COMBO_END};
 const uint16_t PROGMEM combo_pipe[] = {DE_BSLS, DE_SLSH, COMBO_END};
+const uint16_t PROGMEM combo_dollar[] = {DE_SLSH, DE_HASH, COMBO_END};
+const uint16_t PROGMEM combo_percent[] = {DE_BSLS, DE_HASH, COMBO_END};
+const uint16_t PROGMEM combo_ampersand[] = {DE_BSLS, DE_SLSH, DE_HASH, COMBO_END};
 const uint16_t PROGMEM combo_equal[] = {DE_PLUS, DE_MINS, COMBO_END};
-const uint16_t PROGMEM combo_tilde[] = {DE_SLSH, DE_HASH, COMBO_END};
 const uint16_t PROGMEM combo_caret[] = {DE_MINS, DE_QUES, COMBO_END};
+const uint16_t PROGMEM combo_tilde[] = {DE_PLUS, DE_QUES, COMBO_END};
+const uint16_t PROGMEM combo_at[] = {DE_PLUS, DE_MINS, DE_QUES, COMBO_END};
 // layer combos
-const uint16_t PROGMEM combo_nav1[] = {DE_R, LSY_E, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_nav1[] = {DE_R, ALSY_E, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_nav0[] = {KC_LEFT, KC_UP, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_navosl[] = {DE_R, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_navmse[] = {KC_HOME, KC_DN, KC_END, COMBO_END};
-const uint16_t PROGMEM combo_mse1[] = {LPA_A, DE_T, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_mse1[] = {ALPA_A, DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_mse0[] = {KC_BTN2, KC_MS_D, KC_BTN1, COMBO_END};
+const uint16_t PROGMEM combo_mseButton3[] = {KC_BTN1, KC_BTN2, COMBO_END};
+const uint16_t PROGMEM combo_mseButton4[] = {KC_WH_D, KC_MS_U, COMBO_END};
+const uint16_t PROGMEM combo_mseButton5[] = {KC_WH_D, KC_MS_D, COMBO_END};
 const uint16_t PROGMEM combo_msenav[] = {KC_MS_L, KC_MS_U, KC_MS_R, COMBO_END};
-const uint16_t PROGMEM combo_fnc1[] = {LCU_O, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_fnc1[] = {ALCU_O, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_fncnav[] = {KC_F2, KC_F4, KC_F6, COMBO_END};
 const uint16_t PROGMEM combo_fncmse[] = {KC_F1, KC_F3, KC_F5, COMBO_END};
 const uint16_t PROGMEM combo_fncLock[] = {KC_F1, KC_F2, KC_F3, COMBO_END};
 const uint16_t PROGMEM combo_fncRelease[] = {KC_F4, KC_F5, KC_F6, COMBO_END};
 const uint16_t PROGMEM combo_numLock[] = {DE_1, DE_2, DE_3, COMBO_END};
 
-/* const uint16_t PROGMEM test_combo2[] = {KC_C, KC_D, COMBO_END}; */
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_adia, DE_ADIA),
     COMBO(combo_b, DE_B),
@@ -205,7 +212,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_F8, KC_F8),
     COMBO(combo_F9, KC_F9),
     COMBO(combo_F11, KC_F11),
-    COMBO(combo_space, KC_SPC),
+    COMBO(combo_space, SPCNUM),
     COMBO(combo_enter, KC_ENT),
     COMBO(combo_tab, KC_TAB),
     COMBO(combo_bspc, KC_BSPC),
@@ -227,14 +234,21 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_exclam, DE_EXLM),
     COMBO(combo_at, DE_AT),
     COMBO(combo_pipe, DE_PIPE),
+    COMBO(combo_dollar, DE_DLR),
+    COMBO(combo_percent, DE_PERC),
+    COMBO(combo_ampersand, DE_AMPR),
     COMBO(combo_equal, DE_EQL),
     COMBO(combo_tilde, DE_TILD),
     COMBO(combo_caret, DE_CIRC),
     COMBO(combo_nav1, TO(_NAV)),
     COMBO(combo_nav0, TO(_DEF)),
+    COMBO(combo_navosl, OSL(_NAV)),
     COMBO(combo_navmse, TO(_MSE)),
     COMBO(combo_mse1, TO(_MSE)),
     COMBO(combo_mse0, TO(_DEF)),
+    COMBO(combo_mseButton3, KC_BTN3),
+    COMBO(combo_mseButton4, KC_BTN4),
+    COMBO(combo_mseButton5, KC_BTN5),
     COMBO(combo_msenav, TO(_NAV)),
     COMBO(combo_fnc1, OSL(_FNC)),
     COMBO(combo_fncmse, TO(_MSE)),

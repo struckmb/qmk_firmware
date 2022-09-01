@@ -21,7 +21,6 @@
 enum layers {
     _QWER = 0,
     _BONE,
-    _NEO2,
     _COLE,
     // additional layers
     _SYM, // symbols (neo based)
@@ -40,7 +39,6 @@ enum custom_keycodes {
 // Aliases for base layers
 #define QWER   DF(_QWER)
 #define BONE   DF(_BONE)
-#define NEO2   DF(_NEO2)
 #define COLE   DF(_COLE)
 
 // Aliases for additional layers
@@ -68,16 +66,13 @@ enum custom_keycodes {
 #define ALT_ENT  MT(MOD_LALT, KC_ENT)
 
 // Aliases for home row mods
-#define HA_CTL   LCTL_T(DE_A)
 #define HA_MEH   MEH_T(DE_A)
-#define HC_MEH   MEH_T(DE_C)
 #define HD_CTL   LCTL_T(DE_D)
 #define HE_CTL   LCTL_T(DE_E)
 #define HE_GUI   LGUI_T(DE_E)
 #define HE_SFT   LSFT_T(DE_E)
 #define HF_GUI   LGUI_T(DE_F)
 #define HF_SFT   LSFT_T(DE_F)
-#define HG_GUI   LGUI_T(DE_G)
 #define HH_MEH   MEH_T(DE_H)
 #define HI_ALT   LALT_T(DE_I)
 #define HI_CTL   LCTL_T(DE_I)
@@ -88,7 +83,7 @@ enum custom_keycodes {
 #define HL_GUI   LGUI_T(DE_L)
 #define HL_MEH   MEH_T(DE_L)
 #define HN_SFT   RSFT_T(DE_N)
-#define HP_GUI   LGUI_T(DE_P)
+#define HP_MEH   MEH_T(DE_P)
 #define HR_ALT   LALT_T(DE_R)
 #define HR_CTL   RCTL_T(DE_R)
 #define HR_MEH   MEH_T(DE_R)
@@ -150,28 +145,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // */
 
 /*
- * Base Layer: NEO2
- *
- * ┌────────┬──────┬──────┬──────┬──────┬──────┐                              ┌──────┬──────┬──────┬──────┬──────┬────────┐
- * │  Tab   │   X  │   V  │   L  │   C  │   W  │                              │   K  │   H  │   G  │   F  │   Q  │   ß ;  │
- * ├────────┼──────┼──────┼──────┼──────┼──────┤                              ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │Ctrl/Esc│   U  │   I  │   A  │   E  │   O  │                              │   S  │   N  │   R  │   T  │   D  │   Y    │
- * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┬──────┐  ┌──────┬──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │LSft/BSP│   Ü  │   Ö  │   Ä  │   P  │   Z  │ Adj  │CapsLk│  │  MFn │  Adj │   B  │   M  │  , ; │  . : │   J  │RSft/DEL│
- * └────────┴──────┴──┬───┴──┬───┴──┬─┬─┴────┬─┼──────┼──────┤  ├──────┼──────┼─┬────┴─┬─┬──┴───┬──┴───┬──┴──────┴────────┘
- *                    │ Copy │ Paste│ │  Nav │ │ Symb/│ MFn  │  │ Adj/ │ Symb/│ │  Nav │ │ Menu │PrtScr│
- *                    │      │      │ │      │ │ Enter│ Space│  │ Enter│ Space│ │      │ │      │      │
- *                    └──────┴──────┘ └──────┘ └──────┴──────┘  └──────┴──────┘ └──────┘ └──────┴──────┘
- */
-    [_NEO2] = LAYOUT(
-     KC_TAB,  DE_X,    DE_V,     HL_GUI,  HC_MEH, DE_W,                                    DE_K, HH_MEH,  HG_GUI,   DE_F, DE_Q,   DE_SS,
-     CTL_ESC, DE_U,    HI_ALT,   HA_CTL,  HE_SFT, DE_O,                                    DE_S, HN_SFT,  HR_CTL, HT_ALT, DE_D,    DE_Y,
-     SFT_BSP, DE_UDIA, DE_ODIA,  DE_ADIA, DE_P,   DE_Z, ADJ, KC_CAPS,      MFN,     ADJ,   DE_B,   DE_M, DE_COMM, DE_DOT, DE_J, SFT_DEL,
-                       SY_COPY, SY_PASTE,    NAV,   SYM_ENT, MFN_SPC,    ADJ_ENT, SYM_SPC,    NAV,       KC_APP , KC_PSCR//ENC
-    ),
-// */
-
-/*
  * Base Layer: Colemak DH (DE)
  *
  * ┌────────┬──────┬──────┬──────┬──────┬──────┐                              ┌──────┬──────┬──────┬──────┬──────┬────────┐
@@ -186,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                    └──────┴──────┘ └──────┘ └──────┴──────┘  └──────┴──────┘ └──────┘ └──────┴──────┘
  */
     [_COLE] = LAYOUT(
-     KC_TAB,  DE_Q,   DE_W, HF_GUI, HP_GUI, DE_B,                                        DE_J, HL_MEH,  HU_GUI,   DE_Y, DE_ODIA, DE_UDIA,
+     KC_TAB,  DE_Q,   DE_W, HF_GUI, HP_MEH, DE_B,                                        DE_J, HL_MEH,  HU_GUI,   DE_Y, DE_ODIA, DE_UDIA,
      CTL_ESC, DE_A, HR_ALT, HS_CTL, HT_SFT, DE_G,                                        DE_M, HN_SFT,  HE_CTL, HI_ALT,    DE_O, DE_ADIA,
      SFT_BSP, DE_Z,   DE_X,   DE_C,   DE_D, DE_V, ADJ, KC_CAPS,          MFN,     ADJ,   DE_K,   DE_H, DE_COMM, DE_DOT,   DE_SS, SFT_DEL,
               SY_COPY, SY_PASTE,   NAV,     SYM_ENT, MFN_SPC,            ADJ_ENT, SYM_SPC,   NAV,      KC_APP , KC_PSCR//ENC
@@ -269,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJ] = LAYOUT(
      RGB_VAI, KC_WH_U, KC_WBAK, KC_MS_U, KC_WFWD, RGB_HUI,                                            RGB_TOG,  RGB_MOD, RGB_HUI, RGB_VAI, RGB_SAI, XXXXXXX,
      RGB_TOG, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,                                            RGB_M_P, RGB_RMOD, RGB_HUD, RGB_VAD, RGB_SAD, XXXXXXX,
-     RGB_VAD,    QWER,    BONE,    NEO2,    COLE, KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,     COLE,    NEO2,    BONE,    QWER, _______,
+     RGB_VAD,    QWER,    BONE, XXXXXXX, COLE,    KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,  COLE,    XXXXXXX,    BONE,    QWER, _______,
                        RGB_M_P, RGB_MOD,    KC_BTN3,       KC_BTN1, KC_BTN2,        KC_TRNS, KC_BTN4,     KC_BTN5,    UC_MOD, KC_BTN1
     ),
 
@@ -337,12 +310,6 @@ bool oled_task_user(void) {
                 break;
             case _BONE:
                 oled_write_P(PSTR("Bone\n"), false);
-                break;
-            case _NEO2:
-                oled_write_P(PSTR("Neo2\n"), false);
-                break;
-            case _COLE:
-                oled_write_P(PSTR("Colemak-D(E)H\n"), false);
                 break;
             case _NAV:
                 oled_write_P(PSTR("Nav/Num\n"), false);
