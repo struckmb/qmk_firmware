@@ -11,6 +11,7 @@ OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
 
 MOUSEKEY_ENABLE = yes
+WPM_ENABLE = yes
 
 # Tweak for size
 NO_USB_STARTUP_CHECK = yes # Prevent SUSPENDED state loop in case of no USB connection. Frees 286 bytes
