@@ -82,8 +82,9 @@ enum layers {
 
 enum custom_keycodes {
     TO_DFL = SAFE_RANGE,
-    CH_DFL,
     WR_DFL,
+    INC_DFL,
+    DEC_DFL,
     OS_KILL,
     SY_CIRC, // caret (non dead)
     SY_TILD, // tilde (non dead)
@@ -185,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_CADJ] = LAYOUT(
             RGB_VAI, KC_WH_U, KC_WBAK, KC_MS_U, KC_WFWD, RGB_HUI,                                            RGB_TOG,  RGB_MOD, RGB_HUI, RGB_VAI, RGB_SAI, XXXXXXX,
             RGB_TOG, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,                                            RGB_M_P, RGB_RMOD, RGB_HUD, RGB_VAD, RGB_SAD, XXXXXXX,
-            RGB_VAD, WR_DFL,  XXXXXXX, XXXXXXX, CH_DFL,  KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,   CH_DFL, XXXXXXX, XXXXXXX, WR_DFL,  _______,
+            RGB_VAD, WR_DFL,  XXXXXXX, DEC_DFL, INC_DFL, KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,   INC_DFL, DEC_DFL, XXXXXXX, WR_DFL,  _______,
                                RGB_M_P, RGB_MOD,    KC_BTN3,       KC_BTN1, KC_BTN2,        KC_TRNS, KC_BTN4,     KC_BTN5,    UC_MOD, KC_BTN1
     ),
 };
@@ -356,14 +357,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case OS_KILL:
             if (record->event.pressed) clear_oneshot_mods();
             return false;
-        case CH_DFL:
+        case DEC_DFL:
             if (record->event.pressed) {
-                uint8_t currentBaseLayer = get_highest_layer(default_layer_state);
-                if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT) {
-                    currentBaseLayer = (currentBaseLayer + _MAX_DFL - 1) % _MAX_DFL;
-                    clear_oneshot_mods();
-                } else currentBaseLayer = (currentBaseLayer + 1) % _MAX_DFL;
-                default_layer_set(1UL<<currentBaseLayer);
+                default_layer_set(1UL<<((get_highest_layer(default_layer_state) + 1) % _MAX_DFL));
+                clear_oneshot_mods();
+            }
+            return false;
+        case INC_DFL:
+            if (record->event.pressed) {
+                default_layer_set(1UL<<((get_highest_layer(default_layer_state) + _MAX_DFL - 1) % _MAX_DFL));
+                clear_oneshot_mods();
             }
             return false;
         case TO_DFL:
