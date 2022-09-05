@@ -1,4 +1,4 @@
-/* Copyright 2023 Thomas Baart <thomas@splitkb.com>
+/* Copyright 2022 Thomas Baart <thomas@splitkb.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +19,29 @@
 /* Select hand configuration */
 #define EE_HANDS
 
-#define COMBO_COUNT 84
-#define PERMISSIVE_HOLD
-#define ONESHOT_TAP_TOGGLE 2
-/* #define TAPPING_TERM 200 */
+#ifdef RGBLIGHT_ENABLE
+#    define RGBLIGHT_ANIMATIONS
+#    define RGBLIGHT_HUE_STEP  8
+#    define RGBLIGHT_SAT_STEP  8
+#    define RGBLIGHT_VAL_STEP  8
+#    define RGBLIGHT_LIMIT_VAL 150
+// additions
+    #define RGBLIGHT_LAYERS
+    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL   // (670B)  Enable rainbow swirl animation mode.
+#endif
+
+// Lets you roll mod-tap keys
+#define IGNORE_MOD_TAP_INTERRUPT
+#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 
 #ifdef MOUSEKEY_ENABLE
     #define MOUSEKEY_MAX_SPEED 4
     #define MOUSEKEY_TIME_TO_MAX 45
     #define MOUSEKEY_WHEEL_MAX_SPEED 20
     #define MOUSEKEY_WHEEL_TIME_TO_MAX 60
+#endif
+
+#ifdef UNICODE_ENABLE
+    // enable unicode for linux or windows
+    #define UNICODE_SELECTED_MODES UC_LNX
 #endif
