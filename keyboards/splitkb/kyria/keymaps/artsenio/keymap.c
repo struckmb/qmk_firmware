@@ -80,6 +80,16 @@ enum layers {
 #define SY_REDO  RCS(DE_Z)
 #define SY_UNDO  C(DE_Z)
 
+// HRM
+#define HQ_Y  DE_Y
+#define HQ_S  DE_S
+#define HQ_D  DE_D
+#define HQ_F  DE_F
+#define HQ_J  DE_J
+#define HQ_K  DE_K
+#define HQ_L  DE_L
+#define HQ_SS DE_SS
+
 enum custom_keycodes {
     TO_DFL = SAFE_RANGE,
     WR_DFL,
@@ -107,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
     [_QWER] = LAYOUT(
             KC_TAB,  DE_Q,   DE_W,    DE_E,    DE_R,    DE_T,                                     DE_Z,   DE_U,    DE_I,    DE_O,    DE_P,    DE_UDIA,
-            CTL_ESC, DE_A,   DE_S,    DE_D,    DE_F,    DE_G,                                     DE_H,   DE_J,    DE_K,    DE_L,    DE_ODIA, DE_ADIA,
-            SFT_BSP, DE_Y,   DE_X,    DE_C,    DE_V,    DE_B,  CL_ADJ,KC_CAPS,     CL_MFN,CL_ADJ, DE_N,   DE_M, DE_COMM , DE_DOT,    DE_SS,   SFT_DEL,
+            CTL_ESC, DE_A,   HQ_S,    HQ_D,    HQ_F,    DE_G,                                     DE_H,   HQ_J,    HQ_K,    HQ_L,    DE_ODIA, DE_ADIA,
+            SFT_BSP, HQ_Y,   DE_X,    DE_C,    DE_V,    DE_B,  CL_ADJ,KC_CAPS,     CL_MFN,CL_ADJ, DE_N,   DE_M, DE_COMM , DE_DOT,    HQ_SS,   SFT_DEL,
                                 SY_COPY, SY_PASTE,  CL_NAV,   SYM_ENT,MFN_SPC,     CL_ADJ, SYM_SPC,  CL_NAV,  KC_APP, KC_PSCR//ENC
             ),
     [_BONE] = LAYOUT(
@@ -149,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
     [_ACUS] = LAYOUT(
             KC_NO,  KC_NO,   KC_NO,   KC_PWR,  KC_APP,  KC_NO,                                   KC_NO,   KC_APP,  KC_PWR,  KC_NO,   KC_NO,   KC_NO,
-            KC_TRNS,KC_NO,   KC_NO,   KC_INS,  KC_PSCR, KC_NO,                                   KC_NO,   KC_PSCR, KC_INS,  KC_NO,   KC_NO,   KC_TRNS,
+            KC_TRNS,KC_NO,   RESET,   KC_INS,  KC_PSCR, KC_NO,                                   KC_NO,   KC_PSCR, KC_INS,  RESET,   KC_NO,   KC_TRNS,
             KC_TRNS,KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS ,KC_TRNS,
                                 KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_NO//ENC
             ),
@@ -172,22 +182,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                SY_CUT, DE_CIRC,      DE_TILD,     KC_TRNS, _______,        _______, KC_TRNS,     DE_GRV,       DE_ACUT, _______
     ),
     [_CNAV] = LAYOUT(
-            OS_KILL, KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_INS,                                             DE_ASTR, DE_7,    DE_8,    DE_9,    DE_SLSH, DE_SCLN,
-            OS_ALT,  KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,                                             DE_0,    DE_4,    DE_5,    DE_6,    DE_DOT,  DE_COLN,
-            OS_SFT,  KC_ESC,  SY_UNDO, SY_REDO, KC_ENT,  KC_PGDN, KC_WHOM, KC_NUM,         _______, _______, DE_PLUS, DE_1,    DE_2,    DE_3,    DE_COMM, DE_MINS,
-                               SY_CUT, _______,     KC_TRNS,      KC_WBAK, KC_WFWD,        _______, _______,     KC_TRNS,      _______, _______
+            OS_KILL, KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_INS,                                             DE_LPRN, DE_7,    DE_8,    DE_9,    DE_RPRN, DE_SCLN,
+            OS_ALT,  KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,                                             DE_MINS, DE_4,    DE_5,    DE_6,    DE_PLUS, DE_COLN,
+            OS_SFT,  KC_ESC,  SY_UNDO, SY_REDO, KC_ENT,  KC_PGDN, KC_WHOM, KC_NUM,         _______, _______, DE_0,    DE_1,    DE_2,    DE_3,    DE_DOT,  _______,
+                               SY_CUT, _______,     KC_TRNS,      KC_WBAK, KC_WFWD,        _______, _______,     KC_TRNS,      DE_COMM, _______
     ),
     [_CMFN] = LAYOUT(
             _______, XXXXXXX, XXXXXXX, KC_VOLU, KC_MUTE, XXXXXXX,                                            XXXXXXX, KC_F7 , KC_F8, KC_F9, KC_F10, XXXXXXX,
             _______, XXXXXXX, KC_MPRV, KC_VOLD, KC_MPLY, KC_MNXT,                                            XXXXXXX, KC_F4 , KC_F5, KC_F6, KC_F11, XXXXXXX,
             _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUES, XXXXXXX, _______, KC_PAUS,        KC_TRNS, _______, XXXXXXX, KC_F1 , KC_F2, KC_F3, KC_F12, _______,
-                               _______, _______,     _______,      _______, KC_TRNS,        _______, _______,    _______,     KC_PWR, KC_MUTE
+                               _______, _______,     _______,     _______, KC_TRNS,        _______, _______,    _______,     KC_PWR, KC_MUTE
     ),
     [_CADJ] = LAYOUT(
             RGB_VAI, KC_WH_U, KC_WBAK, KC_MS_U, KC_WFWD, RGB_HUI,                                            RGB_TOG,  RGB_MOD, RGB_HUI, RGB_VAI, RGB_SAI, XXXXXXX,
             RGB_TOG, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,                                            RGB_M_P, RGB_RMOD, RGB_HUD, RGB_VAD, RGB_SAD, XXXXXXX,
-            RGB_VAD, WR_DFL,  XXXXXXX, DEC_DFL, INC_DFL, KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,   INC_DFL, DEC_DFL, XXXXXXX, WR_DFL,  _______,
-                               RGB_M_P, RGB_MOD,    KC_BTN3,       KC_BTN1, KC_BTN2,        KC_TRNS, KC_BTN4,     KC_BTN5,    UC_MOD, KC_BTN1
+            RGB_VAD, WR_DFL,  RESET,   DEC_DFL, INC_DFL, KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,  INC_DFL, DEC_DFL, RESET,   WR_DFL,  _______,
+                               RGB_M_P, RGB_MOD,    KC_BTN3,      KC_BTN1, KC_BTN2,        KC_TRNS, KC_BTN4,    KC_BTN5,     UC_MOD, KC_BTN1
     ),
 };
 
@@ -272,6 +282,15 @@ const uint16_t PROGMEM combo_fncmse[] = {KC_F1, KC_F3, KC_F5, COMBO_END};
 const uint16_t PROGMEM combo_fncLock[] = {DE_R, DE_I, ALNU_O, COMBO_END};
 const uint16_t PROGMEM combo_fncRelease[] = {KC_F2, KC_F12, COMBO_END};
 const uint16_t PROGMEM combo_numLock[] = {DE_R, ALNU_O, COMBO_END};
+// hrm combos
+const uint16_t PROGMEM combo_hrm_lalt[] = {DE_Q, HQ_S, COMBO_END};
+const uint16_t PROGMEM combo_hrm_lgui[] = {DE_Q, HQ_D, COMBO_END};
+const uint16_t PROGMEM combo_hrm_lctl[] = {DE_Q, HQ_F, COMBO_END};
+const uint16_t PROGMEM combo_hrm_lsft[] = {HQ_F, HQ_D, COMBO_END};
+const uint16_t PROGMEM combo_hrm_rsft[] = {HQ_J, HQ_K, COMBO_END};
+const uint16_t PROGMEM combo_hrm_rctl[] = {DE_P, HQ_J, COMBO_END};
+const uint16_t PROGMEM combo_hrm_rgui[] = {DE_P, HQ_K, COMBO_END};
+const uint16_t PROGMEM combo_hrm_ralt[] = {DE_P, HQ_L, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_adia, DE_ADIA),
@@ -350,6 +369,15 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_navmse, TO(_AMSE)),
     COMBO(combo_navosl, OSL(_ANAV)),
     COMBO(combo_numLock, TO(_ANUM)),
+
+    COMBO(combo_hrm_lsft, OS_SFT),
+    COMBO(combo_hrm_lalt, OS_ALT),
+    COMBO(combo_hrm_lctl, OS_CTL),
+    COMBO(combo_hrm_lgui, OS_GUI),
+    COMBO(combo_hrm_rgui, OS_GUI),
+    COMBO(combo_hrm_rctl, OS_CTL),
+    COMBO(combo_hrm_ralt, OS_ALT),
+    COMBO(combo_hrm_rsft, OS_SFT),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -357,13 +385,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case OS_KILL:
             if (record->event.pressed) clear_oneshot_mods();
             return false;
-        case DEC_DFL:
+        case INC_DFL:
             if (record->event.pressed) {
                 default_layer_set(1UL<<((get_highest_layer(default_layer_state) + 1) % _MAX_DFL));
                 clear_oneshot_mods();
             }
             return false;
-        case INC_DFL:
+        case DEC_DFL:
             if (record->event.pressed) {
                 default_layer_set(1UL<<((get_highest_layer(default_layer_state) + _MAX_DFL - 1) % _MAX_DFL));
                 clear_oneshot_mods();
