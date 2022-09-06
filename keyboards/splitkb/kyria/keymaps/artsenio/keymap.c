@@ -269,6 +269,8 @@ const uint16_t PROGMEM combo_tilde[] = {DE_PLUS, DE_QUES, COMBO_END};
 const uint16_t PROGMEM combo_nav1[] = {DE_R, ALSY_E, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_nav0[] = {KC_LEFT, KC_UP, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_navosl[] = {DE_R, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_nav_tabnext[] = {KC_PGDN, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_nav_tabprev[] = {KC_PGDN, KC_LEFT, COMBO_END};
 const uint16_t PROGMEM combo_navmse[] = {KC_HOME, KC_DOWN, KC_END, COMBO_END};
 const uint16_t PROGMEM combo_mse1[] = {ALPA_A, DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_mse0[] = {KC_BTN2, KC_MS_D, KC_BTN1, COMBO_END};
@@ -368,6 +370,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_nav1, TO(_ANAV)),
     COMBO(combo_navmse, TO(_AMSE)),
     COMBO(combo_navosl, OSL(_ANAV)),
+    COMBO(combo_nav_tabnext, C(KC_TAB)),
+    COMBO(combo_nav_tabprev, S(C(KC_TAB))),
     COMBO(combo_numLock, TO(_ANUM)),
     COMBO(combo_hrm_lsft, OS_SFT),
     COMBO(combo_hrm_lalt, OS_ALT),
