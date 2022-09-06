@@ -20,199 +20,146 @@
 
 enum layers {
     _BASE = 0,
-    _A,
-    _S,
-    _E,
-    _T,
-    _N,
-    _I,
-    _O,
-    _P,
     _NUM,
-    _1,
-    _2,
-    _3,
-    _4,
-    _7,
-    _8,
-    _9,
-    _0,
+    _FN,
+    _NAV,
+    _CMD,
 };
 
-#define SHIFT OSM(MOD_LSFT)
+#define KEY_ALT OSM(MOD_LALT)
+#define KEY_CTL OSM(MOD_LCTL)
 #define KEY_DIA S(ALGR(DE_UDIA))
-#define KEY_A   LT(_A, DE_A)
-#define KEY_S   LT(_S, DE_S)
-#define KEY_E   LT(_E, DE_E)
-#define KEY_T   LT(_T, DE_T)
-#define KEY_N   LT(_N, DE_N)
-#define KEY_I   LT(_I, DE_I)
-#define KEY_O   LT(_O, DE_O)
-#define KEY_P   LT(_P, DE_P)
-#define KEY_1   LT(_1, DE_1)
-#define KEY_2   LT(_2, DE_2)
-#define KEY_3   LT(_3, DE_3)
-#define KEY_4   LT(_4, DE_4)
-#define KEY_7   LT(_7, DE_7)
-#define KEY_8   LT(_8, DE_8)
-#define KEY_9   LT(_9, DE_9)
-#define KEY_0   LT(_0, DE_0)
-
-#define KEY_FN  KC_NO
+#define KEY_GUI OSM(MOD_LGUI)
+#define SHIFT OSM(MOD_LSFT)
+/* #define KEY_FN  KC_NO */
 
 enum custom_keycodes {
     OS_KILL = SAFE_RANGE,
-    /* SHIFT, */
 };
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-            OS_KILL, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, OS_KILL,
-            KC_NO,   KEY_A,   KEY_S,   KEY_E,   KEY_T,   KC_NO,                                 KC_NO,   KEY_N,   KEY_I,   KEY_O,   KEY_P,   KC_NO,
+            RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   RESET,
+            OS_KILL, DE_A,    DE_S,    DE_E,    DE_T,    KC_NO,                                 KC_NO,   DE_N,    DE_I,    DE_O,    DE_P,  OS_KILL,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,  KEY_DIA,    KC_NO,     SHIFT, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
+                                 KC_NO,  KEY_DIA,    KEY_DIA,   SHIFT, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
-    /*
-    [_A] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_TRNS, DE_W,    DE_X,    DE_F,    KC_NO,                                 KC_NO,   DE_Q,    DE_Z,    DE_LPRN, DE_QUES, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_S] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_W,    KC_TRNS, DE_D,    DE_C,    KC_NO,                                 KC_NO,   DE_J,   DE_K,   DE_DOT,   DE_RPRN,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_E] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_X,    DE_D,    KC_TRNS, DE_R,    KC_NO,                                 KC_NO,   DE_Y,   DE_COMM,   DE_MINS,   DE_QUOT,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_T] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_F,    DE_C,    DE_R,    KC_TRNS, KC_NO,                                 KC_NO,   DE_B,   DE_V,   DE_G,   KC_BSPC,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_N] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_Q,    DE_J,    DE_Y,    DE_B,    KC_NO,                                 KC_NO,   KC_TRNS, DE_H,    DE_U,    DE_M,    KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_I] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_Z,    DE_K,    DE_COMM, DE_V,    KC_NO,                                 KC_NO,   DE_H,    KC_TRNS, DE_L,    DE_EXLM, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_O] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_LPRN, DE_DOT,  DE_MINS, DE_G,    KC_NO,                                 KC_NO,   DE_U,    DE_L,    KC_TRNS, DE_SCLN, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_P] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_QUES, DE_RPRN, DE_QUOT, KC_BSPC, KC_NO,                                 KC_NO,   DE_M,    DE_EXLM, DE_SCLN, KC_TRNS, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ), */
-
     [_NUM] = LAYOUT(
             RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KEY_1,   KEY_2,   KEY_3,   KEY_4,   KC_NO,                                 KC_NO,   KEY_7,   KEY_8,   KEY_9,   KEY_0,   KC_NO,
+            KC_NO,   DE_1,    DE_2,    DE_3,    DE_4,    KC_NO,                                 KC_NO,   DE_7,    DE_8,    DE_9,    DE_0,    KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,  KEY_DIA,    KC_NO,     SHIFT, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
-    /*
-    [_1] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_TRNS, KC_NO,   DE_GRV,  DE_LBRC, KC_NO,                                 KC_NO,   KC_NO,   DE_EXLM, DE_LPRN, DE_QUES, KC_NO,
+    [_FN] = LAYOUT(
+            RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+            KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_NO,                                 KC_NO,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
+                                 KC_NO,  KEY_DIA,    KC_NO,     SHIFT, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
-    [_2] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   KC_TRNS, DE_MINS, KEY_FN,  KC_NO,                                 KC_NO,   KC_END,  DE_EQL,  DE_DOT,  DE_RPRN, KC_NO,
+    [_NAV] = LAYOUT(
+            RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+            KC_NO,   KC_HOME, KC_NO,   KC_NO,   KC_END,  KC_NO,                                 KC_NO,   KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
+                                 KC_NO,  KEY_DIA,    KC_NO,     SHIFT, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
-    [_3] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_GRV,  DE_MINS, KC_TRNS, DE_5,    KC_NO,                                 KC_NO,   KC_HOME, DE_COMM, DE_MINS, DE_QUOT, KC_NO,
+    [_CMD] = LAYOUT(
+            RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+            KC_NO,   KC_ESC,  KEY_ALT, KEY_GUI, KEY_CTL, KC_NO,                                 KC_NO,   KC_HOME, KC_PSCR, KC_MENU, KC_END,  KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
+                                 KC_NO,  KEY_DIA,    KC_NO,     SHIFT, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
-    [_4] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_LBRC, KEY_FN,  DE_5,    KC_TRNS, KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_7] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   KC_END,  KC_HOME, KC_NO,   KC_NO,                                 KC_NO,   KC_TRNS, DE_6,    KEY_FN,  DE_RBRC, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_8] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_EXLM, DE_EQL,  DE_COMM, KC_NO,   KC_NO,                                 KC_NO,   DE_6,    KC_TRNS, DE_EQL,  KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_9] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_LPRN, DE_DOT,  DE_MINS, KC_NO,   KC_NO,                                 KC_NO,   KEY_FN,  DE_MINS, KC_TRNS, DE_SCLN, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ),
-    [_0] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_QUES, DE_RPRN, DE_QUOT, KC_BSPC, KC_NO,                                 KC_NO,   DE_RBRC, KC_NO,   DE_SCLN, KC_TRNS, KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_TRNS,   KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
-            ), */
 };
 
-const uint16_t PROGMEM combo_alpha_b[] = {KEY_T, KEY_N, COMBO_END};
-const uint16_t PROGMEM combo_alpha_c[] = {KEY_S, KEY_T, COMBO_END};
-const uint16_t PROGMEM combo_alpha_d[] = {KEY_S, KEY_E, COMBO_END};
-const uint16_t PROGMEM combo_alpha_f[] = {KEY_A, KEY_T, COMBO_END};
-const uint16_t PROGMEM combo_alpha_g[] = {KEY_T, KEY_O, COMBO_END};
-const uint16_t PROGMEM combo_alpha_h[] = {KEY_N, KEY_I, COMBO_END};
-const uint16_t PROGMEM combo_alpha_j[] = {KEY_S, KEY_N, COMBO_END};
-const uint16_t PROGMEM combo_alpha_k[] = {KEY_S, KEY_I, COMBO_END};
-const uint16_t PROGMEM combo_alpha_l[] = {KEY_I, KEY_O, COMBO_END};
-const uint16_t PROGMEM combo_alpha_m[] = {KEY_N, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_alpha_q[] = {KEY_A, KEY_N, COMBO_END};
-const uint16_t PROGMEM combo_alpha_r[] = {KEY_E, KEY_T, COMBO_END};
-const uint16_t PROGMEM combo_alpha_u[] = {KEY_N, KEY_O, COMBO_END};
-const uint16_t PROGMEM combo_alpha_v[] = {KEY_T, KEY_I, COMBO_END};
-const uint16_t PROGMEM combo_alpha_w[] = {KEY_A, KEY_S, COMBO_END};
-const uint16_t PROGMEM combo_alpha_x[] = {KEY_A, KEY_E, COMBO_END};
-const uint16_t PROGMEM combo_alpha_y[] = {KEY_E, KEY_N, COMBO_END};
-const uint16_t PROGMEM combo_alpha_z[] = {KEY_A, KEY_I, COMBO_END};
+const uint16_t PROGMEM combo_alpha_b[] = {DE_T, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_alpha_c[] = {DE_S, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_alpha_d[] = {DE_S, DE_E, COMBO_END};
+const uint16_t PROGMEM combo_alpha_f[] = {DE_A, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_alpha_g[] = {DE_T, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_h[] = {DE_N, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_alpha_j[] = {DE_S, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_alpha_k[] = {DE_S, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_alpha_l[] = {DE_I, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_m[] = {DE_N, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_q[] = {DE_A, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_alpha_r[] = {DE_E, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_alpha_u[] = {DE_N, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_v[] = {DE_T, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_alpha_w[] = {DE_A, DE_S, COMBO_END};
+const uint16_t PROGMEM combo_alpha_x[] = {DE_A, DE_E, COMBO_END};
+const uint16_t PROGMEM combo_alpha_y[] = {DE_E, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_alpha_z[] = {DE_A, DE_I, COMBO_END};
 
-const uint16_t PROGMEM combo_alpha_at[] = {KEY_I, KEY_P, SHIFT, COMBO_END};
-const uint16_t PROGMEM combo_alpha_colon[] = {KEY_O, KEY_P, SHIFT, COMBO_END};
-const uint16_t PROGMEM combo_alpha_comma[] = {KEY_E, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_alpha_dblquot[] = {KEY_E, KEY_P, SHIFT, COMBO_END};
-const uint16_t PROGMEM combo_alpha_exclamation[] = {KEY_I, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_alpha_semicolon[] = {KEY_O, KEY_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_at[] = {DE_I, DE_P, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_colon[] = {DE_O, DE_P, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_comma[] = {DE_E, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_dblquot[] = {DE_E, DE_P, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_dot[] = {DE_S, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_exclamation[] = {DE_I, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_gt[] = {DE_S, DE_O, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_leftbrace[] = {DE_A, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_leftbracket[] = {DE_A, DE_O, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_lt[] = {DE_E, DE_P, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_minus[] = {DE_E, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_question[] = {DE_A, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_rightbrace[] = {DE_S, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_rightbracket[] = {DE_S, DE_P, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_semicolon[] = {DE_O, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_slash[] = {DE_A, DE_P, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_alpha_underscore[] = {DE_E, DE_O, SHIFT, COMBO_END};
 
-const uint16_t PROGMEM combo_alpha_bspc[] = {KEY_T, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_alpha_enter[] = {KEY_N, KEY_I, KEY_O, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_alpha_tab[] = {KEY_A, KEY_S, KEY_E, KEY_T, COMBO_END};
-const uint16_t PROGMEM combo_alpha_to_num[] = {KEY_A, KEY_T, KEY_N, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_num_enter[] = {KEY_7, KEY_8, KEY_9, KEY_0, COMBO_END};
-const uint16_t PROGMEM combo_num_tab[] = {KEY_1, KEY_2, KEY_3, KEY_4, COMBO_END};
-const uint16_t PROGMEM combo_num_to_alpha[] = {KEY_1, KEY_4, KEY_7, KEY_0, COMBO_END};
+const uint16_t PROGMEM combo_alpha_bspc[] = {DE_T, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_enter[] = {DE_N, DE_I, DE_O, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_tab[] = {DE_A, DE_S, DE_E, DE_T, COMBO_END};
+
+const uint16_t PROGMEM combo_fn_f5[] = {KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM combo_fn_f6[] = {KC_F7, KC_F8, COMBO_END};
+const uint16_t PROGMEM combo_fn_f11[] = {KC_F2, KC_F3, COMBO_END};
+const uint16_t PROGMEM combo_fn_f12[] = {KC_F8, KC_F9, COMBO_END};
+
+const uint16_t PROGMEM combo_num_5[] = {DE_3, DE_4, COMBO_END};
+const uint16_t PROGMEM combo_num_6[] = {DE_7, DE_8, COMBO_END};
+const uint16_t PROGMEM combo_num_hash[] = {DE_3, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_dollar[] = {DE_4, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_percent[] = {DE_3, DE_4, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_caret[] = {DE_7, DE_8, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_ampersand[] = {DE_7, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_asterisk[] = {DE_8, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_lparen[] = {DE_9, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_rparen[] = {DE_0, SHIFT, COMBO_END};
+
+const uint16_t PROGMEM combo_num_grave[] = {DE_1, DE_7, COMBO_END};
+const uint16_t PROGMEM combo_num_tilde[] = {DE_1, DE_7, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_exclam[] = {DE_8, DE_0, COMBO_END};
+const uint16_t PROGMEM combo_num_at[] = {DE_8, DE_0, SHIFT, COMBO_END};
+const uint16_t PROGMEM combo_num_euro[] = {DE_2, DE_3, COMBO_END};
+const uint16_t PROGMEM combo_num_cent[] = {DE_2, DE_3, SHIFT, COMBO_END};
+
+const uint16_t PROGMEM combo_num_enter[] = {DE_7, DE_8, DE_9, DE_0, COMBO_END};
+const uint16_t PROGMEM combo_num_tab[] = {DE_1, DE_2, DE_3, DE_4, COMBO_END};
+
+const uint16_t PROGMEM combo_cmd_altctl[] = {KEY_ALT, KEY_CTL, COMBO_END};
+const uint16_t PROGMEM combo_cmd_altctlgui[] = {KEY_ALT, KEY_CTL, KEY_GUI, COMBO_END};
+const uint16_t PROGMEM combo_cmd_altgui[] = {KEY_ALT, KEY_GUI, COMBO_END};
+const uint16_t PROGMEM combo_cmd_ctlgui[] = {KEY_CTL, KEY_GUI, COMBO_END};
+const uint16_t PROGMEM combo_cmd_salt[] = {SHIFT, KEY_ALT, COMBO_END};
+const uint16_t PROGMEM combo_cmd_saltctl[] = {SHIFT, KEY_ALT, KEY_CTL, COMBO_END};
+const uint16_t PROGMEM combo_cmd_saltctlgui[] = {SHIFT, KEY_ALT, KEY_CTL, KEY_GUI, COMBO_END};
+const uint16_t PROGMEM combo_cmd_saltgui[] = {SHIFT, KEY_ALT, KEY_GUI, COMBO_END};
+const uint16_t PROGMEM combo_cmd_sctl[] = {SHIFT, KEY_CTL, COMBO_END};
+const uint16_t PROGMEM combo_cmd_sctlgui[] = {SHIFT, KEY_CTL, KEY_GUI, COMBO_END};
+const uint16_t PROGMEM combo_cmd_sgui[] = {SHIFT, KEY_GUI, COMBO_END};
+
+const uint16_t PROGMEM combo_nav_pageup[] = {KC_LEFT, KC_UP, COMBO_END};
+const uint16_t PROGMEM combo_nav_pagedown[] = {KC_DOWN, KC_RGHT, COMBO_END};
+
+const uint16_t PROGMEM combo_alpha_to_num[] = {DE_A, DE_T, DE_N, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_to_numosl[] = {DE_N, DE_I, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_to_cmd[] = {DE_S, DE_E, DE_I, DE_O, COMBO_END};
+const uint16_t PROGMEM combo_alpha_to_fn[] = {DE_A, DE_E, DE_I, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_to_nav[] = {DE_S, DE_E, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_num_to_alpha[] = {DE_1, DE_4, DE_7, DE_0, COMBO_END};
+const uint16_t PROGMEM combo_fn_to_alpha[] = {DE_1, DE_4, DE_7, DE_0, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_alpha_b, DE_B),
@@ -237,15 +184,55 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_alpha_colon, DE_COLN),
     COMBO(combo_alpha_comma, DE_COMM),
     COMBO(combo_alpha_dblquot, DE_DQUO),
+    COMBO(combo_alpha_dot, DE_DOT),
     COMBO(combo_alpha_exclamation, DE_EXLM),
+    COMBO(combo_alpha_gt, DE_RABK),
+    COMBO(combo_alpha_leftbrace, DE_LCBR),
+    COMBO(combo_alpha_leftbracket, DE_LBRC),
+    COMBO(combo_alpha_lt, DE_LABK),
+    COMBO(combo_alpha_minus, DE_MINS),
+    COMBO(combo_alpha_question, DE_QUES),
+    COMBO(combo_alpha_rightbrace, DE_RCBR),
+    COMBO(combo_alpha_rightbracket, DE_RBRC),
     COMBO(combo_alpha_semicolon, DE_SCLN),
+    COMBO(combo_alpha_slash, DE_SLSH),
+    COMBO(combo_alpha_underscore, DE_UNDS),
     COMBO(combo_alpha_bspc, KC_BSPC),
     COMBO(combo_alpha_enter, KC_ENT),
     COMBO(combo_alpha_tab, KC_TAB),
-    COMBO(combo_alpha_to_num, DF(_NUM)),
-    COMBO(combo_num_tab, KC_TAB),
+    COMBO(combo_cmd_altctl,     OSM(MOD_LALT|MOD_LCTL)),
+    COMBO(combo_cmd_altctlgui,  OSM(MOD_LALT|MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_altgui,     OSM(MOD_LALT|MOD_LGUI)),
+    COMBO(combo_cmd_ctlgui,     OSM(MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_salt,       OSM(MOD_LSFT|MOD_LALT)),
+    COMBO(combo_cmd_saltctl,    OSM(MOD_LSFT|MOD_LALT|MOD_LCTL)),
+    COMBO(combo_cmd_saltctlgui, OSM(MOD_LSFT|MOD_LALT|MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_saltgui,    OSM(MOD_LSFT|MOD_LALT|MOD_LGUI)),
+    COMBO(combo_cmd_sctl,       OSM(MOD_LSFT|MOD_LCTL)),
+    COMBO(combo_cmd_sctlgui,    OSM(MOD_LSFT|MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_sgui,       OSM(MOD_LSFT|MOD_LGUI)),
+    COMBO(combo_num_5, DE_5),
+    COMBO(combo_num_6, DE_6),
+    COMBO(combo_num_ampersand, DE_AMPR),
+    COMBO(combo_num_asterisk, DE_ASTR),
+    COMBO(combo_num_at, DE_AT),
+    COMBO(combo_num_caret, DE_CIRC),
+    COMBO(combo_num_dollar, DE_DLR),
+    COMBO(combo_num_exclam, DE_EXLM),
+    COMBO(combo_num_hash, DE_HASH),
+    COMBO(combo_num_lparen, DE_LPRN),
+    COMBO(combo_num_percent, DE_PERC),
+    COMBO(combo_num_rparen, DE_RPRN),
     COMBO(combo_num_enter, KC_ENT),
-    COMBO(combo_num_to_alpha, DF(_BASE)),
+    COMBO(combo_num_tab, KC_TAB),
+    COMBO(combo_nav_pageup, KC_PGUP),
+    COMBO(combo_nav_pagedown, KC_PGDN),
+    COMBO(combo_alpha_to_cmd, OSL(_CMD)),
+    COMBO(combo_alpha_to_fn, OSL(_FN)),
+    COMBO(combo_alpha_to_nav, OSL(_NAV)),
+    COMBO(combo_alpha_to_num, TO(_NUM)),
+    COMBO(combo_alpha_to_numosl, OSL(_NUM)),
+    COMBO(combo_num_to_alpha, TO(_BASE)),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -278,24 +265,11 @@ bool oled_task_user(void) {
         oled_write_P(PSTR("\nLayer: "), false);
         uint8_t activeLayer = get_highest_layer(layer_state);
         switch (activeLayer) {
-            case _BASE: oled_write_P(PSTR("ASETNIOP"), false); break;
-            case _A: oled_write_P(PSTR("*SETNIOP"), false); break;
-            case _S: oled_write_P(PSTR("A*ETNIOP"), false); break;
-            case _E: oled_write_P(PSTR("AS*TNIOP"), false); break;
-            case _T: oled_write_P(PSTR("ASE*NIOP"), false); break;
-            case _N: oled_write_P(PSTR("ASET*IOP"), false); break;
-            case _I: oled_write_P(PSTR("ASETN*OP"), false); break;
-            case _O: oled_write_P(PSTR("ASETNI*P"), false); break;
-            case _P: oled_write_P(PSTR("ASETNIO*"), false); break;
-            case _NUM: oled_write_P(PSTR("12347890"), false); break;
-            case _1: oled_write_P(PSTR("*2347890"), false); break;
-            case _2: oled_write_P(PSTR("1*347890"), false); break;
-            case _3: oled_write_P(PSTR("12*47890"), false); break;
-            case _4: oled_write_P(PSTR("123*7890"), false); break;
-            case _7: oled_write_P(PSTR("1234*890"), false); break;
-            case _8: oled_write_P(PSTR("12347*90"), false); break;
-            case _9: oled_write_P(PSTR("123478*0"), false); break;
-            case _0: oled_write_P(PSTR("1234789*"), false); break;
+            case _BASE: oled_write_P(PSTR("Alpha"), false); break;
+            case _NUM: oled_write_P(PSTR("Numbers"), false); break;
+            case _FN:  oled_write_P(PSTR("Fn-Keys"), false); break;
+            case _NAV: oled_write_P(PSTR("Navigation"), false); break;
+            case _CMD: oled_write_P(PSTR("Command"), false); break;
             default:
                 oled_write_P(PSTR("Undefined"), true);
                 break;
