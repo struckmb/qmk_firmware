@@ -369,7 +369,6 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_navmse, TO(_AMSE)),
     COMBO(combo_navosl, OSL(_ANAV)),
     COMBO(combo_numLock, TO(_ANUM)),
-
     COMBO(combo_hrm_lsft, OS_SFT),
     COMBO(combo_hrm_lalt, OS_ALT),
     COMBO(combo_hrm_lctl, OS_CTL),

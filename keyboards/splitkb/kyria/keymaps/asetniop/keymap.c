@@ -41,6 +41,7 @@ enum layers {
 };
 
 #define OSM_SFT OSM(MOD_LSFT)
+#define KEY_DIA S(ALGR(DE_UDIA))
 #define KEY_A   LT(_A, DE_A)
 #define KEY_S   LT(_S, DE_S)
 #define KEY_E   LT(_E, DE_E)
@@ -58,6 +59,7 @@ enum layers {
 #define KEY_9   LT(_9, DE_9)
 #define KEY_0   LT(_0, DE_0)
 
+#define KEY_FN  KC_NO
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -65,107 +67,108 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
             KC_NO,   KEY_A,   KEY_S,   KEY_E,   KEY_T,   KC_NO,                                 KC_NO,   KEY_N,   KEY_I,   KEY_O,   KEY_P,   KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_NO,     OSM_SFT,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
+                                 KC_NO,  KEY_DIA,    OSM_SFT,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
     [_A] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   DE_W,    DE_X,    DE_F,    KC_NO,                                 KC_NO,   DE_Q,    DE_Z,    DE_LPRN, DE_QUES, KC_NO,
+            KC_NO,   XXXXXXX, DE_W,    DE_X,    DE_F,    KC_NO,                                 KC_NO,   DE_Q,    DE_Z,    DE_LPRN, DE_QUES, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_S] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_W,   KC_NO,   DE_D,   DE_C,   KC_NO,                                 KC_NO,   DE_J,   DE_K,   DE_DOT,   DE_RPRN,   KC_NO,
+            KC_NO,   DE_W,    XXXXXXX, DE_D,    DE_C,    KC_NO,                                 KC_NO,   DE_J,   DE_K,   DE_DOT,   DE_RPRN,   KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_E] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_X,   DE_D,   KC_NO,   DE_R,   KC_NO,                                 KC_NO,   DE_Y,   DE_COMM,   DE_MINS,   DE_QUOT,   KC_NO,
+            KC_NO,   DE_X,    DE_D,    XXXXXXX, DE_R,    KC_NO,                                 KC_NO,   DE_Y,   DE_COMM,   DE_MINS,   DE_QUOT,   KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_T] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_F,   DE_C,   DE_R,   KC_NO,   KC_NO,                                 KC_NO,   DE_B,   DE_V,   DE_G,   KC_BSPC,   KC_NO,
+            KC_NO,   DE_F,    DE_C,    DE_R,    XXXXXXX, KC_NO,                                 KC_NO,   DE_B,   DE_V,   DE_G,   KC_BSPC,   KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_N] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_Q,   DE_J,   DE_Y,   DE_B,   KC_NO,                                 KC_NO,   KC_NO,   DE_H,   DE_U,   DE_M,   KC_NO,
+            KC_NO,   DE_Q,    DE_J,    DE_Y,    DE_B,    KC_NO,                                 KC_NO,   XXXXXXX, DE_H,    DE_U,    DE_M,    KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_I] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_Z,   DE_K,   DE_COMM,   DE_V,   KC_NO,                                 KC_NO,   DE_H,   KC_NO,   DE_L,   DE_EXLM,   KC_NO,
+            KC_NO,   DE_Z,    DE_K,    DE_COMM, DE_V,    KC_NO,                                 KC_NO,   DE_H,    XXXXXXX, DE_L,    DE_EXLM, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_O] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_LPRN,   DE_DOT,   DE_MINS,   DE_G,   KC_NO,                                 KC_NO,   DE_U,   DE_L,   KC_NO,   DE_SCLN,   KC_NO,
+            KC_NO,   DE_LPRN, DE_DOT,  DE_MINS, DE_G,    KC_NO,                                 KC_NO,   DE_U,    DE_L,    XXXXXXX, DE_SCLN, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_P] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_QUES,   DE_RPRN,   DE_QUOT,   KC_BSPC,   KC_NO,                                 KC_NO,   DE_M,   DE_EXLM,   DE_SCLN,   KC_NO,   KC_NO,
+            KC_NO,   DE_QUES, DE_RPRN, DE_QUOT, KC_BSPC, KC_NO,                                 KC_NO,   DE_M,    DE_EXLM, DE_SCLN, XXXXXXX, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
+
     [_NUM] = LAYOUT(
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+            RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
             KC_NO,   KEY_1,   KEY_2,   KEY_3,   KEY_4,   KC_NO,                                 KC_NO,   KEY_7,   KEY_8,   KEY_9,   KEY_0,   KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_NO,     OSM_SFT,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
+                                 KC_NO,  KEY_DIA,    OSM_SFT,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_SPC,    KC_NO,   KC_NO//ENC
             ),
     [_1] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   KC_NO,   DE_W,    DE_X,    DE_F,    KC_NO,                                 KC_NO,   DE_Q,    DE_Z,    DE_LPRN, DE_QUES, KC_NO,
+            KC_NO,   XXXXXXX, KC_NO,   DE_GRV,  DE_LBRC, KC_NO,                                 KC_NO,   KC_NO,   DE_EXLM, DE_LPRN, DE_QUES, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_2] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_W,   KC_NO,   DE_D,   DE_C,   KC_NO,                                 KC_NO,   DE_J,   DE_K,   DE_DOT,   DE_RPRN,   KC_NO,
+            KC_NO,   KC_NO,   XXXXXXX, DE_MINS, KEY_FN,  KC_NO,                                 KC_NO,   KC_END,  DE_EQL,  DE_DOT,  DE_RPRN, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_3] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_X,   DE_D,   KC_NO,   DE_R,   KC_NO,                                 KC_NO,   DE_Y,   DE_COMM,   DE_MINS,   DE_QUOT,   KC_NO,
+            KC_NO,   DE_GRV,  DE_MINS, XXXXXXX, DE_5,    KC_NO,                                 KC_NO,   KC_HOME, DE_COMM, DE_MINS, DE_QUOT, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_4] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_F,   DE_C,   DE_R,   KC_NO,   KC_NO,                                 KC_NO,   DE_B,   DE_V,   DE_G,   KC_BSPC,   KC_NO,
+            KC_NO,   DE_LBRC, KEY_FN,  DE_5,    XXXXXXX, KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_7] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_Q,   DE_J,   DE_Y,   DE_B,   KC_NO,                                 KC_NO,   KC_NO,   DE_H,   DE_U,   DE_M,   KC_NO,
+            KC_NO,   KC_NO,   KC_END,  KC_HOME, KC_NO,   KC_NO,                                 KC_NO,   XXXXXXX, DE_6,    KEY_FN,  DE_RBRC, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_8] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_Z,   DE_K,   DE_COMM,   DE_V,   KC_NO,                                 KC_NO,   DE_H,   KC_NO,   DE_L,   DE_EXLM,   KC_NO,
+            KC_NO,   DE_EXLM, DE_EQL,  DE_COMM, KC_NO,   KC_NO,                                 KC_NO,   DE_6,    XXXXXXX, DE_EQL,  KC_NO,   KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_9] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_LPRN,   DE_DOT,   DE_MINS,   DE_G,   KC_NO,                                 KC_NO,   DE_U,   DE_L,   KC_NO,   DE_SCLN,   KC_NO,
+            KC_NO,   DE_LPRN, DE_DOT,  DE_MINS, KC_NO,   KC_NO,                                 KC_NO,   KEY_FN,  DE_MINS, XXXXXXX, DE_SCLN, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
     [_0] = LAYOUT(
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                 KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-            KC_NO,   DE_QUES,   DE_RPRN,   DE_QUOT,   KC_BSPC,   KC_NO,                                 KC_NO,   DE_M,   DE_EXLM,   DE_SCLN,   KC_NO,   KC_NO,
+            KC_NO,   DE_QUES, DE_RPRN, DE_QUOT, KC_BSPC, KC_NO,                                 KC_NO,   DE_RBRC, KC_NO,   DE_SCLN, XXXXXXX, KC_NO,
             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO ,KC_NO,     KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                  KC_NO,   KC_NO,     KC_TRNS,   KC_NO, KC_NO,     KC_NO, KC_NO,     KC_TRNS,   KC_NO,   KC_NO//ENC
             ),
@@ -177,16 +180,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*     return true; */
 /* } */
 
-const uint16_t PROGMEM combo_tab[] = {KEY_A, KEY_S, KEY_E, KEY_T, COMBO_END};
-const uint16_t PROGMEM combo_tab_num[] = {KEY_1, KEY_2, KEY_3, KEY_4, COMBO_END};
-const uint16_t PROGMEM combo_enter[] = {KEY_N, KEY_I, KEY_O, KEY_P, COMBO_END};
-const uint16_t PROGMEM combo_enter_num[] = {KEY_7, KEY_8, KEY_9, KEY_0, COMBO_END};
+const uint16_t PROGMEM combo_alpha_enter[] = {KEY_N, KEY_I, KEY_O, KEY_P, COMBO_END};
+const uint16_t PROGMEM combo_alpha_tab[] = {KEY_A, KEY_S, KEY_E, KEY_T, COMBO_END};
+const uint16_t PROGMEM combo_alpha_to_num[] = {KEY_A, KEY_T, KEY_N, KEY_P, COMBO_END};
+const uint16_t PROGMEM combo_num_enter[] = {KEY_7, KEY_8, KEY_9, KEY_0, COMBO_END};
+const uint16_t PROGMEM combo_num_tab[] = {KEY_1, KEY_2, KEY_3, KEY_4, COMBO_END};
+const uint16_t PROGMEM combo_num_to_alpha[] = {KEY_1, KEY_4, KEY_7, KEY_0, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(combo_alpha_tab, KC_TAB),
+    COMBO(combo_alpha_enter, KC_ENT),
+    COMBO(combo_alpha_to_num, DF(_NUM)),
+    COMBO(combo_num_tab, KC_TAB),
+    COMBO(combo_num_enter, KC_ENT),
+    COMBO(combo_num_to_alpha, DF(_BASE)),
+};
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        oled_write_P(PSTR("       ARTSENIO      "), true);
+        oled_write_P(PSTR("  small   ASETNIOP   "), true);
         // QMK Logo and version information
         // clang-format off
         static const char PROGMEM qmk_logo[] = {
@@ -208,13 +222,22 @@ bool oled_task_user(void) {
             case _I: oled_write_P(PSTR("ASETN*OP"), false); break;
             case _O: oled_write_P(PSTR("ASETNI*P"), false); break;
             case _P: oled_write_P(PSTR("ASETNIO*"), false); break;
+            case _NUM: oled_write_P(PSTR("12347890"), false); break;
+            case _1: oled_write_P(PSTR("*2347890"), false); break;
+            case _2: oled_write_P(PSTR("1*347890"), false); break;
+            case _3: oled_write_P(PSTR("12*47890"), false); break;
+            case _4: oled_write_P(PSTR("123*7890"), false); break;
+            case _7: oled_write_P(PSTR("1234*890"), false); break;
+            case _8: oled_write_P(PSTR("12347*90"), false); break;
+            case _9: oled_write_P(PSTR("123478*0"), false); break;
+            case _0: oled_write_P(PSTR("1234789*"), false); break;
             default:
                 oled_write_P(PSTR("Undefined"), true);
                 break;
         }
 
         // Write Status to OLEDs
-        oled_write_P(PSTR("WPM: "), false);
+        oled_write_P(PSTR("\nWPM: "), false);
         oled_write(get_u8_str(get_current_wpm(), ' '), false);
         uint8_t osm_mod = mod_config(get_oneshot_mods());
         uint8_t all_mod = mod_config(get_mods()|get_oneshot_mods());
