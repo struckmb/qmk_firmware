@@ -423,7 +423,7 @@ bool oled_task_user(void) {
                 break;
             case _ASYM:
             case _CSYM:
-                oled_write_P(PSTR("Symbols"), false);
+                oled_write_P(PSTR("Symbols  "), false);
                 break;
             case _ANUM:
                 oled_write_P(PSTR("Numbers"), false);
