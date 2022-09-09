@@ -20,9 +20,9 @@
 
 enum layers {
     // Default layers
-    _MINI = 0,
-    _BIG,
     _QWER,
+    _BIG,
+    _MINI,
     _BONE,
     _COLE,
     _MAX_DFL,
@@ -77,7 +77,7 @@ enum layers {
 
 enum custom_keycodes {
     TO_DFL = SAFE_RANGE,
-    WR_DFL,
+    /* WR_DFL, */
     INC_DFL,
     DEC_DFL,
     OS_KILL,
@@ -88,11 +88,11 @@ enum custom_keycodes {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_MINI] = LAYOUT(
-            OS_KILL, ALCU_S,  DE_T,    DE_R,    ALPA_A,  KC_NO,                                   KC_NO,   ALPA_A,  DE_R,    DE_T,    ALCU_S,  OS_KILL,
-            KC_NO,   ALNU_O,  DE_I,    DE_N,    ALSY_E,  KC_NO,                                   KC_NO,   ALSY_E,  DE_N,    DE_I,    ALNU_O,  KC_NO,
-            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   CL_ADJ,KC_NO,     KC_NO,CL_ADJ, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                 KC_NO,   KC_NO,     KC_NO,       KC_NO, KC_NO,     KC_NO, KC_NO,     KC_NO,     KC_NO,   KC_NO//ENC
+    [_QWER] = LAYOUT(
+            KC_TAB,  DE_Q,   DE_W,    DE_E,    DE_R,    DE_T,                                     DE_Z,   DE_U,    DE_I,    DE_O,    DE_P,    DE_UDIA,
+            CTL_ESC, DE_A,   DE_S,    DE_D,    DE_F,    DE_G,                                     DE_H,   DE_J,    DE_K,    DE_L,    DE_ODIA, DE_ADIA,
+            SFT_BSP, DE_Y,   DE_X,    DE_C,    DE_V,    DE_B,  CL_ADJ,KC_CAPS,     CL_MFN,CL_ADJ, DE_N,   DE_M, DE_COMM , DE_DOT,    DE_SS,   SFT_DEL,
+                                SY_COPY, SY_PASTE,  CL_NAV,   SYM_ENT,MFN_SPC,     CL_ADJ, SYM_SPC,  CL_NAV,  KC_APP, KC_PSCR//ENC
             ),
     [_BIG] = LAYOUT(
             OS_KILL, ALCU_S,  DE_T,    DE_R,    ALPA_A,  DE_SS,                                   DE_SS,   ALPA_A,  DE_R,    DE_T,    ALCU_S,  OS_KILL,
@@ -100,11 +100,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             OS_SFT,  OS_CTL,  KC_BSPC, KC_DEL,  DE_EQL,  KC_TAB,  CL_ADJ,KC_NO,     KC_NO,CL_ADJ, KC_TAB,  DE_EQL,  KC_DEL,  KC_BSPC, OS_CTL,  OS_SFT,
                                 KC_NO,   KC_NO,   AOS_SY,    KC_ENT,   NUM_SPC,     NUM_SPC, KC_ENT,   AOS_SY,   KC_NO,   KC_NO//ENC
             ),
-    [_QWER] = LAYOUT(
-            KC_TAB,  DE_Q,   DE_W,    DE_E,    DE_R,    DE_T,                                     DE_Z,   DE_U,    DE_I,    DE_O,    DE_P,    DE_UDIA,
-            CTL_ESC, DE_A,   DE_S,    DE_D,    DE_F,    DE_G,                                     DE_H,   DE_J,    DE_K,    DE_L,    DE_ODIA, DE_ADIA,
-            SFT_BSP, DE_Y,   DE_X,    DE_C,    DE_V,    DE_B,  CL_ADJ,KC_CAPS,     CL_MFN,CL_ADJ, DE_N,   DE_M, DE_COMM , DE_DOT,    DE_SS,   SFT_DEL,
-                                SY_COPY, SY_PASTE,  CL_NAV,   SYM_ENT,MFN_SPC,     CL_ADJ, SYM_SPC,  CL_NAV,  KC_APP, KC_PSCR//ENC
+    [_MINI] = LAYOUT(
+            OS_KILL, ALCU_S,  DE_T,    DE_R,    ALPA_A,  KC_NO,                                   KC_NO,   ALPA_A,  DE_R,    DE_T,    ALCU_S,  OS_KILL,
+            KC_NO,   ALNU_O,  DE_I,    DE_N,    ALSY_E,  KC_NO,                                   KC_NO,   ALSY_E,  DE_N,    DE_I,    ALNU_O,  KC_NO,
+            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   CL_ADJ,KC_NO,     KC_NO,CL_ADJ, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                                 KC_NO,   KC_NO,     KC_NO,       KC_NO, KC_NO,     KC_NO, KC_NO,     KC_NO,     KC_NO,   KC_NO//ENC
             ),
     [_BONE] = LAYOUT(
             KC_TAB,  DE_J,   DE_D,    DE_U,    DE_A,    DE_X,                                     DE_P,   DE_H,    DE_L,    DE_M,    DE_W,    DE_SS,
@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_CADJ] = LAYOUT(
             RGB_VAI, KC_WH_U, KC_WBAK, KC_MS_U, KC_WFWD, RGB_HUI,                                            RGB_TOG,  RGB_MOD, RGB_HUI, RGB_VAI, RGB_SAI, XXXXXXX,
             RGB_TOG, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,                                            RGB_M_P, RGB_RMOD, RGB_HUD, RGB_VAD, RGB_SAD, XXXXXXX,
-            RGB_VAD, WR_DFL,  RESET,   DEC_DFL, INC_DFL, KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,  INC_DFL, DEC_DFL, RESET,   WR_DFL,  _______,
+            RGB_VAD, RESET,   EE_CLR,  DEC_DFL, INC_DFL, KC_WH_D, KC_TRNS, KC_SCRL,        _______, KC_TRNS, XXXXXXX,  INC_DFL, DEC_DFL, EE_CLR,  RESET,   _______,
                                RGB_M_P, RGB_MOD,    KC_BTN3,      KC_BTN1, KC_BTN2,        KC_TRNS, KC_BTN4,    KC_BTN5,     UC_MOD, KC_BTN1
     ),
 };
@@ -385,9 +385,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TO_DFL:
             if (record->event.pressed) layer_clear();
             return false;
-        case WR_DFL:
-            if (record->event.pressed) set_single_persistent_default_layer(get_highest_layer(default_layer_state));
-            return false;
+        /* case WR_DFL: */
+        /*     if (record->event.pressed) set_single_persistent_default_layer(get_highest_layer(default_layer_state)); */
+        /*     return false; */
         case SY_CIRC:
             if (record->event.pressed) send_string("^");
             return false;
