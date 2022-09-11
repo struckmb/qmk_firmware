@@ -22,5 +22,15 @@
 
 #pragma once
 
-#include "quantum.h"
-#include "layout_macros.h"
+// Mousekey mode
+#ifdef MOUSEKEY_ENABLE
+#   define MK_COMBINED
+#endif // MOUSEKEY_ENABLE
+
+// Tap-hold settings
+#define TAPPING_TERM 200
+#define TAP_CODE_DELAY 20
+#define IGNORE_MOD_TAP_INTERRUPT
+#define PERMISSIVE_HOLD
+#define TAPPING_FORCE_HOLD
+
