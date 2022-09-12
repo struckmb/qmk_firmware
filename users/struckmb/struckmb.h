@@ -62,9 +62,15 @@ enum userspace_custom_keycodes {
 #define BS_ENC KC_NO
 #endif // ENCODER_ENABLE
 
+
 /// Enumeration of layers
 enum userspace_layers {
     _DEFAULT = 0, // Base layer
+    _DEF_HRM,     // Base layer with home row mod
+#   ifdef COMBO_ENABLE
+    _AST_ALP,     // Base layer for 10 keys (alpha part)
+    _AST_NUM,     // Base layer for 10 keys (numbers part)
+#   endif // COMBO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
     _NAV_FUN,     // L: Navigation layer, R: Function keys layer
     _MSE_ADJ,     // L: Mouse keys layer, R: Keyboard adjustments
@@ -153,29 +159,31 @@ enum userspace_layers {
 #define BS_CUT     S(KC_DEL)
 #define BS_PSTE    S(KC_INS)
 
-// MOD-tap definitions
-#define CTL_ESC MT(MOD_LCTL, KC_ESC)
+// MOD definitions
+#define SFT_Y   MT(MOD_LSFT, DE_Y)
+#define ALT_S   MT(MOD_LALT, DE_S)
+#define GUI_D   MT(MOD_LGUI, DE_D)
 #define CTL_F   MT(MOD_LCTL, DE_F)
 #define CTL_J   MT(MOD_LCTL, DE_J)
-#define ALT_S   MT(MOD_LALT, DE_S)
-#define ALT_L   MT(MOD_LALT, DE_L)
-#define GUI_D   MT(MOD_LGUI, DE_D)
 #define GUI_K   MT(MOD_RGUI, DE_K)
-#define SFT_Y   MT(MOD_LSFT, DE_Y)
+#define ALT_L   MT(MOD_LALT, DE_L)
 #define SFT_SZ  MT(MOD_LSFT, DE_SZ)
-
+#define CTL_ESC MT(MOD_LCTL, KC_ESC)
 #define OSM_ALT OSM(MOD_LALT)
 #define OSM_CTL OSM(MOD_LCTL)
 #define OSM_GUI OSM(MOD_LGUI)
 #define OSM_SFT OSM(MOD_LSFT)
 
 // Layer switches
-#define ADJ_CTL LT(_MSE_ADJ, KC_LCTL )
+#define ADJ_HOE LT(_MSE_ADJ, DE_OE )
+#define ADJ_ESC LT(_MSE_ADJ, KC_ESC )
 #define NUM_ENT LT(_SYM_NUM, KC_ENT )
 #define FUN_TAB LT(_NAV_FUN, KC_TAB )
 #define MSE_BSP LT(_MSE_ADJ, KC_BSPC )
 #define SYM_SPC LT(_SYM_NUM, KC_SPC )
-#define NAV_ESC LT(_NAV_FUN, KC_ESC )
+#define NAV_DEL LT(_NAV_FUN, KC_DEL )
+#define HRM_OFF DF(_DEFAULT)
+#define HRM_ON  DF(_DEF_HRM)
 
 /* Base layout
  * QWERT
@@ -186,7 +194,7 @@ enum userspace_layers {
  *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  *  Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft
  *      └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                        │ Ctr │Enter│ Tab │ │BkSpc│Space│ Esc │
+ *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
  *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
  * The thing about this layout is that these will fit most boards I have.
  */
@@ -197,8 +205,8 @@ enum userspace_layers {
 #define _BL3_5_ DE_Y, DE_X, DE_C, DE_V, DE_B
 #define _BR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, DE_SZ
 
-#define _BL4_3_ ADJ_CTL,NUM_ENT,FUN_TAB
-#define _BR4_3_ MSE_BSP,SYM_SPC,NAV_ESC
+#define _BL4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
+#define _BR4_3_ MSE_BSP,SYM_SPC,NAV_DEL
 
 // The extra line for the 6th (or 0th) row
 #define _BL1_1_ KC_TAB
@@ -207,6 +215,61 @@ enum userspace_layers {
 #define _BR2_1_ DE_AE
 #define _BL3_1_ OSM_SFT
 #define _BR3_1_ OSM_SFT
+
+/* Base layout + HRM
+ * QWERT
+ *      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ *  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
+ *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ *  E/C │  a  │  s  │  d  │  f  │  g  │             │  h  │  j  │  k  │  l  │  ö  │  ä
+ *      ├─────┼─Alt─┼─Gui─┼─Ctl─┼─────┤             ├─────┼─Ctl─┼─Gui─┼─Alt─┼─Adj─┤
+ *  Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft
+ *      └─Sft─┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─Sft─┘
+ *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
+ *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
+ * The thing about this layout is that these will fit most boards I have.
+ */
+#define _HL1_5_ DE_Q,  DE_W,  DE_E,  DE_R,    DE_T
+#define _HL2_5_ DE_A,  ALT_S, GUI_D, CTL_F,   DE_G
+#define _HL3_5_ SFT_Y, DE_X,  DE_C,  DE_V,    DE_B
+#define _HR1_5_ DE_Z,  DE_U,  DE_I,  DE_O,    DE_P
+#define _HR2_5_ DE_H,  CTL_J, GUI_K, ALT_L,   ADJ_HOE
+#define _HR3_5_ DE_N,  DE_M,  DE_COMM, DE_DOT, SFT_SZ
+#define _HL4_3_ _BL4_3_
+#define _HR4_3_ _BR4_3_
+
+#ifdef COMBO_ENABLE
+#define _AL1_5_ xxx5xxx
+#define _AR1_5_ xxx5xxx
+#define _AL3_5_ xxx5xxx
+#define _AR3_5_ xxx5xxx
+#define _AL4_3_ XXXXXXX,OSM_SFT,XXXXXXX
+#define _AR4_3_ XXXXXXX,KC_SPC,XXXXXXX
+/* ASETNIOP alphas and numbers
+ * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ * │     │     │     │     │     │             │     │     │     │     │     │
+ * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ * │  a  │  s  │  e  │  t  │     │             │     │  n  │  i  │  o  │  p  │
+   ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ * │     │     │     │     │     │             │     │     │     │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
+ *                   │     │Enter│     │ │     │Space│     │
+ *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
+ * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ * │     │     │     │     │     │             │     │     │     │     │     │
+ * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ * │  1  │  2  │  3  │  4  │     │             │     │  7  │  8  │  9  │  0  │
+   ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ * │     │     │     │     │     │             │     │     │     │     │     │
+ * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
+ *                   │     │Enter│     │ │     │Space│     │
+ *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
+ */
+#define _AAL_5_ DE_A, DE_S, DE_E, DE_T, XXXXXXX
+#define _AAR_5_ XXXXXXX, DE_N, DE_I, DE_O, DE_P
+#define _ANL_5_ DE_1, DE_2, DE_3, DE_4, XXXXXXX
+#define _ANR_5_ XXXXXXX, DE_7, DE_8, DE_9, DE_0
+#endif // COMBO_ENABLE
 
 /* Symbols layer
  * _SYM_NUM
@@ -229,19 +292,19 @@ enum userspace_layers {
  * _SYM_NUM
  *  This layer contains numbers and the associated symbols.
  *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │ < > │ 7 / │ 8 ( │ 9 ) │  :  │
+ *       │ < > │ 7 / │ 8 ( │ 9 ) │ , ; │
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │ - _ │ 4 $ │ 5 % │ 6 & │ + * │
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │ 0 = │ 1 ! │ 2 " │ 3 § │  .  │
+ *       │ 0 = │ 1 ! │ 2 " │ 3 § │ . : │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
- * │     │     │  ,  │
+ * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _NU1_5_           DE_LABK, KC_7,   KC_8,   KC_9,   DE_COLN
+#define _NU1_5_           DE_LABK, KC_7,   KC_8,   KC_9,   DE_COMM
 #define _NU2_5_           DE_MINS, KC_4,   KC_5,   KC_6,   DE_PLUS
-#define _NU3_5_     DE_0,    KC_1, KC_2,   KC_3,   DE_DOT
-#define _NU4_3_  KC_TRNS, KC_TRNS, DE_COMM
+#define _NU3_5_           DE_0,    KC_1,   KC_2,   KC_3,   DE_DOT
+#define _NU4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 
 /* Navigation layer
  * _NAV_FUN
@@ -264,7 +327,7 @@ enum userspace_layers {
  *       ┌─────┬─────┬─────┬─────┬─────┐
  *       │OsAlt│ F07 │ F08 │ F09 │ F10 │
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │OsSft│ F04 │ F05 │ F06 │ F11 │
+ *       │OsGui│ F04 │ F05 │ F06 │ F11 │
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │OsCtl│ F01 │ F02 │ F03 │ F12 │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
@@ -272,13 +335,13 @@ enum userspace_layers {
  * └─────┴─────┴─────┘
  */
 #define _FU1_5_           OSM_ALT, KC_F7, KC_F8, KC_F9, KC_F10
-#define _FU2_5_           OSM_CTL, KC_F4, KC_F5, KC_F6, KC_F11
-#define _FU3_5_           OSM_GUI, KC_F1, KC_F2, KC_F3, KC_F12
-#define _FU4_3_  KC_CAPS, KC_APP,  KC_TRNS
+#define _FU2_5_           OSM_GUI, KC_F4, KC_F5, KC_F6, KC_F11
+#define _FU3_5_           OSM_CTL, KC_F1, KC_F2, KC_F3, KC_F12
+#define _FU4_3_  KC_RALT, KC_APP,  KC_TRNS
 
 /* Mouse layer
  * ┌─────┬─────┬─────┬─────┬─────┐
- * │ <<< │ vvv │ |^| │ ^^^ │ >>> │
+ * │ vvv │ <<< │ |^| │ >>> │ ^^^ │
  * ├─────┼─────┼─────┼─────┼─────┤
  * │ Slo │ |<| │ |v| │ |>| │ CTL │
  * ├─────┼─────┼─────┼─────┼─────┤
@@ -287,25 +350,25 @@ enum userspace_layers {
  *                   │ Bt3 │ Bt1 │ Bt2 │
  *                   └─────┴─────┴─────┘
  */
-#define _MO1_5_    KC_WH_L, KC_WH_D, KC_MS_U, KC_WH_U, KC_WH_R
+#define _MO1_5_    KC_WH_D, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U
 #define _MO2_5_    KC_ACL0, KC_MS_L, KC_MS_D, KC_MS_R, KC_LCTL
-#define _MO3_5_    KC_ACL2, KC_BTN4, XXXXXXX, KC_BTN5, KC_LSFT
+#define _MO3_5_    KC_ACL1, KC_BTN4, XXXXXXX, KC_BTN5, KC_LSFT
 #define _MO4_3_                               KC_BTN3, KC_BTN1, KC_BTN2
 
 /* Adjustment layer
  *       ┌─────┬─────┬─────┬─────┬─────┐
  *       │     │     │     │EECLR│RESET│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │     │     │     │     │
+ *       │     │  ü  │  ä  │HrmOn│NoHrm│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │     │     │     │     │
+ *       │     │     │     │     │Caps │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
 #define _AD1_5_           KC_NO, KC_NO, KC_NO, EE_CLR, RESET
-#define _AD2_5_           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
-#define _AD3_5_           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+#define _AD2_5_           KC_NO, DE_UE, DE_AE, HRM_ON, HRM_OFF
+#define _AD3_5_           KC_NO, KC_NO, KC_NO, KC_NO, KC_CAPS
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 
 /* Game layer

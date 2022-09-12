@@ -61,6 +61,9 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
         case _DEFAULT:
             oled_write("Default   ", false);
             break;
+        case _DEF_HRM:
+            oled_write("Def. (HRM)", false);
+            break;
         case _SYM_NUM:
             oled_write("Symb/Numb ", false);
             break;
@@ -78,15 +81,15 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
     }
 }
 
-void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods) {
+void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms) {
     // Write the modifier state, 16 characters
     oled_set_cursor(col, row);
     oled_write("Mods: ", false);
-    oled_write((mods & MOD_MASK_SHIFT  ) ? "S " : "  ", false);
-    oled_write((mods & MOD_MASK_CTRL   ) ? "C " : "  ", false);
-    oled_write((mods & MOD_MASK_ALT    ) ? "A " : "  ", false);
-    oled_write((mods & MOD_BIT(KC_RALT)) ? "G " : "  ", false);
-    oled_write((mods & MOD_MASK_GUI    ) ? "M " : "  ", false);
+    oled_write((mods & MOD_MASK_SHIFT  ) ? "S " : "  ", (osms & MOD_MASK_SHIFT  ));
+    oled_write((mods & MOD_MASK_CTRL   ) ? "C " : "  ", (osms & MOD_MASK_CTRL   ));
+    oled_write((mods & MOD_MASK_ALT    ) ? "A " : "  ", (osms & MOD_MASK_ALT    ));
+    oled_write((mods & MOD_BIT(KC_RALT)) ? "G " : "  ", (osms & MOD_BIT(KC_RALT)));
+    oled_write((mods & MOD_MASK_GUI    ) ? "M " : "  ", (osms & MOD_MASK_GUI    ));
 }
 
 void render_encoder(uint8_t row, uint8_t col, uint8_t index, uint8_t layer) {
@@ -126,7 +129,16 @@ void render_keymap(uint8_t row, uint8_t col, bool isLite) {
     } else {
         oled_write("Layout: ", false);
     }
-    oled_write("QWERT", false);
+    switch (get_highest_layer(default_layer_state)) {
+        case _DEFAULT:
+            oled_write("QWERT", false);
+            break;
+        case _DEF_HRM:
+            oled_write("Q_HRM", false);
+            break;
+        default:
+            oled_write(" N/A ", false);
+    }
     if (isLite) {
         oled_write(" ", false);
     }
@@ -158,6 +170,8 @@ void render_status_lite(uint8_t row, uint8_t col) {
     // Function to print state information; for low flash memory
     uint8_t this_layer = get_highest_layer(layer_state);
     uint8_t this_mod =   get_mods();
+    uint8_t this_osm =   get_oneshot_mods();
+    uint8_t this_all =   this_mod|this_osm;
 
     // Line 1: Layer State
     render_layer(row + 0, col + 0, this_layer);
@@ -165,14 +179,14 @@ void render_status_lite(uint8_t row, uint8_t col) {
     // Line 2: Mod or info
     switch (this_layer) {
         // Show RGB mode as an overlay in media mode.
-/* #       ifdef RGB_MATRIX_ENABLE */
-/*         case _MEDI: */
-/*             render_rgb_lite(row + 1, col + 0); */
-/*             break; */
-/* #       endif // RGB_MATRIX_ENABLE */
-        // Show the modifier if nothing else is doing anything
+#       ifdef RGB_MATRIX_ENABLE
+        case _MSE_ADJ:
+            render_rgb_lite(row + 1, col + 0);
+            break;
+#       endif // RGB_MATRIX_ENABLE
+            // Show the modifier if nothing else is doing anything
         default:
-            render_modifiers_lite(row + 1, col + 0, this_mod);
+            render_modifiers_lite(row + 1, col + 0, this_all, this_osm);
             break;
     }
 

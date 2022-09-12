@@ -52,8 +52,7 @@ static uint8_t encoderFunState = 0;
 #ifndef MOUSEKEY_ENABLE
 #ifdef RGB_MATRIX_ENABLE
 static uint8_t encoderFunState = 1;
-#endif // RGB_MATRIX_ENABLE
-#ifndef RGB_MATRIX_ENABLE
+#else // RGB_MATRIX_ENABLE
 static uint8_t encoderFunState = 0;
 #endif // RGB_MATRIX_ENABLE
 #endif // MOUSEKEY_ENABLE
@@ -199,8 +198,7 @@ void encoder_state_string(uint8_t index, uint8_t layer, char* buffer) {
                 default:
 #               ifdef MOUSEKEY_ENABLE
                     strcpy(buffer, "MS Wheel");
-#               endif // MOUSEKEY_ENABLE
-#               ifndef MOUSEKEY_ENABLE
+#               else // MOUSEKEY_ENABLE
                     strcpy(buffer, " -N/A-  ");
 #               endif // MOUSEKEY_ENABLE
                     break;

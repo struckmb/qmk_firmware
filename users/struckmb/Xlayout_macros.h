@@ -1,66 +1,91 @@
-/*
-  Copyright (c) 2020 Fred Silberberg
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-*/
-
-#pragma once
-
-#define SIX_TRNS  _______, _______, _______, _______, _______, _______
-#define FOUR_TRNS _______, _______, _______, _______
-
-// Row 5: 6 keys
-#define ROW5_LEFT_BASE KC_GRV,  KC_1,  KC_2,  KC_3,  KC_4,  KC_5
-#define ROW5_RGHT_BASE KC_6,    KC_7,  KC_8,  KC_9,  KC_0,  KC_MINS
-#define ROW5_LEFT_SYMB _______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5
-#define ROW5_RGHT_SYMB KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11
-#define ROW5_LEFT_VIM  SIX_TRNS
-#define ROW5_RGHT_VIM  SIX_TRNS
-
-// Row 4: 6 keys
-#define ROW4_LEFT_BASE KC_TAB,  KC_Q,    KC_W,  KC_E,    KC_R,    KC_T
-#define ROW4_RGHT_BASE KC_Y,    KC_U,    KC_I,  KC_O,    KC_P,    KC_BSLS
-#define ROW4_LEFT_SYMB _______, KC_EXLM, KC_AT, KC_LPRN, KC_RPRN, KC_PIPE
-#define ROW4_RGHT_SYMB KC_UP,   KC_7,    KC_8,  KC_9,    KC_ASTR, KC_F12
-#define ROW4_LEFT_VIM  SIX_TRNS
-#define ROW4_RGHT_VIM  SIX_TRNS
-
-// Row 3: 6 keys
-#define ROW3_LEFT_BASE CTL_T(KC_ESC), KC_A,    KC_S,   KC_D,     KC_F,    KC_G
-#define ROW3_RGHT_BASE KC_H,          KC_J,    KC_K,   KC_L,     KC_SCLN, KC_QUOT
-#define ROW3_LEFT_SYMB _______,       KC_HASH, KC_DLR, KC_LCBR,  KC_RCBR, KC_GRV
-#define ROW3_RGHT_SYMB KC_DOWN,       KC_4,    KC_5,   KC_6,     KC_PLUS, _______
-#define ROW3_LEFT_VIM  _______,       DLEFT,   DRIGHT, KC_LCTL,  KC_LGUI, _______
-#define ROW3_RGHT_VIM  KC_LEFT,       KC_DOWN, KC_UP,  KC_RIGHT, _______, _______
-
-// Row 2: 6 keys
-#define ROW2_LEFT_BASE OSM(MOD_LSFT), CTL_T(KC_Z), KC_X,    KC_C,     KC_V,           KC_B
-#define ROW2_RGHT_BASE KC_N,          KC_M,        KC_COMM, KC_DOT,   CTL_T(KC_SLSH), OSM(MOD_RSFT)
-#define ROW2_LEFT_SYMB _______,       KC_PERC,     KC_CIRC, KC_LBRC,  KC_RBRC,        KC_TILD
-#define ROW2_RGHT_SYMB KC_AMPR,       KC_1,        KC_2,    KC_3,     KC_BSLS,        _______
-#define ROW2_LEFT_VIM  _______,       _______,     KC_TAB,  _______,  _______,        _______
-#define ROW2_RGHT_VIM  SIX_TRNS
-
-// Row 1: 4 keys
-#define ROW1_LEFT_BASE OSM(MOD_LCTL), KC_F4,   KC_F5,    KC_LALT
-#define ROW1_RGHT_BASE KC_DOWN,       KC_EQL,  KC_RIGHT, KC_RGUI
-#define ROW1_LEFT_SYMB _______,       _______, _______,  _______
-#define ROW1_RGHT_SYMB KC_0,          KC_DOT,  KC_EQL,   _______
-#define ROW1_LEFT_VIM  FOUR_TRNS
-#define ROW1_RGHT_VIM  FOUR_TRNS
+const uint16_t PROGMEM combo_b[] = {ALSY_E, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_c[] = {ALSY_E, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_d[] = {ALPA_A, DE_R, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_f[] = {ALPA_A, DE_R,  COMBO_END};
+const uint16_t PROGMEM combo_g[] = {DE_R, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_h[] = {ALSY_E, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_j[] = {DE_T, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_k[] = {DE_N, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_l[] = {ALSY_E, DE_N, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_m[] = {DE_N, DE_I, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_p[] = {ALSY_E, DE_I, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_q[] = {ALPA_A, DE_T, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_u[] = {DE_N, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_v[] = {DE_R, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_w[] = {ALPA_A, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_x[] = {DE_R, DE_T, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_y[] = {DE_T, ALPA_A, COMBO_END};
+const uint16_t PROGMEM combo_z[] = {ALPA_A, DE_R, DE_T, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_adia[] = {ALPA_A, DE_R, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_udia[] = {ALSY_E, DE_R, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_odia[] = {ALSY_E, DE_N, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_szett[] = {ALSY_E, DE_N, ALCU_S, COMBO_END};
+const uint16_t PROGMEM combo_seven[] = {DE_1, DE_4, COMBO_END};
+const uint16_t PROGMEM combo_eight[] = {DE_2, DE_5, COMBO_END};
+const uint16_t PROGMEM combo_nine[] = {DE_3, DE_6, COMBO_END};
+const uint16_t PROGMEM combo_zero[] = {DE_4, DE_6, COMBO_END};
+const uint16_t PROGMEM combo_F7[] = {KC_F1, KC_F4, COMBO_END};
+const uint16_t PROGMEM combo_F8[] = {KC_F2, KC_F5, COMBO_END};
+const uint16_t PROGMEM combo_F9[] = {KC_F3, KC_F6, COMBO_END};
+const uint16_t PROGMEM combo_F11[] = {KC_F10, KC_F12, COMBO_END};
+// command combos
+const uint16_t PROGMEM combo_alt[] = {ALCU_S, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_alt_big[] = {KC_ENT, OS_CTL, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {DE_R, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_caps[] = {ALPA_A, DE_N, DE_I, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_ctrl[] = {ALCU_S, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_del[] = {DE_R, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_enter[] = {ALPA_A, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {ALPA_A, DE_R, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_gui[] = {ALCU_S, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_gui_big[] = {KC_ENT, OS_SFT, COMBO_END};
+const uint16_t PROGMEM combo_shift[] = {DE_R, DE_T, ALCU_S, ALSY_E, COMBO_END};
+const uint16_t PROGMEM combo_space[] = {ALSY_E, DE_N, DE_I, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {ALPA_A, DE_R, DE_T, ALNU_O, COMBO_END};
+// special char combos
+const uint16_t PROGMEM combo_at[] = {DE_PLUS, DE_AMPR, COMBO_END};
+const uint16_t PROGMEM combo_caret[] = {DE_BSLS, DE_AMPR, COMBO_END};
+const uint16_t PROGMEM combo_cent[] = {DE_BSLS, DE_HASH, DE_AMPR, COMBO_END};
+const uint16_t PROGMEM combo_comma[] = {ALPA_A, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_dollar[] = {DE_MINS, DE_QUES, COMBO_END};
+const uint16_t PROGMEM combo_dot[] = {ALPA_A, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_equal[] = {DE_PLUS, DE_MINS, COMBO_END};
+const uint16_t PROGMEM combo_euro[] = {DE_PLUS, DE_MINS, DE_QUES, COMBO_END};
+const uint16_t PROGMEM combo_exclam1[] = {DE_I, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_exclam2[] = {DE_MINS, DE_AMPR, COMBO_END};
+const uint16_t PROGMEM combo_gt[] = {DE_RCBR, DE_RPRN, COMBO_END};
+const uint16_t PROGMEM combo_lt[] = {DE_LCBR, DE_LPRN, COMBO_END};
+const uint16_t PROGMEM combo_percent[] = {DE_PLUS, DE_HASH, COMBO_END};
+const uint16_t PROGMEM combo_pipe[] = {DE_HASH, DE_AMPR, COMBO_END};
+const uint16_t PROGMEM combo_slash[] = {ALPA_A, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_tick[] = {DE_BSLS, DE_HASH, COMBO_END};
+const uint16_t PROGMEM combo_tilde[] = {DE_PLUS, DE_QUES, COMBO_END};
+// layer combos
+const uint16_t PROGMEM combo_nav1[] = {DE_R, ALSY_E, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_nav0[] = {KC_LEFT, KC_UP, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_navosl[] = {DE_R, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_nav_tabnext[] = {KC_PGDN, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_nav_tabprev[] = {KC_PGDN, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM combo_navmse[] = {KC_HOME, KC_DOWN, KC_END, COMBO_END};
+const uint16_t PROGMEM combo_mse1[] = {ALPA_A, DE_T, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_mse0[] = {KC_BTN2, KC_MS_D, KC_BTN1, COMBO_END};
+const uint16_t PROGMEM combo_mseButton3[] = {KC_BTN1, KC_BTN2, COMBO_END};
+const uint16_t PROGMEM combo_mseButton4[] = {KC_WH_D, KC_MS_U, COMBO_END};
+const uint16_t PROGMEM combo_mseButton5[] = {KC_WH_D, KC_MS_D, COMBO_END};
+const uint16_t PROGMEM combo_msenav[] = {KC_MS_L, KC_MS_U, KC_MS_R, COMBO_END};
+const uint16_t PROGMEM combo_fnc1[] = {ALNU_O, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_fncnav[] = {KC_F2, KC_F4, KC_F6, COMBO_END};
+const uint16_t PROGMEM combo_fncmse[] = {KC_F1, KC_F3, KC_F5, COMBO_END};
+const uint16_t PROGMEM combo_fncLock[] = {DE_R, DE_I, ALNU_O, COMBO_END};
+const uint16_t PROGMEM combo_fncRelease[] = {KC_F2, KC_F12, COMBO_END};
+const uint16_t PROGMEM combo_numLock[] = {DE_R, ALNU_O, COMBO_END};
+// hrm combos
+const uint16_t PROGMEM combo_hrm_lalt[] = {DE_Q, HQ_S, COMBO_END};
+const uint16_t PROGMEM combo_hrm_lgui[] = {DE_Q, HQ_D, COMBO_END};
+const uint16_t PROGMEM combo_hrm_lctl[] = {DE_Q, HQ_F, COMBO_END};
+const uint16_t PROGMEM combo_hrm_lsft[] = {HQ_F, HQ_D, COMBO_END};
+const uint16_t PROGMEM combo_hrm_rsft[] = {HQ_J, HQ_K, COMBO_END};
+const uint16_t PROGMEM combo_hrm_rctl[] = {DE_P, HQ_J, COMBO_END};
+const uint16_t PROGMEM combo_hrm_rgui[] = {DE_P, HQ_K, COMBO_END};
+const uint16_t PROGMEM combo_hrm_ralt[] = {DE_P, HQ_L, COMBO_END};

@@ -1,64 +1,13 @@
-/* Copyright 2021 Batuhan Başerdem
- * <baserdem.batuhan@gmail.com> @bbaserdem
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+#pragma once
+#include "asetniop.h"
 
-#include "struckmb.h"
-// Language imports
-#include <sendstring_german.h>
-// Need memcpy and memcmp from string.h along with transfer stuff
-#ifdef SPLIT_KEYBOARD
-#include "transactions.h"
-#include <string.h>
-#endif // SPLIT_KEYBOARD
-
-/*------------------------*\
-|*-----PROCESS RECORD-----*|
-\*------------------------*/
-/* Process record: custom keycodes to process here
- * Allow also the following codes to hook here as well;
- *  Macro definitions
- *  Audio hooks
- */
-__attribute__ ((weak))
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-    return true;
-}
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // Return after running through all individual hooks
-    return
-        process_record_keymap(keycode, record)  &&
-#       ifdef AUDIO_ENABLE
-        process_record_audio(keycode, record)   &&
-#       endif // AUDIO_ENABLE
-#       ifdef ENCODER_ENABLE
-        process_record_encoder(keycode, record) &&
-#       endif // ENCODER_ENABLE
-        /* process_record_macro(keycode, record) && */
-        true;
-}
-
-#ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    /* Disable all combos except on ASETNIOP layers */
-    switch (get_highest_layer(default_layer_state)) {
-        case _AST_ALP ... _AST_NUM:
-            return true;
-        default:
-            return false;
-    }
+    /* Disable all combos except on layer `_ASETNIOP` */
+            if (layer_state_is(_ASETNIOP)) {
+    return true;
+            }
+                return false;
+
 }
 
 // Definition of asetniop combos
@@ -185,7 +134,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_alpha_m, DE_M),
     COMBO(combo_alpha_q, DE_Q),
     COMBO(combo_alpha_r, DE_R),
-    /* COMBO(combo_alpha_ss, DE_SS), */
+    COMBO(combo_alpha_ss, DE_SS),
     COMBO(combo_alpha_tab, KC_TAB),
     COMBO(combo_alpha_u, DE_U),
     COMBO(combo_alpha_v, DE_V),
@@ -193,17 +142,17 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo_alpha_x, DE_X),
     COMBO(combo_alpha_y, DE_Y),
     COMBO(combo_alpha_z, DE_Z),
-    /* COMBO(combo_cmd_altctl,     OSM(MOD_LALT|MOD_LCTL)), */
-    /* COMBO(combo_cmd_altctlgui,  OSM(MOD_LALT|MOD_LCTL|MOD_LGUI)), */
-    /* COMBO(combo_cmd_altgui,     OSM(MOD_LALT|MOD_LGUI)), */
-    /* COMBO(combo_cmd_ctlgui,     OSM(MOD_LCTL|MOD_LGUI)), */
-    /* COMBO(combo_cmd_salt,       OSM(MOD_LSFT|MOD_LALT)), */
-    /* COMBO(combo_cmd_saltctl,    OSM(MOD_LSFT|MOD_LALT|MOD_LCTL)), */
-    /* COMBO(combo_cmd_saltctlgui, OSM(MOD_LSFT|MOD_LALT|MOD_LCTL|MOD_LGUI)), */
-    /* COMBO(combo_cmd_saltgui,    OSM(MOD_LSFT|MOD_LALT|MOD_LGUI)), */
-    /* COMBO(combo_cmd_sctl,       OSM(MOD_LSFT|MOD_LCTL)), */
-    /* COMBO(combo_cmd_sctlgui,    OSM(MOD_LSFT|MOD_LCTL|MOD_LGUI)), */
-    /* COMBO(combo_cmd_sgui,       OSM(MOD_LSFT|MOD_LGUI)), */
+    COMBO(combo_cmd_altctl,     OSM(MOD_LALT|MOD_LCTL)),
+    COMBO(combo_cmd_altctlgui,  OSM(MOD_LALT|MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_altgui,     OSM(MOD_LALT|MOD_LGUI)),
+    COMBO(combo_cmd_ctlgui,     OSM(MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_salt,       OSM(MOD_LSFT|MOD_LALT)),
+    COMBO(combo_cmd_saltctl,    OSM(MOD_LSFT|MOD_LALT|MOD_LCTL)),
+    COMBO(combo_cmd_saltctlgui, OSM(MOD_LSFT|MOD_LALT|MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_saltgui,    OSM(MOD_LSFT|MOD_LALT|MOD_LGUI)),
+    COMBO(combo_cmd_sctl,       OSM(MOD_LSFT|MOD_LCTL)),
+    COMBO(combo_cmd_sctlgui,    OSM(MOD_LSFT|MOD_LCTL|MOD_LGUI)),
+    COMBO(combo_cmd_sgui,       OSM(MOD_LSFT|MOD_LGUI)),
     COMBO(combo_fn_f11, KC_F11),
     COMBO(combo_fn_f12, KC_F12),
     COMBO(combo_fn_f5, KC_F5),
@@ -282,4 +231,3 @@ combo_t key_combos[COMBO_COUNT] = {
     /* COMBO(combo_xl_nums_to_navi, OSL(_NAVI)), */
 };
 
-#endif // COMBO_ENABLE
