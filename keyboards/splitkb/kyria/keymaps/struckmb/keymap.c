@@ -104,18 +104,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC
     ),
 #   ifdef COMBO_ENABLE
-    /* [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper( */
-    /*     XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX, */
-    /*     XXXXXXX,_AAL_5_,                _AAR_5_,XXXXXXX, */
-    /*     XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX, */
-    /*     XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX */
-    /* ), */
-    /* [_ASETNIOP_NUM] = LAYOUT_split_3x6_5_wrapper( */
-    /*     XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX, */
-    /*     XXXXXXX,_ANL_5_,                _ANR_5_,XXXXXXX, */
-    /*     XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX, */
-    /*     XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX */
-    /* ), */
     [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX,
         XXXXXXX,_AL2_5_,                _AR2_5_,XXXXXXX,

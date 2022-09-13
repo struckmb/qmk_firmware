@@ -61,11 +61,6 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
         case _DEFAULT:
             oled_write("Default   ", false);
             break;
-#ifdef COMBO_ENABLE
-        case _ASETNIOP_NUM:
-            oled_write("Numbers(A)", false);
-            break;
-#endif // COMBO_ENABLE
         case _SYM_NUM:
             oled_write("Sym/Num   ", false);
             break;
@@ -108,20 +103,6 @@ void render_encoder(uint8_t row, uint8_t col, uint8_t index, uint8_t layer) {
 #   endif // ENCODER_ENABLE
 }
 
-void render_wpm(uint8_t row, uint8_t col) {
-    // Renders the WPM, 8 characters
-    oled_set_cursor(col, row);
-#   ifdef WPM_ENABLE
-    static char wpm_temp4[4] = {0};
-    oled_write("WPM: ", false);
-    itoa(get_current_wpm(), wpm_temp4, 10);
-    oled_write(wpm_temp4, false);
-    oled_write("      ", false);
-#   else // WPM_ENABLE
-    oled_write("WPM: N/A", false);
-#   endif // WPM_ENABLE
-}
-
 // Writes the currently used OLED display layout
 void render_keymap(uint8_t row, uint8_t col, bool isLite) {
     // Render the oled layout; lite is 11, regular is 14 characters
@@ -133,14 +114,14 @@ void render_keymap(uint8_t row, uint8_t col, bool isLite) {
     }
     switch (get_highest_layer(default_layer_state)) {
         case _DEFAULT:
-            oled_write("QWERT", false);
+            oled_write("QWER+", false);
             break;
         case _HRM_OFF:
-            oled_write("Q_HRM", false);
+            oled_write("QWER-", false);
             break;
 #ifdef COMBO_ENABLE
         case _ASETNIOP:
-            oled_write("ASETNIOP  ", false);
+            oled_write("ASET+", false);
             break;
 #endif // COMBO_ENABLE
         default:
@@ -199,7 +180,6 @@ void render_status_lite(uint8_t row, uint8_t col) {
 
     // Line 3: WPM and layout
     render_keymap(row + 2, col + 0, true);
-    render_wpm(row + 2, col + 11);
 
     // Line 4: Encoder states
 #   ifdef SPLIT_KEYBOARD
