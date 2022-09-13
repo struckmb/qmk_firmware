@@ -27,11 +27,6 @@
 #   define MK_COMBINED
 #endif // MOUSEKEY_ENABLE
 
-
-#ifdef COMBO_ENABLE
-#define COMBO_COUNT 89
-#endif // COMBO_ENABLE
-
 // Tap-hold settings
 #define TAPPING_TERM 200
 #define TAP_CODE_DELAY 20

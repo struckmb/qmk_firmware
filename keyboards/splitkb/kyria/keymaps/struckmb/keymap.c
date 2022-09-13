@@ -97,22 +97,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _BL3_1_,_BL3_5_,xxx2xxx,xxx2xxx,_BR3_5_,_BR3_1_,
         XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC
     ),
-    [_DEF_HRM] = LAYOUT_split_3x6_5_wrapper(
-        _BL1_1_,_HL1_5_,                _HR1_5_,_BR1_1_,
-        _BL2_1_,_HL2_5_,                _HR2_5_,_BR2_1_,
-        _BL3_1_,_HL3_5_,xxx2xxx,xxx2xxx,_HR3_5_,_BR3_1_,
-        XXXXXXX,XXXXXXX,_HL4_3_,_HR4_3_,XXXXXXX,BS_ENC
+    [_HRM_OFF] = LAYOUT_split_3x6_5_wrapper(
+        _BL1_1_,_QL1_5_,                _QR1_5_,_BR1_1_,
+        _BL2_1_,_QL2_5_,                _QR2_5_,_BR2_1_,
+        _BL3_1_,_QL3_5_,xxx2xxx,xxx2xxx,_QR3_5_,_BR3_1_,
+        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC
     ),
 #   ifdef COMBO_ENABLE
-    [_AST_ALP] = LAYOUT_split_3x6_5_wrapper(
+    /* [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper( */
+    /*     XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX, */
+    /*     XXXXXXX,_AAL_5_,                _AAR_5_,XXXXXXX, */
+    /*     XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX, */
+    /*     XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX */
+    /* ), */
+    /* [_ASETNIOP_NUM] = LAYOUT_split_3x6_5_wrapper( */
+    /*     XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX, */
+    /*     XXXXXXX,_ANL_5_,                _ANR_5_,XXXXXXX, */
+    /*     XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX, */
+    /*     XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX */
+    /* ), */
+    [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX,
-        XXXXXXX,_AAL_5_,                _AAR_5_,XXXXXXX,
-        XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX,
-        XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX
-    ),
-    [_AST_NUM] = LAYOUT_split_3x6_5_wrapper(
-        XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX,
-        XXXXXXX,_ANL_5_,                _ANR_5_,XXXXXXX,
+        XXXXXXX,_AL2_5_,                _AR2_5_,XXXXXXX,
         XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX
     ),

@@ -62,14 +62,13 @@ enum userspace_custom_keycodes {
 #define BS_ENC KC_NO
 #endif // ENCODER_ENABLE
 
-
 /// Enumeration of layers
 enum userspace_layers {
     _DEFAULT = 0, // Base layer
-    _DEF_HRM,     // Base layer with home row mod
+    _HRM_OFF,     // Base layer w/o home row mod
 #   ifdef COMBO_ENABLE
-    _AST_ALP,     // Base layer for 10 keys (alpha part)
-    _AST_NUM,     // Base layer for 10 keys (numbers part)
+    _ASETNIOP,    // ASETNIOP layer
+    _ASETNIOP_NUM,// ASETNIOP numbers layer
 #   endif // COMBO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
     _NAV_FUN,     // L: Navigation layer, R: Function keys layer
@@ -182,39 +181,21 @@ enum userspace_layers {
 #define MSE_BSP LT(_MSE_ADJ, KC_BSPC )
 #define SYM_SPC LT(_SYM_NUM, KC_SPC )
 #define NAV_DEL LT(_NAV_FUN, KC_DEL )
-#define HRM_OFF DF(_DEFAULT)
-#define HRM_ON  DF(_DEF_HRM)
+#define TO_HM   DF(_HRM_OFF)
+#ifdef COMBO_ENABLE
+#define TO_AS   DF(_ASETNIOP)
+#endif // COMBO_ENABLE
+#define TO_DL   DF(_DEFAULT)
 
-/* Base layout
- * QWERT
- *      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- *  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
- *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- *  E/C │  a  │  s  │  d  │  f  │  g  │             │  h  │  j  │  k  │  l  │  ö  │  ä
- *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- *  Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft
- *      └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
- *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
- * The thing about this layout is that these will fit most boards I have.
- */
-#define _BL1_5_ DE_Q, DE_W, DE_E, DE_R, DE_T
-#define _BR1_5_ DE_Z, DE_U, DE_I, DE_O, DE_P
-#define _BL2_5_ DE_A, DE_S, DE_D, DE_F, DE_G
-#define _BR2_5_ DE_H, DE_J, DE_K, DE_L, DE_OE
-#define _BL3_5_ DE_Y, DE_X, DE_C, DE_V, DE_B
-#define _BR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, DE_SZ
-
-#define _BL4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
-#define _BR4_3_ MSE_BSP,SYM_SPC,NAV_DEL
-
-// The extra line for the 6th (or 0th) row
+// The extra side rows and thumbs
 #define _BL1_1_ KC_TAB
 #define _BR1_1_ DE_UE
 #define _BL2_1_ CTL_ESC
 #define _BR2_1_ DE_AE
 #define _BL3_1_ OSM_SFT
 #define _BR3_1_ OSM_SFT
+#define _BL4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
+#define _BR4_3_ MSE_BSP,SYM_SPC,NAV_DEL
 
 /* Base layout + HRM
  * QWERT
@@ -229,47 +210,52 @@ enum userspace_layers {
  *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
  * The thing about this layout is that these will fit most boards I have.
  */
-#define _HL1_5_ DE_Q,  DE_W,  DE_E,  DE_R,    DE_T
-#define _HL2_5_ DE_A,  ALT_S, GUI_D, CTL_F,   DE_G
-#define _HL3_5_ SFT_Y, DE_X,  DE_C,  DE_V,    DE_B
-#define _HR1_5_ DE_Z,  DE_U,  DE_I,  DE_O,    DE_P
-#define _HR2_5_ DE_H,  CTL_J, GUI_K, ALT_L,   ADJ_HOE
-#define _HR3_5_ DE_N,  DE_M,  DE_COMM, DE_DOT, SFT_SZ
-#define _HL4_3_ _BL4_3_
-#define _HR4_3_ _BR4_3_
+#define _BL1_5_ DE_Q,  DE_W,  DE_E,  DE_R,    DE_T
+#define _BL2_5_ DE_A,  ALT_S, GUI_D, CTL_F,   DE_G
+#define _BL3_5_ SFT_Y, DE_X,  DE_C,  DE_V,    DE_B
+#define _BR1_5_ DE_Z,  DE_U,  DE_I,  DE_O,    DE_P
+#define _BR2_5_ DE_H,  CTL_J, GUI_K, ALT_L,   ADJ_HOE
+#define _BR3_5_ DE_N,  DE_M,  DE_COMM, DE_DOT, SFT_SZ
 
-#ifdef COMBO_ENABLE
-#define _AL1_5_ xxx5xxx
-#define _AR1_5_ xxx5xxx
-#define _AL3_5_ xxx5xxx
-#define _AR3_5_ xxx5xxx
-#define _AL4_3_ XXXXXXX,OSM_SFT,XXXXXXX
-#define _AR4_3_ XXXXXXX,KC_SPC,XXXXXXX
-/* ASETNIOP alphas and numbers
+/* QWERTY layout
+ *      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ *  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
+ *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ *  E/C │  a  │  s  │  d  │  f  │  g  │             │  h  │  j  │  k  │  l  │  ö  │  ä
+ *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ *  Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft
+ *      └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
+ *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
+ *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
+ * The thing about this layout is that these will fit most boards I have.
+ */
+#define _QL1_5_ DE_Q, DE_W, DE_E, DE_R, DE_T
+#define _QR1_5_ DE_Z, DE_U, DE_I, DE_O, DE_P
+#define _QL2_5_ DE_A, DE_S, DE_D, DE_F, DE_G
+#define _QR2_5_ DE_H, DE_J, DE_K, DE_L, DE_OE
+#define _QL3_5_ DE_Y, DE_X, DE_C, DE_V, DE_B
+#define _QR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, DE_SZ
+
+/* ASETNIOP layout
  * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- * │     │     │     │     │     │             │     │     │     │     │     │
+ * │  1  │  2  │  3  │  4  │     │             │     │  7  │  8  │  9  │  0  │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │  a  │  s  │  e  │  t  │     │             │     │  n  │  i  │  o  │  p  │
-   ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- * │     │     │     │     │     │             │     │     │     │     │     │
- * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                   │     │Enter│     │ │     │Space│     │
- *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
- * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- * │     │     │     │     │     │             │     │     │     │     │     │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- * │  1  │  2  │  3  │  4  │     │             │     │  7  │  8  │  9  │  0  │
-   ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- * │     │     │     │     │     │             │     │     │     │     │     │
+ * │ Esc │ Alt │ Gui │ Ctl │     │             │     │ F1  │ F2  │ F4  │ F8  │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
  *                   │     │Enter│     │ │     │Space│     │
  *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
  */
-#define _AAL_5_ DE_A, DE_S, DE_E, DE_T, XXXXXXX
-#define _AAR_5_ XXXXXXX, DE_N, DE_I, DE_O, DE_P
-#define _ANL_5_ DE_1, DE_2, DE_3, DE_4, XXXXXXX
-#define _ANR_5_ XXXXXXX, DE_7, DE_8, DE_9, DE_0
-#endif // COMBO_ENABLE
+#define _AL1_5_ KC_ESC,  OSM_ALT, OSM_GUI, OSM_CTL, XXXXXXX
+#define _AL2_5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
+#define _AL3_5_ xxx5xxx
+#define _AL4_3_ XXXXXXX,OSM_SFT,XXXXXXX
+
+#define _AR1_5_ XXXXXXX, DE_1, DE_2, DE_4, DE_8
+#define _AR2_5_ XXXXXXX, DE_N, DE_I, DE_O, DE_P
+#define _AR3_5_ XXXXXXX, KC_F1, KC_F2, KC_F4, KC_F8
+#define _AR4_3_ TO_DL,KC_SPC,XXXXXXX
 
 /* Symbols layer
  * _SYM_NUM
@@ -367,8 +353,8 @@ enum userspace_layers {
  * └─────┴─────┴─────┘
  */
 #define _AD1_5_           KC_NO, KC_NO, KC_NO, EE_CLR, RESET
-#define _AD2_5_           KC_NO, DE_UE, DE_AE, HRM_ON, HRM_OFF
-#define _AD3_5_           KC_NO, KC_NO, KC_NO, KC_NO, KC_CAPS
+#define _AD2_5_           KC_NO, DE_UE, DE_AE, KC_NO,  KC_NO
+#define _AD3_5_           TO_DL, TO_HM, TO_AS, KC_NO,  KC_CAPS
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 
 /* Game layer

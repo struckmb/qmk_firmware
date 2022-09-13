@@ -61,14 +61,16 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
         case _DEFAULT:
             oled_write("Default   ", false);
             break;
-        case _DEF_HRM:
-            oled_write("Def. (HRM)", false);
+#ifdef COMBO_ENABLE
+        case _ASETNIOP_NUM:
+            oled_write("Numbers(A)", false);
             break;
+#endif // COMBO_ENABLE
         case _SYM_NUM:
-            oled_write("Symb/Numb ", false);
+            oled_write("Sym/Num   ", false);
             break;
         case _NAV_FUN:
-            oled_write("Nav/Func  ", false);
+            oled_write("Nav/Fn    ", false);
             break;
         case _MSE_ADJ:
             oled_write("Mouse/Adj ", false);
@@ -133,9 +135,14 @@ void render_keymap(uint8_t row, uint8_t col, bool isLite) {
         case _DEFAULT:
             oled_write("QWERT", false);
             break;
-        case _DEF_HRM:
+        case _HRM_OFF:
             oled_write("Q_HRM", false);
             break;
+#ifdef COMBO_ENABLE
+        case _ASETNIOP:
+            oled_write("ASETNIOP  ", false);
+            break;
+#endif // COMBO_ENABLE
         default:
             oled_write(" N/A ", false);
     }
