@@ -178,6 +178,7 @@ void render_status_lite(uint8_t row, uint8_t col) {
     // Line 3: WPM and layout
     render_keymap(row + 2, col + 0, true);
 
+#ifdef ENCODER_ENABLE
     // Line 4: Encoder states
 #   ifdef SPLIT_KEYBOARD
     if (is_keyboard_left()) {
@@ -188,4 +189,5 @@ void render_status_lite(uint8_t row, uint8_t col) {
 #   else // SPLIT_KEYBOARD
     render_encoder(row + 3, col + 0, 0, this_layer);
 #   endif // SPLIT_KEYBOARD
+#endif // ENCODER_ENABLE
 }

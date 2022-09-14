@@ -17,7 +17,7 @@ COMBO_ENABLE = yes
 # Kyria hardware
 ifneq (,$(findstring splitkb/kyria/rev1,$(KEYBOARD)))
     # Elective features
-    ENCODER_ENABLE = yes
+    ENCODER_ENABLE = no
     OLED_ENABLE = yes
     # Nonexistent features
     AUDIO_ENABLE = no

@@ -51,7 +51,7 @@ const uint16_t PROGMEM combo_chr_ae[] = {DE_A, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_chr_b[] = {DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_chr_c[] = {DE_S, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_chr_d[] = {DE_S, DE_E, COMBO_END};
-const uint16_t PROGMEM combo_chr_f[] = {DE_A, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_chr_f[] = {DE_T, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_chr_g[] = {DE_T, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_chr_h[] = {DE_N, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_chr_j[] = {DE_S, DE_N, COMBO_END};
@@ -65,7 +65,7 @@ const uint16_t PROGMEM combo_chr_ss[] = {DE_S, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_chr_tab[] = {DE_A, DE_S, DE_E, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_chr_u[] = {DE_N, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_chr_ue[] = {DE_N, DE_O, KC_SPC, COMBO_END};
-const uint16_t PROGMEM combo_chr_v[] = {DE_T, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_chr_v[] = {DE_A, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_chr_w[] = {DE_A, DE_S, COMBO_END};
 const uint16_t PROGMEM combo_chr_x[] = {DE_A, DE_E, COMBO_END};
 const uint16_t PROGMEM combo_chr_y[] = {DE_E, DE_N, COMBO_END};
@@ -75,7 +75,10 @@ const uint16_t PROGMEM combo_cmd_bsp2[] = {KC_F4, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_cmd_caps[] = {KC_ESC, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_cmd_del[] = {KC_F4, DE_S, COMBO_END};
 const uint16_t PROGMEM combo_cmd_enter[] = {KC_SPC, OSM_SFT, COMBO_END};
-const uint16_t PROGMEM combo_cmd_enter2[] = {KC_N, KC_I, KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_cmd_enter2[] = {DE_N, DE_I, DE_O, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_cmd_ins[] = {DE_2, DE_N, COMBO_END};
+const uint16_t PROGMEM combo_cmd_menu[] = {OSM_GUI, OSM_ALT, COMBO_END};
+const uint16_t PROGMEM combo_cmd_power[] = {KC_LEFT, KC_RGHT, OSM_CTL, KC_ESC, COMBO_END};
 const uint16_t PROGMEM combo_fn_f10[] = {KC_F2, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_fn_f11[] = {KC_F1, KC_F2, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_fn_f12[] = {KC_F4, KC_F8, COMBO_END};
@@ -158,6 +161,9 @@ enum combos_events {
     CMD_DEL,
     CMD_ENTER,
     CMD_ENTER2,
+    CMD_INS,
+    CMD_MENU,
+    CMD_POWER,
     FN_F10,
     FN_F11,
     FN_F12,
@@ -243,6 +249,9 @@ combo_t key_combos[] = {
     [CMD_DEL] = COMBO(combo_cmd_del, KC_DEL),
     [CMD_ENTER] = COMBO(combo_cmd_enter, KC_ENT),
     [CMD_ENTER2] = COMBO(combo_cmd_enter2, KC_ENT),
+    [CMD_INS] = COMBO(combo_cmd_ins, KC_INS),
+    [CMD_MENU] = COMBO(combo_cmd_menu, KC_APP),
+    [CMD_POWER] = COMBO(combo_cmd_power, KC_PWR),
     [FN_F10] = COMBO(combo_fn_f10, KC_F10),
     [FN_F11] = COMBO(combo_fn_f11, KC_F11),
     [FN_F12] = COMBO(combo_fn_f12, KC_F12),
