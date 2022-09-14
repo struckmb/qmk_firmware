@@ -70,9 +70,6 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
         case _MSE_ADJ:
             oled_write("Mouse/Adj ", false);
             break;
-        case _CUSTOMS:
-            oled_write("Custom    ", false);
-            break;
         default:
             oled_write("?? N/A ?? ", false);
     }

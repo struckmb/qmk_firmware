@@ -1,5 +1,4 @@
 /* Copyright 2021 Batuhan Başerdem
- * <baserdem.batuhan@gmail.com> @bbaserdem
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +15,8 @@
  */
 
 #include "struckmb.h"
-// Language imports
-#include <sendstring_german.h>
-// Need memcpy and memcmp from string.h along with transfer stuff
-#ifdef SPLIT_KEYBOARD
-#include "transactions.h"
-#include <string.h>
-#endif // SPLIT_KEYBOARD
+/* // Language imports */
+/* #include <sendstring_german.h> */
 
 /*------------------------*\
 |*-----PROCESS RECORD-----*|
@@ -40,31 +34,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Return after running through all individual hooks
     return
         process_record_keymap(keycode, record)  &&
-#       ifdef AUDIO_ENABLE
-        process_record_audio(keycode, record)   &&
-#       endif // AUDIO_ENABLE
 #       ifdef ENCODER_ENABLE
         process_record_encoder(keycode, record) &&
 #       endif // ENCODER_ENABLE
-        /* process_record_macro(keycode, record) && */
         true;
 }
 
 #ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     /* Disable all combos except on ASETNIOP layers */
-    switch (get_highest_layer(default_layer_state)) {
-        case _ASETNIOP:
-            return true;
-    }
-    return false;
+    return get_highest_layer(default_layer_state) == _ASETNIOP;
 }
 
 // Definition of asetniop combos
-/* const uint16_t PROGMEM combo_mse_btn2[] = {KC_MS_D, KC_BTN1, COMBO_END}; */
-/* const uint16_t PROGMEM combo_mse_left[] = {KC_MS_D, KC_MS_U, COMBO_END}; */
-/* const uint16_t PROGMEM combo_mse_pgdn[] = {KC_MS_D, KC_MS_R, COMBO_END}; */
-/* const uint16_t PROGMEM combo_mse_pgup[] = {KC_MS_U, KC_BTN1, COMBO_END}; */
 const uint16_t PROGMEM combo_chr_ae[] = {DE_A, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_chr_b[] = {DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_chr_c[] = {DE_S, DE_T, COMBO_END};
@@ -90,8 +72,10 @@ const uint16_t PROGMEM combo_chr_y[] = {DE_E, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_chr_z[] = {DE_A, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_cmd_bsp[] = {DE_T, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_cmd_bsp2[] = {KC_F4, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_cmd_caps[] = {KC_ESC, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_cmd_del[] = {KC_F4, DE_S, COMBO_END};
 const uint16_t PROGMEM combo_cmd_enter[] = {KC_SPC, OSM_SFT, COMBO_END};
+const uint16_t PROGMEM combo_cmd_enter2[] = {KC_N, KC_I, KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_fn_f10[] = {KC_F2, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_fn_f11[] = {KC_F1, KC_F2, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_fn_f12[] = {KC_F4, KC_F8, COMBO_END};
@@ -102,6 +86,8 @@ const uint16_t PROGMEM combo_fn_f7[] = {KC_F1, KC_F2, KC_F4, COMBO_END};
 const uint16_t PROGMEM combo_fn_f9[] = {KC_F1, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_nav_pgdn[] = {KC_DOWN, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_nav_pgup[] = {KC_UP, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM combo_nav_home[] = {KC_LEFT, OSM_SFT, COMBO_END};
+const uint16_t PROGMEM combo_nav_end[] = {KC_RGHT, OSM_SFT, COMBO_END};
 const uint16_t PROGMEM combo_num_0[] = {DE_2, DE_8, COMBO_END};
 const uint16_t PROGMEM combo_num_3[] = {DE_1, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_num_5[] = {DE_1, DE_4, COMBO_END};
@@ -132,7 +118,7 @@ const uint16_t PROGMEM combo_smb_lt[] = {KC_F4, DE_1, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_smb_minusN[] = {KC_F8, DE_4, COMBO_END};
 const uint16_t PROGMEM combo_smb_minus[] = {DE_E, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_smb_parenl[] = {DE_A, DE_O, COMBO_END};
-const uint16_t PROGMEM combo_smb_parenr[] = {DE_S, DE_P,COMBO_END};
+const uint16_t PROGMEM combo_smb_parenr[] = {DE_S, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_smb_pipe[] = {DE_1, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_smb_plus[] = {KC_F8, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_smb_ques[] = {DE_A, DE_P, COMBO_END};
@@ -143,171 +129,171 @@ const uint16_t PROGMEM combo_smb_star[] = {KC_F8, DE_1, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_smb_tilde[] = {DE_1, DE_T, COMBO_END};
 
 enum combos_events {
-    /* mse_btn2, */
-    /* mse_left, */
-    /* mse_pgdn, */
-    /* mse_pgup, */
-    chr_ae,
-    chr_b,
-    chr_c,
-    chr_d,
-    chr_f,
-    chr_g,
-    chr_h,
-    chr_j,
-    chr_k,
-    chr_l,
-    chr_m,
-    chr_oe,
-    chr_q,
-    chr_r,
-    chr_ss,
-    chr_tab,
-    chr_u,
-    chr_ue,
-    chr_v,
-    chr_w,
-    chr_x,
-    chr_y,
-    chr_z,
-    cmd_bsp,
-    cmd_bsp2,
-    cmd_del,
-    cmd_enter,
-    fn_f10,
-    fn_f11,
-    fn_f12,
-    fn_f3,
-    fn_f5,
-    fn_f6,
-    fn_f7,
-    fn_f9,
-    nav_pgdn,
-    nav_pgup,
-    num_0,
-    num_3,
-    num_5,
-    num_6,
-    num_7,
-    num_9,
-    smb_acut,
-    smb_at,
-    smb_backslash,
-    smb_brckl,
-    smb_brckr,
-    smb_caret,
-    smb_cbracel,
-    smb_cbracer,
-    smb_cent,
-    smb_colon,
-    smb_comma,
-    smb_dblquot,
-    smb_dollar,
-    smb_dot,
-    smb_equal,
-    smb_euro,
-    smb_excl,
-    smb_grave,
-    smb_gt,
-    smb_hash,
-    smb_lt,
-    smb_minusN,
-    smb_minus,
-    smb_parenl,
-    smb_parenr,
-    smb_pipe,
-    smb_plus,
-    smb_ques,
-    smb_quot,
-    smb_scolon,
-    smb_slash,
-    smb_star,
-    smb_tilde,
+    CHR_AE,
+    CHR_B,
+    CHR_C,
+    CHR_D,
+    CHR_F,
+    CHR_G,
+    CHR_H,
+    CHR_J,
+    CHR_K,
+    CHR_L,
+    CHR_M,
+    CHR_OE,
+    CHR_Q,
+    CHR_R,
+    CHR_SS,
+    CHR_TAB,
+    CHR_U,
+    CHR_UE,
+    CHR_V,
+    CHR_W,
+    CHR_X,
+    CHR_Y,
+    CHR_Z,
+    CMD_BSP,
+    CMD_BSP2,
+    CMD_CAPS,
+    CMD_DEL,
+    CMD_ENTER,
+    CMD_ENTER2,
+    FN_F10,
+    FN_F11,
+    FN_F12,
+    FN_F3,
+    FN_F5,
+    FN_F6,
+    FN_F7,
+    FN_F9,
+    NAV_END,
+    NAV_HOME,
+    NAV_PGDN,
+    NAV_PGUP,
+    NUM_0,
+    NUM_3,
+    NUM_5,
+    NUM_6,
+    NUM_7,
+    NUM_9,
+    SMB_ACUT,
+    SMB_AT,
+    SMB_BACKSLASH,
+    SMB_BRCKL,
+    SMB_BRCKR,
+    SMB_CARET,
+    SMB_CBRACEL,
+    SMB_CBRACER,
+    SMB_CENT,
+    SMB_COLON,
+    SMB_COMMA,
+    SMB_DBLQUOT,
+    SMB_DOLLAR,
+    SMB_DOT,
+    SMB_EQUAL,
+    SMB_EURO,
+    SMB_EXCL,
+    SMB_GRAVE,
+    SMB_GT,
+    SMB_HASH,
+    SMB_LT,
+    SMB_MINUSN,
+    SMB_MINUS,
+    SMB_PARENL,
+    SMB_PARENR,
+    SMB_PIPE,
+    SMB_PLUS,
+    SMB_QUES,
+    SMB_QUOT,
+    SMB_SCOLON,
+    SMB_SLASH,
+    SMB_STAR,
+    SMB_TILDE,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 combo_t key_combos[] = {
-    /* [mse_btn2] = COMBO(combo_mse_btn2, KC_BTN2), */
-    /* [mse_left] = COMBO(combo_mse_left, KC_MS_L), */
-    /* [mse_pgdn] = COMBO(combo_mse_pgdn, KC_WH_D), */
-    /* [mse_pgup] = COMBO(combo_mse_pgup, KC_WH_U), */
-    [chr_ae] = COMBO(combo_chr_ae, DE_AE),
-    [chr_b] = COMBO(combo_chr_b, DE_B),
-    [chr_c] = COMBO(combo_chr_c, DE_C),
-    [chr_d] = COMBO(combo_chr_d, DE_D),
-    [chr_f] = COMBO(combo_chr_f, DE_F),
-    [chr_g] = COMBO(combo_chr_g, DE_G),
-    [chr_h] = COMBO(combo_chr_h, DE_H),
-    [chr_j] = COMBO(combo_chr_j, DE_J),
-    [chr_k] = COMBO(combo_chr_k, DE_K),
-    [chr_l] = COMBO(combo_chr_l, DE_L),
-    [chr_m] = COMBO(combo_chr_m, DE_M),
-    [chr_oe] = COMBO(combo_chr_oe, DE_OE),
-    [chr_q] = COMBO(combo_chr_q, DE_Q),
-    [chr_r] = COMBO(combo_chr_r, DE_R),
-    [chr_ss] = COMBO(combo_chr_ss, DE_SS),
-    [chr_tab] = COMBO(combo_chr_tab, KC_TAB),
-    [chr_u] = COMBO(combo_chr_u, DE_U),
-    [chr_ue] = COMBO(combo_chr_ue, DE_UE),
-    [chr_v] = COMBO(combo_chr_v, DE_V),
-    [chr_w] = COMBO(combo_chr_w, DE_W),
-    [chr_x] = COMBO(combo_chr_x, DE_X),
-    [chr_y] = COMBO(combo_chr_y, DE_Y),
-    [chr_z] = COMBO(combo_chr_z, DE_Z),
-    [cmd_bsp] = COMBO(combo_cmd_bsp, KC_BSPC),
-    [cmd_bsp2] = COMBO(combo_cmd_bsp2, KC_BSPC),
-    [cmd_del] = COMBO(combo_cmd_del, KC_DEL),
-    [cmd_enter] = COMBO(combo_cmd_enter, KC_ENT),
-    [fn_f10] = COMBO(combo_fn_f10, KC_F10),
-    [fn_f11] = COMBO(combo_fn_f11, KC_F11),
-    [fn_f12] = COMBO(combo_fn_f12, KC_F12),
-    [fn_f3] = COMBO(combo_fn_f3, KC_F3),
-    [fn_f5] = COMBO(combo_fn_f5, KC_F5),
-    [fn_f6] = COMBO(combo_fn_f6, KC_F6),
-    [fn_f7] = COMBO(combo_fn_f7, KC_F7),
-    [fn_f9] = COMBO(combo_fn_f9, KC_F9),
-    [nav_pgdn] = COMBO(combo_nav_pgdn, KC_PGDN),
-    [nav_pgup] = COMBO(combo_nav_pgup, KC_PGUP),
-    [num_0] = COMBO(combo_num_0, DE_0),
-    [num_3] = COMBO(combo_num_3, DE_3),
-    [num_5] = COMBO(combo_num_5, DE_5),
-    [num_6] = COMBO(combo_num_6, DE_6),
-    [num_7] = COMBO(combo_num_7, DE_7),
-    [num_9] = COMBO(combo_num_9, DE_9),
-    [smb_acut] = COMBO(combo_smb_acut, DE_ACUT),
-    [smb_at] = COMBO(combo_smb_at, DE_AT),
-    [smb_backslash] = COMBO(combo_smb_backslash, DE_BSLS),
-    [smb_brckl] = COMBO(combo_smb_brckl, DE_LBRC),
-    [smb_brckr] = COMBO(combo_smb_brckr, DE_RBRC),
-    [smb_caret] = COMBO(combo_smb_caret, DE_CIRC),
-    [smb_cbracel] = COMBO(combo_smb_cbracel, DE_LCBR),
-    [smb_cbracer] = COMBO(combo_smb_cbracer, DE_RCBR),
-    [smb_cent] = COMBO(combo_smb_cent, DE_CENT),
-    [smb_colon] = COMBO(combo_smb_colon, DE_COLN),
-    [smb_comma] = COMBO(combo_smb_comma, DE_COMM),
-    [smb_dblquot] = COMBO(combo_smb_dblquot, DE_DQUO),
-    [smb_dollar] = COMBO(combo_smb_dollar, DE_DLR),
-    [smb_dot] = COMBO(combo_smb_dot, DE_DOT),
-    [smb_equal] = COMBO(combo_smb_equal, DE_EQL),
-    [smb_euro] = COMBO(combo_smb_euro, DE_EURO),
-    [smb_excl] = COMBO(combo_smb_excl, DE_EXLM),
-    [smb_grave] = COMBO(combo_smb_grave, DE_GRV),
-    [smb_gt] = COMBO(combo_smb_gt, DE_RABK),
-    [smb_hash] = COMBO(combo_smb_hash, DE_HASH),
-    [smb_lt] = COMBO(combo_smb_lt, DE_LABK),
-    [smb_minusN] = COMBO(combo_smb_minusN, DE_MINS),
-    [smb_minus] = COMBO(combo_smb_minus, DE_MINS),
-    [smb_parenl] = COMBO(combo_smb_parenl, DE_LPRN),
-    [smb_parenr] = COMBO(combo_smb_parenr, DE_RPRN),
-    [smb_pipe] = COMBO(combo_smb_pipe, DE_PIPE),
-    [smb_plus] = COMBO(combo_smb_plus, DE_PLUS),
-    [smb_ques] = COMBO(combo_smb_ques, DE_QUES),
-    [smb_quot] = COMBO(combo_smb_quot, DE_QUOT),
-    [smb_scolon] = COMBO(combo_smb_scolon, DE_SCLN),
-    [smb_slash] = COMBO(combo_smb_slash, DE_SLSH),
-    [smb_star] = COMBO(combo_smb_star, DE_ASTR),
-    [smb_tilde] = COMBO(combo_smb_tilde, DE_TILD),
+    [CHR_AE] = COMBO(combo_chr_ae, DE_AE),
+    [CHR_B] = COMBO(combo_chr_b, DE_B),
+    [CHR_C] = COMBO(combo_chr_c, DE_C),
+    [CHR_D] = COMBO(combo_chr_d, DE_D),
+    [CHR_F] = COMBO(combo_chr_f, DE_F),
+    [CHR_G] = COMBO(combo_chr_g, DE_G),
+    [CHR_H] = COMBO(combo_chr_h, DE_H),
+    [CHR_J] = COMBO(combo_chr_j, DE_J),
+    [CHR_K] = COMBO(combo_chr_k, DE_K),
+    [CHR_L] = COMBO(combo_chr_l, DE_L),
+    [CHR_M] = COMBO(combo_chr_m, DE_M),
+    [CHR_OE] = COMBO(combo_chr_oe, DE_OE),
+    [CHR_Q] = COMBO(combo_chr_q, DE_Q),
+    [CHR_R] = COMBO(combo_chr_r, DE_R),
+    [CHR_SS] = COMBO(combo_chr_ss, DE_SS),
+    [CHR_TAB] = COMBO(combo_chr_tab, KC_TAB),
+    [CHR_U] = COMBO(combo_chr_u, DE_U),
+    [CHR_UE] = COMBO(combo_chr_ue, DE_UE),
+    [CHR_V] = COMBO(combo_chr_v, DE_V),
+    [CHR_W] = COMBO(combo_chr_w, DE_W),
+    [CHR_X] = COMBO(combo_chr_x, DE_X),
+    [CHR_Y] = COMBO(combo_chr_y, DE_Y),
+    [CHR_Z] = COMBO(combo_chr_z, DE_Z),
+    [CMD_BSP] = COMBO(combo_cmd_bsp, KC_BSPC),
+    [CMD_BSP2] = COMBO(combo_cmd_bsp2, KC_BSPC),
+    [CMD_CAPS] = COMBO(combo_cmd_caps, KC_CAPS),
+    [CMD_DEL] = COMBO(combo_cmd_del, KC_DEL),
+    [CMD_ENTER] = COMBO(combo_cmd_enter, KC_ENT),
+    [CMD_ENTER2] = COMBO(combo_cmd_enter2, KC_ENT),
+    [FN_F10] = COMBO(combo_fn_f10, KC_F10),
+    [FN_F11] = COMBO(combo_fn_f11, KC_F11),
+    [FN_F12] = COMBO(combo_fn_f12, KC_F12),
+    [FN_F3] = COMBO(combo_fn_f3, KC_F3),
+    [FN_F5] = COMBO(combo_fn_f5, KC_F5),
+    [FN_F6] = COMBO(combo_fn_f6, KC_F6),
+    [FN_F7] = COMBO(combo_fn_f7, KC_F7),
+    [FN_F9] = COMBO(combo_fn_f9, KC_F9),
+    [NAV_END] = COMBO(combo_nav_end, KC_END),
+    [NAV_HOME] = COMBO(combo_nav_home, KC_HOME),
+    [NAV_PGDN] = COMBO(combo_nav_pgdn, KC_PGDN),
+    [NAV_PGUP] = COMBO(combo_nav_pgup, KC_PGUP),
+    [NUM_0] = COMBO(combo_num_0, DE_0),
+    [NUM_3] = COMBO(combo_num_3, DE_3),
+    [NUM_5] = COMBO(combo_num_5, DE_5),
+    [NUM_6] = COMBO(combo_num_6, DE_6),
+    [NUM_7] = COMBO(combo_num_7, DE_7),
+    [NUM_9] = COMBO(combo_num_9, DE_9),
+    [SMB_ACUT] = COMBO(combo_smb_acut, DE_ACUT),
+    [SMB_AT] = COMBO(combo_smb_at, DE_AT),
+    [SMB_BACKSLASH] = COMBO(combo_smb_backslash, DE_BSLS),
+    [SMB_BRCKL] = COMBO(combo_smb_brckl, DE_LBRC),
+    [SMB_BRCKR] = COMBO(combo_smb_brckr, DE_RBRC),
+    [SMB_CARET] = COMBO(combo_smb_caret, DE_CIRC),
+    [SMB_CBRACEL] = COMBO(combo_smb_cbracel, DE_LCBR),
+    [SMB_CBRACER] = COMBO(combo_smb_cbracer, DE_RCBR),
+    [SMB_CENT] = COMBO(combo_smb_cent, DE_CENT),
+    [SMB_COLON] = COMBO(combo_smb_colon, DE_COLN),
+    [SMB_COMMA] = COMBO(combo_smb_comma, DE_COMM),
+    [SMB_DBLQUOT] = COMBO(combo_smb_dblquot, DE_DQUO),
+    [SMB_DOLLAR] = COMBO(combo_smb_dollar, DE_DLR),
+    [SMB_DOT] = COMBO(combo_smb_dot, DE_DOT),
+    [SMB_EQUAL] = COMBO(combo_smb_equal, DE_EQL),
+    [SMB_EURO] = COMBO(combo_smb_euro, DE_EURO),
+    [SMB_EXCL] = COMBO(combo_smb_excl, DE_EXLM),
+    [SMB_GRAVE] = COMBO(combo_smb_grave, DE_GRV),
+    [SMB_GT] = COMBO(combo_smb_gt, DE_RABK),
+    [SMB_HASH] = COMBO(combo_smb_hash, DE_HASH),
+    [SMB_LT] = COMBO(combo_smb_lt, DE_LABK),
+    [SMB_MINUSN] = COMBO(combo_smb_minusN, DE_MINS),
+    [SMB_MINUS] = COMBO(combo_smb_minus, DE_MINS),
+    [SMB_PARENL] = COMBO(combo_smb_parenl, DE_LPRN),
+    [SMB_PARENR] = COMBO(combo_smb_parenr, DE_RPRN),
+    [SMB_PIPE] = COMBO(combo_smb_pipe, DE_PIPE),
+    [SMB_PLUS] = COMBO(combo_smb_plus, DE_PLUS),
+    [SMB_QUES] = COMBO(combo_smb_ques, DE_QUES),
+    [SMB_QUOT] = COMBO(combo_smb_quot, DE_QUOT),
+    [SMB_SCOLON] = COMBO(combo_smb_scolon, DE_SCLN),
+    [SMB_SLASH] = COMBO(combo_smb_slash, DE_SLSH),
+    [SMB_STAR] = COMBO(combo_smb_star, DE_ASTR),
+    [SMB_TILDE] = COMBO(combo_smb_tilde, DE_TILD),
 };
 #endif // COMBO_ENABLE
 

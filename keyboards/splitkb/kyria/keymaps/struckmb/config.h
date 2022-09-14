@@ -19,15 +19,10 @@
 /* Select hand configuration */
 #define EE_HANDS
 
-#define PERMISSIVE_HOLD
-#define ONESHOT_TAP_TOGGLE 2
 /* #define TAPPING_TERM 200 */
 
-#ifdef MOUSEKEY_ENABLE
-    #define MOUSEKEY_MAX_SPEED 4
-    #define MOUSEKEY_TIME_TO_MAX 45
-    #define MOUSEKEY_WHEEL_MAX_SPEED 20
-    #define MOUSEKEY_WHEEL_TIME_TO_MAX 60
+#ifdef OLED_ENABLE
+#define OLED_DISPLAY_128X64
 #endif
 
 #ifdef RGBLIGHT_ENABLE

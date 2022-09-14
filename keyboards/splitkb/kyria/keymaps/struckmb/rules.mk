@@ -1,10 +1,7 @@
 # Bootloader selection
 BOOTLOADER = caterina
 
-# UNICODE_ENABLE  = no
 COMBO_ENABLE = yes
-# RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
-# ENCODER_ENABLE  = no       # Enables the use of one or more encoders
 
 # Enable the use of OLED displays
 # OLED_ENABLE     = yes

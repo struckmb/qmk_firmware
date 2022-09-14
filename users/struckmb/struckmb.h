@@ -71,10 +71,7 @@ enum userspace_layers {
 #   endif // COMBO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
     _NAV_FUN,     // L: Navigation layer, R: Function keys layer
-    _MSE_ADJ,     // L: Mouse keys layer, R: Keyboard adjustments
-    _CUSTOMS,     // OSMs and special keys
-    /* _GAME,     // Game layer */
-    /* _MEDI,     // R3: Media layer */
+    _MSE_ADJ      // L: Mouse keys layer, R: Keyboard adjustments
 };
 
 // some german and combining characters
@@ -237,20 +234,20 @@ enum userspace_layers {
 #define _QL3_5_ DE_Y, DE_X, DE_C, DE_V, DE_B
 #define _QR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, DE_SZ
 
-/* ASETNIOP layout
+/* ASETNIOP+ layout
  * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  * │ F1  │ F2  │ F4  │ F8  │     │             │     │  1  │  2  │  4  │  8  │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │  a  │  s  │  e  │  t  │     │             │     │  n  │  i  │  o  │  p  │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- * │  ↑  │  ←  │  →  │  ↓  │     │             │     │ Ctl │ Gui │ Alt │ Esc │
+ * │  <  │  ^  │  v  │  >  │     │             │     │ Ctl │ Gui │ Alt │ Esc │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
  *                   │     │ Sft │     │ │     │Space│     │
  *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
  */
 #define _AL1_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
 #define _AL2_5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
-#define _AL3_5_ KC_UP,   KC_LEFT, KC_RGHT, KC_DOWN, XXXXXXX
+#define _AL3_5_ KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, XXXXXXX
 #define _AL4_3_ XXXXXXX, OSM_SFT, XXXXXXX
 
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
