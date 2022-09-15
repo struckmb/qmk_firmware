@@ -253,7 +253,7 @@ enum userspace_layers {
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
 #define _AR2_5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
 #define _AR3_5_ XXXXXXX, OSM_CTL, OSM_GUI, OSM_ALT, KC_ESC
-#define _AR4_3_ TO_MA,   KC_SPC,  TO_NF
+#define _AR4_3_ TO_MA,   KC_SPC,  XXXXXXX
 
 /* Symbols layer
  * _SYM_NUM
@@ -341,17 +341,17 @@ enum userspace_layers {
 
 /* Adjustment layer
  *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │     │     │     │EECLR│RESET│
+ *       │     │  ü  │     │EECLR│RESET│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │  ü  │  ä  │HrmOn│NoHrm│
+ *       │     │  ä  │     │HrmOn│NoHrm│
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │     │     │     │     │Caps │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _AD1_5_           KC_NO, KC_NO, KC_NO, EE_CLR, RESET
-#define _AD2_5_           KC_NO, DE_UE, DE_AE, KC_NO,  KC_NO
+#define _AD1_5_           KC_NO, DE_UE, KC_NO, EE_CLR, RESET
+#define _AD2_5_           KC_NO, DE_AE, KC_NO, KC_NO,  KC_NO
 #define _AD3_5_           TO_DP, TO_DM, TO_AS, KC_NO,  KC_CAPS
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 

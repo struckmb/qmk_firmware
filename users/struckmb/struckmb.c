@@ -51,7 +51,7 @@ const uint16_t PROGMEM combo_chr_ae[] = {DE_A, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_chr_b[] = {DE_T, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_chr_c[] = {DE_S, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_chr_d[] = {DE_S, DE_E, COMBO_END};
-const uint16_t PROGMEM combo_chr_f[] = {DE_T, DE_I, COMBO_END};
+const uint16_t PROGMEM combo_chr_f[] = {DE_A, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_chr_g[] = {DE_T, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_chr_h[] = {DE_N, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_chr_j[] = {DE_S, DE_N, COMBO_END};
@@ -65,7 +65,7 @@ const uint16_t PROGMEM combo_chr_ss[] = {DE_S, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_chr_tab[] = {DE_A, DE_S, DE_E, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_chr_u[] = {DE_N, DE_O, COMBO_END};
 const uint16_t PROGMEM combo_chr_ue[] = {DE_N, DE_O, KC_SPC, COMBO_END};
-const uint16_t PROGMEM combo_chr_v[] = {DE_A, DE_T, COMBO_END};
+const uint16_t PROGMEM combo_chr_v[] = {DE_T, DE_I, COMBO_END};
 const uint16_t PROGMEM combo_chr_w[] = {DE_A, DE_S, COMBO_END};
 const uint16_t PROGMEM combo_chr_x[] = {DE_A, DE_E, COMBO_END};
 const uint16_t PROGMEM combo_chr_y[] = {DE_E, DE_N, COMBO_END};
@@ -76,6 +76,7 @@ const uint16_t PROGMEM combo_cmd_caps[] = {KC_ESC, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_cmd_del[] = {KC_F4, DE_S, COMBO_END};
 const uint16_t PROGMEM combo_cmd_enter[] = {KC_SPC, OSM_SFT, COMBO_END};
 const uint16_t PROGMEM combo_cmd_enter2[] = {DE_N, DE_I, DE_O, DE_P, COMBO_END};
+const uint16_t PROGMEM combo_cmd_esc[] = {KC_LEFT, DE_E, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_cmd_ins[] = {DE_2, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_cmd_menu[] = {OSM_GUI, OSM_ALT, COMBO_END};
 const uint16_t PROGMEM combo_cmd_power[] = {KC_LEFT, KC_RGHT, OSM_CTL, KC_ESC, COMBO_END};
@@ -87,10 +88,12 @@ const uint16_t PROGMEM combo_fn_f5[] = {KC_F1, KC_F4, COMBO_END};
 const uint16_t PROGMEM combo_fn_f6[] = {KC_F2, KC_F4, COMBO_END};
 const uint16_t PROGMEM combo_fn_f7[] = {KC_F1, KC_F2, KC_F4, COMBO_END};
 const uint16_t PROGMEM combo_fn_f9[] = {KC_F1, KC_F8, COMBO_END};
+const uint16_t PROGMEM combo_nav_end[] = {KC_RGHT, KC_SPC, COMBO_END};
+const uint16_t PROGMEM combo_nav_home[] = {KC_LEFT, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_nav_pgdn[] = {KC_DOWN, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_nav_pgup[] = {KC_UP, KC_LEFT, COMBO_END};
-const uint16_t PROGMEM combo_nav_home[] = {KC_LEFT, OSM_SFT, COMBO_END};
-const uint16_t PROGMEM combo_nav_end[] = {KC_RGHT, OSM_SFT, COMBO_END};
+const uint16_t PROGMEM combo_nav_skipl[] = {KC_DOWN, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM combo_nav_skipr[] = {KC_UP, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_num_0[] = {DE_2, DE_8, COMBO_END};
 const uint16_t PROGMEM combo_num_3[] = {DE_1, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_num_5[] = {DE_1, DE_4, COMBO_END};
@@ -115,7 +118,7 @@ const uint16_t PROGMEM combo_smb_equal[] = {KC_F8, DE_1, COMBO_END};
 const uint16_t PROGMEM combo_smb_euro[] = {KC_F4, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_smb_excl[] = {DE_I, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_smb_grave[] = {DE_2, DE_T, COMBO_END};
-const uint16_t PROGMEM combo_smb_gt[] = {KC_F4, DE_4, DE_8, COMBO_END};
+const uint16_t PROGMEM combo_smb_gt[] = {KC_F4, DE_2, DE_4, COMBO_END};
 const uint16_t PROGMEM combo_smb_hash[] = {DE_4, DE_8, COMBO_END};
 const uint16_t PROGMEM combo_smb_lt[] = {KC_F4, DE_1, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_smb_minusN[] = {KC_F8, DE_4, COMBO_END};
@@ -128,7 +131,7 @@ const uint16_t PROGMEM combo_smb_ques[] = {DE_A, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_smb_quot[] = {DE_E, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_smb_scolon[] = {DE_O, DE_P, COMBO_END};
 const uint16_t PROGMEM combo_smb_slash[] = {KC_F8, DE_A, COMBO_END};
-const uint16_t PROGMEM combo_smb_star[] = {KC_F8, DE_1, DE_2, COMBO_END};
+const uint16_t PROGMEM combo_smb_star[] = {KC_F8, DE_8, COMBO_END};
 const uint16_t PROGMEM combo_smb_tilde[] = {DE_1, DE_T, COMBO_END};
 
 enum combos_events {
@@ -161,6 +164,7 @@ enum combos_events {
     CMD_DEL,
     CMD_ENTER,
     CMD_ENTER2,
+    CMD_ESC,
     CMD_INS,
     CMD_MENU,
     CMD_POWER,
@@ -176,6 +180,8 @@ enum combos_events {
     NAV_HOME,
     NAV_PGDN,
     NAV_PGUP,
+    NAV_SKIPR,
+    NAV_SKIPL,
     NUM_0,
     NUM_3,
     NUM_5,
@@ -249,6 +255,7 @@ combo_t key_combos[] = {
     [CMD_DEL] = COMBO(combo_cmd_del, KC_DEL),
     [CMD_ENTER] = COMBO(combo_cmd_enter, KC_ENT),
     [CMD_ENTER2] = COMBO(combo_cmd_enter2, KC_ENT),
+    [CMD_ESC] = COMBO(combo_cmd_esc, KC_ESC),
     [CMD_INS] = COMBO(combo_cmd_ins, KC_INS),
     [CMD_MENU] = COMBO(combo_cmd_menu, KC_APP),
     [CMD_POWER] = COMBO(combo_cmd_power, KC_PWR),
@@ -264,6 +271,8 @@ combo_t key_combos[] = {
     [NAV_HOME] = COMBO(combo_nav_home, KC_HOME),
     [NAV_PGDN] = COMBO(combo_nav_pgdn, KC_PGDN),
     [NAV_PGUP] = COMBO(combo_nav_pgup, KC_PGUP),
+    [NAV_SKIPR] = COMBO(combo_nav_skipr, C(KC_RGHT)),
+    [NAV_SKIPL] = COMBO(combo_nav_skipl, C(KC_LEFT)),
     [NUM_0] = COMBO(combo_num_0, DE_0),
     [NUM_3] = COMBO(combo_num_3, DE_3),
     [NUM_5] = COMBO(combo_num_5, DE_5),
