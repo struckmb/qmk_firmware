@@ -26,6 +26,7 @@
                    │     │ Sft │     │ │     │Space│     │
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘
 ```
+Also see [additional combos](#asetniop-additional-combos)
 
 ## Symbols layer | Numbers layer
 ```
@@ -65,6 +66,84 @@
                    │ Bt3 │ Bt1 │ Bt2 │ │     │     │     │
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘
 ```
+
+# ASETNIOP+ additional combos
+
+<div>
+
+
+<table style="display: inline;">
+    <tr>
+        <th>Symbol</th>
+        <th>Description</th>
+        <th>Keys</th>
+    </tr>
+    <tr>
+        <td>\</td>
+        <td>Backslash</td>
+        <td>T+F1</td>
+    </tr>
+    <tr>
+        <td>[</td>
+        <td>Opening bracket</td>
+        <td>2+F4</td>
+    </tr>
+    <tr>
+        <td>]</td>
+        <td>Closing bracket</td>
+        <td>4+F4</td>
+    </tr>
+    <tr>
+        <td>^</td>
+        <td>Caret</td>
+        <td>N+F1</td>
+    </tr>
+</table>
+
+<table style="display: inline;">
+    <tr>
+        <th>Command</th>
+        <th>Keys</th>
+    </tr>
+    <tr>
+        <td>Home</td>
+        <td>Space+Left</td>
+    </tr>
+    <tr>
+        <td>End</td>
+        <td>Space+Right</td>
+    </tr>
+    <tr>
+        <td>PgUp</td>
+        <td>Up+Left</td>
+    </tr>
+    <tr>
+        <td>PgDown</td>
+        <td>Down+Right</td>
+    </tr>
+    <tr>
+        <td>PrevTab</td>
+        <td>Down+Left</td>
+    </tr>
+    <tr>
+        <td>NextTab</td>
+        <td>Up+Right</td>
+    </tr>
+    <tr>
+        <td>Menu</td>
+        <td>Alt+GUI</td>
+    </tr>
+    <tr>
+        <td>PrtScrn</td>
+        <td>N+ESC</td>
+    </tr>
+    <tr>
+        <td>Power</td>
+        <td>Left+Right+Ctrl+ESC</td>
+    </tr>
+</table>
+
+</div>
 
 # Some more key definitions
 

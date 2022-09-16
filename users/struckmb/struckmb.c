@@ -80,6 +80,7 @@ const uint16_t PROGMEM combo_cmd_esc[] = {KC_LEFT, DE_E, DE_T, COMBO_END};
 const uint16_t PROGMEM combo_cmd_ins[] = {DE_2, DE_N, COMBO_END};
 const uint16_t PROGMEM combo_cmd_menu[] = {OSM_GUI, OSM_ALT, COMBO_END};
 const uint16_t PROGMEM combo_cmd_power[] = {KC_LEFT, KC_RGHT, OSM_CTL, KC_ESC, COMBO_END};
+const uint16_t PROGMEM combo_cmd_print[] = {DE_N, KC_ESC, COMBO_END};
 const uint16_t PROGMEM combo_fn_f10[] = {KC_F2, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_fn_f11[] = {KC_F1, KC_F2, KC_F8, COMBO_END};
 const uint16_t PROGMEM combo_fn_f12[] = {KC_F4, KC_F8, COMBO_END};
@@ -92,8 +93,8 @@ const uint16_t PROGMEM combo_nav_end[] = {KC_RGHT, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_nav_home[] = {KC_LEFT, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_nav_pgdn[] = {KC_DOWN, KC_RGHT, COMBO_END};
 const uint16_t PROGMEM combo_nav_pgup[] = {KC_UP, KC_LEFT, COMBO_END};
-const uint16_t PROGMEM combo_nav_skipl[] = {KC_DOWN, KC_LEFT, COMBO_END};
-const uint16_t PROGMEM combo_nav_skipr[] = {KC_UP, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_nav_tabNext[] = {KC_UP, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM combo_nav_tabPrev[] = {KC_DOWN, KC_LEFT, COMBO_END};
 const uint16_t PROGMEM combo_num_0[] = {DE_2, DE_8, COMBO_END};
 const uint16_t PROGMEM combo_num_3[] = {DE_1, DE_2, COMBO_END};
 const uint16_t PROGMEM combo_num_5[] = {DE_1, DE_4, COMBO_END};
@@ -168,6 +169,7 @@ enum combos_events {
     CMD_INS,
     CMD_MENU,
     CMD_POWER,
+    CMD_PRINT,
     FN_F10,
     FN_F11,
     FN_F12,
@@ -180,8 +182,8 @@ enum combos_events {
     NAV_HOME,
     NAV_PGDN,
     NAV_PGUP,
-    NAV_SKIPR,
-    NAV_SKIPL,
+    NAV_TABNEXT,
+    NAV_TABPREV,
     NUM_0,
     NUM_3,
     NUM_5,
@@ -259,6 +261,7 @@ combo_t key_combos[] = {
     [CMD_INS] = COMBO(combo_cmd_ins, KC_INS),
     [CMD_MENU] = COMBO(combo_cmd_menu, KC_APP),
     [CMD_POWER] = COMBO(combo_cmd_power, KC_PWR),
+    [CMD_PRINT] = COMBO(combo_cmd_print, KC_PSCR),
     [FN_F10] = COMBO(combo_fn_f10, KC_F10),
     [FN_F11] = COMBO(combo_fn_f11, KC_F11),
     [FN_F12] = COMBO(combo_fn_f12, KC_F12),
@@ -271,8 +274,8 @@ combo_t key_combos[] = {
     [NAV_HOME] = COMBO(combo_nav_home, KC_HOME),
     [NAV_PGDN] = COMBO(combo_nav_pgdn, KC_PGDN),
     [NAV_PGUP] = COMBO(combo_nav_pgup, KC_PGUP),
-    [NAV_SKIPR] = COMBO(combo_nav_skipr, C(KC_RGHT)),
-    [NAV_SKIPL] = COMBO(combo_nav_skipl, C(KC_LEFT)),
+    [NAV_TABNEXT] = COMBO(combo_nav_tabNext, C(KC_TAB)),
+    [NAV_TABPREV] = COMBO(combo_nav_tabPrev, S(C(KC_TAB))),
     [NUM_0] = COMBO(combo_num_0, DE_0),
     [NUM_3] = COMBO(combo_num_3, DE_3),
     [NUM_5] = COMBO(combo_num_5, DE_5),
