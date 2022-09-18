@@ -53,13 +53,15 @@ enum userspace_custom_keycodes {
     BS_SAFE = PLACEHOLDER_SAFE_RANGE,
     // Encoder button
 #   ifdef ENCODER_ENABLE
-    BS_ENC,
+    BS_ENC0,
+    BS_ENC1,
 #   endif // ENCODER_ENABLE
     //use for keymap specific codes
     KEYMAP_SAFE_RANGE
 };
 #ifndef ENCODER_ENABLE
-#define BS_ENC KC_NO
+#define BS_ENC0 KC_NO
+#define BS_ENC1 KC_NO
 #endif // ENCODER_ENABLE
 
 /// Enumeration of layers
@@ -131,6 +133,7 @@ enum userspace_layers {
 #define LAYOUT_wrapper(...)             LAYOUT(__VA_ARGS__)
 #define LAYOUT_split_3x6_3_wrapper(...) LAYOUT_split_3x6_3(__VA_ARGS__)
 #define LAYOUT_split_3x5_3_wrapper(...) LAYOUT_split_3x5_3(__VA_ARGS__)
+#define LAYOUT_split_3x5_4_wrapper(...) LAYOUT_split_3x5_4(__VA_ARGS__)
 
 // Masks
 #define ___1___ _______
@@ -181,7 +184,11 @@ enum userspace_layers {
 #define NAV_DEL LT(_NAV_FUN, KC_DEL )
 #define TO_DP   DF(_DEFAULT)
 #define TO_DM   DF(_HRM_OFF)
-#define TO_AS   DF(_ASETNIOP)
+#ifdef COMBO_ENABLE
+#   define TO_AS   DF(_ASETNIOP)
+#else
+#   define TO_AS   KC_NO
+#endif // COMBO_ENABLE
 #define TO_MA   OSL(_MSE_ADJ)
 #define TO_NF   OSL(_NAV_FUN)
 

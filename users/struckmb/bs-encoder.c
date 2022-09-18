@@ -44,25 +44,27 @@
 /*     userspace_config.e1rgb = 1; */
 /* } */
 
-// states: 0: default 1: rgb mode, 2: 
-#ifdef MOUSEKEY_ENABLE
-static uint8_t encoderFunState = 0;
-#endif // MOUSEKEY_ENABLE
-
-#ifndef MOUSEKEY_ENABLE
-#ifdef RGB_MATRIX_ENABLE
-static uint8_t encoderFunState = 1;
-#else // RGB_MATRIX_ENABLE
-static uint8_t encoderFunState = 0;
-#endif // RGB_MATRIX_ENABLE
-#endif // MOUSEKEY_ENABLE
-
 // Encoder scroll functionality
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    uint8_t this_mod = get_mods();
-    // Differentiate layer roles
-    switch (get_highest_layer(layer_state)) {
+    uint16_t this_layer = get_highest_layer(layer_state);
+    /* uint8_t this_mod = get_mods(); */
+    if (index == 2) switch (this_layer) {
 #       ifdef MOUSEKEY_ENABLE
+        case _MSE_ADJ:
+            if (clockwise) {
+                tap_code(KC_WH_R);
+            } else {
+                tap_code(KC_WH_L);
+            }
+#       endif // MOUSEKEY_ENABLE
+        default:
+            if (clockwise) {
+                tap_code16(C(KC_TAB));
+            } else {
+                tap_code16(C(S(KC_TAB)));
+            }
+
+    } else switch (this_layer) {
         case _NAV_FUN:
             // navi layer: page up/down
             if (clockwise) {
@@ -70,64 +72,16 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             } else {
                 tap_code16(KC_PGUP);
             }
-#       endif // MOUSEKEY_ENABLE
+#       ifdef MOUSEKEY_ENABLE
         case _MSE_ADJ:
-            switch (encoderFunState) {
-#               ifdef RGB_MATRIX_ENABLE
-                case 1: // Effect the RGB mode
-                    if (clockwise) {
-                        rgb_matrix_step_noeeprom();
-                    } else {
-                        rgb_matrix_step_reverse_noeeprom();
-                    }
-                    break;
-                case 2: // Effect the RGB hue
-                    if (clockwise) {
-                        rgb_matrix_increase_hue_noeeprom();
-                    } else {
-                        rgb_matrix_decrease_hue_noeeprom();
-                    }
-                    break;
-                case 3: // Effect the RGB saturation
-                    if (clockwise) {
-                        rgb_matrix_increase_sat_noeeprom();
-                    } else {
-                        rgb_matrix_decrease_sat_noeeprom();
-                    }
-                    break;
-                case 4: // Effect the RGB brightness
-                    if (clockwise) {
-                        rgb_matrix_increase_val_noeeprom();
-                    } else {
-                        rgb_matrix_decrease_val_noeeprom();
-                    }
-                    break;
-                case 5: // Effect the RGB effect speed
-                    if (clockwise) {
-                        rgb_matrix_increase_speed_noeeprom();
-                    } else {
-                        rgb_matrix_decrease_speed_noeeprom();
-                    }
-                    break;
-#               endif // RGB_MATRIX_ENABLE
-                default:
-                    // mouse layer: wheel up/down or left/right with shift
-                    if (this_mod & MOD_MASK_SHIFT) {
-                        if (clockwise) {
-                            tap_code(KC_WH_R);
-                        } else {
-                            tap_code(KC_WH_L);
-                        }
-                    } else {
-                        if (clockwise) {
-                            tap_code(KC_WH_D);
-                        } else {
-                            tap_code(KC_WH_U);
-                        }
-                    }
-                    break;
+            // mouse layer: wheel up/down or left/right with shift
+            if (clockwise) {
+                tap_code(KC_WH_D);
+            } else {
+                tap_code(KC_WH_U);
             }
             break;
+#       endif // MOUSEKEY_ENABLE
         default:
             // default: volume up/down
             if (clockwise) {
@@ -140,76 +94,25 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return false;
 }
 
-void encoder_click_action(void) {
-    // Differentiate layer roles
-    switch (get_highest_layer(layer_state)) {
-#       ifdef RGB_MATRIX_ENABLE
-        case _MSE_ADJ:
-            // click changes rotate action
-            encoderFunState = (++encoderFunState) % 6;
-#       ifdef MOUSEKEY_ENABLE
-            if (encoderFunState == 0) encoderFunState++;
-#       endif // MOUSEKEY_ENABLE
-            break;
-#       endif // RGB_MATRIX_ENABLE
-        default:
-            // default: mute
-            tap_code16(KC_MUTE);
-            break;
-            break;
-    }
-}
-
 bool process_record_encoder(uint16_t keycode, keyrecord_t *record) {
+    // Check if and which encoder was pressed
+    int encoder_index = keycode == BS_ENC0 ? 0 : keycode == BS_ENC1 ? 1 : -1;
     // Activate encoder function of button
-    if (keycode == BS_ENC && (!record->event.pressed)) {
-        encoder_click_action();
-        /* return false; */
+    if (encoder_index >= 0 && !record->event.pressed) {
+        // Differentiate layer roles
+        switch (get_highest_layer(layer_state)) {
+/* #       ifdef POINTING_DEVICE_ENABLE */
+/* #       endif // POINTING_DEVICE_ENABLE */
+/* #       ifdef MOUSEKEY_ENABLE */
+/*             case _MSE_ADJ: */
+/*                 break; */
+/* #       endif // MOUSEKEY_ENABLE */
+            default:
+                // default: mute
+                tap_code16(KC_MUTE);
+                break;
+        }
+        return false;
     }
     return true;
 }
-
-// For printing status to OLED
-#ifdef OLED_ENABLE
-void encoder_state_string(uint8_t index, uint8_t layer, char* buffer) {
-    // Get the layer straight from the main function
-    switch (layer) {
-        // If RGB control mode is enabled
-        case _MSE_ADJ:
-            // Get correct index
-            switch (encoderFunState) {
-#               ifdef RGB_MATRIX_ENABLE
-                case 1:
-                    strcpy(buffer, "ani mode");
-                    break;
-                case 2:
-                    strcpy(buffer, "hue     ");
-                    break;
-                case 3:
-                    strcpy(buffer, "saturat.");
-                    break;
-                case 4:
-                    strcpy(buffer, "bright. ");
-                    break;
-                case 5:
-                    strcpy(buffer, "ani. spd");
-                    break;
-#               endif // RGB_MATRIX_ENABLE
-                default:
-#               ifdef MOUSEKEY_ENABLE
-                    strcpy(buffer, "MS Wheel");
-#               else // MOUSEKEY_ENABLE
-                    strcpy(buffer, " -N/A-  ");
-#               endif // MOUSEKEY_ENABLE
-                    break;
-            }
-            break;
-        case _NAV_FUN:
-            strcpy(buffer, "PgUp/Dn ");
-            break;
-        default:
-            strcpy(buffer, "Volume  ");
-            break;
-    }
-}
-#endif // OLED_ENABLE

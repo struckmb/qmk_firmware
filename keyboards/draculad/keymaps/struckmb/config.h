@@ -15,6 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define EE_HANDS
+
 #define POINTING_DEVICE_ROTATION_90
 
 //comment that out if your trackball is on the left side

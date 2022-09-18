@@ -44,72 +44,24 @@ bool oled_task_user(void) {
 \*-------------------------*/
 void render_qmk_logo(uint8_t row, uint8_t col) {
     static const char PROGMEM qmk_logo[] = {
-        0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,
-        0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,
-        0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-        0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,
-        0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0};
+        0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
+        0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
+        0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0};
+    oled_set_cursor(col, row);
+    oled_write_P(qmk_logo, false);
+}
+void render_qmk_small_logo(uint8_t row, uint8_t col) {
+    static const char PROGMEM qmk_logo[] = {
+        0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0xa0,0xa1,0xa2,0xa3,0xa4,
+        0xa5,0xa6,0xa7,0xa8,0xa9,0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0};
     oled_set_cursor(col, row);
     oled_write_P(qmk_logo, false);
 }
 
-void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
-    // Write the layer state; 17 chars
+void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer) {
     oled_set_cursor(col, row);
-    oled_write("Layer: ", false);
-    switch (top_layer) {
-        case _DEFAULT:
-            oled_write("Default   ", false);
-            break;
-        case _SYM_NUM:
-            oled_write("Sym/Num   ", false);
-            break;
-        case _NAV_FUN:
-            oled_write("Nav/Fn    ", false);
-            break;
-        case _MSE_ADJ:
-            oled_write("Mouse/Adj ", false);
-            break;
-        default:
-            oled_write("?? N/A ?? ", false);
-    }
-}
-
-void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms) {
-    // Write the modifier state, 16 characters
-    oled_set_cursor(col, row);
-    oled_write("Mods: ", false);
-    oled_write((mods & MOD_MASK_SHIFT  ) ? "S " : "  ", (osms & MOD_MASK_SHIFT  ));
-    oled_write((mods & MOD_MASK_CTRL   ) ? "C " : "  ", (osms & MOD_MASK_CTRL   ));
-    oled_write((mods & MOD_MASK_ALT    ) ? "A " : "  ", (osms & MOD_MASK_ALT    ));
-    oled_write((mods & MOD_BIT(KC_RALT)) ? "G " : "  ", (osms & MOD_BIT(KC_RALT)));
-    oled_write((mods & MOD_MASK_GUI    ) ? "M " : "  ", (osms & MOD_MASK_GUI    ));
-}
-
-void render_encoder(uint8_t row, uint8_t col, uint8_t index, uint8_t layer) {
-    // Renders the encoder state, 14 characters
-    oled_set_cursor(col, row);
-
-#   ifdef ENCODER_ENABLE
-    static char encoder_temp9[9] = {0};
-    oled_write("Enc: ", false);
-    encoder_state_string(index, layer, encoder_temp9);
-    oled_write(encoder_temp9, false);
-#   else // ENCODER_ENABLE
-    oled_write("No enc. avail.", false);
-#   endif // ENCODER_ENABLE
-}
-
-// Writes the currently used OLED display layout
-void render_keymap(uint8_t row, uint8_t col, bool isLite) {
-    // Render the oled layout; lite is 11, regular is 14 characters
-    oled_set_cursor(col, row);
-    if (isLite) {
-        oled_write("KM: ", false);
-    } else {
-        oled_write("Layout: ", false);
-    }
-    switch (get_highest_layer(default_layer_state)) {
+    oled_write("D: ", false);
+    switch (def_layer) {
         case _DEFAULT:
             oled_write("QWER+", false);
             break;
@@ -124,9 +76,38 @@ void render_keymap(uint8_t row, uint8_t col, bool isLite) {
         default:
             oled_write(" N/A ", false);
     }
-    if (isLite) {
-        oled_write(" ", false);
+}
+
+void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
+    oled_set_cursor(col, row);
+    oled_write("L: ", false);
+    switch (top_layer) {
+        case _DEFAULT:
+            oled_write("Default ", false);
+            break;
+        case _SYM_NUM:
+            oled_write("Sym/Num ", false);
+            break;
+        case _NAV_FUN:
+            oled_write("Nav/Fn  ", false);
+            break;
+        case _MSE_ADJ:
+            oled_write("Mse/Adj ", false);
+            break;
+        default:
+            oled_write("? N/A ? ", false);
     }
+}
+
+void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms) {
+    // Write the modifier state, 16 characters
+    oled_set_cursor(col, row);
+    oled_write("M: ", false);
+    oled_write((mods & MOD_BIT(KC_RALT)) ? "G " : "  ", (osms & MOD_BIT(KC_RALT)));
+    oled_write((mods & MOD_MASK_SHIFT  ) ? "S " : "  ", (osms & MOD_MASK_SHIFT  ));
+    oled_write((mods & MOD_MASK_CTRL   ) ? "C " : "  ", (osms & MOD_MASK_CTRL   ));
+    oled_write((mods & MOD_MASK_ALT    ) ? "A " : "  ", (osms & MOD_MASK_ALT    ));
+    oled_write((mods & MOD_MASK_GUI    ) ? "M " : "  ", (osms & MOD_MASK_GUI    ));
 }
 
 // Writes the currently used OLED display layout
@@ -153,41 +134,29 @@ void render_rgb_lite(uint8_t row, uint8_t col) {
 
 void render_status_lite(uint8_t row, uint8_t col) {
     // Function to print state information; for low flash memory
+    uint8_t this_map   = get_highest_layer(default_layer_state);
     uint8_t this_layer = get_highest_layer(layer_state);
-    uint8_t this_mod =   get_mods();
-    uint8_t this_osm =   get_oneshot_mods();
-    uint8_t this_all =   this_mod|this_osm;
+    uint8_t this_mod = get_mods();
+    uint8_t this_osm = get_oneshot_mods();
+    uint8_t this_all = this_mod|this_osm;
 
-    // Line 1: Layer State
-    render_layer(row + 0, col + 0, this_layer);
+    // Line 1: WPM and layout
+    render_keymap(row + 0, col, this_map);
 
-    // Line 2: Mod or info
+    // Line 2: Layer State
+    render_layer(row + 2, col, this_layer);
+
+    // Line 3: Mod or info
     switch (this_layer) {
         // Show RGB mode as an overlay in media mode.
 #       ifdef RGB_MATRIX_ENABLE
         case _MSE_ADJ:
-            render_rgb_lite(row + 1, col + 0);
+            render_rgb_lite(row + 4, col + 0);
             break;
 #       endif // RGB_MATRIX_ENABLE
             // Show the modifier if nothing else is doing anything
         default:
-            render_modifiers_lite(row + 1, col + 0, this_all, this_osm);
+            render_modifiers_lite(row + 4, col + 0, this_all, this_osm);
             break;
     }
-
-    // Line 3: WPM and layout
-    render_keymap(row + 2, col + 0, true);
-
-#ifdef ENCODER_ENABLE
-    // Line 4: Encoder states
-#   ifdef SPLIT_KEYBOARD
-    if (is_keyboard_left()) {
-        render_encoder(row + 3, col + 0, 0, this_layer);
-    } else {
-        render_encoder(row + 3, col + 0, 1, this_layer);
-    }
-#   else // SPLIT_KEYBOARD
-    render_encoder(row + 3, col + 0, 0, this_layer);
-#   endif // SPLIT_KEYBOARD
-#endif // ENCODER_ENABLE
 }

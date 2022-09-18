@@ -26,13 +26,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _BL1_1_,_BL1_5_,                _BR1_5_,_BR1_1_,
         _BL2_1_,_BL2_5_,                _BR2_5_,_BR2_1_,
         _BL3_1_,_BL3_5_,xxx2xxx,xxx2xxx,_BR3_5_,_BR3_1_,
-        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC
+        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC0
     ),
     [_HRM_OFF] = LAYOUT_split_3x6_5_wrapper(
         _BL1_1_,_QL1_5_,                _QR1_5_,_BR1_1_,
         _BL2_1_,_QL2_5_,                _QR2_5_,_BR2_1_,
         _BL3_1_,_QL3_5_,xxx2xxx,xxx2xxx,_QR3_5_,_BR3_1_,
-        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC
+        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC0
     ),
 #   ifdef COMBO_ENABLE
     [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper(
@@ -63,11 +63,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef OLED_ENABLE
+
+#ifdef ENCODER_ENABLE
+void render_encoder(uint8_t row, uint8_t col, uint8_t index, uint8_t layer) {
+    // Renders the encoder state, 14 characters
+    oled_set_cursor(col, row);
+    static char encoder_temp9[9] = {0};
+    oled_write("E: ", false);
+    switch (layer) {
+        // If RGB control mode is enabled
+        case _MSE_ADJ:
+            // Get correct index
+            switch (encoderFunState) {
+                default:
+#               ifdef MOUSEKEY_ENABLE
+                    oled_write("MS Whl", false);
+#               else // MOUSEKEY_ENABLE
+                    oled_write("-N/A- ", false);
+#               endif // MOUSEKEY_ENABLE
+                    break;
+            }
+            break;
+        case _NAV_FUN:
+            oled_write("PgU/D ", false);
+            break;
+        default:
+            oled_write("Vol.  ", false);
+            break;
+    }
+}
+#endif // ENCODER_ENABLE
+
 // print logo, and allow default status printing
 bool oled_task_keymap(void) {
     if (is_keyboard_master()) {
         render_qmk_logo(0, 0);
         render_status_lite(4, 0);
+#       ifdef ENCODER_ENABLE
+        render_encoder(7, 0, 0, get_highest_layer(layer_state));
+#       endif // ENCODER_ENABLE
     } else {
         // clang-format off
         static const char PROGMEM kyria_logo[] = {
