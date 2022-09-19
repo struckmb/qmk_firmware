@@ -169,10 +169,10 @@ enum userspace_layers {
 
 #define ALT_AE  MT(MOD_LALT, DE_AE)
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)
-#define OSM_ALT OSM(MOD_LALT)
-#define OSM_CTL OSM(MOD_LCTL)
-#define OSM_GUI OSM(MOD_LGUI)
-#define OSM_SFT OSM(MOD_LSFT)
+#define OS_ALT  OSM(MOD_LALT)
+#define OS_CTL  OSM(MOD_LCTL)
+#define OS_GUI  OSM(MOD_LGUI)
+#define OS_SFT  OSM(MOD_LSFT)
 
 // Layer switches
 #define ADJ_HOE LT(_MSE_ADJ, DE_OE )
@@ -195,15 +195,15 @@ enum userspace_layers {
 // The extra side rows and thumbs
 #define _BL1_1_ KC_TAB
 #define _BL2_1_ CTL_ESC
-#define _BL3_1_ OSM_SFT
+#define _BL3_1_ OS_SFT
 #define _BR1_1_ DE_UE
 #define _BR2_1_ ALT_AE
-#define _BR3_1_ OSM_SFT
+#define _BR3_1_ OS_SFT
 #define _BL4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
 #define _BR4_3_ MSE_BSP,SYM_SPC,NAV_DEL
 
-/* Base layout + HRM
- * QWERT
+/* QWERTY layout + HRM
+ * 
  *      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  *  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
  *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
@@ -213,7 +213,6 @@ enum userspace_layers {
  *      └─Sft─┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─Sft─┘
  *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
  *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
- * The thing about this layout is that these will fit most boards I have.
  */
 #define _BL1_5_ DE_Q,  DE_W,  DE_E,  DE_R,    DE_T
 #define _BL2_5_ DE_A,  ALT_S, GUI_D, CTL_F,   DE_G
@@ -232,13 +231,12 @@ enum userspace_layers {
  *      └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
  *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
  *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
- * The thing about this layout is that these will fit most boards I have.
  */
 #define _QL1_5_ DE_Q, DE_W, DE_E, DE_R, DE_T
-#define _QR1_5_ DE_Z, DE_U, DE_I, DE_O, DE_P
 #define _QL2_5_ DE_A, DE_S, DE_D, DE_F, DE_G
-#define _QR2_5_ DE_H, DE_J, DE_K, DE_L, DE_OE
 #define _QL3_5_ DE_Y, DE_X, DE_C, DE_V, DE_B
+#define _QR1_5_ DE_Z, DE_U, DE_I, DE_O, DE_P
+#define _QR2_5_ DE_H, DE_J, DE_K, DE_L, DE_OE
 #define _QR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, DE_SZ
 
 /* ASETNIOP+ layout
@@ -255,11 +253,11 @@ enum userspace_layers {
 #define _AL1_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
 #define _AL2_5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
 #define _AL3_5_ KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, XXXXXXX
-#define _AL4_3_ XXXXXXX, OSM_SFT, XXXXXXX
+#define _AL4_3_ XXXXXXX, OS_SFT,  XXXXXXX
 
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
 #define _AR2_5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
-#define _AR3_5_ XXXXXXX, OSM_CTL, OSM_GUI, OSM_ALT, KC_ESC
+#define _AR3_5_ XXXXXXX, OS_CTL,  OS_GUI,  OS_ALT,  KC_ESC
 #define _AR4_3_ TO_MA,   SYM_SPC, XXXXXXX
 
 /* Symbols layer
@@ -325,9 +323,9 @@ enum userspace_layers {
  * │CAPSL│ App │     │
  * └─────┴─────┴─────┘
  */
-#define _FU1_5_           OSM_ALT, KC_F7, KC_F8, KC_F9, KC_F10
-#define _FU2_5_           OSM_GUI, KC_F4, KC_F5, KC_F6, KC_F11
-#define _FU3_5_           OSM_CTL, KC_F1, KC_F2, KC_F3, KC_F12
+#define _FU1_5_           OS_ALT, KC_F7, KC_F8, KC_F9, KC_F10
+#define _FU2_5_           OS_GUI, KC_F4, KC_F5, KC_F6, KC_F11
+#define _FU3_5_           OS_CTL, KC_F1, KC_F2, KC_F3, KC_F12
 #define _FU4_3_  KC_RALT, KC_APP,  KC_TRNS
 
 /* Mouse layer
@@ -350,16 +348,16 @@ enum userspace_layers {
  *       ┌─────┬─────┬─────┬─────┬─────┐
  *       │QWER-│  ü  │     │EECLR│RESET│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │ASET+│  ä  │     │     │NoHrm│
+ *       │ASET+│  ä  │OsSft│     │NoHrm│
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │QWER+│     │     │     │Caps │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _AD1_5_           TO_DM, DE_UE, KC_NO, EE_CLR, QK_BOOT
-#define _AD2_5_           TO_AS, DE_AE, KC_NO, KC_NO,  KC_NO
-#define _AD3_5_           TO_DP, KC_NO, KC_NO, KC_NO,  KC_CAPS
+#define _AD1_5_           TO_DM, DE_UE, KC_NO,  EE_CLR, QK_BOOT
+#define _AD2_5_           TO_AS, DE_AE, OS_SFT, KC_NO,  KC_NO
+#define _AD3_5_           TO_DP, KC_NO, KC_NO,  KC_NO,  KC_CAPS
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 
 /* Game layer

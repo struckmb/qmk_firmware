@@ -31,13 +31,13 @@ COMB(CMD_BSP,       KC_BSPC,       DE_T, DE_P)
 COMB(CMD_BSP2,      KC_BSPC,       KC_F4, DE_T)
 COMB(CMD_CAPS,      KC_CAPS,       KC_ESC, SYM_SPC)
 COMB(CMD_DEL,       KC_DEL,        KC_F4, DE_S)
-COMB(CMD_ENTER,     KC_ENT,        SYM_SPC, OSM_SFT)
+COMB(CMD_ENTER,     KC_ENT,        SYM_SPC, OS_SFT)
 COMB(CMD_ENTER2,    KC_ENT,        DE_N, DE_I, DE_O, DE_P)
 COMB(CMD_ESC,       KC_ESC,        KC_LEFT, DE_E, DE_T)
 COMB(CMD_EXIT,      TO_DP,         DE_A, DE_S, DE_E, DE_T, DE_N, DE_I, DE_O, DE_P)
 COMB(CMD_INS,       KC_INS,        DE_2, DE_N)
-COMB(CMD_MENU,      KC_APP,        OSM_GUI, OSM_ALT)
-COMB(CMD_POWER,     KC_PWR,        KC_LEFT, KC_RGHT, OSM_CTL, KC_ESC)
+COMB(CMD_MENU,      KC_APP,        OS_GUI, OS_ALT)
+COMB(CMD_POWER,     KC_PWR,        KC_LEFT, KC_RGHT, OS_CTL, KC_ESC)
 COMB(CMD_PRINT,     KC_PSCR,       DE_N, KC_ESC)
 COMB(FN_F10,        KC_F10,        KC_F2, KC_F8)
 COMB(FN_F11,        KC_F11,        KC_F1, KC_F2, KC_F8)
@@ -55,35 +55,25 @@ COMB(NAV_TABNEXT,   C(KC_TAB),     KC_UP, KC_RGHT)
 COMB(NAV_TABPREV,   S(C(KC_TAB)),  KC_DOWN, KC_LEFT)
 COMB(NAV_WORDNEXT,  C(KC_RGHT),    DE_S, KC_RGHT)
 COMB(NAV_WORDPREV,  C(KC_LEFT),    DE_S, KC_LEFT)
-/* COMB(SMB_ACUT,      DE_ACUT,       DE_4, DE_T) */
-COMB(SMB_AT,        DE_AT,         DE_I, DE_P, OSM_SFT)
-/* COMB(SMB_BACKSLASH, DE_BSLS,       KC_F1, DE_T) */
+COMB(SMB_AT,        DE_AT,         DE_I, DE_P, OS_SFT)
 COMB(SMB_BRCKL,     DE_LBRC,       KC_F4, DE_2)
 COMB(SMB_BRCKR,     DE_RBRC,       KC_F4, DE_4)
-/* COMB(SMB_CARET,     DE_CIRC,       KC_F1, DE_N) */
 COMB(SMB_CBRACEL,   DE_LCBR,       KC_F4, DE_1)
 COMB(SMB_CBRACER,   DE_RCBR,       KC_F4, DE_8)
-/* COMB(SMB_CENT,      DE_CENT,       KC_F2, DE_N) */
-COMB(SMB_COLON,     DE_COLN,       DE_O, DE_P, OSM_SFT)
+COMB(SMB_COLON,     DE_COLN,       DE_O, DE_P, OS_SFT)
 COMB(SMB_COMMA,     DE_COMM,       DE_E, DE_I)
-COMB(SMB_DBLQUOT,   DE_DQUO,       DE_E, DE_P, OSM_SFT)
-/* COMB(SMB_DOLLAR,    DE_DLR,        KC_F8, DE_N) */
+COMB(SMB_DBLQUOT,   DE_DQUO,       DE_E, DE_P, OS_SFT)
 COMB(SMB_DOT,       DE_DOT,        DE_S, DE_O)
-/* COMB(SMB_EQUAL,     DE_EQL,        KC_F8, DE_1) */
-/* COMB(SMB_EURO,      DE_EURO,       KC_F4, DE_N) */
 COMB(SMB_EXCL,      DE_EXLM,       DE_I, DE_P)
-/* COMB(SMB_GRAVE,     DE_GRV,        DE_2, DE_T) */
-COMB(SMB_GT,        DE_RABK,       KC_F4, DE_2, DE_4)
-/* COMB(SMB_HASH,      DE_HASH,       DE_4, DE_8) */
-COMB(SMB_LT,        DE_LABK,       KC_F4, DE_1, DE_2)
+COMB(SMB_GT,        DE_RABK,       DE_1, DE_2, DE_4, DE_8)
+COMB(SMB_LT,        DE_LABK,       DE_1, DE_4, DE_8)
 COMB(SMB_MINUS,     DE_MINS,       DE_E, DE_O)
 COMB(SMB_PARENL,    DE_LPRN,       DE_A, DE_O)
 COMB(SMB_PARENR,    DE_RPRN,       DE_S, DE_P)
-/* COMB(SMB_PIPE,      DE_PIPE,       DE_1, DE_P) */
-/* COMB(SMB_PLUS,      DE_PLUS,       KC_F8, DE_2) */
 COMB(SMB_QUES,      DE_QUES,       DE_A, DE_P)
 COMB(SMB_QUOT,      DE_QUOT,       DE_E, DE_P)
 COMB(SMB_SCOLON,    DE_SCLN,       DE_O, DE_P)
-/* COMB(SMB_SLASH,     DE_SLSH,       KC_F8, DE_A) */
+/* COMB(SYMB_PLUS,      DE_PLUS,       KC_F8, DE_2) */
+/* COMB(SYMB_EQUAL,     DE_EQL,        KC_F8, DE_1) */
 /* COMB(SMB_STAR,      DE_ASTR,       KC_F8, DE_4) */
-/* COMB(SMB_TILDE,     DE_TILD,       DE_1, DE_T) */
+/* COMB(SMB_PLUS,      DE_PLUS,       DE_1, DE_2, DE_4, DE_8) */

@@ -24,8 +24,11 @@
  │  <  │  ^  │  v  │  >  │     │             │     │ Ctl │ Gui │ Alt │ Esc │
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
                    │     │ Sft │     │ │     │Space│     │
-                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
+                   └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
 ```
+Currently there seems to be a problem with some combos, so for the time being the
+standard symbol layer is accessible via the hold function of Space.
+
 Also see [additional combos](#asetniop-additional-combos)
 
 ## Symbols layer | Numbers layer
@@ -59,7 +62,7 @@ Also see [additional combos](#asetniop-additional-combos)
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  │ vvv │ <<< │ |^| │ >>> │ ^^^ │             │QWER-│  ü  │     │EECLR│RESET│
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │ Slo │ |<| │ |v| │ |>| │ CTL │             │ASET+│  ä  │     │     │     │
+ │ Slo │ |<| │ |v| │ |>| │ CTL │             │ASET+│  ä  │OsSft│     │     │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │ Fst │ Bt4 │     │ Bt5 │ SFT │             │QWER+│     │     │     │Caps │
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
@@ -69,38 +72,7 @@ Also see [additional combos](#asetniop-additional-combos)
 
 # ASETNIOP+ additional combos
 
-<div>
-
-
-<table style="display: inline;">
-    <tr>
-        <th>Symbol</th>
-        <th>Description</th>
-        <th>Keys</th>
-    </tr>
-    <tr>
-        <td>\</td>
-        <td>Backslash</td>
-        <td>T+F1</td>
-    </tr>
-    <tr>
-        <td>[</td>
-        <td>Opening bracket</td>
-        <td>2+F4</td>
-    </tr>
-    <tr>
-        <td>]</td>
-        <td>Closing bracket</td>
-        <td>4+F4</td>
-    </tr>
-    <tr>
-        <td>^</td>
-        <td>Caret</td>
-        <td>N+F1</td>
-    </tr>
-</table>
-
-<table style="display: inline;">
+<table>
     <tr>
         <th>Command</th>
         <th>Keys</th>
@@ -114,19 +86,27 @@ Also see [additional combos](#asetniop-additional-combos)
         <td>Space+Right</td>
     </tr>
     <tr>
-        <td>PgUp</td>
+        <td>Page Up</td>
         <td>Up+Left</td>
     </tr>
     <tr>
-        <td>PgDown</td>
+        <td>Page Down</td>
         <td>Down+Right</td>
     </tr>
     <tr>
-        <td>PrevTab</td>
+        <td>Previous Word</td>
+        <td>s+Left</td>
+    </tr>
+    <tr>
+        <td>Next Word</td>
+        <td>s+Right</td>
+    </tr>
+    <tr>
+        <td>Previous Tab</td>
         <td>Down+Left</td>
     </tr>
     <tr>
-        <td>NextTab</td>
+        <td>Next Tab</td>
         <td>Up+Right</td>
     </tr>
     <tr>
@@ -134,7 +114,7 @@ Also see [additional combos](#asetniop-additional-combos)
         <td>Alt+GUI</td>
     </tr>
     <tr>
-        <td>PrtScrn</td>
+        <td>Print Screen</td>
         <td>N+ESC</td>
     </tr>
     <tr>
@@ -142,8 +122,6 @@ Also see [additional combos](#asetniop-additional-combos)
         <td>Left+Right+Ctrl+ESC</td>
     </tr>
 </table>
-
-</div>
 
 # Some more key definitions
 
