@@ -18,6 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "struckmb.h"
 #include "keymap_german.h"
+#ifdef COMBO_ENABLE
+#include "g/keymap_combo.h"
+#endif // COMBO_ENABLE
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 

@@ -194,10 +194,10 @@ enum userspace_layers {
 
 // The extra side rows and thumbs
 #define _BL1_1_ KC_TAB
-#define _BR1_1_ DE_UE
 #define _BL2_1_ CTL_ESC
-#define _BR2_1_ ALT_AE
 #define _BL3_1_ OSM_SFT
+#define _BR1_1_ DE_UE
+#define _BR2_1_ ALT_AE
 #define _BR3_1_ OSM_SFT
 #define _BL4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
 #define _BR4_3_ MSE_BSP,SYM_SPC,NAV_DEL
@@ -260,7 +260,7 @@ enum userspace_layers {
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
 #define _AR2_5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
 #define _AR3_5_ XXXXXXX, OSM_CTL, OSM_GUI, OSM_ALT, KC_ESC
-#define _AR4_3_ TO_MA,   KC_SPC,  XXXXXXX
+#define _AR4_3_ TO_MA,   SYM_SPC, XXXXXXX
 
 /* Symbols layer
  * _SYM_NUM
@@ -348,18 +348,18 @@ enum userspace_layers {
 
 /* Adjustment layer
  *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │     │  ü  │     │EECLR│RESET│
+ *       │QWER-│  ü  │     │EECLR│RESET│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │  ä  │     │     │NoHrm│
+ *       │ASET+│  ä  │     │     │NoHrm│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │QWER+│QWER-│ASET+│     │Caps │
+ *       │QWER+│     │     │     │Caps │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _AD1_5_           KC_NO, DE_UE, KC_NO, EE_CLR, RESET
-#define _AD2_5_           KC_NO, DE_AE, KC_NO, KC_NO,  KC_NO
-#define _AD3_5_           TO_DP, TO_DM, TO_AS, KC_NO,  KC_CAPS
+#define _AD1_5_           TO_DM, DE_UE, KC_NO, EE_CLR, QK_BOOT
+#define _AD2_5_           TO_AS, DE_AE, KC_NO, KC_NO,  KC_NO
+#define _AD3_5_           TO_DP, KC_NO, KC_NO, KC_NO,  KC_CAPS
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 
 /* Game layer

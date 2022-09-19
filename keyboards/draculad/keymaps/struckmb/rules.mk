@@ -9,17 +9,23 @@ POINTING_DEVICE_DRIVER = pimoroni_trackball
 #COMBO_ENABLE = yes
 
 # Kyria hardware
-ifneq (,$(findstring splitkb/kyria/rev1,$(KEYBOARD)))
+ifneq (,$(findstring draculad,$(KEYBOARD)))
     # Elective features
+    COMBO_ENABLE = yes
     ENCODER_ENABLE = yes
     OLED_ENABLE = yes
     # Nonexistent features
     AUDIO_ENABLE = no
-    BACKLIGHT_ENABLE = yes
+    BACKLIGHT_ENABLE = no
     RGB_MATRIX_ENABLE = no
     # Space savers
     NKRO_ENABLE = no
     VELOCIKEY_ENABLE = no
     WPM_ENABLE = yes
+endif
+
+# Combo stuff
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+	VPATH += keyboards/gboards
 endif
 
