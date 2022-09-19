@@ -1,7 +1,6 @@
 # Bootloader selection
 BOOTLOADER = caterina
 
-COMBO_ENABLE = yes
 
 # Enable the use of OLED displays
 # OLED_ENABLE     = yes
@@ -17,6 +16,7 @@ COMBO_ENABLE = yes
 # Kyria hardware
 ifneq (,$(findstring splitkb/kyria/rev1,$(KEYBOARD)))
     # Elective features
+    COMBO_ENABLE = yes
     ENCODER_ENABLE = no
     OLED_ENABLE = yes
     # Nonexistent features

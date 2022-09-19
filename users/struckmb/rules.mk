@@ -50,3 +50,9 @@ endif
 ifeq ($(strip $(OLED_ENABLE)), yes)
     SRC += bs-oled.c
 endif
+
+# Combo stuff
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+	VPATH += keyboards/gboards
+endif
+

@@ -17,6 +17,9 @@
 #include "struckmb.h"
 /* // Language imports */
 /* #include <sendstring_german.h> */
+#ifdef COMBO_ENABLE
+#include "g/keymap_combo.h"
+#endif // COMBO_ENABLE
 
 /*------------------------*\
 |*-----PROCESS RECORD-----*|

@@ -18,9 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "struckmb.h"
 #include "keymap_german.h"
-#ifdef COMBO_ENABLE
-#include "g/keymap_combo.h"
-#endif // COMBO_ENABLE
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
@@ -183,30 +180,6 @@ static void render_logo(void) {
    };
   oled_write_raw_P(drac_logo, sizeof(drac_logo));
 }
-
-/* static void render_status(void) { */
-/*     oled_write_P(PSTR("This is\n~~~~~~~~~\nDracu\nLad\n~~~~~~~~~\nv2.0 ;)\n~~~~~~~~~\n"), false); */
-/*     uint8_t n = get_current_wpm(); */
-/*     char    wpm_counter[4]; */
-/*     wpm_counter[3] = '\0'; */
-/*     wpm_counter[2] = '0' + n % 10; */
-/*     wpm_counter[1] = (n /= 10) % 10 ? '0' + (n) % 10 : (n / 10) % 10 ? '0' : ' '; */
-/*     wpm_counter[0] = n / 10 ? '0' + n / 10 : ' '; */
-/*     oled_write_P(PSTR("WPM:"), false); */
-/*     oled_write(wpm_counter, false); */
-/*     led_t led_state = host_keyboard_led_state(); */
-/*     oled_write_P(PSTR("\nCaps: "), false); */
-/*     oled_write_P(led_state.caps_lock ? PSTR("on ") : PSTR("off"), false); */
-/*     oled_write_P(PSTR("\n"), false); */
-/*     switch (get_highest_layer(layer_state)) { */
-/*         case 0: */
-/*             oled_write_P(PSTR("Base   "), false); */
-/*             break; */
-/*         default: */
-/*             oled_write_P(PSTR("Unkn.  "), false); */
-/*             break; */
-/*     } */
-/* } */
 
 bool oled_task_keymap(void) {
     if (is_keyboard_master()) {
