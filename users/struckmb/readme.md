@@ -27,31 +27,31 @@
                    └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
 ```
 Currently there seems to be a problem with some combos, so for the time being the
-standard symbol layer is accessible via the hold function of Space.
+standard symbol layer is accessible via Space-hold function.
 
 Also see [additional combos](#asetniop-additional-combos)
 
 ## Symbols layer | Numbers layer
 ```
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- │  €  │  _  │  [  │  ]  │  ^  │             │ < > │ 7 / │ 8 ( │ 9 ) │ , ; │
+ │  @  │  _  │  [  │  ]  │  ^  │             │ < > │ 1 ! │ 2 " │ 4 $ │ 8 ( │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │  \  │  /  │  {  │  }  │  @  │             │ - _ │ 4 $ │ 5 % │ 6 & │ + * │
+ │  \  │  /  │  {  │  }  │  *  │             │ - _ │  (  │  )  │  =  │  &  │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │ # ' │  $  │  |  │  ~  │  `  │             │ 0 = │ 1 ! │ 2 " │ 3 § │ . : │
+ │ # ' │  $  │  |  │  ~  │  ´  │             │ + * │  %  │  "  │  '  │  €  │
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
-                   │  ¢  │     │     │ │     │     │     │
+                   │     │     │     │ │     │     │  ¢  │
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘
 ```
 
 ## Navigation layer | Function layer
 ```
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- │PgUp │ BSp │  ^  │ Del │PgDn │             │OsAlt│ F07 │ F08 │ F09 │ F10 │
+ │PgUp │ BSp │  ^  │ Del │PgDn │             │     │ F01 │ F02 │ F04 │ F08 │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │Home │  <  │  v  │  >  │ End │             │OsGui│ F04 │ F05 │ F06 │ F11 │
+ │Home │  <  │  v  │  >  │ End │             │OsOff│OsCtl│OsGui│OsAlt│OsAGr│
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │ Ins │ Cut │Copy │Paste│PrScr│             │OsCtl│ F01 │ F02 │ F03 │ F12 │
+ │ Ins │ Cut │Copy │Paste│PrScr│             │     │     │     │     │OsSft│
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
                    │     │     │     │ │CAPSL│ App │     │
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘

@@ -102,12 +102,12 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
 void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms) {
     // Write the modifier state, 16 characters
     oled_set_cursor(col, row);
-    oled_write("M: ", false);
-    oled_write((mods & MOD_BIT(KC_RALT)) ? "G " : "  ", (osms & MOD_BIT(KC_RALT)));
-    oled_write((mods & MOD_MASK_SHIFT  ) ? "S " : "  ", (osms & MOD_MASK_SHIFT  ));
-    oled_write((mods & MOD_MASK_CTRL   ) ? "C " : "  ", (osms & MOD_MASK_CTRL   ));
-    oled_write((mods & MOD_MASK_ALT    ) ? "A " : "  ", (osms & MOD_MASK_ALT    ));
-    oled_write((mods & MOD_MASK_GUI    ) ? "M " : "  ", (osms & MOD_MASK_GUI    ));
+    oled_write("X: ", false);
+    oled_write((mods & MOD_MASK_SHIFT  ) ? "S" : " ", (osms & MOD_MASK_SHIFT  ));
+    oled_write((mods & MOD_MASK_CTRL   ) ? "C" : " ", (osms & MOD_MASK_CTRL   ));
+    oled_write((mods & MOD_BIT(KC_RALT)) ? "R" : " ", (osms & MOD_BIT(KC_RALT)));
+    oled_write((mods & MOD_MASK_ALT    ) ? "A" : " ", (osms & MOD_MASK_ALT    ));
+    oled_write((mods & MOD_MASK_GUI    ) ? "M" : " ", (osms & MOD_MASK_GUI    ));
 }
 
 // Writes the currently used OLED display layout

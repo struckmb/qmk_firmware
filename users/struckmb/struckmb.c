@@ -35,6 +35,10 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Return after running through all individual hooks
+    if (keycode == OS_KILL) {
+        if (record->event.pressed) clear_oneshot_mods();
+        return false;
+    }
     return
         process_record_keymap(keycode, record)  &&
 #       ifdef ENCODER_ENABLE
@@ -46,6 +50,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     /* Disable all combos except on ASETNIOP layers */
+    if (keycode >= DE_1 && keycode <= DE_0)
+        return true;
+    if (keycode >= KC_F1 && keycode <= KC_F12)
+        return true;
     return get_highest_layer(default_layer_state) == _ASETNIOP;
 }
 #endif // COMBO_ENABLE

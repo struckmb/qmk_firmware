@@ -51,6 +51,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 enum userspace_custom_keycodes {
     // Safe stuff
     BS_SAFE = PLACEHOLDER_SAFE_RANGE,
+    OS_KILL,
     // Encoder button
 #   ifdef ENCODER_ENABLE
     BS_ENC0,
@@ -170,6 +171,7 @@ enum userspace_layers {
 #define ALT_AE  MT(MOD_LALT, DE_AE)
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)
 #define OS_ALT  OSM(MOD_LALT)
+#define OS_ALG  OSM(MOD_RALT)
 #define OS_CTL  OSM(MOD_LCTL)
 #define OS_GUI  OSM(MOD_LGUI)
 #define OS_SFT  OSM(MOD_LSFT)
@@ -267,33 +269,33 @@ enum userspace_layers {
  * ├─────┼─────┼─────┼─────┼─────┤
  * │  \  │  /  │  {  │  }  │  @  │
  * ├─────┼─────┼─────┼─────┼─────┤
- * │ # ' │  $  │  |  │  ~  │  `  │
+ * │ # ' │  $  │  |  │  ~  │  ´  │
  * └─────┴─────┴─────┼─────┼─────┼─────┐
  *                   │  ¢  │     │     │
  *                   └─────┴─────┴─────┘
  */
-#define _SY1_5_ DE_EURO,DE_UNDS,DE_LBRC,DE_RBRC,DE_CIRC
-#define _SY2_5_ DE_BSLS,DE_SLSH,DE_LCBR,DE_RCBR,DE_AT
-#define _SY3_5_ KC_NUHS,DE_DLR,DE_PIPE,DE_TILD,DE_GRV
-#define _SY4_3_ DE_CENT, KC_TRNS, KC_TRNS
+#define _SY1_5_ DE_AT,  DE_UNDS,DE_LBRC,DE_RBRC,DE_CIRC
+#define _SY2_5_ DE_BSLS,DE_SLSH,DE_LCBR,DE_RCBR,DE_ASTR
+#define _SY3_5_ KC_NUHS,DE_DLR, DE_PIPE,DE_TILD,DE_ACUT
+#define _SY4_3_ KC_TRNS, KC_TRNS, KC_TRNS
 
 /* Numbers layer
  * _SYM_NUM
  *  This layer contains numbers and the associated symbols.
  *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │ < > │ 7 / │ 8 ( │ 9 ) │ , ; │
+ *       │ < > │ 1 ! │ 2 " │ 4 $ │ 8 ( │
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │ - _ │ 4 $ │ 5 % │ 6 & │ + * │
+ *       │ - _ │  (  │  )  │  =  │  &  │
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │ 0 = │ 1 ! │ 2 " │ 3 § │ . : │
+ *       │ 0 = │  %  │  "  │  '  │  €  │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _NU1_5_           DE_LABK, KC_7,   KC_8,   KC_9,   DE_COMM
-#define _NU2_5_           DE_MINS, KC_4,   KC_5,   KC_6,   DE_PLUS
-#define _NU3_5_           DE_0,    KC_1,   KC_2,   KC_3,   DE_DOT
-#define _NU4_3_  KC_TRNS, KC_TRNS, KC_TRNS
+#define _NU1_5_           DE_LABK, KC_1,    KC_2,    KC_4,    KC_8
+#define _NU2_5_           DE_MINS, DE_RPRN, DE_RPRN, DE_EQL,  DE_AMPR
+#define _NU3_5_           DE_PLUS, DE_HASH, DE_DQUO, DE_QUOT, DE_EURO
+#define _NU4_3_  KC_TRNS, KC_TRNS, DE_CENT
 
 /* Navigation layer
  * _NAV_FUN
@@ -314,19 +316,19 @@ enum userspace_layers {
 
 /* Function layer
  *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │OsAlt│ F07 │ F08 │ F09 │ F10 │
+ *       │     │ F01 │ F02 │ F04 │ F08 │
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │OsGui│ F04 │ F05 │ F06 │ F11 │
+ *       │     │OsCtl│OsGui│OsAlt│OsAGr│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │OsCtl│ F01 │ F02 │ F03 │ F12 │
+ *       │     │     │     │     │OsSft│
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │CAPSL│ App │     │
  * └─────┴─────┴─────┘
  */
-#define _FU1_5_           OS_ALT, KC_F7, KC_F8, KC_F9, KC_F10
-#define _FU2_5_           OS_GUI, KC_F4, KC_F5, KC_F6, KC_F11
-#define _FU3_5_           OS_CTL, KC_F1, KC_F2, KC_F3, KC_F12
-#define _FU4_3_  KC_RALT, KC_APP,  KC_TRNS
+#define _FU1_5_          KC_NO,  KC_F1,  KC_F2,  KC_F4,  KC_F8
+#define _FU2_5_          OS_KILL,  OS_CTL, OS_GUI, OS_ALT, OS_ALG
+#define _FU3_5_          KC_NO,  KC_NO,  KC_NO,  KC_NO,  OS_SFT
+#define _FU4_3_  OS_ALG, KC_APP, KC_TRNS
 
 /* Mouse layer
  * ┌─────┬─────┬─────┬─────┬─────┐
@@ -359,40 +361,4 @@ enum userspace_layers {
 #define _AD2_5_           TO_AS, DE_AE, OS_SFT, KC_NO,  KC_NO
 #define _AD3_5_           TO_DP, KC_NO, KC_NO,  KC_NO,  KC_CAPS
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
-
-/* Game layer
- * This layer turns off the tap-hold keys for the left half.
- *      ┌─────┬─────┬─────┬─────┬─────┐
- *      │  Q  │  W  │  E  │  R  │  T  │
- *      ├─────┼─────┼─────┼─────┼─────┤
- *  Tab │  A  │  S  │  D  │  F  │  G  │
- *      ├─────┼─────┼─────┼─────┼─────┤
- * Shift│  Z  │  X  │  C  │  V  │  B  │
- *      └─────┴─────┴─────┼─────┼─────┼─────┐
- *                        │ Esc │Enter│Space│
- *                        └─────┴─────┴─────┘
- */
-/* #define _GA1_5_ KC_Q,   KC_W,   KC_E,   KC_R,   KC_T */
-/* #define _GA1_1_ _______ */
-/* #define _GA2_5_ KC_A,   KC_S,   KC_D,   KC_F,   KC_G */
-/* #define _GA2_1_ KC_TAB */
-/* #define _GA3_5_ KC_Z,   KC_X,   KC_C,   KC_V,   KC_B */
-/* #define _GA3_1_ KC_LSFT */
-/* #define _GA4_3_ KC_ESC, KC_ENT, KC_SPC */
-
-/* Media layer
- *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │Speed│ Mod │ Hue │ Sat │ Bri │ RGB light control
- *       ├─────┼─────┼─────┼─────┼─────┤
- *       │Togg.│Prev.│MuTog│MuStp│Next │ Media control
- *       ├─────┼─────┼─────┼─────┼─────┤
- *       │Sink │Vol -│ Mut │Eject│Vol +│ Volume control
- * ┌─────┼─────┼─────┼─────┴─────┴─────┘
- * │OledL│Veloc│Music│                   Feature control on keyboard
- * └─────┴─────┴─────┘
- */
-/* #define _ME1_5_ RGB_SPI,RGB_MOD,RGB_HUI,RGB_SAI,RGB_VAI */
-/* #define _ME2_5_ RGB_TOG,KC_MPRV,KC_MPLY,KC_MSTP,KC_MNXT */
-/* #define _ME3_5_ KC_F13, KC_VOLD,KC_MUTE,KC_EJCT,KC_VOLU */
-/* #define _ME4_3_ BS_OLED,VLK_TOG,MU_TOG */
 
