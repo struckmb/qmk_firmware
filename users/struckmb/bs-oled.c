@@ -151,12 +151,17 @@ void render_status_lite(uint8_t row, uint8_t col) {
         // Show RGB mode as an overlay in media mode.
 #       ifdef RGB_MATRIX_ENABLE
         case _MSE_ADJ:
-            render_rgb_lite(row + 4, col + 0);
+            render_rgb_lite(row + 4, col);
             break;
 #       endif // RGB_MATRIX_ENABLE
             // Show the modifier if nothing else is doing anything
         default:
-            render_modifiers_lite(row + 4, col + 0, this_all, this_osm);
+            render_modifiers_lite(row + 4, col, this_all, this_osm);
             break;
     }
+#   ifdef WPM_ENABLE
+    oled_set_cursor(col, row + 6);
+    oled_write_P(PSTR("WPM: "), false);
+    oled_write(get_u8_str(get_current_wpm(), ' '), false);
+#   endif // WPM_ENABLE
 }

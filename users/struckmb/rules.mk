@@ -13,12 +13,15 @@ CONSOLE_ENABLE = no     # Allows console output with a command
 COMMAND_ENABLE = no     # Some bootmagic thing i dont use
 SLEEP_LED_ENABLE = no   # Breathes LED's when computer is asleep. Untested.
 MIDI_ENABLE = no        # Midi driver (untested)
-UNICODE_ENABLE = no 	# We use unicodemap, not unicode
-UCIS_ENABLE = no 	# We use unicodemap, not ucis
+UNICODE_ENABLE = no     # We use unicodemap, not unicode
+UCIS_ENABLE = no        # We use unicodemap, not ucis
 VARIABLE_TRACE = no     # Allows debugging variables
 KEY_LOCK_ENABLE = no    # Allows locking any key. Not used in general
 RGBLIGHT_ENABLE = no    # LED strip, but there is RGB_MATRIX instead
 TAP_DANCE_ENABLE = no   # Tap dance keys; i don't use tap dance
+SPACE_CADET_ENABLE = no
+GRAVE_ESC_ENABLE = no 
+MAGIC_ENABLE = no
 
 # These features can be disabled at whim
 NKRO_ENABLE ?= yes      # Default is 6KRO
@@ -30,7 +33,7 @@ WPM_ENABLE ?= yes       # Get WPM reports as you type
 # BACKLIGHT_ENABLE        # Switch LEDs
 # ENCODER_ENABLE          # Rotary encoder
 # RGB_MATRIX_ENABLE       # RGB LEDs
-# OLED_ENABLE  	          # For OLED
+# OLED_ENABLE             # For OLED
 
 # Userspace code
 SRC += struckmb.c

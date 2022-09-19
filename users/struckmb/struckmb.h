@@ -187,7 +187,7 @@ enum userspace_layers {
 #ifdef COMBO_ENABLE
 #   define TO_AS   DF(_ASETNIOP)
 #else
-#   define TO_AS   KC_NO
+#   define TO_AS   DF(_DEFAULT)
 #endif // COMBO_ENABLE
 #define TO_MA   OSL(_MSE_ADJ)
 #define TO_NF   OSL(_NAV_FUN)
@@ -350,9 +350,9 @@ enum userspace_layers {
  *       ┌─────┬─────┬─────┬─────┬─────┐
  *       │     │  ü  │     │EECLR│RESET│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │  ä  │     │HrmOn│NoHrm│
+ *       │     │  ä  │     │     │NoHrm│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │     │     │     │Caps │
+ *       │QWER+│QWER-│ASET+│     │Caps │
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
