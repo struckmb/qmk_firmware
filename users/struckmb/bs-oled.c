@@ -68,11 +68,18 @@ void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer, bool small) {
         case _HRM_OFF:
             oled_write("QWER-", false);
             break;
-#ifdef COMBO_ENABLE
-        case _ASETNIOP:
-            oled_write("ASET+", false);
-            break;
-#endif // COMBO_ENABLE
+#       ifdef COMBO_ENABLE
+#       ifdef ASETNIOP_ENABLE
+    case _ASETNIOP:
+        oled_write("ASET+", false);
+        break;
+#       endif // ASETNIOP_ENABLE
+#       ifdef ARTSENIO_ENABLE
+    case _ARTSENIO:
+        oled_write("ARTS", false);
+        break;
+#       endif // ARTSENIO_ENABLE
+#       endif // COMBO_ENABLE
         default:
             oled_write(" N/A ", false);
     }

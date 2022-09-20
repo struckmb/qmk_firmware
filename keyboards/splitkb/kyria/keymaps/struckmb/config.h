@@ -25,6 +25,11 @@
 #define OLED_DISPLAY_128X64
 #endif
 
+#ifdef COMBO_ENABLE
+#define ASETNIOP_ENABLE
+#define ARTSENIO_ENABLE
+#endif
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_HUE_STEP  8
 #    define RGBLIGHT_SAT_STEP  8

@@ -35,12 +35,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC0
     ),
 #   ifdef COMBO_ENABLE
+#   ifdef ASETNIOP_ENABLE
     [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX,
         _BL2_1_,_AL2_5_,                _AR2_5_,XXXXXXX,
         XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX
     ),
+#   endif // ASETNIOP_ENABLE
+#   ifdef ARTSENIO_ENABLE
+    [_ARTSENIO] = LAYOUT_split_3x6_5_wrapper(
+        XXXXXXX,_AB1_5_,                _AX1_5_,XXXXXXX,
+        _BL2_1_,_AB2_5_,                _AX2_5_,XXXXXXX,
+        XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
+        XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
+    ),
+#   endif // ARTSENIO_ENABLE
 #   endif // COMBO_ENABLE
     [_SYM_NUM] = LAYOUT_split_3x6_5_wrapper(
         _______,_SY1_5_,                _NU1_5_,_______,

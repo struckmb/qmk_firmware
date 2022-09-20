@@ -50,11 +50,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     /* Disable all combos except on ASETNIOP layers */
-    if (keycode >= DE_1 && keycode <= DE_0)
-        return true;
-    if (keycode >= KC_F1 && keycode <= KC_F12)
-        return true;
-    return get_highest_layer(default_layer_state) == _ASETNIOP;
+    if (keycode >= DE_1 && keycode <= DE_0) return true;
+    if (keycode >= KC_F1 && keycode <= KC_F12) return true;
+#   ifdef ASETNIOP_ENABLE
+    if (get_highest_layer(default_layer_state) == _ASETNIOP) return true;
+#   endif // ASETNIOP_ENABLE
+#   ifdef ARTSENIO_ENABLE
+    if (get_highest_layer(default_layer_state) == _ARTSENIO) return true;
+#   endif // ARTSENIO_ENABLE
+    return false;
 }
 #endif // COMBO_ENABLE
 
