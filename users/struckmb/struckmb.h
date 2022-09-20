@@ -293,7 +293,7 @@ enum userspace_layers {
  * └─────┴─────┴─────┘
  */
 #define _NU1_5_           DE_LABK, KC_1,    KC_2,    KC_4,    KC_8
-#define _NU2_5_           DE_EQL,  DE_RPRN, DE_RPRN, DE_MINS,  DE_AMPR
+#define _NU2_5_           DE_EQL,  DE_LPRN, DE_RPRN, DE_MINS,  DE_AMPR
 #define _NU3_5_           DE_PLUS, DE_PERC, DE_DQUO, DE_QUOT, DE_EURO
 #define _NU4_3_  KC_TRNS, KC_TRNS, DE_CENT
 
