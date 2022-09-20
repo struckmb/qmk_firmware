@@ -23,7 +23,7 @@
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │  <  │  ^  │  v  │  >  │     │             │     │ Ctl │ Gui │ Alt │ Esc │
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
-                   │     │ Sft │     │ │     │Space│     │
+                   │ Ctl │ Sft │     │ │     │Space│     │
                    └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
 ```
 Currently there seems to be a problem with some combos, so for the time being the
@@ -53,9 +53,10 @@ Also see [additional combos](#asetniop-additional-combos)
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │ Ins │ Cut │Copy │Paste│PrScr│             │     │     │     │     │OsSft│
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
-                   │     │     │     │ │CAPSL│ App │     │
+                   │     │     │     │ │     │ App │CapsW│
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘
 ```
+(CapsW = Caps Word - CapsLock turns off automatically)
 
 ## Mouse layer | Adjustment layer
 ```

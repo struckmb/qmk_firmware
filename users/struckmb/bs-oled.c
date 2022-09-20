@@ -100,14 +100,16 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
 }
 
 void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms) {
-    // Write the modifier state, 16 characters
+    bool capsLock = host_keyboard_led_state().caps_lock;
+    // Write the modifier state
     oled_set_cursor(col, row);
-    oled_write("X: ", false);
+    oled_write("M: ", false);
     oled_write((mods & MOD_MASK_SHIFT  ) ? "S" : " ", (osms & MOD_MASK_SHIFT  ));
     oled_write((mods & MOD_MASK_CTRL   ) ? "C" : " ", (osms & MOD_MASK_CTRL   ));
     oled_write((mods & MOD_BIT(KC_RALT)) ? "R" : " ", (osms & MOD_BIT(KC_RALT)));
     oled_write((mods & MOD_MASK_ALT    ) ? "A" : " ", (osms & MOD_MASK_ALT    ));
     oled_write((mods & MOD_MASK_GUI    ) ? "M" : " ", (osms & MOD_MASK_GUI    ));
+    oled_write(capsLock ? " L" : "  ", capsLock);
 }
 
 // Writes the currently used OLED display layout
@@ -140,28 +142,30 @@ void render_status_lite(uint8_t row, uint8_t col) {
     uint8_t this_osm = get_oneshot_mods();
     uint8_t this_all = this_mod|this_osm;
 
-    // Line 1: WPM and layout
+    // Line 1: Layout
     render_keymap(row + 0, col, this_map);
 
     // Line 2: Layer State
     render_layer(row + 2, col, this_layer);
 
-    // Line 3: Mod or info
+#   ifdef WPM_ENABLE
+    // Line 3: WPM and layout
+    oled_set_cursor(col, row + 4);
+    oled_write_P(PSTR("WPM: "), false);
+    oled_write(get_u8_str(get_current_wpm(), ' '), false);
+#   endif // WPM_ENABLE
+
+    // Last line: Mod or info
     switch (this_layer) {
         // Show RGB mode as an overlay in media mode.
 #       ifdef RGB_MATRIX_ENABLE
         case _MSE_ADJ:
-            render_rgb_lite(row + 4, col);
+            render_rgb_lite(row + 6, col);
             break;
 #       endif // RGB_MATRIX_ENABLE
             // Show the modifier if nothing else is doing anything
         default:
-            render_modifiers_lite(row + 4, col, this_all, this_osm);
+            render_modifiers_lite(row + 6, col, this_all, this_osm);
             break;
     }
-#   ifdef WPM_ENABLE
-    oled_set_cursor(col, row + 6);
-    oled_write_P(PSTR("WPM: "), false);
-    oled_write(get_u8_str(get_current_wpm(), ' '), false);
-#   endif // WPM_ENABLE
 }

@@ -249,13 +249,13 @@ enum userspace_layers {
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │  <  │  ^  │  v  │  >  │     │             │     │ Ctl │ Gui │ Alt │ Esc │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                   │     │ Sft │     │ │     │Space│     │
+ *                   │ Ctl │ Sft │     │ │     │Space│     │
  *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
  */
 #define _AL1_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
 #define _AL2_5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
 #define _AL3_5_ KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, XXXXXXX
-#define _AL4_3_ XXXXXXX, OS_SFT,  XXXXXXX
+#define _AL4_3_ OS_CTL,  OS_SFT,  XXXXXXX
 
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
 #define _AR2_5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
@@ -322,13 +322,13 @@ enum userspace_layers {
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │     │     │     │     │OsSft│
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
- * │CAPSL│ App │     │
+ * │     │ App │CapsW│
  * └─────┴─────┴─────┘
  */
 #define _FU1_5_          KC_NO,  KC_F1,  KC_F2,  KC_F4,  KC_F8
 #define _FU2_5_          OS_KILL,  OS_CTL, OS_GUI, OS_ALT, OS_ALG
 #define _FU3_5_          KC_NO,  KC_NO,  KC_NO,  KC_NO,  OS_SFT
-#define _FU4_3_  OS_ALG, KC_APP, KC_TRNS
+#define _FU4_3_  KC_NO,  KC_APP, CAPSWRD
 
 /* Mouse layer
  * ┌─────┬─────┬─────┬─────┬─────┐
