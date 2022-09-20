@@ -51,7 +51,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 enum userspace_custom_keycodes {
     // Safe stuff
     BS_SAFE = PLACEHOLDER_SAFE_RANGE,
-    OS_KILL,
+    NO_MOD,
     // Encoder button
 #   ifdef ENCODER_ENABLE
     BS_ENC0,
@@ -243,23 +243,23 @@ enum userspace_layers {
 
 /* ASETNIOP+ layout
  * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- * │ F1  │ F2  │ F4  │ F8  │     │             │     │  1  │  2  │  4  │  8  │
+ * │  <  │  v  │  ^  │  >  │     │             │     │  1  │  2  │  4  │  8  │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │  a  │  s  │  e  │  t  │     │             │     │  n  │  i  │  o  │  p  │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- * │  <  │  ^  │  v  │  >  │     │             │     │ Ctl │ Gui │ Alt │ Esc │
+ * │ Esc │ Alt │ Gui │ Ctl │     │             │     │ F1  │ F2  │ F4  │ F8  │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                   │ Ctl │ Sft │     │ │     │Space│     │
+ *                   │ Ctl │ Sft │NoMod│ │     │Space│     │
  *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
  */
-#define _AL1_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
+#define _AL1_5_ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
 #define _AL2_5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
-#define _AL3_5_ KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, XXXXXXX
+#define _AL3_5_ KC_ESC,  OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
 #define _AL4_3_ OS_CTL,  OS_SFT,  XXXXXXX
 
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
 #define _AR2_5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
-#define _AR3_5_ XXXXXXX, OS_CTL,  OS_GUI,  OS_ALT,  KC_ESC
+#define _AR3_5_ XXXXXXX, KC_F1,   KC_F2,   KC_F4,   KC_F8
 #define _AR4_3_ TO_MA,   SYM_SPC, XXXXXXX
 
 /* Symbols layer
@@ -320,15 +320,15 @@ enum userspace_layers {
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │     │OsCtl│OsGui│OsAlt│OsAGr│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │     │     │     │     │OsSft│
+ *       │     │NoMod│     │     │OsSft│
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │ App │CapsW│
  * └─────┴─────┴─────┘
  */
-#define _FU1_5_          KC_NO,  KC_F1,  KC_F2,  KC_F4,  KC_F8
-#define _FU2_5_          OS_KILL,  OS_CTL, OS_GUI, OS_ALT, OS_ALG
-#define _FU3_5_          KC_NO,  KC_NO,  KC_NO,  KC_NO,  OS_SFT
-#define _FU4_3_  KC_NO,  KC_APP, CAPSWRD
+#define _FU1_5_         KC_NO,  KC_F1,  KC_F2,  KC_F4,  KC_F8
+#define _FU2_5_         NO_MOD, OS_CTL, OS_GUI, OS_ALT, OS_ALG
+#define _FU3_5_         KC_NO,  NO_MOD, KC_NO,  KC_NO,  OS_SFT
+#define _FU4_3_  KC_NO, KC_APP, CAPSWRD
 
 /* Mouse layer
  * ┌─────┬─────┬─────┬─────┬─────┐
@@ -352,13 +352,13 @@ enum userspace_layers {
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │ASET+│  ä  │OsSft│     │NoHrm│
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │QWER+│     │     │     │Caps │
+ *       │QWER+│     │     │     │CapsW│
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _AD1_5_           TO_DM, DE_UE, KC_NO,  EE_CLR, QK_BOOT
-#define _AD2_5_           TO_AS, DE_AE, OS_SFT, KC_NO,  KC_NO
-#define _AD3_5_           TO_DP, KC_NO, KC_NO,  KC_NO,  KC_CAPS
+#define _AD1_5_           TO_DM,   DE_UE,  KC_NO,  EE_CLR, QK_BOOT
+#define _AD2_5_           TO_AS,   DE_AE,  OS_SFT, KC_NO,  KC_NO
+#define _AD3_5_           TO_DP,   NO_MOD, KC_NO,  KC_NO,  CAPSWRD
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 

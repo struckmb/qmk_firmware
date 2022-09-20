@@ -182,11 +182,13 @@ static void render_logo(void) {
 }
 
 bool oled_task_keymap(void) {
-    if (is_keyboard_master()) {
-        render_qmk_small_logo(0, 0);
-        render_status_lite(5, 0); // Renders the current keyboard state (layer, lock, caps, scroll, etc)
-    } else {
-        render_logo();
+    if (is_oled_on()) {
+        if (is_keyboard_master()) {
+            render_qmk_small_logo(0, 0);
+            render_status_lite(5, 0, true); // Renders the current keyboard state
+        } else {
+            render_logo();
+        }
     }
     return false;
 }

@@ -22,11 +22,11 @@ bool oled_task_user(void);
 // Some generic rendering functions
 void render_qmk_logo(uint8_t row, uint8_t col);
 void render_qmk_small_logo(uint8_t row, uint8_t col);
-void render_layer(uint8_t row, uint8_t col, uint8_t top_layer);
-void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms);
+void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small);
+void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms, bool small);
 void render_encoder(uint8_t row, uint8_t col, uint8_t index, uint8_t layer);
-void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer);
+void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer, bool small);
 #ifdef RGB_MATRIX_ENABLE
 void render_rgb_lite(uint8_t row, uint8_t col);
 #endif // RGB_MATRIX_ENABLE
-void render_status_lite(uint8_t row, uint8_t col);
+void render_status_lite(uint8_t row, uint8_t col, bool small);

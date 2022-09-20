@@ -33,7 +33,7 @@ __attribute__ ((weak)) bool oled_task_keymap(void) {return true;}
 bool oled_task_user(void) {
     if (is_oled_on()) {
         if (oled_task_keymap()) {
-            render_status_lite(0, 0);
+            render_status_lite(0, 0, false);
         }
     }
     return false;
@@ -58,9 +58,9 @@ void render_qmk_small_logo(uint8_t row, uint8_t col) {
     oled_write_P(qmk_logo, false);
 }
 
-void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer) {
+void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer, bool small) {
     oled_set_cursor(col, row);
-    oled_write("D: ", false);
+    oled_write(small ? "B: " : "Base: ", false);
     switch (def_layer) {
         case _DEFAULT:
             oled_write("QWER+", false);
@@ -78,9 +78,9 @@ void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer) {
     }
 }
 
-void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
+void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
     oled_set_cursor(col, row);
-    oled_write("L: ", false);
+    oled_write(small ? "L: " : "Layr: ", false);
     switch (top_layer) {
         case _DEFAULT:
             oled_write("Default ", false);
@@ -99,11 +99,11 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer) {
     }
 }
 
-void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms) {
+void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms, bool small) {
     bool capsLock = host_keyboard_led_state().caps_lock;
     // Write the modifier state
     oled_set_cursor(col, row);
-    oled_write("M: ", false);
+    oled_write(small ? "M: " : "Mods: ", false);
     oled_write((mods & MOD_MASK_SHIFT  ) ? "S" : " ", (osms & MOD_MASK_SHIFT  ));
     oled_write((mods & MOD_MASK_CTRL   ) ? "C" : " ", (osms & MOD_MASK_CTRL   ));
     oled_write((mods & MOD_BIT(KC_RALT)) ? "R" : " ", (osms & MOD_BIT(KC_RALT)));
@@ -134,7 +134,7 @@ void render_rgb_lite(uint8_t row, uint8_t col) {
 }
 #endif // RGB_MATRIX_ENABLE
 
-void render_status_lite(uint8_t row, uint8_t col) {
+void render_status_lite(uint8_t row, uint8_t col, bool small) {
     // Function to print state information; for low flash memory
     uint8_t this_map   = get_highest_layer(default_layer_state);
     uint8_t this_layer = get_highest_layer(layer_state);
@@ -143,16 +143,18 @@ void render_status_lite(uint8_t row, uint8_t col) {
     uint8_t this_all = this_mod|this_osm;
 
     // Line 1: Layout
-    render_keymap(row + 0, col, this_map);
-
+    render_keymap(row + 0, col, this_map, small);
     // Line 2: Layer State
-    render_layer(row + 2, col, this_layer);
+    render_layer(row + 1, col, this_layer, small);
 
 #   ifdef WPM_ENABLE
     // Line 3: WPM and layout
-    oled_set_cursor(col, row + 4);
-    oled_write_P(PSTR("WPM: "), false);
+    oled_set_cursor(col, row + 2);
+    oled_write(small ? "W: " : "WPM: ", false);
     oled_write(get_u8_str(get_current_wpm(), ' '), false);
+    uint8_t lastRow = 3;
+#   else // WPM_ENABLE
+    uint8_t lastRow = 2;
 #   endif // WPM_ENABLE
 
     // Last line: Mod or info
@@ -160,12 +162,12 @@ void render_status_lite(uint8_t row, uint8_t col) {
         // Show RGB mode as an overlay in media mode.
 #       ifdef RGB_MATRIX_ENABLE
         case _MSE_ADJ:
-            render_rgb_lite(row + 6, col);
+            render_rgb_lite(row + lastRow, col);
             break;
 #       endif // RGB_MATRIX_ENABLE
             // Show the modifier if nothing else is doing anything
         default:
-            render_modifiers_lite(row + 6, col, this_all, this_osm);
+            render_modifiers_lite(row + lastRow, col, this_all, this_osm, small);
             break;
     }
 }

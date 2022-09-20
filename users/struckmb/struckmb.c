@@ -35,7 +35,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Return after running through all individual hooks
-    if (keycode == OS_KILL) {
+    if (keycode == NO_MOD) {
         if (record->event.pressed) clear_oneshot_mods();
         return false;
     }
