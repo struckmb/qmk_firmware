@@ -1,6 +1,7 @@
 # Bootloader selection
 BOOTLOADER = caterina
 
+SPLIT_KEYBOARD = yes
 
 # Enable the use of OLED displays
 # OLED_ENABLE     = yes

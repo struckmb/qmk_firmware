@@ -23,8 +23,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TRACKBALL_RIGHT
 
 #ifdef TRACKBALL_RIGHT
-    #define POINTING_DEVICE_RIGHT
-    #define POINTING_DEVICE_INVERT_X
-    #define POINTING_DEVICE_INVERT_Y
+#    define POINTING_DEVICE_RIGHT
+#    define POINTING_DEVICE_INVERT_X
+#    define POINTING_DEVICE_INVERT_Y
 #endif
 
+#ifdef COMBO_ENABLE
+// use ARTSENIO on left half, because
+// it makes no use of the right side
+#    define ARTSENIO_ENABLE
+#    define ASETNIOP_ENABLE
+#endif

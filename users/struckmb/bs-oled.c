@@ -101,6 +101,20 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
         case _MSE_ADJ:
             oled_write("Mse/Adj ", false);
             break;
+#       ifdef ARTSENIO_ENABLE
+        case _ARTS_NUM:
+            oled_write("AS 1/F1 ", false);
+            break;
+        case _ARTS_PAR:
+            oled_write("AS {[]} ", false);
+            break;
+        case _ARTS_SYM:
+            oled_write("AS #&-? ", false);
+            break;
+        case _ARTS_ARR:
+            oled_write("AS <--> ", false);
+            break;
+#       endif // ARTSENIO_ENABLE
         default:
             oled_write("? N/A ? ", false);
     }

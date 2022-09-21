@@ -51,22 +51,61 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _BL3_5_,_BR3_5_,
             BS_ENC0,BS_ENC1,
             _BL4_3_,_BR4_3_
-            ),
+    ),
     [_HRM_OFF] = LAYOUT_wrapper(
             _QL1_5_,_QR1_5_,
             _QL2_5_,_QR2_5_,
             _QL3_5_,_QR3_5_,
             BS_ENC0,BS_ENC1,
             _BL4_3_,_BR4_3_
-            ),
+    ),
 #   ifdef COMBO_ENABLE
+#   ifdef ASETNIOP_ENABLE
     [_ASETNIOP] =  LAYOUT_wrapper(
             _AL1_5_,_AR1_5_,
             _AL2_5_,_AR2_5_,
             _AL3_5_,_AR3_5_,
             BS_ENC0,BS_ENC1,
             _AL4_3_,_AR4_3_
-            ),
+    ),
+#   endif // ASETNIOP_ENABLE
+#   ifdef ARTSENIO_ENABLE
+    [_ARTSENIO] = LAYOUT_wrapper(
+            _AB1_5_,_AX1_5_,
+            _AB2_5_,_AX2_5_,
+            _AB3_5_,_AX3_5_,
+            BS_ENC0,BS_ENC1,
+            _AX4_3_,_AX4_3_
+    ),
+    [_ARTS_NUM] = LAYOUT_wrapper(
+            _AN1_5_,_AX1_5_,
+            _AN2_5_,_AX2_5_,
+            _AB3_5_,_AX3_5_,
+            BS_ENC0,BS_ENC1,
+            _AX4_3_,_AX4_3_
+    ),
+    [_ARTS_PAR] = LAYOUT_wrapper(
+            _AP1_5_,_AX1_5_,
+            _AP2_5_,_AX2_5_,
+            _AB3_5_,_AX3_5_,
+            BS_ENC0,BS_ENC1,
+            _AX4_3_,_AX4_3_
+    ),
+    [_ARTS_SYM] = LAYOUT_wrapper(
+            _AS1_5_,_AX1_5_,
+            _AS2_5_,_AX2_5_,
+            _AB3_5_,_AX3_5_,
+            BS_ENC0,BS_ENC1,
+            _AX4_3_,_AX4_3_
+    ),
+    [_ARTS_ARR] = LAYOUT_wrapper(
+            _AA1_5_,_AX1_5_,
+            _AA2_5_,_AX2_5_,
+            _AB3_5_,_AX3_5_,
+            BS_ENC0,BS_ENC1,
+            _AX4_3_,_AX4_3_
+    ),
+#   endif // ARTSENIO_ENABLE
 #   endif // COMBO_ENABLE
     [_SYM_NUM] = LAYOUT_wrapper(
             _SY1_5_,_NU1_5_,

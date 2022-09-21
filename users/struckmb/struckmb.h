@@ -26,6 +26,9 @@
  *  propagated by only editing this file.
  */
 
+// ids for user-level data sync:
+#define SPLIT_TRANSACTION_IDS_USER USER_SYNC_A
+
 // Rotary encoder
 #ifdef ENCODER_ENABLE
 #include "bs-encoder.h"
@@ -53,7 +56,7 @@ enum userspace_custom_keycodes {
     BS_SAFE = PLACEHOLDER_SAFE_RANGE,
     NO_MOD,
 #   ifdef ARTSENIO_ENABLE
-    ART_A, ART_R, ART_T, ART_S, ART_E, ART_N, ART_I, ART_O,
+    AR_A, AR_S, AR_E,
 #   endif // ARTSENIO_ENABLE
     // Encoder button
 #   ifdef ENCODER_ENABLE
@@ -71,13 +74,18 @@ enum userspace_custom_keycodes {
 /// Enumeration of layers
 enum userspace_layers {
     _DEFAULT = 0, // Base layer
+    // maybe we can remove the following line when using something like MT_OFF?
     _HRM_OFF,     // Base layer w/o home row mod
 #   ifdef COMBO_ENABLE
 #   ifdef ASETNIOP_ENABLE
     _ASETNIOP,    // ASETNIOP layer
 #   endif // ASETNIOP_ENABLE
 #   ifdef ARTSENIO_ENABLE
-    _ARTSENIO,    // ASETNIOP layer
+    _ARTSENIO,    // ARTSENIO layer
+    _ARTS_NUM,    // ARTSENIO numbers layer
+    _ARTS_PAR,    // ARTSENIO parens layer
+    _ARTS_SYM,    // ARTSENIO symbols layer
+    _ARTS_ARR,    // ARTSENIO arrows layer
 #   endif // ARTSENIO_ENABLE
 #   endif // COMBO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
@@ -194,6 +202,9 @@ enum userspace_layers {
 #define NAV_DEL LT(_NAV_FUN, KC_DEL )
 #define TO_DP   DF(_DEFAULT)
 #define TO_DM   DF(_HRM_OFF)
+#define TO_MA   OSL(_MSE_ADJ)
+#define TO_NF   OSL(_NAV_FUN)
+
 #ifdef COMBO_ENABLE
 #ifdef ASETNIOP_ENABLE
 #   define TO_AS   DF(_ASETNIOP)
@@ -202,12 +213,13 @@ enum userspace_layers {
 #endif // ASETNIOP_ENABLE
 #ifdef ARTSENIO_ENABLE
 #   define TO_AR   DF(_ARTSENIO)
+#define AR_A LT(_ARTS_PAR, DE_A)
+#define AR_E LT(_ARTS_SYM, DE_E)
+#define AR_S DE_S
 #else // ARTSENIO_ENABLE
 #   define TO_AR   DF(_DEFAULT)
 #endif // ARTSENIO_ENABLE
 #endif // COMBO_ENABLE
-#define TO_MA   OSL(_MSE_ADJ)
-#define TO_NF   OSL(_NAV_FUN)
 
 // The extra side rows and thumbs
 #define _BL1_1_ KC_TAB
@@ -296,12 +308,20 @@ enum userspace_layers {
 #define _AX2_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define _AX3_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define _AX4_3_ NO_MOD,  XXXXXXX, TO_DP
+
 // base layer
-#define _AB1_5_ ART_S, ART_T, ART_R, ART_A, XXXXXXX
-#define _AB2_5_ ART_O, ART_I, ART_N, ART_E, XXXXXXX
-// digits layer
+#define _AB1_5_ AR_S,   DE_T,   DE_R,   AR_A,   XXXXXXX
+#define _AB2_5_ DE_O,   DE_I,   DE_N,   AR_E,   XXXXXXX
+#define _AB3_5_ KC_ESC, OS_ALT, OS_GUI, OS_CTL, XXXXXXX
+// numbers layer
 #define _AN1_5_ DE_1,  DE_2,  DE_4,  DE_8,  XXXXXXX
 #define _AN2_5_ KC_F1, KC_F2, KC_F4, KC_F8, XXXXXXX
+// parens layer
+#define _AP1_5_ DE_LCBR, DE_LBRC, DE_LPRN, KC_NO, XXXXXXX
+#define _AP2_5_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO, XXXXXXX
+// symbols layer
+#define _AS1_5_ DE_BSLS, DE_HASH, DE_AMPR, DE_EXLM, XXXXXXX
+#define _AS2_5_ DE_PLUS, DE_MINS, DE_QUES, KC_TRNS, XXXXXXX
 // arrows layer
 #define _AA1_5_ KC_PGUP, KC_HOME, KC_UP,   KC_END,   XXXXXXX
 #define _AA2_5_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX

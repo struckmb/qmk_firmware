@@ -47,7 +47,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ARTSENIO] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AB1_5_,                _AX1_5_,XXXXXXX,
         _BL2_1_,_AB2_5_,                _AX2_5_,XXXXXXX,
-        XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
+        XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
+        XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
+    ),
+    [_ARTS_NUM] = LAYOUT_split_3x6_5_wrapper(
+        XXXXXXX,_AN1_5_,                _AX1_5_,XXXXXXX,
+        _BL2_1_,_AN2_5_,                _AX2_5_,XXXXXXX,
+        XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
+        XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
+    ),
+    [_ARTS_PAR] = LAYOUT_split_3x6_5_wrapper(
+        XXXXXXX,_AP1_5_,                _AX1_5_,XXXXXXX,
+        _BL2_1_,_AP2_5_,                _AX2_5_,XXXXXXX,
+        XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
+        XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
+    ),
+    [_ARTS_SYM] = LAYOUT_split_3x6_5_wrapper(
+        XXXXXXX,_AS1_5_,                _AX1_5_,XXXXXXX,
+        _BL2_1_,_AS2_5_,                _AX2_5_,XXXXXXX,
+        XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
+        XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
+    ),
+    [_ARTS_ARR] = LAYOUT_split_3x6_5_wrapper(
+        XXXXXXX,_AA1_5_,                _AX1_5_,XXXXXXX,
+        _BL2_1_,_AA2_5_,                _AX2_5_,XXXXXXX,
+        XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
 #   endif // ARTSENIO_ENABLE

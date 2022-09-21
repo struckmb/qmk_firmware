@@ -22,7 +22,7 @@ KEY_LOCK_ENABLE = no    # Allows locking any key. Not used in general
 RGBLIGHT_ENABLE = no    # LED strip, but there is RGB_MATRIX instead
 TAP_DANCE_ENABLE = no   # Tap dance keys; i don't use tap dance
 SPACE_CADET_ENABLE = no
-GRAVE_ESC_ENABLE = no 
+GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
 AVR_USE_MINIMAL_PRINTF = yes
 

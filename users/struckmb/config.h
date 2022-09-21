@@ -11,7 +11,6 @@
 #   define NO_DEBUG
 #endif
 #define NO_MUSIC_MODE
-#define LAYER_STATE_8BIT
 
 #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
 #   define NO_PRINT
@@ -28,6 +27,9 @@
 
 #ifdef COMBO_ENABLE
 #   define COMBO_SHOULD_TRIGGER
+#else // COMBO_ENABLE
+    // save some more space
+#   define LAYER_STATE_8BIT
 #endif // COMBO_ENABLE
 
 // Tap-hold settings
