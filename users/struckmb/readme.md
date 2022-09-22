@@ -23,13 +23,26 @@
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │ Esc │ Alt │ Gui │ Ctl │     │             │     │ F1  │ F2  │ F4  │ F8  │
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
-                   │ Ctl │ Sft │NoMod│ │     │Space│     │
+                   │ Ctl │ Sft │NoMod│ │ Adj │Space│NoMod│
                    └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
 ```
 Currently there seems to be a problem with some combos, so for the time being the
 standard symbol layer is accessible via Space-hold function.
 
 Also see [additional combos](#asetniop-additional-combos)
+
+## ARTSENIO layout
+```
+ ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ │  s  │  t  │  r  │  a  │     │             │     │     │     │     │     │
+ ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ │  o  │  i  │  n  │  e  │     │             │     │ Ctl │ Gui │ Alt │     │
+ ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ │     │     │     │     │     │             │     │     │     │     │     │
+ └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
+                   │ Adj │NoMod│QWER+│ │ Adj │NoMod│QWER+│
+                   └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
+```
 
 ## Symbols layer | Numbers layer
 ```
@@ -53,7 +66,7 @@ Also see [additional combos](#asetniop-additional-combos)
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │ Ins │ Cut │Copy │Paste│PrScr│             │     │NoMod│     │     │OsSft│
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
-                   │     │     │     │ │     │ App │CapsW│
+                   │ARTS-│ASET+│     │ │     │ App │CapsW│
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘
 ```
 (CapsW = Caps Word - CapsLock turns off automatically)
@@ -61,11 +74,11 @@ Also see [additional combos](#asetniop-additional-combos)
 ## Mouse layer | Adjustment layer
 ```
  ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- │ vvv │ <<< │ |^| │ >>> │ ^^^ │             │QWER-│  ü  │     │EECLR│RESET│
+ │ vvv │ <<< │ |^| │ >>> │ ^^^ │             │ARTS-│  ü  │     │EECLR│RESET│
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  │ Slo │ |<| │ |v| │ |>| │ CTL │             │ASET+│  ä  │OsSft│     │     │
  ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- │ Fst │ Bt4 │     │ Bt5 │ SFT │             │QWER+│     │     │     │CapsW│
+ │ Fst │ Bt4 │     │ Bt5 │ SFT │             │QWER-│QWER+│     │     │CapsW│
  └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
                    │ Bt3 │ Bt1 │ Bt2 │ │     │     │     │
                    └─────┴─────┴─────┘ └─────┴─────┴─────┘
