@@ -277,7 +277,7 @@ enum userspace_layers {
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │ Esc │ Alt │ Gui │ Ctl │     │             │     │ F1  │ F2  │ F4  │ F8  │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                   │ Ctl │ Sft │QWER+│ │     │Space│NoMod│
+ *                   │ Ctl │ Sft │QWER+│ │ Adj │Space│NoMod│
  *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
  */
 #define _AL1_5_ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
@@ -296,18 +296,18 @@ enum userspace_layers {
  * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  * │  s  │  t  │  r  │  a  │     │             │     │     │     │     │     │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- * │  o  │  i  │  n  │  e  │     │             │     │     │     │     │     │
+ * │  o  │  i  │  n  │  e  │     │             │     │ Ctl │ Gui │ Alt │     │
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │     │     │     │     │     │             │     │     │     │     │     │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                   │NoMod│     │QWER+│ │     │     │     │
+ *                   │ Adj │NoMod│QWER+│ │ Adj │NoMod│QWER+│
  *                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
  */
 // for all layers
 #define _AX1_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _AX2_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define _AX2_5_ XXXXXXX, OS_CTL,  OS_GUI,  OS_ALT,  XXXXXXX
 #define _AX3_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _AX4_3_ NO_MOD,  XXXXXXX, TO_DP
+#define _AX4_3_ TO_MA,   NO_MOD,  TO_DP
 
 // base layer
 #define _AB1_5_ AR_S,   DE_T,   DE_R,   AR_A,   XXXXXXX
