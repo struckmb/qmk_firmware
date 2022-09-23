@@ -27,9 +27,6 @@
 
 #ifdef COMBO_ENABLE
 #   define COMBO_SHOULD_TRIGGER
-#else // COMBO_ENABLE
-    // save some more space
-#   define LAYER_STATE_8BIT
 #endif // COMBO_ENABLE
 
 // Tap-hold settings
