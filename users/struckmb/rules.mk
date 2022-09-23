@@ -12,7 +12,7 @@ CAPS_WORD_ENABLE = yes
 BOOTMAGIC_ENABLE = no   # Access to EEPROM settings, not needed
 CONSOLE_ENABLE = no     # Allows console output with a command
 COMMAND_ENABLE = no     # Some bootmagic thing i dont use
-SLEEP_LED_ENABLE = no   # Breathes LED's when computer is asleep. Untested.
+# SLEEP_LED_ENABLE = no   # Breathes LED's when computer is asleep. Untested.
 MIDI_ENABLE = no        # Midi driver (untested)
 MUSIC_ENABLE = no
 UNICODE_ENABLE = no     # We use unicodemap, not unicode
@@ -25,7 +25,6 @@ SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
 AVR_USE_MINIMAL_PRINTF = yes
-
 
 # These features can be disabled at whim
 NKRO_ENABLE ?= yes      # Default is 6KRO
