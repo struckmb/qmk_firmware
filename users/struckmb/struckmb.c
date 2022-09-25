@@ -18,10 +18,7 @@
 /* // Language imports */
 /* #include <sendstring_german.h> */
 #ifdef COMBO_ENABLE
-#include "g/keymap_combo.h"
-/* #ifdef ARTSENIO_ENABLE */
-/* #include "split_util.h" */
-/* #endif // ARTSENIO_ENABLE */
+#    include "g/keymap_combo.h"
 #endif // COMBO_ENABLE
 
 /*------------------------*\
@@ -63,16 +60,16 @@ void keyboard_post_init_user(void) {
 
 #ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    /* Disable all combos except on ASETNIOP layers */
-    /* if (keycode >= DE_1 && keycode <= DE_0) return true; */
-    /* if (keycode >= KC_F1 && keycode <= KC_F12) return true; */
     if (combo_index < ALL_ZZZ) return true;
+#   ifdef COMBO_ENABLE
+    uint8_t this_default_layer = get_highest_layer(default_layer_state);
 #   ifdef ARTSENIO_ENABLE
-    if (combo_index < ARTS_ZZZ_ASET && get_highest_layer(default_layer_state) == _ARTSENIO) return true;
+    if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ && this_default_layer == _ARTSENIO) return true;
 #   endif // ARTSENIO_ENABLE
 #   ifdef ASETNIOP_ENABLE
-    if (combo_index > ARTS_ZZZ_ASET && get_highest_layer(default_layer_state) == _ASETNIOP) return true;
+    if (combo_index > ASET_AAA && combo_index < ASET_ZZZ && this_default_layer == _ASETNIOP) return true;
 #   endif // ASETNIOP_ENABLE
+#   endif // COMBO_ENABLE
     return false;
 }
 #endif // COMBO_ENABLE

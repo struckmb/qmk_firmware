@@ -1,5 +1,4 @@
 
-
 # Common compilation flags
 LTO_ENABLE = yes
 
@@ -12,7 +11,7 @@ CAPS_WORD_ENABLE = yes
 BOOTMAGIC_ENABLE = no   # Access to EEPROM settings, not needed
 CONSOLE_ENABLE = no     # Allows console output with a command
 COMMAND_ENABLE = no     # Some bootmagic thing i dont use
-# SLEEP_LED_ENABLE = no   # Breathes LED's when computer is asleep. Untested.
+SLEEP_LED_ENABLE = no   # Breathes LED's when computer is asleep. Untested.
 MIDI_ENABLE = no        # Midi driver (untested)
 MUSIC_ENABLE = no
 UNICODE_ENABLE = no     # We use unicodemap, not unicode

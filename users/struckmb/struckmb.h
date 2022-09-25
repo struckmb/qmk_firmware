@@ -17,7 +17,6 @@
 
 #pragma once
 #include QMK_KEYBOARD_H
-#include "quantum.h"
 #include "keymap_german.h"
 
 /* Besides loading libraries and definitions, this file has my layout defs
@@ -25,9 +24,6 @@
  *  This file has a couple layouts I use; so that the general changes can be
  *  propagated by only editing this file.
  */
-
-// ids for user-level data sync:
-#define SPLIT_TRANSACTION_IDS_USER USER_SYNC_A
 
 // Rotary encoder
 #ifdef ENCODER_ENABLE
@@ -38,6 +34,7 @@
 #ifdef OLED_ENABLE
 #include "bs-oled.h"
 #endif // OLED_ENABLE
+
 
 // Function definitions that can be accessed through specific keymaps
 // These will be delegated to keymap specific stuff (weak definition)
@@ -54,10 +51,14 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 enum userspace_custom_keycodes {
     // Safe stuff
     BS_SAFE = PLACEHOLDER_SAFE_RANGE,
-    NO_MOD,
+    NO_MOD, ALL_END,
 #   ifdef ARTSENIO_ENABLE
-    AR_A, AR_S, AR_E,
+    AR_START, AR_END, // Dummy key codes for combo definitions
+    AR_A, AR_S, AR_E, AR_O,
 #   endif // ARTSENIO_ENABLE
+#   ifdef ASETNIOP_ENABLE
+    AS_START, AS_END, // Dummy key codes for combo definitions
+#   endif // ASETNIOP_ENABLE
     // Encoder button
 #   ifdef ENCODER_ENABLE
     BS_ENC0,
@@ -90,7 +91,7 @@ enum userspace_layers {
 #   endif // COMBO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
     _NAV_FUN,     // L: Navigation layer, R: Function keys layer
-    _MSE_ADJ      // L: Mouse keys layer, R: Keyboard adjustments
+    _MSE_ADJ,     // L: Mouse keys layer, R: Keyboard adjustments
 };
 
 // some german and combining characters
@@ -216,6 +217,7 @@ enum userspace_layers {
 #define AR_A LT(_ARTS_PAR, DE_A)
 #define AR_E LT(_ARTS_SYM, DE_E)
 #define AR_S DE_S
+#define AR_O DE_O
 #else // ARTSENIO_ENABLE
 #   define TO_AR   DF(_DEFAULT)
 #endif // ARTSENIO_ENABLE
@@ -423,7 +425,7 @@ enum userspace_layers {
  * └─────┴─────┴─────┘
  */
 #define _AD1_5_           TO_AR,   DE_UE, KC_NO,  EE_CLR, QK_BOOT
-#define _AD2_5_           TO_AS,   DE_AE, OS_SFT, KC_NO,  KC_NO
+#define _AD2_5_           TO_AS,   DE_AE, OS_SFT, KC_NO,  EEP_RST
 #define _AD3_5_           TO_DM,   TO_DP, KC_NO,  KC_NO,  CAPSWRD
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 

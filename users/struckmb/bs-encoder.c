@@ -25,25 +25,6 @@
 #   include <string.h>
 #endif // OLED_ENABLE
 
-/* ROTARY ENCODER
- * This contains my general rotary encoder code
- * Encoders each have a list of different modes they can be in.
- * Each mode also have an on click action as well.
- * Modes can be cycled using either shift-click or ctrl-click
- * Modes can be reset using OS click
- * Some modes are only accessible through some keymap layers
- */
-
-/* // Default state for the encoders */
-/* void reset_encoder_state(void) { */
-/*     userspace_config.e0base = 0; */
-/*     userspace_config.e0point = 0; */
-/*     userspace_config.e0rgb = 0; */
-/*     userspace_config.e1base = 1; */
-/*     userspace_config.e1point = 1; */
-/*     userspace_config.e1rgb = 1; */
-/* } */
-
 // Encoder scroll functionality
 bool encoder_update_user(uint8_t index, bool clockwise) {
     uint16_t this_layer = get_highest_layer(layer_state);
@@ -63,7 +44,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             } else {
                 tap_code16(C(S(KC_TAB)));
             }
-
     } else switch (this_layer) {
         case _NAV_FUN:
             // navi layer: page up/down
@@ -98,19 +78,21 @@ bool process_record_encoder(uint16_t keycode, keyrecord_t *record) {
     // Check if and which encoder was pressed
     int encoder_index = keycode == BS_ENC0 ? 0 : keycode == BS_ENC1 ? 1 : -1;
     // Activate encoder function of button
-    if (encoder_index >= 0 && !record->event.pressed) {
-        // Differentiate layer roles
-        switch (get_highest_layer(layer_state)) {
-/* #       ifdef POINTING_DEVICE_ENABLE */
-/* #       endif // POINTING_DEVICE_ENABLE */
-/* #       ifdef MOUSEKEY_ENABLE */
-/*             case _MSE_ADJ: */
-/*                 break; */
-/* #       endif // MOUSEKEY_ENABLE */
-            default:
-                // default: mute
-                tap_code16(KC_MUTE);
-                break;
+    if (encoder_index >= 0) {
+        if (!record->event.pressed) {
+            // Differentiate layer roles
+            /* switch (get_highest_layer(layer_state)) { */
+            /* #       ifdef POINTING_DEVICE_ENABLE */
+            /* #       endif // POINTING_DEVICE_ENABLE */
+            /* #       ifdef MOUSEKEY_ENABLE */
+            /*             case _MSE_ADJ: */
+            /*                 break; */
+            /* #       endif // MOUSEKEY_ENABLE */
+            /* default: */
+            // default: mute
+            tap_code16(KC_MUTE);
+            /* break; */
+            /* } */
         }
         return false;
     }

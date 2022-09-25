@@ -31,6 +31,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef COMBO_ENABLE
 // use ARTSENIO on left half, because
 // it makes no use of the right side
-/* #    define ARTSENIO_ENABLE */
-#    define ASETNIOP_ENABLE
+#   define ASETNIOP_ENABLE
+/* #   define ARTSENIO_ENABLE */
+// if ARTSENIO is enabled we need more than 8 layers
+#   ifdef LAYER_STATE_8BIT
+#      undef LAYER_STATE_8BIT
+#      define LAYER_STATE_16BIT
+#   endif // LAYER_STATE_8BIT
 #endif
