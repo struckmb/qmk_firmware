@@ -312,21 +312,21 @@ enum userspace_layers {
 #define _AX4_3_ TO_MA,   NO_MOD,  TO_DP
 
 // base layer
-#define _AB1_5_ AR_S,   DE_T,   DE_R,   AR_A,   XXXXXXX
-#define _AB2_5_ DE_O,   DE_I,   DE_N,   AR_E,   XXXXXXX
-#define _AB3_5_ KC_ESC, OS_ALT, OS_GUI, OS_CTL, XXXXXXX
+#define _AB1_5_ AR_S,    DE_T,    DE_R,    AR_A,    XXXXXXX
+#define _AB2_5_ DE_O,    DE_I,    DE_N,    AR_E,    XXXXXXX
+#define _AB3_5_ KC_ESC,  OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
 // numbers layer
-#define _AN1_5_ DE_1,  DE_2,  DE_4,  DE_8,  XXXXXXX
-#define _AN2_5_ KC_F1, KC_F2, KC_F4, KC_F8, XXXXXXX
+#define _AN1_5_ DE_1,    DE_2,    DE_4,    DE_8,    XXXXXXX
+#define _AN2_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
 // parens layer
-#define _AP1_5_ DE_LCBR, DE_LBRC, DE_LPRN, KC_NO, XXXXXXX
-#define _AP2_5_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO, XXXXXXX
+#define _AP1_5_ DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS, XXXXXXX
+#define _AP2_5_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO,   XXXXXXX
 // symbols layer
-#define _AS1_5_ DE_BSLS, DE_HASH, DE_AMPR, DE_EXLM, XXXXXXX
+#define _AS1_5_ DE_BSLS, DE_HASH, DE_AMPR, KC_NO,   XXXXXXX
 #define _AS2_5_ DE_PLUS, DE_MINS, DE_QUES, KC_TRNS, XXXXXXX
 // arrows layer
-#define _AA1_5_ KC_PGUP, KC_HOME, KC_UP,   KC_END,   XXXXXXX
-#define _AA2_5_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX
+#define _AA1_5_ KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX
+#define _AA2_5_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX
 #endif // ARTSENIO_ENABLE
 
 /* Symbols layer
