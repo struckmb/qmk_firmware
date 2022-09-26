@@ -105,6 +105,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             BS_ENC0,BS_ENC1,
             _AX4_3_,_AX4_3_
     ),
+    [_ARTS_MSE] = LAYOUT_wrapper(
+            _AM1_5_,_AX1_5_,
+            _AM2_5_,_AX2_5_,
+            _AB3_5_,_AX3_5_,
+            BS_ENC0,BS_ENC1,
+            _AX4_3_,_AX4_3_
+    ),
 #   endif // ARTSENIO_ENABLE
 #   endif // COMBO_ENABLE
     [_SYM_NUM] = LAYOUT_wrapper(

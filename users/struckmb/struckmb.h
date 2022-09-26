@@ -77,7 +77,6 @@ enum userspace_layers {
     _DEFAULT = 0, // Base layer
     // maybe we can remove the following line when using something like MT_OFF?
     _HRM_OFF,     // Base layer w/o home row mod
-#   ifdef COMBO_ENABLE
 #   ifdef ASETNIOP_ENABLE
     _ASETNIOP,    // ASETNIOP layer
 #   endif // ASETNIOP_ENABLE
@@ -87,8 +86,8 @@ enum userspace_layers {
     _ARTS_PAR,    // ARTSENIO parens layer
     _ARTS_SYM,    // ARTSENIO symbols layer
     _ARTS_ARR,    // ARTSENIO arrows layer
+    _ARTS_MSE,    // ARTSENIO mouse layer
 #   endif // ARTSENIO_ENABLE
-#   endif // COMBO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
     _NAV_FUN,     // L: Navigation layer, R: Function keys layer
     _MSE_ADJ,     // L: Mouse keys layer, R: Keyboard adjustments
@@ -327,6 +326,9 @@ enum userspace_layers {
 // arrows layer
 #define _AA1_5_ KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX
 #define _AA2_5_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX
+// arrows layer
+#define _AM1_5_ KC_WH_U, KC_BTN2, KC_MS_U, KC_BTN1, XXXXXXX
+#define _AM2_5_ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX
 #endif // ARTSENIO_ENABLE
 
 /* Symbols layer

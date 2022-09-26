@@ -90,29 +90,32 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
     oled_write(small ? "L: " : "Layr: ", false);
     switch (top_layer) {
         case _DEFAULT:
-            oled_write("Default ", false);
+            oled_write("Default", false);
             break;
         case _SYM_NUM:
-            oled_write("Sym/Num ", false);
+            oled_write("Sym/Num", false);
             break;
         case _NAV_FUN:
-            oled_write("Nav/Fn  ", false);
+            oled_write("Nav/Fn ", false);
             break;
         case _MSE_ADJ:
-            oled_write("Mse/Adj ", false);
+            oled_write("Mse/Adj", false);
             break;
 #       ifdef ARTSENIO_ENABLE
         case _ARTS_NUM:
-            oled_write("AS 1/F1 ", false);
+            oled_write("AS 1/F1", false);
             break;
         case _ARTS_PAR:
-            oled_write("AS {[]} ", false);
+            oled_write("AS {[]}", false);
             break;
         case _ARTS_SYM:
-            oled_write("AS #&-? ", false);
+            oled_write("AS Sym.", false);
             break;
         case _ARTS_ARR:
-            oled_write("AS <--> ", false);
+            oled_write("AS Nav.", false);
+            break;
+        case _ARTS_MSE:
+            oled_write("AS Mse ", false);
             break;
 #       endif // ARTSENIO_ENABLE
         default:
