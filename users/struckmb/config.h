@@ -19,10 +19,10 @@
 // Mousekey mode
 #ifdef MOUSEKEY_ENABLE
 #   define MK_COMBINED
-/* #   define MOUSEKEY_MAX_SPEED 4 */
-/* #   define MOUSEKEY_TIME_TO_MAX 45 */
-/* #   define MOUSEKEY_WHEEL_MAX_SPEED 20 */
-/* #   define MOUSEKEY_WHEEL_TIME_TO_MAX 60 */
+#   define MOUSEKEY_MAX_SPEED 4
+#   define MOUSEKEY_TIME_TO_MAX 45
+#   define MOUSEKEY_WHEEL_MAX_SPEED 20
+#   define MOUSEKEY_WHEEL_TIME_TO_MAX 60
 #endif // MOUSEKEY_ENABLE
 
 #ifdef COMBO_ENABLE
