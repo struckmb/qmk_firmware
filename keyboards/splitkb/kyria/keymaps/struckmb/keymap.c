@@ -22,19 +22,14 @@
 #define LAYOUT_split_3x6_5_wrapper(...) LAYOUT_split_3x6_5(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_DEFAULT] = LAYOUT_split_3x6_5_wrapper(
-        _BL1_1_,_BL1_5_,                _BR1_5_,_BR1_1_,
-        _BL2_1_,_BL2_5_,                _BR2_5_,_BR2_1_,
-        _BL3_1_,_BL3_5_,xxx2xxx,xxx2xxx,_BR3_5_,_BR3_1_,
-        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC0
+#   ifdef QWERTZ_ENABLE
+    [_QWERTZ] = LAYOUT_split_3x6_5_wrapper(
+        _QL1_1_,_QL1_5_,                _QR1_5_,_QR1_1_,
+        _QL2_1_,_QL2_5_,                _QR2_5_,_QR2_1_,
+        _QL3_1_,_QL3_5_,xxx2xxx,xxx2xxx,_QR3_5_,_QR3_1_,
+        XXXXXXX,XXXXXXX,_QL4_3_,_QR4_3_,XXXXXXX,BS_ENC0
     ),
-    [_HRM_OFF] = LAYOUT_split_3x6_5_wrapper(
-        _BL1_1_,_QL1_5_,                _QR1_5_,_BR1_1_,
-        _BL2_1_,_QL2_5_,                _QR2_5_,_BR2_1_,
-        _BL3_1_,_QL3_5_,xxx2xxx,xxx2xxx,_QR3_5_,_BR3_1_,
-        XXXXXXX,XXXXXXX,_BL4_3_,_BR4_3_,XXXXXXX,BS_ENC0
-    ),
-#   ifdef COMBO_ENABLE
+#   endif // QWERTZ_ENABLE
 #   ifdef ASETNIOP_ENABLE
     [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX,
@@ -75,7 +70,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
 #   endif // ARTSENIO_ENABLE
-#   endif // COMBO_ENABLE
     [_SYM_NUM] = LAYOUT_split_3x6_5_wrapper(
         _______,_SY1_5_,                _NU1_5_,_______,
         _______,_SY2_5_,                _NU2_5_,_______,

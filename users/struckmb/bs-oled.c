@@ -62,24 +62,21 @@ void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer, bool small) {
     oled_set_cursor(col, row);
     oled_write(small ? "B: " : "Base: ", false);
     switch (def_layer) {
-        case _DEFAULT:
-            oled_write("QWERT+", false);
+#       ifdef QWERTZ_ENABLE
+        case _QWERTZ:
+            oled_write("QWERTZ", false);
             break;
-        case _HRM_OFF:
-            oled_write("QWERT-", false);
-            break;
-#       ifdef COMBO_ENABLE
+#       endif // QWERTZ_ENABLE
 #       ifdef ASETNIOP_ENABLE
-    case _ASETNIOP:
-        oled_write("ASET++", false);
-        break;
+        case _ASETNIOP:
+            oled_write("ASET++", false);
+            break;
 #       endif // ASETNIOP_ENABLE
 #       ifdef ARTSENIO_ENABLE
-    case _ARTSENIO:
-        oled_write("ARTSEN", false);
-        break;
+        case _ARTSENIO:
+            oled_write("ARTSEN", false);
+            break;
 #       endif // ARTSENIO_ENABLE
-#       endif // COMBO_ENABLE
         default:
             oled_write(" N/A! ", false);
     }
@@ -89,7 +86,7 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
     oled_set_cursor(col, row);
     oled_write(small ? "L: " : "Layr: ", false);
     switch (top_layer) {
-        case _DEFAULT:
+        case 0:
             oled_write("Default", false);
             break;
         case _SYM_NUM:
@@ -189,7 +186,7 @@ void render_status_lite(uint8_t row, uint8_t col, bool small) {
             render_rgb_lite(row + lastRow, col);
             break;
 #       endif // RGB_MATRIX_ENABLE
-            // Show the modifier if nothing else is doing anything
+              // Show the modifier if nothing else is doing anything
         default:
             render_modifiers_lite(row + lastRow, col, this_all, this_osm, small);
             break;

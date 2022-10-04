@@ -25,6 +25,7 @@
 #define OLED_DISPLAY_128X64
 #endif
 
+#define QWERTZ_ENABLE
 #ifdef COMBO_ENABLE
 #    define SPLIT_USB_DETECT
 // use ARTSENIO on left half, because

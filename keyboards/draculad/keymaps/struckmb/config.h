@@ -28,6 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define POINTING_DEVICE_INVERT_Y
 #endif
 
+#define QWERTZ_ENABLE
 #ifdef COMBO_ENABLE
 // use ARTSENIO on left half, because
 // it makes no use of the right side

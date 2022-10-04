@@ -74,17 +74,17 @@ enum userspace_custom_keycodes {
 
 /// Enumeration of layers
 enum userspace_layers {
-    _DEFAULT = 0, // Base layer
-    // maybe we can remove the following line when using something like MT_OFF?
-    _HRM_OFF,     // Base layer w/o home row mod
+#   ifdef QWERTZ_ENABLE
+    _QWERTZ = 0, // Base layer
+#   endif // QWERTZ_ENABLE
 #   ifdef ASETNIOP_ENABLE
     _ASETNIOP,    // ASETNIOP layer
 #   endif // ASETNIOP_ENABLE
 #   ifdef ARTSENIO_ENABLE
     _ARTSENIO,    // ARTSENIO layer
     _ARTS_NUM,    // ARTSENIO numbers layer
-    _ARTS_PAR,    // ARTSENIO parens layer
     _ARTS_SYM,    // ARTSENIO symbols layer
+    _ARTS_PAR,    // ARTSENIO parens layer
     _ARTS_ARR,    // ARTSENIO arrows layer
     _ARTS_MSE,    // ARTSENIO mouse layer
 #   endif // ARTSENIO_ENABLE
@@ -200,39 +200,42 @@ enum userspace_layers {
 #define MSE_BSP LT(_MSE_ADJ, KC_BSPC )
 #define SYM_SPC LT(_SYM_NUM, KC_SPC )
 #define NAV_DEL LT(_NAV_FUN, KC_DEL )
-#define TO_DP   DF(_DEFAULT)
-#define TO_DM   DF(_HRM_OFF)
 #define TO_MA   OSL(_MSE_ADJ)
 #define TO_NF   OSL(_NAV_FUN)
 
-#ifdef COMBO_ENABLE
+#ifdef QWERTZ_ENABLE
+#   define TO_QZ DF(_QWERTZ)
+#else // QWERTZ_ENABLE
+#   define TO_QZ DF(0)
+#endif // QWERTZ_ENABLE
+
 #ifdef ASETNIOP_ENABLE
 #   define TO_AS   DF(_ASETNIOP)
 #else // ASETNIOP_ENABLE
-#   define TO_AS   DF(_DEFAULT)
+#   define TO_AS   DF(0)
 #endif // ASETNIOP_ENABLE
+
 #ifdef ARTSENIO_ENABLE
 #   define TO_AR   DF(_ARTSENIO)
-#define AR_A LT(_ARTS_PAR, DE_A)
-#define AR_E LT(_ARTS_SYM, DE_E)
-#define AR_S DE_S
-#define AR_O DE_O
+#   define AR_A LT(_ARTS_PAR, DE_A)
+#   define AR_E LT(_ARTS_SYM, DE_E)
+#   define AR_S DE_S
+#   define AR_O DE_O
 #else // ARTSENIO_ENABLE
-#   define TO_AR   DF(_DEFAULT)
+#   define TO_AR   DF(0)
 #endif // ARTSENIO_ENABLE
-#endif // COMBO_ENABLE
 
 // The extra side rows and thumbs
-#define _BL1_1_ KC_TAB
-#define _BL2_1_ CTL_ESC
-#define _BL3_1_ OS_SFT
-#define _BR1_1_ DE_UE
-#define _BR2_1_ ALT_AE
-#define _BR3_1_ OS_SFT
-#define _BL4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
-#define _BR4_3_ MSE_BSP,SYM_SPC,NAV_DEL
+#define _0L1_1_ KC_TAB
+#define _0L2_1_ CTL_ESC
+#define _0L3_1_ OS_SFT
+#define _0R1_1_ DE_UE
+#define _0R2_1_ ALT_AE
+#define _0R3_1_ OS_SFT
+#define _0L4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
+#define _0R4_3_ MSE_BSP,SYM_SPC,NAV_DEL
 
-/* QWERTY layout + HRM
+/* QWERTZ layout
  * 
  *      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
  *  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
@@ -244,30 +247,12 @@ enum userspace_layers {
  *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
  *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
  */
-#define _BL1_5_ DE_Q,  DE_W,  DE_E,  DE_R,    DE_T
-#define _BL2_5_ DE_A,  ALT_S, GUI_D, CTL_F,   DE_G
-#define _BL3_5_ SFT_Y, DE_X,  DE_C,  DE_V,    DE_B
-#define _BR1_5_ DE_Z,  DE_U,  DE_I,  DE_O,    DE_P
-#define _BR2_5_ DE_H,  CTL_J, GUI_K, ALT_L,   ADJ_HOE
-#define _BR3_5_ DE_N,  DE_M,  DE_COMM, DE_DOT, SFT_SZ
-
-/* QWERTY layout
- *      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
- *  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
- *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- *  C/E │  a  │  s  │  d  │  f  │  g  │             │  h  │  j  │  k  │  l  │  ö  │  ä
- *      ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
- *  Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft
- *      └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
- *                        └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
- */
-#define _QL1_5_ DE_Q, DE_W, DE_E, DE_R, DE_T
-#define _QL2_5_ DE_A, DE_S, DE_D, DE_F, DE_G
-#define _QL3_5_ DE_Y, DE_X, DE_C, DE_V, DE_B
-#define _QR1_5_ DE_Z, DE_U, DE_I, DE_O, DE_P
-#define _QR2_5_ DE_H, DE_J, DE_K, DE_L, DE_OE
-#define _QR3_5_ DE_N, DE_M, DE_COMM, DE_DOT, DE_SZ
+#define _QL1_5_ DE_Q,  DE_W,  DE_E,  DE_R,    DE_T
+#define _QL2_5_ DE_A,  ALT_S, GUI_D, CTL_F,   DE_G
+#define _QL3_5_ SFT_Y, DE_X,  DE_C,  DE_V,    DE_B
+#define _QR1_5_ DE_Z,  DE_U,  DE_I,  DE_O,    DE_P
+#define _QR2_5_ DE_H,  CTL_J, GUI_K, ALT_L,   ADJ_HOE
+#define _QR3_5_ DE_N,  DE_M,  DE_COMM, DE_DOT, SFT_SZ
 
 #ifdef ASETNIOP_ENABLE
 /* ASETNIOP+ layout
@@ -284,7 +269,7 @@ enum userspace_layers {
 #define _AL1_5_ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
 #define _AL2_5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
 #define _AL3_5_ KC_ESC,  OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
-#define _AL4_3_ OS_CTL,  OS_SFT,  TO_DP
+#define _AL4_3_ OS_CTL,  OS_SFT,  TO_QZ
 
 #define _AR1_5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
 #define _AR2_5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
@@ -308,27 +293,39 @@ enum userspace_layers {
 #define _AX1_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define _AX2_5_ XXXXXXX, OS_CTL,  OS_GUI,  OS_ALT,  XXXXXXX
 #define _AX3_5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _AX4_3_ TO_MA,   NO_MOD,  TO_DP
+#define _AX4_3_ TO_MA,   NO_MOD,  TO_QZ
 
 // base layer
 #define _AB1_5_ AR_S,    DE_T,    DE_R,    AR_A,    XXXXXXX
 #define _AB2_5_ DE_O,    DE_I,    DE_N,    AR_E,    XXXXXXX
 #define _AB3_5_ KC_ESC,  OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
+#define _AB1_4_ AR_S,    DE_T,    DE_R,    AR_A
+#define _AB2_4_ DE_O,    DE_I,    DE_N,    AR_E
 // numbers layer
 #define _AN1_5_ DE_1,    DE_2,    DE_4,    DE_8,    XXXXXXX
 #define _AN2_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
-// parens layer
-#define _AP1_5_ DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS, XXXXXXX
-#define _AP2_5_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO,   XXXXXXX
+#define _AN1_4_ DE_1,    DE_2,    DE_4,    DE_8
+#define _AN2_4_ KC_F1,   KC_F2,   KC_F4,   KC_F8
 // symbols layer
 #define _AS1_5_ DE_BSLS, DE_HASH, DE_AMPR, KC_NO,   XXXXXXX
 #define _AS2_5_ DE_PLUS, DE_MINS, DE_QUES, KC_TRNS, XXXXXXX
+#define _AS1_4_ DE_BSLS, DE_HASH, DE_AMPR, KC_NO
+#define _AS2_4_ DE_PLUS, DE_MINS, DE_QUES, KC_TRNS
+// parens layer
+#define _AP1_5_ DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS, XXXXXXX
+#define _AP2_5_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO,   XXXXXXX
+#define _AP1_4_ DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS
+#define _AP2_4_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO
 // arrows layer
 #define _AA1_5_ KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX
 #define _AA2_5_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX
+#define _AA1_4_ KC_PGUP, KC_HOME, KC_UP,   KC_END
+#define _AA2_4_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT
 // arrows layer
 #define _AM1_5_ KC_WH_U, KC_BTN2, KC_MS_U, KC_BTN1, XXXXXXX
 #define _AM2_5_ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX
+#define _AM1_4_ KC_WH_U, KC_BTN2, KC_MS_U, KC_BTN1
+#define _AM2_4_ KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R
 #endif // ARTSENIO_ENABLE
 
 /* Symbols layer
@@ -417,17 +414,17 @@ enum userspace_layers {
 
 /* Adjustment layer
  *       ┌─────┬─────┬─────┬─────┬─────┐
- *       │ARTS-│  ü  │     │EECLR│RESET│
+ *       │ARTSE│  ü  │     │EECLR│RESET│
  *       ├─────┼─────┼─────┼─────┼─────┤
  *       │ASET+│  ä  │OsSft│     │     │
  *       ├─────┼─────┼─────┼─────┼─────┤
- *       │QWER-│QWER+│     │     │CapsW│
+ *       │QWERT│     │     │     │CapsW│
  * ┌─────┼─────┼─────┼─────┴─────┴─────┘
  * │     │     │     │
  * └─────┴─────┴─────┘
  */
-#define _AD1_5_           TO_AR,   DE_UE, KC_NO,  EE_CLR, QK_BOOT
-#define _AD2_5_           TO_AS,   DE_AE, OS_SFT, KC_NO,  EEP_RST
-#define _AD3_5_           TO_DM,   TO_DP, KC_NO,  KC_NO,  CAPSWRD
+#define _AD1_5_           TO_AR, DE_UE, KC_NO,  EE_CLR, QK_BOOT
+#define _AD2_5_           TO_AS, DE_AE, OS_SFT, KC_NO,  EEP_RST
+#define _AD3_5_           TO_QZ, KC_NO, KC_NO,  KC_NO,  CAPSWRD
 #define _AD4_3_  KC_TRNS, KC_TRNS, KC_TRNS
 

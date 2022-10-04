@@ -45,21 +45,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DE_OE_4 LT(_4,DE_ODIA)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_DEFAULT] = LAYOUT_wrapper(
-            _BL1_5_,_BR1_5_,
-            _BL2_5_,_BR2_5_,
-            _BL3_5_,_BR3_5_,
-            BS_ENC0,BS_ENC1,
-            _BL4_3_,_BR4_3_
-    ),
-    [_HRM_OFF] = LAYOUT_wrapper(
+#   ifdef QWERTZ_ENABLE
+    [_QWERTZ] = LAYOUT_wrapper(
             _QL1_5_,_QR1_5_,
             _QL2_5_,_QR2_5_,
             _QL3_5_,_QR3_5_,
             BS_ENC0,BS_ENC1,
-            _BL4_3_,_BR4_3_
+            _QL4_3_,_QR4_3_
     ),
-#   ifdef COMBO_ENABLE
+#   endif // QWERTZ_ENABLE
 #   ifdef ASETNIOP_ENABLE
     [_ASETNIOP] =  LAYOUT_wrapper(
             _AL1_5_,_AR1_5_,
@@ -113,7 +107,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _AX4_3_,_AX4_3_
     ),
 #   endif // ARTSENIO_ENABLE
-#   endif // COMBO_ENABLE
     [_SYM_NUM] = LAYOUT_wrapper(
             _SY1_5_,_NU1_5_,
             _SY2_5_,_NU2_5_,
