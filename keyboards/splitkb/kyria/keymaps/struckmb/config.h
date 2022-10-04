@@ -31,7 +31,7 @@
 // use ARTSENIO on left half, because
 // it makes no use of the right side
 #    define ARTSENIO_ENABLE
-#    define ASETNIOP_ENABLE
+/* #    define ASETNIOP_ENABLE */
 #endif
 
 #ifdef RGBLIGHT_ENABLE

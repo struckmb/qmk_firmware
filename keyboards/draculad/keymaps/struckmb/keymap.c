@@ -21,28 +21,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
-// osm keys:
-#define OS_CTL   OSM(MOD_LCTL)
-#define OS_ALT   OSM(MOD_LALT)
-#define OS_GUI   OSM(MOD_LGUI)
-#define OS_SCTL  OSM(MOD_LSFT | MOD_LCTL)
-#define OS_SALT  OSM(MOD_LSFT | MOD_LALT)
-#define OS_SGUI  OSM(MOD_LSFT | MOD_LGUI)
-#define OS_CTAL  OSM(MOD_LALT | MOD_LCTL)
-#define OS_MEH   OSM(MOD_LCTL | MOD_LSFT | MOD_LALT)
-#define OS_HYPR  OSM(MOD_LCTL | MOD_LSFT | MOD_LALT | MOD_LGUI)
+/* // osm keys: */
+/* #define OS_CTL   OSM(MOD_LCTL) */
+/* #define OS_ALT   OSM(MOD_LALT) */
+/* #define OS_GUI   OSM(MOD_LGUI) */
+/* #define OS_SCTL  OSM(MOD_LSFT | MOD_LCTL) */
+/* #define OS_SALT  OSM(MOD_LSFT | MOD_LALT) */
+/* #define OS_SGUI  OSM(MOD_LSFT | MOD_LGUI) */
+/* #define OS_CTAL  OSM(MOD_LALT | MOD_LCTL) */
+/* #define OS_MEH   OSM(MOD_LCTL | MOD_LSFT | MOD_LALT) */
+/* #define OS_HYPR  OSM(MOD_LCTL | MOD_LSFT | MOD_LALT | MOD_LGUI) */
 
-// special / multi purpose keys
-#define SFT_Z   LSFT_T(DE_Z)
-#define SFT_SS  RSFT_T(DE_SS)
-#define LY1_SPC LT(_1,KC_SPC)
-//#define SPC_LY2 LT(_2,KC_SPC)
-//#define ENT_LY1 LT(_1,KC_ENT)
-#define LY2_ENT LT(_2,KC_ENT)
-#define FN_MO13 MO(_1)
-#define FN_MO23 MO(_2)
-#define LAYER_3 MO(_3)
-#define DE_OE_4 LT(_4,DE_ODIA)
+/* // special / multi purpose keys */
+/* #define SFT_Z   LSFT_T(DE_Z) */
+/* #define SFT_SS  RSFT_T(DE_SS) */
+/* #define LY1_SPC LT(_1,KC_SPC) */
+/* //#define SPC_LY2 LT(_2,KC_SPC) */
+/* //#define ENT_LY1 LT(_1,KC_ENT) */
+/* #define LY2_ENT LT(_2,KC_ENT) */
+/* #define FN_MO13 MO(_1) */
+/* #define FN_MO23 MO(_2) */
+/* #define LAYER_3 MO(_3) */
+/* #define DE_OE_4 LT(_4,DE_ODIA) */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #   ifdef QWERTZ_ENABLE
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _QL2_5_,_QR2_5_,
             _QL3_5_,_QR3_5_,
             BS_ENC0,BS_ENC1,
-            _QL4_3_,_QR4_3_
+            _0L4_3_,_0R4_3_
     ),
 #   endif // QWERTZ_ENABLE
 #   ifdef ASETNIOP_ENABLE
