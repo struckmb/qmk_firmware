@@ -24,16 +24,16 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #   ifdef QWERTZ_ENABLE
     [_QWERTZ] = LAYOUT_split_3x6_5_wrapper(
-        _QL1_1_,_QL1_5_,                _QR1_5_,_QR1_1_,
-        _QL2_1_,_QL2_5_,                _QR2_5_,_QR2_1_,
-        _QL3_1_,_QL3_5_,xxx2xxx,xxx2xxx,_QR3_5_,_QR3_1_,
-        XXXXXXX,XXXXXXX,_QL4_3_,_QR4_3_,XXXXXXX,BS_ENC0
+        _0L1_1_,_QL1_5_,                _QR1_5_,_0R1_1_,
+        _0L2_1_,_QL2_5_,                _QR2_5_,_0R2_1_,
+        _0L3_1_,_QL3_5_,xxx2xxx,xxx2xxx,_QR3_5_,_0R3_1_,
+        XXXXXXX,XXXXXXX,_0L4_3_,_0R4_3_,XXXXXXX,BS_ENC0
     ),
 #   endif // QWERTZ_ENABLE
 #   ifdef ASETNIOP_ENABLE
     [_ASETNIOP] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AL1_5_,                _AR1_5_,XXXXXXX,
-        _BL2_1_,_AL2_5_,                _AR2_5_,XXXXXXX,
+        _0L2_1_,_AL2_5_,                _AR2_5_,XXXXXXX,
         XXXXXXX,_AL3_5_,xxx2xxx,xxx2xxx,_AR3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AL4_3_,_AR4_3_,XXXXXXX,XXXXXXX
     ),
@@ -41,31 +41,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #   ifdef ARTSENIO_ENABLE
     [_ARTSENIO] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AB1_5_,                _AX1_5_,XXXXXXX,
-        _BL2_1_,_AB2_5_,                _AX2_5_,XXXXXXX,
+        _0L2_1_,_AB2_5_,                _AX2_5_,XXXXXXX,
         XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
     [_ARTS_NUM] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AN1_5_,                _AX1_5_,XXXXXXX,
-        _BL2_1_,_AN2_5_,                _AX2_5_,XXXXXXX,
+        _0L2_1_,_AN2_5_,                _AX2_5_,XXXXXXX,
         XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
     [_ARTS_PAR] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AP1_5_,                _AX1_5_,XXXXXXX,
-        _BL2_1_,_AP2_5_,                _AX2_5_,XXXXXXX,
+        _0L2_1_,_AP2_5_,                _AX2_5_,XXXXXXX,
         XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
     [_ARTS_SYM] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AS1_5_,                _AX1_5_,XXXXXXX,
-        _BL2_1_,_AS2_5_,                _AX2_5_,XXXXXXX,
+        _0L2_1_,_AS2_5_,                _AX2_5_,XXXXXXX,
         XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
-    [_ARTS_ARR] = LAYOUT_split_3x6_5_wrapper(
+    [_ARTS_NAV] = LAYOUT_split_3x6_5_wrapper(
         XXXXXXX,_AA1_5_,                _AX1_5_,XXXXXXX,
-        _BL2_1_,_AA2_5_,                _AX2_5_,XXXXXXX,
+        _0L2_1_,_AA2_5_,                _AX2_5_,XXXXXXX,
         XXXXXXX,_AB3_5_,xxx2xxx,xxx2xxx,_AX3_5_,XXXXXXX,
         XXXXXXX,XXXXXXX,_AX4_3_,_AX4_3_,XXXXXXX,XXXXXXX
     ),
@@ -124,14 +124,16 @@ void render_encoder(uint8_t row, uint8_t col, uint8_t index, uint8_t layer) {
 
 // print logo, and allow default status printing
 bool oled_task_keymap(void) {
-    if (is_oled_on()) {
-        if (is_keyboard_master()) {
+    if (is_keyboard_master()) {
+        if (is_oled_on()) {
             render_qmk_logo(0, 0);
-            render_status_lite(4, 0, false);
+            render_status_lite(4, 0, true);
 #       ifdef ENCODER_ENABLE
             render_encoder(7, 0, 0, get_highest_layer(layer_state));
 #       endif // ENCODER_ENABLE
-        } else {
+        }
+    } else {
+        if (is_oled_on()) {
             // clang-format off
             static const char PROGMEM kyria_logo[] = {
                 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,128,128,192,224,240,112,120, 56, 60, 28, 30, 14, 14, 14,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7,  7, 14, 14, 14, 30, 28, 60, 56,120,112,240,224,192,128,128,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,

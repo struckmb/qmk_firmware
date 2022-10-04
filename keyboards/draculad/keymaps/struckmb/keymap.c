@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             BS_ENC0,BS_ENC1,
             _AX4_3_,_AX4_3_
     ),
-    [_ARTS_ARR] = LAYOUT_wrapper(
+    [_ARTS_NAV] = LAYOUT_wrapper(
             _AA1_5_,_AX1_5_,
             _AA2_5_,_AX2_5_,
             _AB3_5_,_AX3_5_,

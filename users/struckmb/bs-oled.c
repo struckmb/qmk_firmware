@@ -108,7 +108,7 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
         case _ARTS_SYM:
             oled_write("AS Sym.", false);
             break;
-        case _ARTS_ARR:
+        case _ARTS_NAV:
             oled_write("AS Nav.", false);
             break;
         case _ARTS_MSE:

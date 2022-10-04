@@ -85,7 +85,7 @@ enum userspace_layers {
     _ARTS_NUM,    // ARTSENIO numbers layer
     _ARTS_SYM,    // ARTSENIO symbols layer
     _ARTS_PAR,    // ARTSENIO parens layer
-    _ARTS_ARR,    // ARTSENIO arrows layer
+    _ARTS_NAV,    // ARTSENIO arrows layer
     _ARTS_MSE,    // ARTSENIO mouse layer
 #   endif // ARTSENIO_ENABLE
     _SYM_NUM,     // L: Symbols layer,    R: Numbers layer
@@ -200,6 +200,7 @@ enum userspace_layers {
 #define MSE_BSP LT(_MSE_ADJ, KC_BSPC )
 #define SYM_SPC LT(_SYM_NUM, KC_SPC )
 #define NAV_DEL LT(_NAV_FUN, KC_DEL )
+#define TO_DL   DF(0) // activate default layer
 #define TO_MA   OSL(_MSE_ADJ)
 #define TO_NF   OSL(_NAV_FUN)
 
