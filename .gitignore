@@ -21,6 +21,9 @@
 *.stackdump
 *.sym
 
+# Ardux links
+**/ardux
+
 # QMK-specific
 api_data/v1
 quantum/version.h
@@ -97,5 +100,3 @@ compile_commands.json
 # VIA(L) json files that don't belong in QMK repo
 via*.json
 
-/keyboards/ardux
-/users/ardux
