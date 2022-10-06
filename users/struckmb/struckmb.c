@@ -59,15 +59,14 @@ void keyboard_post_init_user(void) {
 #ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     if (combo_index < ALL_ZZZ) return true;
-#   ifdef COMBO_ENABLE
-    uint8_t this_default_layer = get_highest_layer(default_layer_state);
 #   ifdef ARTSENIO_ENABLE
-    if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ && this_default_layer == _ARTSENIO) return true;
+    if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ
+            && get_highest_layer(default_layer_state) == _ARTSENIO) return true;
 #   endif // ARTSENIO_ENABLE
 #   ifdef ASETNIOP_ENABLE
-    if (combo_index > ASET_AAA && combo_index < ASET_ZZZ && this_default_layer == _ASETNIOP) return true;
+    if (combo_index > ASET_AAA && combo_index < ASET_ZZZ
+            && get_highest_layer(default_layer_state) == _ASETNIOP) return true;
 #   endif // ASETNIOP_ENABLE
-#   endif // COMBO_ENABLE
     return false;
 }
 #endif // COMBO_ENABLE

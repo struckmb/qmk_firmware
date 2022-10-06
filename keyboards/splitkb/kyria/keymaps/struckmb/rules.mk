@@ -14,7 +14,7 @@ SPLIT_KEYBOARD = yes
 # NO_USB_STARTUP_CHECK = yes # Prevent SUSPENDED state loop in case of no USB connection. Frees 286 bytes
 # EXTRAFLAGS        += -flto
 
-# Kyria hardware
+# Hardware settings
 ifneq (,$(findstring splitkb/kyria/rev1,$(KEYBOARD)))
     # Elective features
     COMBO_ENABLE = yes

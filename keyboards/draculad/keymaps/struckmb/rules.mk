@@ -2,7 +2,7 @@
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = pimoroni_trackball
 
-# Kyria hardware
+# Hardware settings
 ifneq (,$(findstring draculad,$(KEYBOARD)))
     # Elective features
     COMBO_ENABLE = yes
