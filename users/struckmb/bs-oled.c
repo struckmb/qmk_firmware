@@ -16,7 +16,7 @@
  */
 #include "bs-oled.h"
 
-#include <string.h>
+/* #include <string.h> */
 // Grab the print function 
 #ifdef ENCODER_ENABLE
 #   include "bs-encoder.h"
@@ -42,7 +42,7 @@ bool oled_task_user(void) {
 /*-------------------------*\
 |*---RENDERING FUNCTIONS---*|
 \*-------------------------*/
-void render_qmk_logo(uint8_t row, uint8_t col) {
+void render_qmk_logo(uint8_t col, uint8_t row) {
     static const char PROGMEM qmk_logo[] = {
         0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
         0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
@@ -50,7 +50,7 @@ void render_qmk_logo(uint8_t row, uint8_t col) {
     oled_set_cursor(col, row);
     oled_write_P(qmk_logo, false);
 }
-void render_qmk_small_logo(uint8_t row, uint8_t col) {
+void render_qmk_small_logo(uint8_t col, uint8_t row) {
     static const char PROGMEM qmk_logo[] = {
         0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0xa0,0xa1,0xa2,0xa3,0xa4,
         0xa5,0xa6,0xa7,0xa8,0xa9,0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0};
@@ -58,7 +58,7 @@ void render_qmk_small_logo(uint8_t row, uint8_t col) {
     oled_write_P(qmk_logo, false);
 }
 
-void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer, bool small) {
+void render_keymap(uint8_t col, uint8_t row, uint8_t def_layer, bool small) {
     oled_set_cursor(col, row);
     oled_write(small ? "B: " : "Base: ", false);
     switch (def_layer) {
@@ -82,7 +82,7 @@ void render_keymap(uint8_t row, uint8_t col, uint8_t def_layer, bool small) {
     }
 }
 
-void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
+void render_layer(uint8_t col, uint8_t row, uint8_t top_layer, bool small) {
     oled_set_cursor(col, row);
     oled_write(small ? "L: " : "Layr: ", false);
     switch (top_layer) {
@@ -120,7 +120,7 @@ void render_layer(uint8_t row, uint8_t col, uint8_t top_layer, bool small) {
     }
 }
 
-void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms, bool small) {
+void render_modifiers(uint8_t col, uint8_t row, uint8_t mods, uint8_t osms, bool small) {
     bool capsLock = host_keyboard_led_state().caps_lock;
     // Write the modifier state
     oled_set_cursor(col, row);
@@ -135,7 +135,7 @@ void render_modifiers_lite(uint8_t row, uint8_t col, uint8_t mods, uint8_t osms,
 
 // Writes the currently used OLED display layout
 #ifdef RGB_MATRIX_ENABLE
-void render_rgb_lite(uint8_t row, uint8_t col) {
+void render_rgb_lite(uint8_t col, uint8_t row) {
     // Writes the currently used OLED display layout, 19 characters
     static char rgb_temp4[4] = {0};
     // Render the oled layout
@@ -157,38 +157,21 @@ void render_rgb_lite(uint8_t row, uint8_t col) {
 
 void render_status_lite(uint8_t row, uint8_t col, bool small) {
     // Function to print state information; for low flash memory
-    uint8_t this_map   = get_highest_layer(default_layer_state);
-    uint8_t this_layer = get_highest_layer(layer_state);
-    uint8_t this_mod = get_mods();
-    uint8_t this_osm = get_oneshot_mods();
-    uint8_t this_all = this_mod|this_osm;
+    uint8_t normalMods   = get_mods();
+    uint8_t oneshotMods  = get_oneshot_mods();
+    uint8_t combinedMods = normalMods | oneshotMods;
 
     // Line 1: Layout
-    render_keymap(row + 0, col, this_map, small);
+    render_keymap(col, row + 0, get_highest_layer(default_layer_state), small);
     // Line 2: Layer State
-    render_layer(row + 1, col, this_layer, small);
+    render_layer(col,  row + 1, get_highest_layer(layer_state), small);
+    // Line 3: Modifiers
+    render_modifiers(col, row + 2, combinedMods, oneshotMods, small);
 
 #   ifdef WPM_ENABLE
-    // Line 3: WPM and layout
-    oled_set_cursor(col, row + 2);
+    // Last line: WPM and layout
+    oled_set_cursor(col, row + 3);
     oled_write(small ? "W: " : "WPM: ", false);
     oled_write(get_u8_str(get_current_wpm(), ' '), false);
-    uint8_t lastRow = 3;
-#   else // WPM_ENABLE
-    uint8_t lastRow = 2;
 #   endif // WPM_ENABLE
-
-    // Last line: Mod or info
-    switch (this_layer) {
-        // Show RGB mode as an overlay in media mode.
-#       ifdef RGB_MATRIX_ENABLE
-        case _MSE_ADJ:
-            render_rgb_lite(row + lastRow, col);
-            break;
-#       endif // RGB_MATRIX_ENABLE
-              // Show the modifier if nothing else is doing anything
-        default:
-            render_modifiers_lite(row + lastRow, col, this_all, this_osm, small);
-            break;
-    }
 }
