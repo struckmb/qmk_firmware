@@ -9,7 +9,7 @@
       ├─────┼─Alt─┼─Gui─┼─Ctl─┼─────┤             ├─────┼─Ctl─┼─Gui─┼─Alt─┼─Adj─┤
   Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft
       └─Sft─┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─Sft─┘
-                        │ Esc │Enter│ Tab │ │BkSpc│Space│ Del │
+                        │ Esc │Enter│ Tab │ │BkSpc│Space│ App │
                         └─Adj─┴─Num─┴─Fun─┘ └─Mou─┴─Sym─┴─Nav─┘
 ```
 
@@ -132,7 +132,7 @@ standard symbol layer is accessible via Space-hold function.
 
 A layout using combos based on the incredible [ARTSEY](http://artsey.io) layout.
 I replaced Y by N on the base layer (y is chorded a+t now) and tweaked the other
-layers to d 
+layers to my needs.
 
 ## Base Layer
 ```
@@ -146,19 +146,28 @@ layers to d
                    │ Adj │NoMod│QWER+│ │ Adj │NoMod│QWER+│
                    └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
 ```
+### Additional ARTSENIO Base Combos
+
+|  Sym   | Combo     |
+|--------|-----------|
+|   y    | a + t     |
+|   ä    | s + r + a |
+|   ö    | o + t     |
+|   ü    | o + r     |
+|   ß    | e + n + s |
+| PrtScr | n + t     |
+
 
 ## Parens Layer
 (hold a)
 ```
      ┌───┐ ┌───┐
-     │ < │ │ ! │
+     │ < │ │ > │
  ┌───┴─┬─┴─┴─┬─┴───┬─────┐
- │  {  │  [  │  (  │ X×X │
+ │  {  │  (  │  )  │ X×X │
  ├─────┼─────┼─────┼─────┤
- │  }  │  ]  │  )  │     │
- └───┬─┴─┬───┴─────┴─────┘
-     │ > │
-     └───┘
+ │  }  │  [  │  ]  │     │
+ └─────┴─────┴─────┴─────┘
 ```
 
 ## Symbols Layer
@@ -199,6 +208,15 @@ layers to d
 ```
 For missing digits or Fn-Keys use the binary representation, e.g. press F1+F4 to
 get F5 or 2+4 to get 6. (2+8 represents 0 here.)
+
+New idea to get get back the layer tab on s:
+```
+ ┌─────┬─────┬─────┬─────┐
+ │ F8  │ 4 $ │ 2 " │ 1 ! │
+ ├─────┼─────┼─────┼─────┤
+ │ F4  │ F2  │ F1  │ 8 ( │
+ └─────┴─────┴─────┴─────┘
+```
 
 ## Navigation Layer
 (r+n for a one shot. i+r+e turns on the layer permanently, <+^+> switches back)

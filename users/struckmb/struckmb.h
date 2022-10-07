@@ -199,7 +199,7 @@ enum userspace_layers {
 #define FUN_TAB LT(_NAV_FUN, KC_TAB )
 #define MSE_BSP LT(_MSE_ADJ, KC_BSPC )
 #define SYM_SPC LT(_SYM_NUM, KC_SPC )
-#define NAV_DEL LT(_NAV_FUN, KC_DEL )
+#define NAV_APP LT(_NAV_FUN, KC_APP )
 #define TO_DL   DF(0) // activate default layer
 #define TO_MA   OSL(_MSE_ADJ)
 #define TO_NF   OSL(_NAV_FUN)
@@ -234,7 +234,7 @@ enum userspace_layers {
 #define _0R2_1_ ALT_AE
 #define _0R3_1_ OS_SFT
 #define _0L4_3_ ADJ_ESC,NUM_ENT,FUN_TAB
-#define _0R4_3_ MSE_BSP,SYM_SPC,NAV_DEL
+#define _0R4_3_ MSE_BSP,SYM_SPC,NAV_APP
 
 /* QWERTZ layout
  * 
@@ -313,10 +313,10 @@ enum userspace_layers {
 #define _AS1_4_ DE_BSLS, DE_HASH, DE_AMPR, KC_NO
 #define _AS2_4_ DE_PLUS, DE_MINS, DE_QUES, KC_TRNS
 // parens layer
-#define _AP1_5_ DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS, XXXXXXX
-#define _AP2_5_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO,   XXXXXXX
-#define _AP1_4_ DE_LCBR, DE_LBRC, DE_LPRN, KC_TRNS
-#define _AP2_4_ DE_RCBR, DE_RBRC, DE_RPRN, KC_NO
+#define _AP1_5_ DE_LCBR, DE_LPRN, DE_RPRN, KC_TRNS, XXXXXXX
+#define _AP2_5_ DE_RCBR, DE_LBRC, DE_RBRC, KC_NO,   XXXXXXX
+#define _AP1_4_ DE_LCBR, DE_LPRN, DE_RPRN, KC_TRNS
+#define _AP2_4_ DE_RCBR, DE_LBRC, DE_RBRC, KC_NO
 // arrows layer
 #define _AA1_5_ KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX
 #define _AA2_5_ KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX
