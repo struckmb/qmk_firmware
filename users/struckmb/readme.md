@@ -198,7 +198,7 @@ layers to my needs.
 |  %  | +  #  |
 
 ## Numbers/Fn Layer
-(o+i for a one shot. o+r+e turns on the layer permanently, F1+4+F8 switches back)
+(hold s or tap o+i for a one shot. o+r+e turns on the layer permanently, F4+2+8 switches back)
 ```
  ┌─────┬─────┬─────┬─────┐
  │ 1 ! │ 2 " │ 4 $ │ 8 ( │
@@ -209,7 +209,7 @@ layers to my needs.
 For missing digits or Fn-Keys use the binary representation, e.g. press F1+F4 to
 get F5 or 2+4 to get 6. (2+8 represents 0 here.)
 
-New idea to get get back the layer tab on s:
+New idea to get get back the layer on tap s:
 ```
  ┌─────┬─────┬─────┬─────┐
  │ F8  │ 4 $ │ 2 " │ 1 ! │

@@ -220,7 +220,7 @@ enum userspace_layers {
 #   define TO_AR   DF(_ARTSENIO)
 #   define AR_A LT(_ARTS_PAR, DE_A)
 #   define AR_E LT(_ARTS_SYM, DE_E)
-#   define AR_S DE_S
+#   define AR_S LT(_ARTS_NUM, DE_S)
 #   define AR_O DE_O
 #else // ARTSENIO_ENABLE
 #   define TO_AR   DF(0)
@@ -303,10 +303,10 @@ enum userspace_layers {
 #define _AB1_4_ AR_S,    DE_T,    DE_R,    AR_A
 #define _AB2_4_ DE_O,    DE_I,    DE_N,    AR_E
 // numbers layer
-#define _AN1_5_ DE_1,    DE_2,    DE_4,    DE_8,    XXXXXXX
-#define _AN2_5_ KC_F1,   KC_F2,   KC_F4,   KC_F8,   XXXXXXX
-#define _AN1_4_ DE_1,    DE_2,    DE_4,    DE_8
-#define _AN2_4_ KC_F1,   KC_F2,   KC_F4,   KC_F8
+#define _AN1_5_ KC_F8,   DE_4,    DE_2,    DE_1,    XXXXXXX
+#define _AN2_5_ KC_F4,   KC_F2,   KC_F1,   DE_8,    XXXXXXX
+#define _AN1_4_ KC_F8,   DE_4,    DE_2,    DE_1
+#define _AN2_4_ KC_F4,   KC_F2,   KC_F1,   DE_8
 // symbols layer
 #define _AS1_5_ DE_BSLS, DE_HASH, DE_AMPR, KC_NO,   XXXXXXX
 #define _AS2_5_ DE_PLUS, DE_MINS, DE_QUES, KC_TRNS, XXXXXXX
