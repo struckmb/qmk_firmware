@@ -199,13 +199,7 @@ layers to my needs.
 
 ## Numbers/Fn Layer
 (hold s or tap o+i for a one shot. o+r+e turns on the layer permanently, F4+2+8 switches back)
-```
- ┌─────┬─────┬─────┬─────┐
- │ 1 ! │ 2 " │ 4 $ │ 8 ( │
- ├─────┼─────┼─────┼─────┤
- │ F1  │ F2  │ F4  │ F8  │
- └─────┴─────┴─────┴─────┘
-```
+
 For missing digits or Fn-Keys use the binary representation, e.g. press F1+F4 to
 get F5 or 2+4 to get 6. (2+8 represents 0 here.)
 
