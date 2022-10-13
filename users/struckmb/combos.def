@@ -1,14 +1,14 @@
 #include "combos/all.def"
-COMB(ALL_ZZZ,            KC_NO,          ALL_END)
+COMB(ALL_ZZZ,            KC_NO,          KC_NO)
 
 #ifdef ARTSENIO_ENABLE
-COMB(ARTS_AAA,           KC_NO,          AR_START)
+COMB(ARTS_AAA,           KC_NO,          KC_NO)
 #include "combos/artsenio.def"
-COMB(ARTS_ZZZ,           KC_NO,          AR_END)
+COMB(ARTS_ZZZ,           KC_NO,          KC_NO)
 #endif // ARTSENIO_ENABLE
 
 #ifdef ASETNIOP_ENABLE
-COMB(ASET_AAA,           KC_NO,          AS_START)
+COMB(ASET_AAA,           KC_NO,          KC_NO)
 #include "combos/asetniop.def"
-COMB(ASET_ZZZ,           KC_NO,          AS_END)
+COMB(ASET_ZZZ,           KC_NO,          KC_NO)
 #endif // ASETNIOP_ENABLE

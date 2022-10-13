@@ -51,13 +51,13 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 enum userspace_custom_keycodes {
     // Safe stuff
     BS_SAFE = PLACEHOLDER_SAFE_RANGE,
-    NO_MOD, ALL_END,
+    NO_MOD,
 #   ifdef ARTSENIO_ENABLE
-    AR_START, AR_END, // Dummy key codes for combo definitions
+    /* AR_START, AR_END, // Dummy key codes for combo definitions */
     AR_A, AR_S, AR_E, AR_O,
 #   endif // ARTSENIO_ENABLE
 #   ifdef ASETNIOP_ENABLE
-    AS_START, AS_END, // Dummy key codes for combo definitions
+    /* AS_START, AS_END, // Dummy key codes for combo definitions */
 #   endif // ASETNIOP_ENABLE
     // Encoder button
 #   ifdef ENCODER_ENABLE

@@ -31,9 +31,11 @@ __attribute__ ((weak)) bool oled_task_keymap(void) {return true;}
 
 // Do sane defaults for regular oled rendering
 bool oled_task_user(void) {
-    if (is_oled_on()) {
-        if (oled_task_keymap()) {
+    if (is_oled_on() && oled_task_keymap()) {
+        if (is_keyboard_master()) {
             render_status_lite(0, 0, false);
+        } else {
+            render_qmk_logo(0, 0);
         }
     }
     return false;
@@ -133,45 +135,20 @@ void render_modifiers(uint8_t col, uint8_t row, uint8_t mods, uint8_t osms, bool
     oled_write(capsLock ? " L" : "  ", capsLock);
 }
 
-// Writes the currently used OLED display layout
-#ifdef RGB_MATRIX_ENABLE
-void render_rgb_lite(uint8_t col, uint8_t row) {
-    // Writes the currently used OLED display layout, 19 characters
-    static char rgb_temp4[4] = {0};
-    // Render the oled layout
-    oled_set_cursor(col, row);
-    oled_write("m", false);
-    itoa(rgb_matrix_get_mode(), rgb_temp4, 10);
-    oled_write(rgb_temp4, false);
-    oled_write(" h", false);
-    itoa(rgb_matrix_get_hue(), rgb_temp4, 10);
-    oled_write(rgb_temp4, false);
-    oled_write(" s", false);
-    itoa(rgb_matrix_get_sat(), rgb_temp4, 10);
-    oled_write(rgb_temp4, false);
-    oled_write(" v", false);
-    itoa(rgb_matrix_get_val(), rgb_temp4, 10);
-    oled_write(rgb_temp4, false);
-}
-#endif // RGB_MATRIX_ENABLE
-
 void render_status_lite(uint8_t row, uint8_t col, bool small) {
-    // Function to print state information; for low flash memory
-    uint8_t normalMods   = get_mods();
     uint8_t oneshotMods  = get_oneshot_mods();
-    uint8_t combinedMods = normalMods | oneshotMods;
 
     // Line 1: Layout
     render_keymap(col, row + 0, get_highest_layer(default_layer_state), small);
     // Line 2: Layer State
     render_layer(col,  row + 1, get_highest_layer(layer_state), small);
     // Line 3: Modifiers
-    render_modifiers(col, row + 2, combinedMods, oneshotMods, small);
+    render_modifiers(col, row + 2, get_mods() | oneshotMods, oneshotMods, small);
 
-#   ifdef WPM_ENABLE
+#       ifdef WPM_ENABLE
     // Last line: WPM and layout
     oled_set_cursor(col, row + 3);
     oled_write(small ? "W: " : "WPM: ", false);
     oled_write(get_u8_str(get_current_wpm(), ' '), false);
-#   endif // WPM_ENABLE
+#       endif // WPM_ENABLE
 }
