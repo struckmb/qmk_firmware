@@ -1,5 +1,6 @@
 #pragma once
 #include "struckmb.h"
+#include "keycodes.h"
 
 /*
 Since our quirky block definitions are basically a list of comma separated
@@ -20,86 +21,6 @@ NOTE: These are all the same length.  If you do a search/replace
 */
 
 // clang-format off
-
-
-// Linux extended chars
-#define DE_F1_2 ALGR(DE_5)       // ½
-#define DE_F1_4 ALGR(DE_4)       // ¼
-#define DE_NOT  ALGR(DE_5)       // ¬
-#define DE_CED  ALGR(DE_ACUT)    // ¸ cedilla (dead)
-#define DE_EURO ALGR(DE_E)       // €
-#define DE_ARRL ALGR(DE_Z)       // ← left arrow
-#define DE_ARRD ALGR(DE_U)       // ↓ down arrow
-#define DE_ARRR ALGR(DE_I)       // → right arrow
-#define DE_DIA  ALGR(DE_UE)      // ¨ diaresis (dead)
-#define DE_LDOT ALGR(DE_J)       // ̣  dot below (dead)
-#define DE_HATS ALGR(DE_AE)      // ˇ hatschek (dead)
-#define DE_FDQL ALGR(DE_Y)       // » double guillemets left
-#define DE_FDQR ALGR(DE_X)       // « double guillemets right
-#define DE_CENT ALGR(DE_C)       // ¢
-#define DE_DQUL ALGR(DE_V)       // „ double quote left
-#define DE_DQUR ALGR(DE_B)       // “ double quote right
-#define DE_DQUE ALGR(DE_N)       // “ double quote right (en)
-#define DE_CDOT ALGR(DE_COMM)    // · center dot
-#define DE_HELL ALGR(DE_DOT)     // … horizontal ellipsis
-#define DE_EN   ALGR(DE_MINS)    // – en dash
-
-#define DE_IEXC S(ALGR(DE_1))    // ̣¡ inverted question mark
-#define DE_F1_8 S(ALGR(DE_2))    // ⅛
-#define DE_F3_8 S(ALGR(DE_5))    // ⅜
-#define DE_F5_8 S(ALGR(DE_6))    // ⅝
-#define DE_F7_8 S(ALGR(DE_7))    // ⅞
-#define DE_TM   S(ALGR(DE_8))    // ™
-#define DE_IQUE S(ALGR(DE_SZ))   // ̣¿ inverted question mark
-#define DE_OGNK S(ALGR(DE_ACUT)) // ˛ ogonek (dead)
-#define DE_REG  S(ALGR(DE_R))    // ®
-#define DE_ARRU S(ALGR(DE_U))    // ↑ up arrow
-#define DE_RING S(ALGR(DE_UE))   // ° ring (dead)
-#define DE_MCRN S(ALGR(DE_PLUS)) // ¨ macron
-#define DE_HDOT S(ALGR(DE_J))    // ˙ dot above (dead)
-#define DE_BRV  S(ALGR(DE_HASH)) // ˘ breve (dead)
-#define DE_FSQL S(ALGR(DE_Y))    // › single guillemets left
-#define DE_FSQR S(ALGR(DE_X))    // ‹ single guillemets right
-#define DE_COPY S(ALGR(DE_C))    // ©
-#define DE_SQUL S(ALGR(DE_V))    // ‚ single quote left
-#define DE_SQUR S(ALGR(DE_B))    // ‘ single quote right
-#define DE_SQUE S(ALGR(DE_N))    // ‘ single quote right (en)
-#define DE_MULT S(ALGR(DE_COMM)) // × multiplication operator
-#define DE_DIV  S(ALGR(DE_DOT))  // ÷ division operator
-#define DE_EM   S(ALGR(DE_MINS)) // — em dash
-
-// cut copy paste
-#define CCP_CUT S(KC_DEL)
-#define CCP_CPY C(KC_INS)
-#define CCP_PST S(KC_INS)
-
-// MODs
-#define OSM_ALT OSM(MOD_LALT)
-#define OSM_AGR OSM(MOD_RALT)
-#define OSM_CTL OSM(MOD_LCTL)
-#define OSM_GUI OSM(MOD_LGUI)
-#define OSM_SFT OSM(MOD_LSFT)
-// HRM
-#define ALT_M    MT(MOD_LALT, DE_M)
-#define ALT_V    MT(MOD_LALT, DE_V)
-#define CTL_AE   MT(MOD_LCTL, DE_ADIA)
-#define CTL_ESC  MT(MOD_LCTL, KC_ESC)
-#define CTL_F    MT(MOD_LCTL, DE_F)
-#define CTL_J    MT(MOD_LCTL, DE_J)
-#define GUI_D    MT(MOD_LGUI, DE_D)
-#define GUI_K    MT(MOD_LGUI, DE_K)
-#define SFT_Y    MT(MOD_LSFT, DE_Y)
-#define SFT_SS   MT(MOD_LSFT, DE_SS)
-// Thumb layer keys
-#define MA_ESC LT(_MSE_ADJ,KC_ESC)
-#define SY_ENT LT(_SYM_NUM,KC_ENT)
-#define NF_TAB LT(_NAV_FUN,KC_TAB)
-#define KB_BSP LT(_KB_CONF,KC_BSPC)
-#define SN_SPC LT(_SYM_NUM,KC_SPC)
-#define NF_APP LT(_NAV_FUN,KC_APP)
-
-
-
 // Base Layout (QWRTZ)
 //      ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
 //  Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü
@@ -115,11 +36,99 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________QWERTZ_L2_______________5_       DE_A,    DE_S,    DE_D,    DE_F,    DE_G
 #define _________________QWERTZ_L3_______________5_       DE_Y,    DE_X,    DE_C,    DE_V,    DE_B
 // Left half
-#define _________________QWERTZ_R1_______________6_       DE_Z,    DE_U,    DE_I,    DE_O,    DE_P,    DE_UDIA
-#define _________________QWERTZ_R2_______________6_       DE_H,    DE_J,    DE_K,    DE_L,    DE_ODIA, CTL_AE
+#define _________________QWERTZ_R1_______________5_       DE_Z,    DE_U,    DE_I,    DE_O,    DE_P
+#define _________________QWERTZ_R1_______________6_       _________________QWERTZ_R1_______________5_, DE_UDIA
+#define _________________QWERTZ_R2_______________5_       DE_H,    DE_J,    DE_K,    DE_L,    DE_ODIA
+#define _________________QWERTZ_R2_______________6_       _________________QWERTZ_R2_______________5_, CTL_AE
 #define _________________QWERTZ_R3_______________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_SS
-// Thumb cluster
-#define _________________THUMB_3_3_______________6_       LT(_MSE_ADJ,KC_ESC), LT(_SYM_NUM,KC_ENT), LT(_NAV_FUN,KC_TAB), LT(_KB_CONF,KC_BSPC), LT(_SYM_NUM,KC_SPC), LT(_NAV_FUN,KC_APP)
+
+// /*
+//  * Base Layer: BoNeo
+//  *
+//  * ,-------------------------------------------.                              ,-------------------------------------------.
+//  * |  Tab   |   J  |   D  |   U  |   A  |   X  |                              |   P  |   H  |   L  |   W  |   ß  |  Bksp  |
+//  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+//  * |Ctrl/Esc|   C  |   T  |   I  |   E  |   O  |                              |   B  |   N  |   R  |   S  |   G  | Ctrl/q |
+//  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+//  * | LShift |   F  |   V  |   Ü  |   Ä  |   Ö  |      |      |  |      |      |   Y  |   Z  |   ,  |   .  |   K  | RShift |
+//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+//  *                        |      |      | LAlt/| Space| Nav  |  | Sym  | Space| AltGr|      |      |
+//  *                        |      |      | Enter|      |      |  |      |      |      |      |      |
+//  *                        `----------------------------------'  `----------------------------------'
+//  */
+#define __________________BONEO_L1_______________5_       DE_J,    DE_D,    DE_U,    DE_A,    DE_X
+#define __________________BONEO_L2_______________5_       DE_C,    DE_T,    DE_I,    DE_E,    DE_O
+#define __________________BONEO_L3_______________5_       DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA
+// variant for 3x5 keyboards (q here, ue on CTL layer)
+#define __________________BONEO_L3a______________5_       DE_F,    DE_V,    DE_Q,    DE_ADIA, DE_ODIA
+// Left half
+#define __________________BONEO_R1_______________5_       DE_P,    DE_H,    DE_L,    DE_W,    DE_SS
+#define __________________BONEO_R1_______________6_       _________________QWERTZ_R1_______________5_, KC_BSPC
+#define __________________BONEO_R2_______________5_       DE_B,    DE_N,    DE_R,    DE_S,    DE_G
+#define __________________BONEO_R2_______________6_       _________________QWERTZ_R2_______________5_, CTL_Q
+#define __________________BONEO_R3_______________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_K
+
+///*
+// * Base Layer: Colemak DH
+// *
+// * ,-------------------------------------------.                              ,-------------------------------------------.
+// * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Z  |  ; : |  Bksp  |
+// * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+// * |Ctrl/Esc|   A  |   R  |   S  |   T  |   G  |                              |   M  |   N  |   E  |   I  |   O  |Ctrl/' "|
+// * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+// * | LShift |   Y  |   X  |   C  |   D  |   V  |      |      |  |      |      |   K  |   H  |  , < |  . > |  / ? | RShift |
+// * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+// *                        `----------------------------------'  `----------------------------------'
+// */
+//    [_COLEMAK_DH] = LAYOUT(
+//     KC_TAB  , DE_Q ,  DE_W   ,  DE_F  ,   DE_P ,   DE_B ,                                        DE_J,   DE_L ,  DE_U ,   DE_Z ,KC_SCLN, KC_BSPC,
+//     CTL_ESC , DE_A ,  DE_R   ,  DE_S  ,   DE_T ,   DE_G ,                                        DE_M,   DE_N ,  DE_E ,   DE_I ,  DE_O , CTL_AE,
+//     KC_LSFT , DE_Y ,  DE_X   ,  DE_C  ,   DE_D ,   DE_V , KC_LBRC,KC_CAPS,     FKEYS  , KC_RBRC, DE_K,   DE_H ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
+//                                 ADJUST, KC_LGUI, ALT_ENT, KC_SPC , NAV   ,     SYM    , KC_SPC ,KC_RALT, KC_RGUI, KC_APP
+//    ),
+#define _______________COLEMAK_DH_L1_____________5_       DE_Q,    DE_W,    DE_F,    DE_P,    DE_B
+#define _______________COLEMAK_DH_L2_____________5_       DE_A,    DE_R,    DE_S,    DE_T,    DE_G
+#define _______________COLEMAK_DH_L3_____________5_       DE_Y,    DE_X,    DE_C,    DE_D,    DE_V
+// Left half
+#define _______________COLEMAK_DH_R1_____________5_       DE_J,    DE_L,    DE_U,    DE_Z,    DE_SS
+#define _______________COLEMAK_DH_R1_____________6_       _________________QWERTZ_R1_______________5_, KC_BSPC
+#define _______________COLEMAK_DH_R2_____________5_       DE_B,    DE_N,    DE_R,    DE_S,    DE_G
+#define _______________COLEMAK_DH_R2_____________6_       _________________QWERTZ_R2_______________5_, CTL_Q
+#define _______________COLEMAK_DH_R3_____________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_K
+
+// /*
+//  * Standard thumb cluster
+//  *
+//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+//  *                        |      |      | LAlt/| Space| Nav  |  | Sym  | Space| AltGr|      |      |
+//  *                        |      |      | Enter|      |      |  |      |      |      |      |      |
+//  *                        `----------------------------------'  `----------------------------------'
+//  */
+#define _________________THUMB_3_3_______________6_       LT(_MSE_CTL,KC_ESC), LT(_SYM_NUM,KC_ENT), LT(_NAV_FUN,KC_TAB), LT(_ADJUST,KC_BSPC), LT(_SYM_NUM,KC_SPC), LT(_NAV_FUN,KC_APP)
+
+#ifdef ASETNIOP_ENABLE
+/* ASETNIOP+ layout
+ * ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
+ * │  <  │  v  │  ^  │  >  │     │             │     │  1  │  2  │  4  │  8  │
+ * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ * │  a  │  s  │  e  │  t  │     │             │     │  n  │  i  │  o  │  p  │
+ * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
+ * │ Esc │ Alt │ Gui │ Ctl │     │             │     │ F1  │ F2  │ F4  │ F8  │
+ * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
+ *                   │ Ctl │ Sft │QWER+│ │ Adj │Space│NoMod│
+ *                   └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
+ */
+#define _________________QWERTZ_R3_______________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_SS
+#define ______________ASETNIOP_PLUS_L1___________5_ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
+#define ______________ASETNIOP_PLUS_L2___________5_ DE_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
+#define ______________ASETNIOP_PLUS_L3___________5_ KC_ESC,  OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
+#define ______________ASETNIOP_PLUS_L4___________3_ OS_CTL,  OS_SFT,  TO_QZ
+
+#define ______________ASETNIOP_PLUS_R1___________5_ XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
+#define ______________ASETNIOP_PLUS_R2___________5_ XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
+#define ______________ASETNIOP_PLUS_R3___________5_ XXXXXXX, KC_F1,   KC_F2,   KC_F4,   KC_F8
+#define _AR4_3_ TO_MA,   SYM_SPC, NO_MOD
+#endif // ASETNIOP_ENABLE
 
 // non alphas
 #define X2X KC_NO, KC_NO
