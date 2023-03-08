@@ -5,7 +5,7 @@ LTO_ENABLE = yes
 MOUSEKEY_ENABLE = yes   # Mouse emulation keys
 EXTRAKEY_ENABLE = yes   # OS signals like volume control
 CAPS_WORD_ENABLE = yes
-#COMBO_ENABLE = yes
+COMBO_ENABLE = yes
 
 # These should be disabled in all boards
 BOOTMAGIC_ENABLE = no   # Access to EEPROM settings, not needed

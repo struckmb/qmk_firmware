@@ -41,8 +41,8 @@
   ) \
   LAYOUT_wrapper( \
       KC_ESC,  K01, K02, K03, K04, K05,                                                  K06, K07, K08, K09, K0A, K0B, \
-      CTL_ESC, K11, K12, GUI_T(K13), CTL_T(K14), K15,                                    K16, CTL_T(K17), GUI_T(K18), K19, K1A, CTL_T(K1B), \
-      OSM_SFT, SFT_T(K21), K22, K23, ALT_T(K24), K25, KC_NO, KC_NO,      KC_CAPS, KC_NO, K26, ALT_T(K27), K28, K29, RCTL_T(K2A), OSM_SFT, \
+      CTL_ESC, K11, K12, GUI_T(K13), CTL_T(K14), K15,                                    K16, CTL_T(K17), GUI_T(K18), K19, LT(_MSE_CTL, K1A), CTL_T(K1B), \
+      OSM_SFT, SFT_T(K21), K22, K23, ALT_T(K24), K25, KC_NO, KC_NO,      KC_CAPS, KC_NO, K26, ALT_T(K27), K28, K29, RSFT_T(K2A), OSM_SFT, \
                                    OSM_CTL, OSM_ALT, K33, K34, K35,      K36, K37, K38, OSM_GUI, KC_NO \
     )
 /* Re-pass though to allow templates to be used */

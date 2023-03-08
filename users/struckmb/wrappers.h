@@ -155,7 +155,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________SYMBOLS_R3______________5_       DE_PLUS, DE_PERC, DE_PIPE, DE_TILD, DE_ACUT
 #define _________________SYMBOLS_R1______________6_       __________________NUMBERS________________5_, DE_EXLM
 #define _________________SYMBOLS_R2______________6_       DE_LABK, DE_LPRN, DE_RPRN, DE_MINS, DE_AMPR, DE_EQL
-#define _________________SYMBOLS_R3______________6_       DE_PLUS, DE_PERC, DE_PIPE, DE_TILD, DE_ACUT, CW_TOGG
+#define _________________SYMBOLS_R3______________6_       DE_PLUS, DE_PERC, DE_DQUO, DE_QUOT, DE_EURO, CW_TOGG
 
 #define _________________SYMBOLS_TB______________6_       DE_SECT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, ALGR(DE_C)
 
