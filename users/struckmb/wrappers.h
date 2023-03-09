@@ -168,11 +168,11 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ________________NAVIGATION_L3____________5_       KC_INS,  CCP_CUT, CCP_CPY, CCP_PST, KC_PSCR
 
 #define _________________FUNCTION_R1_____________5_       _________________FUNCTIONS_______________5_
-#define _________________FUNCTION_R2_____________5_       OSM_SFT, OSM_CTL, OSM_GUI, XXXXXXX, OSM_AGR
+#define _________________FUNCTION_R2_____________5_       OSM_SFT, OSM_CTL, OSM_GUI, OSM_MEH, OSM_AGR
 #define _________________FUNCTION_R3_____________5_       KC_PWR,  OSM_ALT, XXXXXXX, XXXXXXX, CW_TOGG
 #define _________________FUNCTION_R1_____________6_       _________________FUNCTIONS_______________5_, KC_F11
-#define _________________FUNCTION_R2_____________6_       OSM_SFT, OSM_CTL, OSM_GUI, XXXXXXX, OSM_AGR, KC_NO
-#define _________________FUNCTION_R3_____________6_       KC_PWR,  OSM_ALT, XXXXXXX, XXXXXXX, CW_TOGG, _______
+#define _________________FUNCTION_R2_____________6_       _________________FUNCTION_R2_____________5_, KC_F12
+#define _________________FUNCTION_R3_____________6_       _________________FUNCTION_R3_____________5_, CW_TOGG
 
 #define _________NAVIGATION_AND_FUNCTION_TB______6_       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_APP, CW_TOGG
 

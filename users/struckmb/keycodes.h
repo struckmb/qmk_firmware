@@ -5,6 +5,7 @@
 #define OSM_AGR OSM(MOD_RALT)
 #define OSM_CTL OSM(MOD_LCTL)
 #define OSM_GUI OSM(MOD_LGUI)
+#define OSM_MEH OSM(MOD_MEH)
 #define OSM_SFT OSM(MOD_LSFT)
 // HRM
 #define ALT_AE   MT(MOD_LALT, DE_ADIA)
