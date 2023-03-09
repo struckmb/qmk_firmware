@@ -37,10 +37,10 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________QWERTZ_L3_______________5_       DE_Y,    DE_X,    DE_C,    DE_V,    DE_B
 // Left half
 #define _________________QWERTZ_R1_______________5_       DE_Z,    DE_U,    DE_I,    DE_O,    DE_P
-#define _________________QWERTZ_R1_______________6_       _________________QWERTZ_R1_______________5_, DE_UDIA
 #define _________________QWERTZ_R2_______________5_       DE_H,    DE_J,    DE_K,    DE_L,    DE_ODIA
-#define _________________QWERTZ_R2_______________6_       _________________QWERTZ_R2_______________5_, CTL_AE
 #define _________________QWERTZ_R3_______________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_SS
+#define _________________QWERTZ_R1_______________6_       _________________QWERTZ_R1_______________5_, DE_UDIA
+#define _________________QWERTZ_R2_______________6_       _________________QWERTZ_R2_______________5_, ALT_AE
 
 // /*
 //  * Base Layer: BoNeo
@@ -48,7 +48,7 @@ NOTE: These are all the same length.  If you do a search/replace
 //  * ,-------------------------------------------.                              ,-------------------------------------------.
 //  * |  Tab   |   J  |   D  |   U  |   A  |   X  |                              |   P  |   H  |   L  |   W  |   ß  |  Bksp  |
 //  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-//  * |Ctrl/Esc|   C  |   T  |   I  |   E  |   O  |                              |   B  |   N  |   R  |   S  |   G  | Ctrl/q |
+//  * |Ctrl/Esc|   C  |   T  |   I  |   E  |   O  |                              |   B  |   N  |   R  |   S  |   G  |  Alt/q |
 //  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
 //  * | LShift |   F  |   V  |   Ü  |   Ä  |   Ö  |      |      |  |      |      |   Y  |   Z  |   ,  |   .  |   K  | RShift |
 //  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -63,38 +63,32 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __________________BONEO_L3a______________5_       DE_F,    DE_V,    DE_Q,    DE_ADIA, DE_ODIA
 // Left half
 #define __________________BONEO_R1_______________5_       DE_P,    DE_H,    DE_L,    DE_W,    DE_SS
-#define __________________BONEO_R1_______________6_       _________________QWERTZ_R1_______________5_, KC_BSPC
 #define __________________BONEO_R2_______________5_       DE_B,    DE_N,    DE_R,    DE_S,    DE_G
-#define __________________BONEO_R2_______________6_       _________________QWERTZ_R2_______________5_, CTL_Q
-#define __________________BONEO_R3_______________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_K
+#define __________________BONEO_R3_______________5_       DE_Y,    DE_Z,    KC_COMM, KC_DOT,  SFT_K
+#define __________________BONEO_R1_______________6_       _________________QWERTZ_R1_______________5_, KC_BSPC
+#define __________________BONEO_R2_______________6_       _________________QWERTZ_R2_______________5_, ALT_Q
 
 ///*
-// * Base Layer: Colemak DH
+// * Base Layer: Colemak DH (german variant)
 // *
 // * ,-------------------------------------------.                              ,-------------------------------------------.
-// * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Z  |  ; : |  Bksp  |
+// * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Z  |   Q  |  Bksp  |
 // * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-// * |Ctrl/Esc|   A  |   R  |   S  |   T  |   G  |                              |   M  |   N  |   E  |   I  |   O  |Ctrl/' "|
+// * |Ctrl/Esc|   A  |   R  |   S  |   T  |   G  |                              |   M  |   N  |   E  |   I  |   O  | Alt/Q  |
 // * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-// * | LShift |   Y  |   X  |   C  |   D  |   V  |      |      |  |      |      |   K  |   H  |  , < |  . > |  / ? | RShift |
+// * | LShift |   Y  |   X  |   C  |   D  |   V  |      |      |  |      |      |   K  |   H  |  , < |  . > |   ß  | RShift |
 // * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
 // *                        `----------------------------------'  `----------------------------------'
-// */
-//    [_COLEMAK_DH] = LAYOUT(
-//     KC_TAB  , DE_Q ,  DE_W   ,  DE_F  ,   DE_P ,   DE_B ,                                        DE_J,   DE_L ,  DE_U ,   DE_Z ,KC_SCLN, KC_BSPC,
-//     CTL_ESC , DE_A ,  DE_R   ,  DE_S  ,   DE_T ,   DE_G ,                                        DE_M,   DE_N ,  DE_E ,   DE_I ,  DE_O , CTL_AE,
-//     KC_LSFT , DE_Y ,  DE_X   ,  DE_C  ,   DE_D ,   DE_V , KC_LBRC,KC_CAPS,     FKEYS  , KC_RBRC, DE_K,   DE_H ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-//                                 ADJUST, KC_LGUI, ALT_ENT, KC_SPC , NAV   ,     SYM    , KC_SPC ,KC_RALT, KC_RGUI, KC_APP
 //    ),
 #define _______________COLEMAK_DH_L1_____________5_       DE_Q,    DE_W,    DE_F,    DE_P,    DE_B
 #define _______________COLEMAK_DH_L2_____________5_       DE_A,    DE_R,    DE_S,    DE_T,    DE_G
 #define _______________COLEMAK_DH_L3_____________5_       DE_Y,    DE_X,    DE_C,    DE_D,    DE_V
 // Left half
-#define _______________COLEMAK_DH_R1_____________5_       DE_J,    DE_L,    DE_U,    DE_Z,    DE_SS
+#define _______________COLEMAK_DH_R1_____________5_       DE_J,    DE_L,    DE_U,    DE_Z,    DE_Q
+#define _______________COLEMAK_DH_R2_____________5_       DE_M,    DE_N,    DE_E,    DE_I,    DE_O
+#define _______________COLEMAK_DH_R3_____________5_       DE_K,    DE_H,    KC_COMM, KC_DOT,  DE_SS
 #define _______________COLEMAK_DH_R1_____________6_       _________________QWERTZ_R1_______________5_, KC_BSPC
-#define _______________COLEMAK_DH_R2_____________5_       DE_B,    DE_N,    DE_R,    DE_S,    DE_G
-#define _______________COLEMAK_DH_R2_____________6_       _________________QWERTZ_R2_______________5_, CTL_Q
-#define _______________COLEMAK_DH_R3_____________5_       DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_K
+#define _______________COLEMAK_DH_R2_____________6_       _________________QWERTZ_R2_______________5_, ALT_Q
 
 // /*
 //  * Standard thumb cluster
@@ -105,6 +99,7 @@ NOTE: These are all the same length.  If you do a search/replace
 //  *                        `----------------------------------'  `----------------------------------'
 //  */
 #define _________________THUMB_3_3_______________6_       LT(_MSE_CTL,KC_ESC), LT(_SYM_NUM,KC_ENT), LT(_NAV_FUN,KC_TAB), LT(_ADJUST,KC_BSPC), LT(_SYM_NUM,KC_SPC), LT(_NAV_FUN,KC_APP)
+#define _________________THUMB_5_5______________10_       KC_PGUP, KC_PGDN, _________________THUMB_3_3_______________6_, OSM_GUI, KC_NO
 
 #ifdef ASETNIOP_ENABLE
 /* ASETNIOP+ layout
