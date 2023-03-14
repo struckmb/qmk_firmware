@@ -1,10 +1,11 @@
 #include "keymap_german.h"
 
 // MODs
-#define OSM_ALT OSM(MOD_LALT)
 #define OSM_AGR OSM(MOD_RALT)
+#define OSM_ALT OSM(MOD_LALT)
 #define OSM_CTL OSM(MOD_LCTL)
 #define OSM_GUI OSM(MOD_LGUI)
+#define OSM_HPR OSM(MOD_HYPR)
 #define OSM_MEH OSM(MOD_MEH)
 #define OSM_SFT OSM(MOD_LSFT)
 // HRM
@@ -18,6 +19,7 @@
 #define GUI_K    MT(MOD_LGUI, DE_K)
 #define SFT_Y    MT(MOD_LSFT, DE_Y)
 #define SFT_SS   MT(MOD_LSFT, DE_SS)
+#define SFT_ENT  MT(MOD_RSFT, KC_ENT)
 // Thumb layer keys
 #define MA_ESC LT(_MSE_ADJ,KC_ESC)
 #define SY_ENT LT(_SYM_NUM,KC_ENT)
