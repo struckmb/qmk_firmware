@@ -39,6 +39,4 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
 endif
 
 # Combo stuff
-ifeq ($(strip $(COMBO_ENABLE)), yes)
-	VPATH += keyboards/gboards
-endif
+VPATH += keyboards/gboards
