@@ -80,17 +80,16 @@
 #define DE_EM   S(ALGR(DE_MINS)) // — em dash
 
 /*
-Blocks for each of the four major keyboard layouts
-Organized so we can quickly adapt and modify all of them
-at once, rather than for each keyboard, one at a time.
-And this allows for much cleaner blocks in the keymaps.
-For instance Tap/Hold for Control on all of the layouts
+Blocks for some keyboard layouts. Organized so we can quickly adapt and modify
+all of them at once, rather than for each keyboard, one at a time. And this
+allows for much cleaner blocks in the keymaps. For instance Tap/Hold for
+Control on all of the layouts
 
-NOTE: These are all the same length.  If you do a search/replace
-  then you need to add/remove underscores to keep the
-  lengths consistent.
+NOTE: These are all the same length.  If you do a search/replace then you need
+to add/remove underscores to keep the lengths consistent.
 */
 
+#ifdef QWERTZ_ENABLE
 // nx5 keyboards
 // Left half
 #define _________________QWERTZ_L1_______________5_                DE_Q,    DE_W,    DE_E,    DE_R,    DE_T
@@ -102,50 +101,60 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________QWERTZ_R3_______________5_                DE_N,    DE_M,    KC_COMM, KC_DOT,  SFT_SS
 // nx6 keyboards
 // Left half
-#define _________________QWERTZ_L1________________________6_       KC_TAB,  _________________QWERTZ_L1_______________5_
-#define _________________QWERTZ_L2________________________6_       CTL_ESC, _________________QWERTZ_L2_______________5_
-#define _________________QWERTZ_L3________________________6_       KC_LSFT, _________________QWERTZ_L3_______________5_
+#define _____________________QWERTZ_L1____________________6_       KC_TAB,  _________________QWERTZ_L1_______________5_
+#define _____________________QWERTZ_L2____________________6_       CTL_ESC, _________________QWERTZ_L2_______________5_
+#define _____________________QWERTZ_L3____________________6_       KC_LSFT, _________________QWERTZ_L3_______________5_
 // Right half
-#define _________________QWERTZ_R1________________________6_       _________________QWERTZ_R1_______________5_, DE_UDIA
-#define _________________QWERTZ_R2________________________6_       _________________QWERTZ_R2_______________5_, ALT_AE
-#define _________________QWERTZ_R3________________________6_       _________________QWERTZ_R3_______________5_, SFT_ENT
+#define _____________________QWERTZ_R1____________________6_       _________________QWERTZ_R1_______________5_, DE_UDIA
+#define _____________________QWERTZ_R2____________________6_       _________________QWERTZ_R2_______________5_, ALT_AE
+#define _____________________QWERTZ_R3____________________6_       _________________QWERTZ_R3_______________5_, SFT_ENT
+#endif
 
-//  * Base Layer: BoNeo
+#ifdef BONE_ENABLE
+//  * Base Layer: Bone
 // nx5 keyboards
 // Left half
-#define __________________BONEO_L1_______________5_                DE_J,    DE_D,    DE_U,    DE_A,    DE_X
-#define __________________BONEO_L2_______________5_                DE_C,    DE_T,    DE_I,    DE_E,    DE_O
-#define __________________BONEO_L3_______________5_                DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA
-// Right half
-#define __________________BONEO_R1_______________5_                DE_P,    DE_H,    DE_L,    DE_W,    DE_SS
-#define __________________BONEO_R2_______________5_                DE_B,    DE_N,    DE_R,    DE_S,    DE_G
-#define __________________BONEO_R3_______________5_                DE_Y,    DE_Z,    KC_COMM, KC_DOT,  SFT_K
-// nx6 keyboards
-#define __________________BONEO_L1________________________6_       KC_TAB,  __________________BONEO_L1_______________5_
-#define __________________BONEO_L2________________________6_       CTL_ESC, __________________BONEO_L2_______________5_
-#define __________________BONEO_L3________________________6_       KC_LSFT, __________________BONEO_L3_______________5_
+#define __________________BONE_L1________________5_                DE_J,    DE_D,    DE_U,    DE_A,    DE_X
+#define __________________BONE_L2________________5_                DE_C,    DE_T,    DE_I,    DE_E,    DE_O
+#define __________________BONE_L3________________5_                DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA
 // variant for 3x5 keyboards (q here, ue on CTL layer)
-#define __________________BONEO_L3a______________5_                DE_F,    DE_V,    DE_Q,    DE_ADIA, DE_ODIA
-#define __________________BONEO_L3a_______________________6_       KC_LSFT, __________________BONEO_L3a______________5_
+#define __________________BONE_L3a_______________5_                DE_F,    DE_V,    DE_Q,    DE_ADIA, DE_ODIA
+// Right half
+#define __________________BONE_R1________________5_                DE_P,    DE_H,    DE_L,    DE_W,    DE_SS
+#define __________________BONE_R2________________5_                DE_B,    DE_N,    DE_R,    DE_S,    DE_G
+#define __________________BONE_R3________________5_                DE_Y,    DE_Z,    KC_COMM, KC_DOT,  SFT_K
+// nx6 keyboards
+#define ______________________BONEO_L1____________________6_       KC_TAB,  __________________BONE_L1________________5_
+#define ______________________BONEO_L2____________________6_       CTL_ESC, __________________BONE_L2________________5_
+#define ______________________BONEO_L3____________________6_       KC_LSFT, __________________BONE_L3________________5_
+#define ______________________BONEO_L3a___________________6_       KC_LSFT, __________________BONE_L3a_______________5_
 // Left half
-#define __________________BONEO_R1________________________6_       __________________BONEO_R1_______________5_, KC_BSPC
-#define __________________BONEO_R2________________________6_       __________________BONEO_R2_______________5_, ALT_Q
-#define __________________BONEO_R3________________________6_       __________________BONEO_R3_______________5_, SFT_ENT
+#define ______________________BONEO_R1____________________6_       __________________BONE_R1________________5_, KC_BSPC
+#define ______________________BONEO_R2____________________6_       __________________BONE_R2________________5_, ALT_Q
+#define ______________________BONEO_R3____________________6_       __________________BONE_R3________________5_, SFT_ENT
+#endif
 
+#ifdef COLEMAK_ENABLE
 // * Base Layer: Colemak DH (german variant)
+// nx5 keyboards
+// Left half
 #define _______________COLEMAK_DH_L1_____________5_                DE_Q,    DE_W,    DE_F,    DE_P,    DE_B
 #define _______________COLEMAK_DH_L2_____________5_                DE_A,    DE_R,    DE_S,    DE_T,    DE_G
 #define _______________COLEMAK_DH_L3_____________5_                DE_Y,    DE_X,    DE_C,    DE_D,    DE_V
-#define _______________COLEMAK_DH_L1______________________6_       KC_TAB,  _______________COLEMAK_DH_L1_____________5_
-#define _______________COLEMAK_DH_L2______________________6_       CTL_ESC, _______________COLEMAK_DH_L2_____________5_
-#define _______________COLEMAK_DH_L3______________________6_       KC_LSFT, _______________COLEMAK_DH_L3_____________5_
 // Left half
 #define _______________COLEMAK_DH_R1_____________5_                DE_J,    DE_L,    DE_U,    DE_Z,    DE_Q
 #define _______________COLEMAK_DH_R2_____________5_                DE_M,    DE_N,    DE_E,    DE_I,    DE_O
 #define _______________COLEMAK_DH_R3_____________5_                DE_K,    DE_H,    KC_COMM, KC_DOT,  DE_SS
-#define _______________COLEMAK_DH_R1______________________6_       _______________COLEMAK_DH_R1_____________5_, KC_BSPC
-#define _______________COLEMAK_DH_R2______________________6_       _______________COLEMAK_DH_R2_____________5_, ALT_Q
-#define _______________COLEMAK_DH_R3______________________6_       _______________COLEMAK_DH_R3_____________5_, SFT_ENT
+// nx6 keyboards
+// Left half
+#define ___________________COLEMAK_DH_L1__________________6_       KC_TAB,  _______________COLEMAK_DH_L1_____________5_
+#define ___________________COLEMAK_DH_L2__________________6_       CTL_ESC, _______________COLEMAK_DH_L2_____________5_
+#define ___________________COLEMAK_DH_L3__________________6_       KC_LSFT, _______________COLEMAK_DH_L3_____________5_
+#define ___________________COLEMAK_DH_R1__________________6_       _______________COLEMAK_DH_R1_____________5_, KC_BSPC
+#define ___________________COLEMAK_DH_R2__________________6_       _______________COLEMAK_DH_R2_____________5_, ALT_Q
+#define ___________________COLEMAK_DH_R3__________________6_       _______________COLEMAK_DH_R3_____________5_, SFT_ENT
+#endif
+
 // /*
 //  * Standard thumb cluster
 //           | PgUp | PgDn │ Esc │Enter│ App | |BkSpc│Space│ Tab │OsMeh |OsHypr|
@@ -160,7 +169,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __THUMB_2_R___2_                                           LT(_SYM_NUM,KC_SPC), LT(_NAV_FUN,KC_TAB)
 #define _________THUMB_2_2_______4_                                __THUMB_2_L___2_, __THUMB_2_R___2_
 #define _________________THUMB_3_3________________________6_       __THUMB_2_L___2_, LT(_MSE_CTL,KC_APP), LT(_ADJUST,KC_BSPC), __THUMB_2_R___2_
-#define ___________________________________THUMB_5_5_________________________________________10_ \
+#define ________________________________________THUMB_5_5____________________________________10_ \
     KC_PGUP, KC_PGDN, _________________THUMB_3_3________________________6_, OSM_MEH, OSM_HPR
 
 #ifdef ASETNIOP_ENABLE
@@ -189,7 +198,7 @@ NOTE: These are all the same length.  If you do a search/replace
 // non alphas
 #define X2X KC_NO, KC_NO
 #define ___________________BLANK_________________5_               _______, _______, _______, _______, _______
-#define ___________________BLANK__________________________6_      _______, _______, _______, _______, _______, _______
+#define _______________________BLANK______________________6_      _______, ___________________BLANK_________________5_
 #define __________________NUMBERS________________5_               DE_0,    DE_1,    DE_2,    DE_4,    DE_8
 #define _________________FUNCTIONS_______________5_               KC_F10,  KC_F1,   KC_F2,   KC_F4,   KC_F8
 
@@ -200,102 +209,103 @@ NOTE: These are all the same length.  If you do a search/replace
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
 // │ # ' │  $  │  |  │  ~  │  ´  │             │ + * │  %  │  "  │  '  │  €  │CapsW |
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘------
-//                   │  §  │ Ly3 │     │ │     │ Ly3 │  ¢  │
+//                   │  §  │     │     │ │     │     │  ¢  │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
-#define _________________SYMBOLS_L1______________5_               DE_AT,   DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC
-#define _________________SYMBOLS_L2______________5_               DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR
-#define _________________SYMBOLS_L3______________5_               DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_ACUT
-#define _________________SYMBOLS_R1______________5_               __________________NUMBERS________________5_
-#define _________________SYMBOLS_R2______________5_               DE_LABK, DE_LPRN, DE_RPRN, DE_MINS, DE_AMPR
-#define _________________SYMBOLS_R3______________5_               DE_PLUS, DE_PERC, DE_DQUO, DE_QUOT, DE_EURO
+#define ________________SYMBOLS_L1_______________5_               DE_AT,   DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC
+#define ________________SYMBOLS_L2_______________5_               DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR
+#define ________________SYMBOLS_L3_______________5_               DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_ACUT
+#define ________________SYMBOLS_R1_______________5_               __________________NUMBERS________________5_
+#define ________________SYMBOLS_R2_______________5_               DE_LABK, DE_LPRN, DE_RPRN, DE_MINS, DE_AMPR
+#define ________________SYMBOLS_R3_______________5_               DE_PLUS, DE_PERC, DE_DQUO, DE_QUOT, DE_EURO
 
-#define _________________SYMBOLS_L1_______________________6_      _______, _________________SYMBOLS_L1______________5_
-#define _________________SYMBOLS_L2_______________________6_      _______, _________________SYMBOLS_L2______________5_
-#define _________________SYMBOLS_L3_______________________6_      _______, _________________SYMBOLS_L3______________5_
-#define _________________SYMBOLS_R1_______________________6_      _________________SYMBOLS_R1______________5_, DE_EXLM
-#define _________________SYMBOLS_R2_______________________6_      _________________SYMBOLS_R2______________5_, DE_EQL
-#define _________________SYMBOLS_R3_______________________6_      _________________SYMBOLS_R3______________5_, CW_TOGG
+#define _____________________SYMBOLS_L1___________________6_      _______, ________________SYMBOLS_L1_______________5_
+#define _____________________SYMBOLS_L2___________________6_      _______, ________________SYMBOLS_L2_______________5_
+#define _____________________SYMBOLS_L3___________________6_      _______, ________________SYMBOLS_L3_______________5_
+#define _____________________SYMBOLS_R1___________________6_      ________________SYMBOLS_R1_______________5_, DE_EXLM
+#define _____________________SYMBOLS_R2___________________6_      ________________SYMBOLS_R2_______________5_, DE_EQL
+#define _____________________SYMBOLS_R3___________________6_      ________________SYMBOLS_R3_______________5_, _______
 
-#define __SYMBOLS_TL__2_                                          DE_SECT, MO(_MSE_CTL)
-#define __SYMBOLS_TR__2_                                          MO(_MSE_CTL), ALGR(DE_C)
+#define __SYMBOLS_TL__2_                                          DE_SECT, KC_TRNS
+#define __SYMBOLS_TR__2_                                          KC_TRNS, ALGR(DE_C)
 #define ____________SYMBOLS_TB__________4_                        __SYMBOLS_TL__2_, __SYMBOLS_TR__2_
 #define _____________________SYMBOLS_TB___________________6_      __SYMBOLS_TL__2_, KC_TRNS, KC_TRNS, __SYMBOLS_TR__2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐------
-// │PgUp │ BSp │  ↑  │ Del │PgDn │             │ F10 │  F1 │  F2 │  F4 │  F8 │  F11 |
+// │ PgUp│ BSp │  ↑  │ Del │ PgDn│             │ F10 │  F1 │  F2 │  F4 │  F8 │  F11 |
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
-// │Home │  ←  │  ↓  │  →  │ End │             │  ←  │  ↓  │  ↑  │  →  │LShft│  F12 |
+// │ Home│  ←  │  ↓  │  →  │ End │             │OsAlt│OsCtl│OsGui│OsSft│ RSft│  F12 |
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
-// │ Ins │ Cut │Copy │Paste│PrScr│             │Power│OsAGr│     │     │RShft│CapsW |
+// │ Ins │ Cut │ Copy│Paste│PrScr│             │Power│OsAGr│ XXX │ XXX │CapsW│CapsW |
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘------
 //                   │ Adj │     │     │ │     │ App │ Adj │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
-#define ________________NAVIGATION_L1____________5_                KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_PGDN
-#define ________________NAVIGATION_L2____________5_                KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END
-#define ________________NAVIGATION_L3____________5_                KC_INS,  CCP_CUT, CCP_CPY, CCP_PST, KC_PSCR
-#define _________________FUNCTION_R1_____________5_                _________________FUNCTIONS_______________5_
-#define _________________FUNCTION_R2_____________5_                KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_LSFT
-#define _________________FUNCTION_R3_____________5_                KC_PWR,  OSM_AGR, XXXXXXX, XXXXXXX, KC_RSFT
+#define ______________NAVIGATION_L1______________5_                KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_PGDN
+#define ______________NAVIGATION_L2______________5_                KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END
+#define ______________NAVIGATION_L3______________5_                KC_INS,  CCP_CUT, CCP_CPY, CCP_PST, KC_PSCR
+#define _______________FUNCTION_R1_______________5_                _________________FUNCTIONS_______________5_
+#define _______________FUNCTION_R2_______________5_                OSM_ALT, OSM_CTL, OSM_GUI, OSM_SFT, KC_RSFT
+#define _______________FUNCTION_R3_______________5_                KC_PWR,  OSM_AGR, XXXXXXX, XXXXXXX, CW_TOGG
 
-#define _______________NAVIGATION_L1______________________6_       _______, ________________NAVIGATION_L1____________5_
-#define _______________NAVIGATION_L2______________________6_       _______, ________________NAVIGATION_L2____________5_
-#define _______________NAVIGATION_L3______________________6_       _______, ________________NAVIGATION_L3____________5_
-#define _________________FUNCTION_R1______________________6_       _________________FUNCTIONS_______________5_, KC_F11
-#define _________________FUNCTION_R2______________________6_       _________________FUNCTION_R2_____________5_, KC_F12
-#define _________________FUNCTION_R3______________________6_       _________________FUNCTION_R3_____________5_, CW_TOGG
+#define _______________NAVIGATION_L1______________________6_       _______, ______________NAVIGATION_L1______________5_
+#define _______________NAVIGATION_L2______________________6_       _______, ______________NAVIGATION_L2______________5_
+#define _______________NAVIGATION_L3______________________6_       _______, ______________NAVIGATION_L3______________5_
+#define _________________FUNCTION_R1______________________6_       _______________FUNCTION_R1_______________5_, KC_F11
+#define _________________FUNCTION_R2______________________6_       _______________FUNCTION_R2_______________5_, KC_F12
+#define _________________FUNCTION_R3______________________6_       _______________FUNCTION_R3_______________5_, _______
 
-#define ____NAVFN_TL__2_                                           MO(_ADJUST), KC_TRNS
-#define ____NAVFN_TR__2_                                           KC_APP,  MO(_ADJUST)
-#define ____NAVIGATION_AND_FUNCTION_TB__4_                         ____NAVFN_TL__2_, ____NAVFN_TR__2_
-#define _________NAVIGATION_AND_FUNCTION_TB_______________6_       ____NAVFN_TL__2_, KC_TRNS, KC_TRNS, ____NAVFN_TR__2_
+#define ___NAVFN_TL___2_                                           MO(_ADJUST), KC_TRNS
+#define ___NAVFN_TR___2_                                           KC_APP,  MO(_ADJUST)
+#define _____________NAVIGATION_AND_FUNCTION_TB___________6_       ___NAVFN_TL___2_, KC_TRNS, KC_TRNS, ___NAVFN_TR___2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
-// │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │RESET│  ü  │ XXX │ XXX │EECLR│
+// │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│ XXX │ XXX │
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │  ä  │  ←  │  ↓  │  →  │Pause│             │ SBr+│ Ctl │ Gui │ XXX │ (v) │
+// │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Prev│ Vol-│ Next│ (v) │
 // ├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │ XXX │ MB4 │ MB3 │ MB5 │SrlLk│             │ SBr-│ XXX │ XXX │ XXX │RShft│
+// │ XXX │ MB4 │ MB3 │ MB5 │SrlLk│             │MsSp-│ Stop│ Mute│Eject│RShft│
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
 //                   │ MB2 │ MB1 │ MB3 │ │     │LShft│ MB3 │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
 #define __________________MOUSE_L1_______________5_                KC_WH_D, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U
 #define __________________MOUSE_L2_______________5_                DE_ADIA, KC_MS_L, KC_MS_D, KC_MS_R, KC_PAUSE
 #define __________________MOUSE_L3_______________5_                XXXXXXX, KC_BTN4, KC_BTN3, KC_BTN5, KC_SCRL
-#define __________________MOUSE_R1_______________5_                QK_RBT,  DE_UDIA, XXXXXXX, XXXXXXX, EE_CLR
-#define __________________MOUSE_R2_______________5_                KC_ACL0, KC_LCTL, KC_LGUI, XXXXXXX, _______
-#define __________________MOUSE_R3_______________5_                KC_ACL2, KC_LALT, XXXXXXX, XXXXXXX, KC_RSFT
 
-#define __________________MOUSE_L1________________________6_       _______, __________________MOUSE_L1_______________5_
-#define __________________MOUSE_L2________________________6_       _______, __________________MOUSE_L2_______________5_
-#define __________________MOUSE_L3________________________6_       _______, __________________MOUSE_L3_______________5_
-#define __________________MOUSE_R1________________________6_       __________________MOUSE_R1_______________5_, KC_NO
-#define __________________MOUSE_R2________________________6_       __________________MOUSE_R2_______________5_, KC_NO
-#define __________________MOUSE_R3________________________6_       __________________MOUSE_R3_______________5_, _______
+#define __________________MOUSE_R1_______________5_                KC_ACL2, DE_UDIA, KC_VOLU, XXXXXXX, XXXXXXX
+#define __________________MOUSE_R2_______________5_                KC_ACL1, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX
+#define __________________MOUSE_R3_______________5_                KC_ACL0, KC_MSTP, KC_MUTE, KC_EJCT, KC_RSFT
 
-#define __________________MOUSE_TB________________________6_       KC_BTN3, KC_BTN1, KC_BTN2, _______, KC_LSFT, _______
+#define ______________________MOUSE_L1____________________6_       _______, __________________MOUSE_L1_______________5_
+#define ______________________MOUSE_L2____________________6_       _______, __________________MOUSE_L2_______________5_
+#define ______________________MOUSE_L3____________________6_       _______, __________________MOUSE_L3_______________5_
+#define ______________________MOUSE_R1____________________6_       __________________MOUSE_R1_______________5_, KC_NO
+#define ______________________MOUSE_R2____________________6_       __________________MOUSE_R2_______________5_, KC_NO
+#define ______________________MOUSE_R3____________________6_       __________________MOUSE_R3_______________5_, _______
+
+#define ___MOUSE_TL___2_                                           KC_BTN2, KC_BTN1
+#define ___MOUSE_TR___2_                                           KC_LSFT, KC_BTN3
+#define ______________________MOUSE_TB____________________6_       ___MOUSE_TL___2_, KC_BTN3, _______, ___MOUSE_TR___2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
-// │Eject│ Vol-│ Mute│ Vol+│ Stop│             │ TOGG│Plain│Brthe│Rainb│Swirl│
+// │ TOGG│Plain│Brthe│Rainb│Swirl│             │EEClr│(Bt1)│(Bt2)│(Bt3)│(B/U)│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │ XXX │ Prev│ Play│ Next│ XXX │             │ Mode│ Hue │ Sat │ Val │Brght│
-// ├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │BtClr│BtPrv│ XXX │BtNxt│ XXX │             │Snake│Knght│ Xmas│Grdnt│ Test│
+// │Speed│ Val │ Sat │ Hue │ Mode│             │(BtC)│(Bt←)│ XXX │(Bt→)│ XXX │
+// ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼Mouse┼─────┼─────┤
+// │ Test│ Xmas│Grdnt│Knght│Snake│             │Reset│Build│ XXX │ XXX │ Sft │
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
 //                   │     │     │     │ │     │     │     │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
-#define _________________CONFIG_L1_______________5_                KC_MSTP, KC_VOLD, KC_MUTE, KC_VOLU, KC_EJCT
-#define _________________CONFIG_L2_______________5_                KC_MRWD, KC_MPRV, KC_MS_D, KC_MNXT, KC_MFFD
-#define _________________CONFIG_L3_______________5_                XXXXXXX, KC_BRIU, XXXXXXX, KC_BRID, XXXXXXX
-#define _________________CONFIG_R1_______________5_                RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW
-#define _________________CONFIG_R2_______________5_                RGB_MOD, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI
-#define _________________CONFIG_R3_______________5_               RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T
+#define _________________CONFIG_L1_______________5_                RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW
+#define _________________CONFIG_L2_______________5_                RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
+#define _________________CONFIG_L3_______________5_                RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
+#define _________________CONFIG_R1_______________5_                EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define _________________CONFIG_R2_______________5_                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define _________________CONFIG_R3_______________5_                QK_BOOT, QK_MAKE, XXXXXXX, XXXXXXX, KC_LSFT
 
-#define _________________CONFIG_L1________________________6_       _______, _________________CONFIG_L1_______________5_
-#define _________________CONFIG_L2________________________6_       _______, _________________CONFIG_L2_______________5_
-#define _________________CONFIG_L3________________________6_       _______, _________________CONFIG_L3_______________5_
-#define _________________CONFIG_R1________________________6_       _________________CONFIG_R1_______________5_, KC_NO
-#define _________________CONFIG_R2________________________6_       _________________CONFIG_R2_______________5_, KC_NO
-#define _________________CONFIG_R3________________________6_       _________________CONFIG_R3_______________5_, _______
+#define ____________________CONFIG_L1_____________________6_       _______, _________________CONFIG_L1_______________5_
+#define ____________________CONFIG_L2_____________________6_       _______, _________________CONFIG_L2_______________5_
+#define ____________________CONFIG_L3_____________________6_       _______, _________________CONFIG_L3_______________5_
+#define ____________________CONFIG_R1_____________________6_       _________________CONFIG_R1_______________5_, KC_NO
+#define ____________________CONFIG_R2_____________________6_       _________________CONFIG_R2_______________5_, KC_NO
+#define ____________________CONFIG_R3_____________________6_       _________________CONFIG_R3_______________5_, _______
 
-#define _________________CONFIG_TB________________________6_       ___________________BLANK__________________________6_
-
+#define ____________________CONFIG_TB_____________________6_       _______________________BLANK______________________6_
