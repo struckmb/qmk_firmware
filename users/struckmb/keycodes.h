@@ -5,7 +5,7 @@
 #define OSM_ALT OSM(MOD_LALT)
 #define OSM_CTL OSM(MOD_LCTL)
 #define OSM_GUI OSM(MOD_LGUI)
-#define OSM_HPR OSM(MOD_HYPR)
+#define OSM_HYP OSM(MOD_HYPR)
 #define OSM_MEH OSM(MOD_MEH)
 #define OSM_SFT OSM(MOD_LSFT)
 // HRM
@@ -19,14 +19,13 @@
 #define GUI_K    MT(MOD_LGUI, DE_K)
 #define SFT_Y    MT(MOD_LSFT, DE_Y)
 #define SFT_SS   MT(MOD_LSFT, DE_SS)
-#define SFT_ENT  MT(MOD_RSFT, KC_ENT)
 // Thumb layer keys
-#define MA_ESC LT(_MSE_ADJ,KC_ESC)
+#define NF_ESC LT(_NAV_FUN,KC_ESC)
 #define SY_ENT LT(_SYM_NUM,KC_ENT)
 #define NF_TAB LT(_NAV_FUN,KC_TAB)
-#define KB_BSP LT(_ADJUST,KC_BSPC)
+#define AD_BSP LT(_ADJUST,KC_BSPC)
 #define SN_SPC LT(_SYM_NUM,KC_SPC)
-#define NF_APP LT(_NAV_FUN,KC_APP)
+#define MC_APP LT(_MSE_CTL,KC_APP)
 
 // cut copy paste
 #define CCP_CUT S(KC_DEL)
@@ -107,7 +106,7 @@ to add/remove underscores to keep the lengths consistent.
 // Right half
 #define _____________________QWERTZ_R1____________________6_       _________________QWERTZ_R1_______________5_, DE_UDIA
 #define _____________________QWERTZ_R2____________________6_       _________________QWERTZ_R2_______________5_, ALT_AE
-#define _____________________QWERTZ_R3____________________6_       _________________QWERTZ_R3_______________5_, SFT_ENT
+#define _____________________QWERTZ_R3____________________6_       _________________QWERTZ_R3_______________5_, KC_RSFT
 #endif
 
 #ifdef BONE_ENABLE
@@ -131,7 +130,7 @@ to add/remove underscores to keep the lengths consistent.
 // Left half
 #define ______________________BONEO_R1____________________6_       __________________BONE_R1________________5_, KC_BSPC
 #define ______________________BONEO_R2____________________6_       __________________BONE_R2________________5_, ALT_Q
-#define ______________________BONEO_R3____________________6_       __________________BONE_R3________________5_, SFT_ENT
+#define ______________________BONEO_R3____________________6_       __________________BONE_R3________________5_, KC_RSFT
 #endif
 
 #ifdef COLEMAK_ENABLE
@@ -152,7 +151,7 @@ to add/remove underscores to keep the lengths consistent.
 #define ___________________COLEMAK_DH_L3__________________6_       KC_LSFT, _______________COLEMAK_DH_L3_____________5_
 #define ___________________COLEMAK_DH_R1__________________6_       _______________COLEMAK_DH_R1_____________5_, KC_BSPC
 #define ___________________COLEMAK_DH_R2__________________6_       _______________COLEMAK_DH_R2_____________5_, ALT_Q
-#define ___________________COLEMAK_DH_R3__________________6_       _______________COLEMAK_DH_R3_____________5_, SFT_ENT
+#define ___________________COLEMAK_DH_R3__________________6_       _______________COLEMAK_DH_R3_____________5_, KC_RSFT
 #endif
 
 // /*
@@ -165,12 +164,12 @@ to add/remove underscores to keep the lengths consistent.
 //  *                        |      |      |  Esc |  Ent | Menu |  |  BSp |  Spc |  Tab |      |      |
 //  *                        `----------------------------------'  `----------------------------------'
 //  */
-#define __THUMB_2_L___2_                                           LT(_NAV_FUN,KC_ESC), LT(_SYM_NUM,KC_ENT)
-#define __THUMB_2_R___2_                                           LT(_SYM_NUM,KC_SPC), LT(_NAV_FUN,KC_TAB)
+#define __THUMB_2_L___2_                                           NF_ESC,  SY_ENT
+#define __THUMB_2_R___2_                                           SN_SPC,  NF_TAB
 #define _________THUMB_2_2_______4_                                __THUMB_2_L___2_, __THUMB_2_R___2_
-#define _________________THUMB_3_3________________________6_       __THUMB_2_L___2_, LT(_MSE_CTL,KC_APP), LT(_ADJUST,KC_BSPC), __THUMB_2_R___2_
+#define _________________THUMB_3_3________________________6_       __THUMB_2_L___2_, MC_APP,  AD_BSP,  __THUMB_2_R___2_
 #define ________________________________________THUMB_5_5____________________________________10_ \
-    KC_PGUP, KC_PGDN, _________________THUMB_3_3________________________6_, OSM_MEH, OSM_HPR
+    KC_PGUP, KC_PGDN, _________________THUMB_3_3________________________6_, OSM_MEH, OSM_HYP
 
 #ifdef ASETNIOP_ENABLE
 /* ASETNIOP+ layout
@@ -235,7 +234,7 @@ to add/remove underscores to keep the lengths consistent.
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
 // │ Home│  ←  │  ↓  │  →  │ End │             │OsAlt│OsCtl│OsGui│OsSft│ RSft│  F12 |
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
-// │ Ins │ Cut │ Copy│Paste│PrScr│             │Power│OsAGr│ XXX │ XXX │CapsW│CapsW |
+// │ Ins │ Cut │ Copy│Paste│PrScr│             │Power│OsAGr│OsMeh│OsHyp│CapsW│CapsW |
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘------
 //                   │ Adj │     │     │ │     │ App │ Adj │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
@@ -244,7 +243,7 @@ to add/remove underscores to keep the lengths consistent.
 #define ______________NAVIGATION_L3______________5_                KC_INS,  CCP_CUT, CCP_CPY, CCP_PST, KC_PSCR
 #define _______________FUNCTION_R1_______________5_                _________________FUNCTIONS_______________5_
 #define _______________FUNCTION_R2_______________5_                OSM_ALT, OSM_CTL, OSM_GUI, OSM_SFT, KC_RSFT
-#define _______________FUNCTION_R3_______________5_                KC_PWR,  OSM_AGR, XXXXXXX, XXXXXXX, CW_TOGG
+#define _______________FUNCTION_R3_______________5_                KC_PWR,  OSM_AGR, OSM_MEH, OSM_HYP, CW_TOGG
 
 #define _______________NAVIGATION_L1______________________6_       _______, ______________NAVIGATION_L1______________5_
 #define _______________NAVIGATION_L2______________________6_       _______, ______________NAVIGATION_L2______________5_
@@ -258,11 +257,11 @@ to add/remove underscores to keep the lengths consistent.
 #define _____________NAVIGATION_AND_FUNCTION_TB___________6_       ___NAVFN_TL___2_, KC_TRNS, KC_TRNS, ___NAVFN_TR___2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
-// │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│ XXX │ XXX │
+// │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│Eject│ XXX │
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
 // │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Prev│ Vol-│ Next│ (v) │
 // ├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │ XXX │ MB4 │ MB3 │ MB5 │SrlLk│             │MsSp-│ Stop│ Mute│Eject│RShft│
+// │ XXX │ MB4 │ MB3 │ MB5 │SrlLk│             │MsSp-│ Play│ Mute│ Stop│RShft│
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
 //                   │ MB2 │ MB1 │ MB3 │ │     │LShft│ MB3 │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
@@ -270,9 +269,9 @@ to add/remove underscores to keep the lengths consistent.
 #define __________________MOUSE_L2_______________5_                DE_ADIA, KC_MS_L, KC_MS_D, KC_MS_R, KC_PAUSE
 #define __________________MOUSE_L3_______________5_                XXXXXXX, KC_BTN4, KC_BTN3, KC_BTN5, KC_SCRL
 
-#define __________________MOUSE_R1_______________5_                KC_ACL2, DE_UDIA, KC_VOLU, XXXXXXX, XXXXXXX
+#define __________________MOUSE_R1_______________5_                KC_ACL2, DE_UDIA, KC_VOLU, KC_EJCT, XXXXXXX
 #define __________________MOUSE_R2_______________5_                KC_ACL1, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX
-#define __________________MOUSE_R3_______________5_                KC_ACL0, KC_MSTP, KC_MUTE, KC_EJCT, KC_RSFT
+#define __________________MOUSE_R3_______________5_                KC_ACL0, KC_MPLY, KC_MUTE, KC_MSTP, KC_RSFT
 
 #define ______________________MOUSE_L1____________________6_       _______, __________________MOUSE_L1_______________5_
 #define ______________________MOUSE_L2____________________6_       _______, __________________MOUSE_L2_______________5_
@@ -297,7 +296,7 @@ to add/remove underscores to keep the lengths consistent.
 #define _________________CONFIG_L1_______________5_                RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW
 #define _________________CONFIG_L2_______________5_                RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
 #define _________________CONFIG_L3_______________5_                RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
-#define _________________CONFIG_R1_______________5_                EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define _________________CONFIG_R1_______________5_                EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, OU_AUTO
 #define _________________CONFIG_R2_______________5_                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define _________________CONFIG_R3_______________5_                QK_BOOT, QK_MAKE, XXXXXXX, XXXXXXX, KC_LSFT
 
