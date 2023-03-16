@@ -163,12 +163,16 @@ void render_status_lite(uint8_t row, uint8_t col) {
     // Line 3: Modifiers
     render_modifiers(col, row + 2, get_mods() | oneshotMods, oneshotMods);
 
-#       ifdef WPM_ENABLE
+#   ifdef WPM_ENABLE
     // Last line: WPM and layout
     oled_set_cursor(col, row + 3);
-    oled_write(small ? "W: " : "WPM: ", false);
+#   ifdef SMALL_DISPLAY
+    oled_write("W: ", false);
+#   else
+    oled_write("WPM: ", false);
+#   endif
     oled_write(get_u8_str(get_current_wpm(), ' '), false);
-#       endif // WPM_ENABLE
+#   endif // WPM_ENABLE
 }
 
 

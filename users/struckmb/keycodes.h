@@ -167,9 +167,9 @@ to add/remove underscores to keep the lengths consistent.
 #define __THUMB_2_L___2_                                           NF_ESC,  SY_ENT
 #define __THUMB_2_R___2_                                           SN_SPC,  NF_TAB
 #define _________THUMB_2_2_______4_                                __THUMB_2_L___2_, __THUMB_2_R___2_
-#define _________________THUMB_3_3________________________6_       __THUMB_2_L___2_, MC_APP,  AD_BSP,  __THUMB_2_R___2_
+#define ______________________THUMB_3_3___________________6_       __THUMB_2_L___2_, MC_APP,  AD_BSP,  __THUMB_2_R___2_
 #define ________________________________________THUMB_5_5____________________________________10_ \
-    KC_PGUP, KC_PGDN, _________________THUMB_3_3________________________6_, OSM_MEH, OSM_HYP
+    KC_PGUP, KC_PGDN, ______________________THUMB_3_3___________________6_, OSM_MEH, OSM_HYP
 
 #ifdef ASETNIOP_ENABLE
 /* ASETNIOP+ layout
@@ -268,7 +268,6 @@ to add/remove underscores to keep the lengths consistent.
 #define __________________MOUSE_L1_______________5_                KC_WH_D, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U
 #define __________________MOUSE_L2_______________5_                DE_ADIA, KC_MS_L, KC_MS_D, KC_MS_R, KC_PAUSE
 #define __________________MOUSE_L3_______________5_                XXXXXXX, KC_BTN4, KC_BTN3, KC_BTN5, KC_SCRL
-
 #define __________________MOUSE_R1_______________5_                KC_ACL2, DE_UDIA, KC_VOLU, KC_EJCT, XXXXXXX
 #define __________________MOUSE_R2_______________5_                KC_ACL1, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX
 #define __________________MOUSE_R3_______________5_                KC_ACL0, KC_MPLY, KC_MUTE, KC_MSTP, KC_RSFT
