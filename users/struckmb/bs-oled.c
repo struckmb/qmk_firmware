@@ -78,6 +78,21 @@ void render_keymap(uint8_t col, uint8_t row, uint8_t def_layer) {
             oled_write("QWERT", false);
             break;
 #       endif // QWERTZ_ENABLE
+#       ifdef BONE_ENABLE
+        case _BONE:
+            oled_write("BONE", false);
+            break;
+#       endif // BONE_ENABLE
+#       ifdef COLEMAK_ENABLE
+        case _COLMAK_DH:
+            oled_write("ColDH", false);
+            break;
+#       endif // COLEMAK_ENABLE
+#       ifdef LILYPOND_ENABLE
+        case _LILYPOND:
+            oled_write("LYPND", false);
+            break;
+#       endif // LILYPOND_ENABLE
 #       ifdef ASETNIOP_ENABLE
         case _ASETNIOP:
             oled_write("ASET+", false);
@@ -174,5 +189,6 @@ void render_status_lite(uint8_t row, uint8_t col) {
     oled_write(get_u8_str(get_current_wpm(), ' '), false);
 #   endif // WPM_ENABLE
 }
+
 
 

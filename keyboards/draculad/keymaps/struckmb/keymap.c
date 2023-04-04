@@ -18,34 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "struckmb.h"
 
 // clang-format off
-#define LAYOUT_draculad_base( \
-    K00, K01, K02, K03, K04,   K05, K06, K07, K08, K09, \
-    K10, K11, K12, K13, K14,   K15, K16, K17, K18, K19, \
-    K20, K21, K22, K23, K24,   K25, K26, K27, K28, K29, \
-              K32, K33, K34,   K35, K36, K37 \
-  ) \
-  LAYOUT_wrapper( \
-      K00,        K01, K02,        K03,        K04,            K05,        K06,        K07,        K08, K09, \
-      K10,        K11, GUI_T(K12), CTL_T(K13), ALT_T(K14),     ALT_T(K15), CTL_T(K16), GUI_T(K17), K18, LT(_MSE_CTL,K19), \
-      SFT_T(K20), K21, K22,        K23,        K24,            K25,        K26,        K27,        K28, RSFT_T(K29), \
-                                               KC_MUTE,        TG(_ADJUST), \
-                       K32,        K33,        K34,            K35,        K36,        K37 \
-    )
-#define LAYOUT_draculad_layer( \
-    K00, K01, K02, K03, K04,   K05, K06, K07, K08, K09, \
-    K10, K11, K12, K13, K14,   K15, K16, K17, K18, K19, \
-    K20, K21, K22, K23, K24,   K25, K26, K27, K28, K29, \
-              K32, K33, K34,   K35, K36, K37 \
-  ) \
-  LAYOUT_wrapper( \
-      K01, K01, K02, K03, K04,   K05, K06, K07, K08, K09, \
-      K10, K11, K12, K13, K14,   K15, K16, K17, K18, K19, \
-      K20, K21, K22, K23, K24,   K25, K26, K27, K28, K29, \
-                     KC_MUTE,    TG(_ADJUST), \
-                K32, K33, K34,   K35, K36, K37 \
-    )
-#define LAYOUT_draculad_hrm_wrapper(...)       LAYOUT_draculad_base(__VA_ARGS__)
-#define LAYOUT_draculad_wrapper(...)           LAYOUT_draculad_layer(__VA_ARGS__)
+#define LAYOUT_draculad_hrm_wrapper(...)       LAYOUT_3x5_2_3_base(__VA_ARGS__)
+#define LAYOUT_draculad_wrapper(...)           LAYOUT_3x5_2_3_layer(__VA_ARGS__)
 // clang-format on
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -86,15 +60,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
  if (is_keyboard_master()) {
-    if(is_keyboard_left()){
-      return OLED_ROTATION_270;
-      }
-      else {
-        return OLED_ROTATION_90;
-      }
-    } else {
-	    return OLED_ROTATION_0;
-    }
+     return is_keyboard_left() ? OLED_ROTATION_270 : OLED_ROTATION_90;
+ } else {
+     return OLED_ROTATION_0;
+ }
 }
 
 void render_logo_keyboard(uint8_t col, uint8_t row) {

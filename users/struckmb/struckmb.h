@@ -56,12 +56,23 @@ enum userspace_custom_keycodes {
 
 /// Enumeration of layers
 enum userspace_layers {
-    _QWERTZ = 0, // Base layer
+    // Base layers
+    _QWERTZ,
+#   ifdef BONE_ENABLE
+    _BONE,
+#   endif // BONE_ENABLE
+#   ifdef COLEMAK_ENABLE
+    _COLMAK_DH,
+#   endif // COLEMAK_ENABLE
+#   ifdef LILYPOND_ENABLE
+    _LILYPOND,
+#   endif // LILYPOND_ENABLE
 #   ifdef ASETNIOP_ENABLE
     _ASETNIOP,    // ASETNIOP layer
 #   endif // ASETNIOP_ENABLE
 #   ifdef ARTSENIO_ENABLE
     _ARTSENIO,    // ARTSENIO layer
+    // Additional layers
     _ARTS_NUM,    // ARTSENIO numbers layer
     _ARTS_SYM,    // ARTSENIO symbols layer
     _ARTS_PAR,    // ARTSENIO parens layer

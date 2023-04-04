@@ -17,10 +17,12 @@
 #pragma once
 
 #define QWERTZ_ENABLE
+#define COLEMAK_ENABLE
+#define LILYPOND_ENABLE
 
 // deactivated some effects for size reasons 
 #ifdef RGBLIGHT_ENABLE
-#    define RGBLIGHT_EFFECT_BREATHING
+/* #    define RGBLIGHT_EFFECT_BREATHING */
 #    define RGBLIGHT_EFFECT_RAINBOW_MOOD
 #    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 #    define RGBLIGHT_EFFECT_SNAKE
