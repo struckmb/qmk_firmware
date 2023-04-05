@@ -57,10 +57,12 @@ enum userspace_custom_keycodes {
 /// Enumeration of layers
 enum userspace_layers {
     // Base layers
+#   ifdef QWERTZ_ENABLE
     _QWERTZ,
-#   ifdef BONE_ENABLE
-    _BONE,
-#   endif // BONE_ENABLE
+#   endif // QWERTZ_ENABLE
+#   ifdef BONEM_ENABLE
+    _BONEM,
+#   endif // BONEM_ENABLE
 #   ifdef COLEMAK_ENABLE
     _COLMAK_DH,
 #   endif // COLEMAK_ENABLE

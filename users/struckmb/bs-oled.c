@@ -78,11 +78,11 @@ void render_keymap(uint8_t col, uint8_t row, uint8_t def_layer) {
             oled_write("QWERT", false);
             break;
 #       endif // QWERTZ_ENABLE
-#       ifdef BONE_ENABLE
-        case _BONE:
-            oled_write("BONE", false);
+#       ifdef BONEM_ENABLE
+        case _BONEM:
+            oled_write("BoneM", false);
             break;
-#       endif // BONE_ENABLE
+#       endif // BONEM_ENABLE
 #       ifdef COLEMAK_ENABLE
         case _COLMAK_DH:
             oled_write("ColDH", false);
@@ -90,7 +90,7 @@ void render_keymap(uint8_t col, uint8_t row, uint8_t def_layer) {
 #       endif // COLEMAK_ENABLE
 #       ifdef LILYPOND_ENABLE
         case _LILYPOND:
-            oled_write("LYPND", false);
+            oled_write("LyPnd", false);
             break;
 #       endif // LILYPOND_ENABLE
 #       ifdef ASETNIOP_ENABLE

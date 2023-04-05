@@ -18,11 +18,11 @@
 #else
 #define QWERTZ KC_NO
 #endif // QWERTZ_ENABLE
-#ifdef BONE_ENABLE
-#define BONE  DF(_BONE)
+#ifdef BONEM_ENABLE
+#define BONEM  DF(_BONEM)
 #else
-#define BONE KC_NO
-#endif // BONE_ENABLE
+#define BONEM KC_NO
+#endif // BONEM_ENABLE
 #ifdef COLEMAK_ENABLE
 #define COLMAK DF(_COLMAK_DH)
 #else
@@ -121,6 +121,25 @@ to add/remove underscores to keep the lengths consistent.
 #define _____________________QWERTZ_R2____________________6_       _________________QWERTZ_R2_______________5_, ALT_AE
 #define _____________________QWERTZ_R3____________________6_       _________________QWERTZ_R3_______________5_, KC_RSFT
 #endif // QWERTZ_ENABLE
+
+#ifdef BONEM_ENABLE
+// * Base Layer: Bone (matrix variant for 5 column keyboards)
+// Left half
+#define _________________BONE_M_L1_______________5_                DE_J,    DE_D,    DE_U,    DE_A,    DE_X
+#define _________________BONE_M_L2_______________5_                DE_C,    DE_T,    DE_I,    DE_E,    DE_O
+#define _________________BONE_M_L3_______________5_                DE_F,    DE_V,    DE_SS,   DE_Q,    DE_ODIA
+// Right half
+#define _________________BONE_M_R1_______________5_                DE_P,    DE_H,    DE_L,    DE_M,    DE_W
+#define _________________BONE_M_R2_______________5_                DE_B,    DE_N,    DE_R,    DE_S,    DE_G
+#define _________________BONE_M_R3_______________5_                DE_Y,    DE_Z,    KC_COMM, KC_DOT,  DE_K
+// nx6 keyboards
+#define _____________________BONE_M_L1____________________6_       KC_TAB,  _________________BONE_M_L1_______________5_
+#define _____________________BONE_M_L2____________________6_       CTL_ESC, _________________BONE_M_L2_______________5_
+#define _____________________BONE_M_L3____________________6_       KC_LSFT, DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA
+#define _____________________BONE_M_R1____________________6_       _________________BONE_M_R1_______________5_, DE_SS
+#define _____________________BONE_M_R2____________________6_       _________________BONE_M_R2_______________5_, DE_Q
+#define _____________________BONE_M_R3____________________6_       _________________BONE_M_R3_______________5_, KC_RSFT
+#endif // BONEM_ENABLE
 
 #ifdef COLEMAK_ENABLE
 // * Base Layer: Colemak DH (german variant)
@@ -304,7 +323,7 @@ to add/remove underscores to keep the lengths consistent.
 #define _________________CONFIG_L1_______________5_                RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW
 #define _________________CONFIG_L2_______________5_                RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
 #define _________________CONFIG_L3_______________5_                RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
-#define _________________CONFIG_R1_______________5_                EE_CLR,  QWERTZ,  BONE,    COLMAK,  LILYPOND
+#define _________________CONFIG_R1_______________5_                EE_CLR,  QWERTZ,  BONEM,   COLMAK,  LILYPOND
 #define _________________CONFIG_R2_______________5_                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define _________________CONFIG_R3_______________5_                QK_BOOT, QK_MAKE, XXXXXXX, XXXXXXX, KC_LSFT
 
