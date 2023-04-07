@@ -63,5 +63,33 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
                  KC_TRNS, KC_TRNS, K33, K34, K35,      K36, K37, K38, KC_TRNS, KC_TRNS \
     )
 
+// 4 rows, 6 columns, 11 "thumbs" (redox)
+#define LAYOUT_4x6_11_base( \
+        K00, K01, K02, K03, K04, K05,   K08, K09, K0A, K0B, K0C, K0D, \
+        K10, K11, K12, K13, K14, K15,   K18, K19, K1A, K1B, K1C, K1D, \
+        K20, K21, K22, K23, K24, K25,   K28, K29, K2A, K2B, K2C, K2D, \
+        K30, K31, K32, K33, K34, K35,   K38, K39, K3A, K3B, K3C, K3D, \
+             K41, K42, K43, K44, K45,   K48, K49, K4A, K4B, K4C \
+        ) LAYOUT_wrapper( \
+            K00,        K01,        K02, K03,        K04,        K05,                                       K08,        K09,        K0A,        K0B,              K0C,         K0D,        \
+            K10,        K11,        K12, K13,        K14,        K15,        KC_NO,                  KC_NO, K18,        K19,        K1A,        LT(_MSE_CTL,K1B), K1C,         K1D,        \
+            CTL_T(K20), K21,        K22, GUI_T(K23), CTL_T(K24), ALT_T(K25), KC_NO,                  KC_NO, ALT_T(K28), CTL_T(K29), GUI_T(K2A), K2B,              K2C,         ALT_T(K2D), \
+            K30,        SFT_T(K31), K32, K33,        K34,        K35,        KC_NO, KC_NO,    KC_NO, KC_NO, K28,        K39,        K3A,        K3B,              RSFT_T(K3C), K3D,        \
+                        KC_NO,      KC_NO,      K41, K42,        K43,        K44,   K45,      K48,   K49,   K4A,        K4B,        K4C,        KC_NO,            KC_NO  \
+    )
+#define LAYOUT_4x6_11_layer( \
+        K00, K01, K02, K03, K04, K05,   K08, K09, K0A, K0B, K0C, K0D, \
+        K10, K11, K12, K13, K14, K15,   K18, K19, K1A, K1B, K1C, K1D, \
+        K20, K21, K22, K23, K24, K25,   K28, K29, K2A, K2B, K2C, K2D, \
+        K30, K31, K32, K33, K34, K35,   K38, K39, K3A, K3B, K3C, K3D, \
+                       K43, K44, K45,   K48, K49, K4A \
+        ) LAYOUT_wrapper( \
+            K00,     K01,     K02, K03, K04, K05,                                K08, K09, K0A,     K0B,     K0C,     K0D, \
+            K10,     K11,     K12, K13, K14, K15, KC_NO,                  KC_NO, K18, K19, K1A,     K1B,     K1C,     K1D, \
+            K20,     K21,     K22, K23, K24, K25, KC_NO,                  KC_NO, K28, K29, K2A,     K2B,     K2C,     K2D, \
+            K30,     K31,     K32, K33, K34, K35, KC_NO, KC_NO,    KC_NO, KC_NO, K28, K39, K3A,     K3B,     K3C,     K3D, \
+            KC_TRNS, KC_TRNS, KC_TRNS,  K43, K44, K45,   KC_NO,    KC_NO, K48,   K49, K4A, KC_TRNS, KC_TRNS, KC_TRNS  \
+    )
+
 #define LAYOUT_wrapper(...)            LAYOUT(__VA_ARGS__)
 // clang-format on

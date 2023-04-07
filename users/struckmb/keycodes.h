@@ -194,6 +194,10 @@ to add/remove underscores to keep the lengths consistent.
 #endif // LILYPOND_ENABLE
 
 
+#define _____________________NUMBER_L0____________________6_       KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5
+#define _____________________NUMBER_R0____________________6_       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_NO
+#define ______________________FUNC_L0_____________________6_       KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
+#define ______________________FUNC_R0_____________________6_       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12
 // /*
 //  * Standard thumb cluster
 //           | PgUp | PgDn │ Esc │Enter│ App | |BkSpc│Space│ Tab │OsMeh |OsHypr|
