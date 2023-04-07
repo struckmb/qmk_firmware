@@ -30,6 +30,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         true;
 }
 
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case DE_MINS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case DE_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
+
 /* #ifdef ARTSENIO_ENABLE */
 /* void keyboard_post_init_user(void) { */
 /*     if (is_keyboard_left() && is_keyboard_master()) { */
@@ -43,9 +63,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     if (combo_index < ALL_ZZZ) return true;
+#   if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(COLEMAK_ENABLE)
+    if (combo_index < BASE_ZZZ) {
+#   ifdef LILYPOND_ENABLE
+        return get_highest_layer(default_layer_state) <= _LILYPOND;
+#   endif // LILYPOND_ENABLE
+#   ifdef COLEMAK_ENABLE
+        return get_highest_layer(default_layer_state) <= _COLMAK_DH;
+#   endif // COLEMAK_ENABLE
+#   ifdef BONE_ENABLE
+        return get_highest_layer(default_layer_state) <= _BONE;
+#   endif // BONE_ENABLE
+#   ifdef QWERTZ_ENABLE
+        return get_highest_layer(default_layer_state) <= _QWERTZ;
+#   endif // QWERTZ_ENABLE
+    }
+#   endif // QWERTZ_ENABLE // BONE_ENABLE // COLEMAK_ENABLE
 #   ifdef ARTSENIO_ENABLE
     if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ)
-            return get_highest_layer(default_layer_state) == _ARTSENIO;
+        return get_highest_layer(default_layer_state) == _ARTSENIO;
 #   endif // ARTSENIO_ENABLE
 #   ifdef ASETNIOP_ENABLE
     if (combo_index > ASET_AAA && combo_index < ASET_ZZZ)

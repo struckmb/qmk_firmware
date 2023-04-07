@@ -18,29 +18,41 @@
 #else
 #define QWERTZ KC_NO
 #endif // QWERTZ_ENABLE
-#ifdef BONEM_ENABLE
-#define BONEM  DF(_BONEM)
+#ifdef BONE_ENABLE
+#define BONE  DF(_BONE)
 #else
-#define BONEM KC_NO
-#endif // BONEM_ENABLE
+#define BONE KC_NO
+#endif // BONE_ENABLE
 #ifdef COLEMAK_ENABLE
 #define COLMAK DF(_COLMAK_DH)
 #else
 #define COLMAK KC_NO
 #endif // COLEMAK_ENABLE
 #ifdef LILYPOND_ENABLE
-#define LILYPOND DF(_LILYPOND)
+#define LILYPND DF(_LILYPOND)
 #else
-#define LILYPOND KC_NO
+#define LILYPND KC_NO
 #endif // LILYPOND_ENABLE
+#ifdef ASETNIOP_ENABLE
+#define ASETNIO DF(_ASETNIOP)
+#else
+#define ASETNIO KC_NO
+#endif // ASETNIOP_ENABLE
+#ifdef ARTSENIO_ENABLE
+#define ARTSENI DF(_ARTSENIO)
+#else
+#define ARTSENI KC_NO
+#endif // ARTSENIO_ENABLE
 
-// Thumb layer keys
+// Thumb / layer keys
 #define NF_ESC LT(_NAV_FUN,KC_ESC)
 #define SY_ENT LT(_SYM_NUM,KC_ENT)
 #define NF_TAB LT(_NAV_FUN,KC_TAB)
 #define AD_BSP LT(_ADJUST,KC_BSPC)
 #define SN_SPC LT(_SYM_NUM,KC_SPC)
 #define MC_APP LT(_MSE_CTL,KC_APP)
+#define TO_DF  DF(0)
+#define TO_MA  MO(_MSE_CTL)
 
 // cut copy paste
 #define CCP_CUT S(KC_DEL)
@@ -122,24 +134,24 @@ to add/remove underscores to keep the lengths consistent.
 #define _____________________QWERTZ_R3____________________6_       _________________QWERTZ_R3_______________5_, KC_RSFT
 #endif // QWERTZ_ENABLE
 
-#ifdef BONEM_ENABLE
+#ifdef BONE_ENABLE
 // * Base Layer: Bone (matrix variant for 5 column keyboards)
 // Left half
-#define _________________BONE_M_L1_______________5_                DE_J,    DE_D,    DE_U,    DE_A,    DE_X
-#define _________________BONE_M_L2_______________5_                DE_C,    DE_T,    DE_I,    DE_E,    DE_O
-#define _________________BONE_M_L3_______________5_                DE_F,    DE_V,    DE_SS,   DE_Q,    DE_ODIA
+#define ___________________BONE_L1_______________5_                DE_J,    DE_D,    DE_U,    DE_A,    DE_X
+#define ___________________BONE_L2_______________5_                DE_C,    DE_T,    DE_I,    DE_E,    DE_O
+#define ___________________BONE_L3_______________5_                DE_F,    DE_V,    DE_SS,   DE_Q,    DE_ODIA
 // Right half
-#define _________________BONE_M_R1_______________5_                DE_P,    DE_H,    DE_L,    DE_M,    DE_W
-#define _________________BONE_M_R2_______________5_                DE_B,    DE_N,    DE_R,    DE_S,    DE_G
-#define _________________BONE_M_R3_______________5_                DE_Y,    DE_Z,    KC_COMM, KC_DOT,  DE_K
+#define ___________________BONE_R1_______________5_                DE_P,    DE_H,    DE_L,    DE_M,    DE_W
+#define ___________________BONE_R2_______________5_                DE_B,    DE_N,    DE_R,    DE_S,    DE_G
+#define ___________________BONE_R3_______________5_                DE_Y,    DE_Z,    KC_COMM, KC_DOT,  DE_K
 // nx6 keyboards
-#define _____________________BONE_M_L1____________________6_       KC_TAB,  _________________BONE_M_L1_______________5_
-#define _____________________BONE_M_L2____________________6_       CTL_ESC, _________________BONE_M_L2_______________5_
-#define _____________________BONE_M_L3____________________6_       KC_LSFT, DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA
-#define _____________________BONE_M_R1____________________6_       _________________BONE_M_R1_______________5_, DE_SS
-#define _____________________BONE_M_R2____________________6_       _________________BONE_M_R2_______________5_, DE_Q
-#define _____________________BONE_M_R3____________________6_       _________________BONE_M_R3_______________5_, KC_RSFT
-#endif // BONEM_ENABLE
+#define _______________________BONE_L1____________________6_       KC_TAB,  ___________________BONE_L1_______________5_
+#define _______________________BONE_L2____________________6_       CTL_ESC, ___________________BONE_L2_______________5_
+#define _______________________BONE_L3____________________6_       KC_LSFT, DE_F,    DE_V,    DE_UDIA, DE_ADIA, DE_ODIA
+#define _______________________BONE_R1____________________6_       ___________________BONE_R1_______________5_, DE_SS
+#define _______________________BONE_R2____________________6_       ___________________BONE_R2_______________5_, DE_Q
+#define _______________________BONE_R3____________________6_       ___________________BONE_R3_______________5_, KC_RSFT
+#endif // BONE_ENABLE
 
 #ifdef COLEMAK_ENABLE
 // * Base Layer: Colemak DH (german variant)
@@ -208,18 +220,19 @@ to add/remove underscores to keep the lengths consistent.
  * ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
  * │ Esc │ Alt │ Gui │ Ctl │     │             │     │ F1  │ F2  │ F4  │ F8  │
  * └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
- *                   │ Ctl │ Sft │QWER+│ │ Adj │Space│NoMod│
+ *                   │ Ctl │ Sft │QUIT*│ │ Mse │Space│NoMod│
  *                   └─────┴─────┴─────┘ └─────┴─Sym─┴─────┘
  */
-#define ______________ASETNIOP_PLUS_L1___________5_                C_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
-#define ______________ASETNIOP_PLUS_L2___________5_                E_A,    DE_S,    DE_E,    DE_T,    XXXXXXX
-#define ______________ASETNIOP_PLUS_L3___________5_                C_ESC,  OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
-#define ______________ASETNIOP_PLUS_L4___________3_                S_CTL,  OS_SFT,  TO_QZ
+#define ______________ASETNIOP_PLUS_L1___________5_                KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
+#define ______________ASETNIOP_PLUS_L2___________5_                E_A,     DE_S,    DE_E,    DE_T,    XXXXXXX
+#define ______________ASETNIOP_PLUS_L3___________5_                C_ESC,   OS_ALT,  OS_GUI,  OS_CTL,  XXXXXXX
+#define ___ASETNIOP_PLUS_L4____3_                                  S_CTL,   OS_SFT,  TO_DF
 
-#define ______________ASETNIOP_PLUS_R1___________5_                XXXXXX, DE_1,    DE_2,    DE_4,    DE_8
-#define ______________ASETNIOP_PLUS_R2___________5_                XXXXXX, DE_N,    DE_I,    DE_O,    DE_P
-#define ______________ASETNIOP_PLUS_R3___________5_                XXXXXX, KC_F1,   KC_F2,   KC_F4,   KC_F8
-#define _AR4_3_ TO_MA,   SYM_SPC, NO_MOD
+#define ______________ASETNIOP_PLUS_R1___________5_                XXXXXXX, DE_1,    DE_2,    DE_4,    DE_8
+#define ______________ASETNIOP_PLUS_R2___________5_                XXXXXXX, DE_N,    DE_I,    DE_O,    DE_P
+#define ______________ASETNIOP_PLUS_R3___________5_                XXXXXXX, KC_F1,   KC_F2,   KC_F4,   KC_F8
+#define ___ASETNIOP_PLUS_R4____3_                                  TO_MA,   SN_SPC, NO_MOD
+#define ________ASETNIOP_PLUS_THUMB_3_3___________________6_       ___ASETNIOP_PLUS_L4____3_, ___ASETNIOP_PLUS_R4____3_
 #endif // ASETNIOP_ENABLE
 
 // non alphas
@@ -285,20 +298,20 @@ to add/remove underscores to keep the lengths consistent.
 #define _____________NAVIGATION_AND_FUNCTION_TB___________6_       ___NAVFN_TL___2_, KC_TRNS, KC_TRNS, ___NAVFN_TR___2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
-// │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│Eject│ XXX │
+// │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│ (v) │Eject│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Prev│ Vol-│ Next│ (v) │
+// │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Next│ Vol-│ XXX │ Prev│
 // ├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │ XXX │ MB4 │ MB3 │ MB5 │SrlLk│             │MsSp-│ Play│ Mute│ Stop│RShft│
+// │ XXX │ MB4 │ MB3 │ MB5 │SrlLk│             │MsSp-│ Play│ Mute│ XXX │RShft│
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
 //                   │ MB2 │ MB1 │ MB3 │ │     │LShft│ MB3 │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
 #define __________________MOUSE_L1_______________5_                KC_WH_D, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U
 #define __________________MOUSE_L2_______________5_                DE_ADIA, KC_MS_L, KC_MS_D, KC_MS_R, KC_PAUSE
 #define __________________MOUSE_L3_______________5_                XXXXXXX, KC_BTN4, KC_BTN3, KC_BTN5, KC_SCRL
-#define __________________MOUSE_R1_______________5_                KC_ACL2, DE_UDIA, KC_VOLU, KC_EJCT, XXXXXXX
-#define __________________MOUSE_R2_______________5_                KC_ACL1, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX
-#define __________________MOUSE_R3_______________5_                KC_ACL0, KC_MPLY, KC_MUTE, KC_MSTP, KC_RSFT
+#define __________________MOUSE_R1_______________5_                KC_ACL2, DE_UDIA, KC_VOLU, XXXXXXX, KC_EJCT
+#define __________________MOUSE_R2_______________5_                KC_ACL1, KC_MNXT, KC_VOLD, XXXXXXX, KC_MPRV
+#define __________________MOUSE_R3_______________5_                KC_ACL0, KC_MPLY, KC_MUTE, XXXXXXX, KC_RSFT
 
 #define ______________________MOUSE_L1____________________6_       _______, __________________MOUSE_L1_______________5_
 #define ______________________MOUSE_L2____________________6_       _______, __________________MOUSE_L2_______________5_
@@ -316,16 +329,16 @@ to add/remove underscores to keep the lengths consistent.
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
 // │Speed│ Val │ Sat │ Hue │ Mode│             │(BtC)│(Bt←)│ XXX │(Bt→)│ XXX │
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼Mouse┼─────┼─────┤
-// │ Test│ Xmas│Grdnt│Knght│Snake│             │Reset│Build│ XXX │ XXX │ Sft │
+// │ Test│ Xmas│Grdnt│Knght│Snake│             │Reset│Build│ASETN│ARTSN│ Sft │
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
 //                   │     │     │     │ │     │     │     │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
 #define _________________CONFIG_L1_______________5_                RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW
 #define _________________CONFIG_L2_______________5_                RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
 #define _________________CONFIG_L3_______________5_                RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
-#define _________________CONFIG_R1_______________5_                EE_CLR,  QWERTZ,  BONEM,   COLMAK,  LILYPOND
+#define _________________CONFIG_R1_______________5_                EE_CLR,  QWERTZ,  BONE,    COLMAK,  LILYPND
 #define _________________CONFIG_R2_______________5_                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________CONFIG_R3_______________5_                QK_BOOT, QK_MAKE, XXXXXXX, XXXXXXX, KC_LSFT
+#define _________________CONFIG_R3_______________5_                QK_BOOT, QK_MAKE, ASETNIO, ARTSENI, KC_LSFT
 
 #define ____________________CONFIG_L1_____________________6_       _______, _________________CONFIG_L1_______________5_
 #define ____________________CONFIG_L2_____________________6_       _______, _________________CONFIG_L2_______________5_

@@ -17,15 +17,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
+#define LAYER_STATE_8BIT
+#define EE_HANDS
+
+/* //comment that out if your trackball is on the left side */
+#define TRACKBALL_RIGHT
+#define POINTING_DEVICE_ROTATION_90
+#ifdef TRACKBALL_RIGHT 
+    #define POINTING_DEVICE_INVERT_X
+    #define POINTING_DEVICE_INVERT_Y
+#endif
+
 #define QWERTZ_ENABLE
+#define BONE_ENABLE
+#define COLEMAK_ENABLE
+#define LILYPOND_ENABLE
+/* #define ASETNIOP_ENABLE */
+/* #define ARTSENIO_ENABLE */
 
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 5
-
 #define MATRIX_ROW_PINS {D4, C6, D7, E6}
 #define MATRIX_COL_PINS {F4, F5,F6, F7, B1}
-
 #define DIODE_DIRECTION COL2ROW
 
 #define DEBOUNCE 5
@@ -33,12 +46,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN D2
 
 #ifdef OLED_ENABLE
+  #define SMALL_DISPLAY
   #define OLED_DISPLAY_128X64
   #define OLED_TIMEOUT 30000
 #endif
 
+#ifdef RGBLIGHT_ENABLE
 #define RGB_DI_PIN D3
-#ifdef RGB_DI_PIN
 #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 #define RGBLIGHT_EFFECT_RAINBOW_MOOD
 #define RGBLIGHT_EFFECT_STATIC_GRADIENT
@@ -51,12 +65,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SLEEP
 #endif
 
-#define ENCODERS_PAD_A {B2 , B4}
-#define ENCODERS_PAD_B {B6 , B5}
+/* #define ENCODERS_PAD_A {B2 , B4} */
+/* #define ENCODERS_PAD_B {B6 , B5} */
 
-#define ENCODER_RESOLUTIONS { 4, 4 }
-#define ENCODER_RESOLUTIONS_RIGHT { 4, 1 }
-
-#define EE_HANDS
-
-#define LAYER_STATE_8BIT
+/* #define ENCODER_RESOLUTIONS { 4, 4 } */
+/* #define ENCODER_RESOLUTIONS_RIGHT { 4, 1 } */

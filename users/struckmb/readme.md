@@ -24,7 +24,7 @@ If QWERTZ_ENABLE is defined, you can switch to the following map using QWERTZ
 ```
 
 ## Base Layout - BONE (matrix)
-If BONEM_ENABLE is defined, you can switch to the following map using BONEM
+If BONE_ENABLE is defined, you can switch to the following map using BONE
 ```
  -----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----
 | Tab │  j  │  d  │  u  │  a  │  x  │             │  p  │  h  │  l  │  m  │  w  │  ß  |

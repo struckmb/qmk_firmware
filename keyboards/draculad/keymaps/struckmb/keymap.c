@@ -23,14 +23,56 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // clang-format on
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+#ifdef QWERTZ_ENABLE
     [_QWERTZ] = LAYOUT_draculad_hrm_wrapper(
         _________________QWERTZ_L1_______________5_, _________________QWERTZ_R1_______________5_,
         _________________QWERTZ_L2_______________5_, _________________QWERTZ_R2_______________5_,
         _________________QWERTZ_L3_______________5_, _________________QWERTZ_R3_______________5_,
                            ______________________THUMB_3_3___________________6_
     ),
+#endif
+#ifdef BONE_ENABLE
+    [_BONE] = LAYOUT_draculad_hrm_wrapper(
+        ___________________BONE_L1_______________5_, ___________________BONE_R1_______________5_,
+        ___________________BONE_L2_______________5_, ___________________BONE_R2_______________5_,
+        ___________________BONE_L3_______________5_, ___________________BONE_R3_______________5_,
+                           ______________________THUMB_3_3___________________6_
+    ),
+#endif
+#ifdef COLEMAK_ENABLE
+    [_COLMAK_DH] = LAYOUT_draculad_hrm_wrapper(
+        _______________COLEMAK_DH_L1_____________5_, _______________COLEMAK_DH_R1_____________5_,
+        _______________COLEMAK_DH_L2_____________5_, _______________COLEMAK_DH_R2_____________5_,
+        _______________COLEMAK_DH_L3_____________5_, _______________COLEMAK_DH_R3_____________5_,
+                           ______________________THUMB_3_3___________________6_
+    ),
+#endif
+#ifdef LILYPOND_ENABLE
+    [_LILYPOND] = LAYOUT_draculad_hrm_wrapper(
+        ________________LILYPOND_L1______________5_, ________________LILYPOND_R1______________5_,
+        ________________LILYPOND_L2______________5_, ________________LILYPOND_R2______________5_,
+        ________________LILYPOND_L3______________5_, ________________LILYPOND_R3______________5_,
+                           ______________________THUMB_3_3___________________6_
+    ),
+#endif
+#ifdef ASETNIOP_ENABLE
+    [_ASETNIOP] = LAYOUT_draculad_hrm_wrapper(
+        ______________ASETNIOP_PLUS_L1___________5_, ______________ASETNIOP_PLUS_R1___________5_
+        ______________ASETNIOP_PLUS_L2___________5_, ______________ASETNIOP_PLUS_R2___________5_
+        ______________ASETNIOP_PLUS_L3___________5_, ______________ASETNIOP_PLUS_R3___________5_
+                           ________ASETNIOP_PLUS_THUMB_3_3___________________6_
+    ),
+#endif
+#ifdef ARTSENIO_ENABLE
+    [_ARTSENIO] = LAYOUT_draculad_hrm_wrapper(
+        ______________ARTSENIO_PLUS_L1___________5_, ______________ARTSENIO_PLUS_R1___________5_
+        ______________ARTSENIO_PLUS_L2___________5_, ______________ARTSENIO_PLUS_R2___________5_
+        ______________ARTSENIO_PLUS_L3___________5_, ______________ARTSENIO_PLUS_R3___________5_
+                           ________ARTSENIO_PLUS_THUMB_3_3___________________6_
+    ),
+#endif
 
-     [_SYM_NUM] = LAYOUT_draculad_wrapper(
+    [_SYM_NUM] = LAYOUT_draculad_wrapper(
         ________________SYMBOLS_L1_______________5_, ________________SYMBOLS_R1_______________5_,
         ________________SYMBOLS_L2_______________5_, ________________SYMBOLS_R2_______________5_,
         ________________SYMBOLS_L3_______________5_, ________________SYMBOLS_R3_______________5_,

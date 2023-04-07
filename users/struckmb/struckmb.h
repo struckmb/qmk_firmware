@@ -60,9 +60,9 @@ enum userspace_layers {
 #   ifdef QWERTZ_ENABLE
     _QWERTZ,
 #   endif // QWERTZ_ENABLE
-#   ifdef BONEM_ENABLE
-    _BONEM,
-#   endif // BONEM_ENABLE
+#   ifdef BONE_ENABLE
+    _BONE,
+#   endif // BONE_ENABLE
 #   ifdef COLEMAK_ENABLE
     _COLMAK_DH,
 #   endif // COLEMAK_ENABLE

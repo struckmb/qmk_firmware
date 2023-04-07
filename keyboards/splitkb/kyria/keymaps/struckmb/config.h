@@ -17,7 +17,7 @@
 #pragma once
 
 #define QWERTZ_ENABLE
-#define BONEM_ENABLE
+#define BONE_ENABLE
 #define COLEMAK_ENABLE
 #define LILYPOND_ENABLE
 
