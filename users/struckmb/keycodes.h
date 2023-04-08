@@ -34,14 +34,15 @@
 #define LILYPND KC_NO
 #endif // LILYPOND_ENABLE
 #ifdef ASETNIOP_ENABLE
-#define ASETNIO DF(_ASETNIOP)
+#define ASET DF(_ASETNIOP)
 #else
-#define ASETNIO KC_NO
+#define ASET KC_NO
 #endif // ASETNIOP_ENABLE
 #ifdef ARTSENIO_ENABLE
-#define ARTSENI DF(_ARTSENIO)
+#define ARTSEN DF(_ARTSENIO)
 #else
-#define ARTSENI KC_NO
+#define ARTSEN KC_NO
+
 #endif // ARTSENIO_ENABLE
 
 // Thumb / layer keys
@@ -329,20 +330,20 @@ to add/remove underscores to keep the lengths consistent.
 #define ______________________MOUSE_TB____________________6_       ___MOUSE_TL___2_, KC_BTN3, _______, ___MOUSE_TR___2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
-// │ TOGG│Plain│Brthe│Rainb│Swirl│             │EEClr│QWERT│BONEO│COLDH│LYPND│
+// │ TOGG│Plain│Brthe│Rainb│Swirl│             │(BtC)│(Bt←)│(Bt0)│(Bt→)│(Out)│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │Speed│ Val │ Sat │ Hue │ Mode│             │(BtC)│(Bt←)│ XXX │(Bt→)│ XXX │
+// │Speed│ Val │ Sat │ Hue │ Mode│             │EEClr│QWERT│COLDH│BONEO│LYPND│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼Mouse┼─────┼─────┤
-// │ Test│ Xmas│Grdnt│Knght│Snake│             │Reset│Build│ASETN│ARTSN│ Sft │
+// │ Test│ Xmas│Grdnt│Knght│Snake│             │Reset│ ASET│ARTSN│ XXX │ Sft │
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
 //                   │     │     │     │ │     │     │     │
 //                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
 #define _________________CONFIG_L1_______________5_                RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW
 #define _________________CONFIG_L2_______________5_                RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
 #define _________________CONFIG_L3_______________5_                RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
-#define _________________CONFIG_R1_______________5_                EE_CLR,  QWERTZ,  BONE,    COLMAK,  LILYPND
-#define _________________CONFIG_R2_______________5_                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________CONFIG_R3_______________5_                QK_BOOT, QK_MAKE, ASETNIO, ARTSENI, KC_LSFT
+#define _________________CONFIG_R1_______________5_                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define _________________CONFIG_R2_______________5_                EE_CLR,  QWERTZ,  COLMAK,  BONE,    LILYPND
+#define _________________CONFIG_R3_______________5_                QK_BOOT, ASET,    ARTSEN,  XXXXXXX, KC_LSFT
 
 #define ____________________CONFIG_L1_____________________6_       _______, _________________CONFIG_L1_______________5_
 #define ____________________CONFIG_L2_____________________6_       _______, _________________CONFIG_L2_______________5_
@@ -352,3 +353,4 @@ to add/remove underscores to keep the lengths consistent.
 #define ____________________CONFIG_R3_____________________6_       _________________CONFIG_R3_______________5_, _______
 
 #define ____________________CONFIG_TB_____________________6_       _______________________BLANK______________________6_
+

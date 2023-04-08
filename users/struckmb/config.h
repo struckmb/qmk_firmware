@@ -1,6 +1,7 @@
 #pragma once
 
 #define EE_HANDS
+#define ENABLE_COMPILE_KEYCODE
 
 // Space saving
 #ifdef LOCKING_SUPPORT_ENABLE
@@ -10,25 +11,25 @@
 #    undef LOCKING_RESYNC_ENABLE
 #endif
 #ifndef NO_DEBUG
-#   define NO_DEBUG
+#    define NO_DEBUG
 #endif
 #define NO_MUSIC_MODE
 
 #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
-#   define NO_PRINT
+#    define NO_PRINT
 #endif
 
 // Mousekey mode
 #ifdef MOUSEKEY_ENABLE
-#   define MK_COMBINED
-#   define MOUSEKEY_MAX_SPEED 4
-#   define MOUSEKEY_TIME_TO_MAX 45
-#   define MOUSEKEY_WHEEL_MAX_SPEED 20
-#   define MOUSEKEY_WHEEL_TIME_TO_MAX 60
+#    define MK_COMBINED
+#    define MOUSEKEY_MAX_SPEED 4
+#    define MOUSEKEY_TIME_TO_MAX 45
+#    define MOUSEKEY_WHEEL_MAX_SPEED 20
+#    define MOUSEKEY_WHEEL_TIME_TO_MAX 60
 #endif // MOUSEKEY_ENABLE
 
 #ifdef COMBO_ENABLE
-#   define COMBO_SHOULD_TRIGGER
+#    define COMBO_SHOULD_TRIGGER
 #endif // COMBO_ENABLE
 
 // Tap-hold settings
