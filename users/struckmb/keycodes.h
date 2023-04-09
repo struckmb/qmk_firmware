@@ -199,16 +199,8 @@ to add/remove underscores to keep the lengths consistent.
 #define _____________________NUMBER_R0____________________6_       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_NO
 #define ______________________FUNC_L0_____________________6_       KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
 #define ______________________FUNC_R0_____________________6_       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12
-// /*
-//  * Standard thumb cluster
-//           | PgUp | PgDn │ Esc │Enter│ App | |BkSpc│Space│ Tab │OsMeh |OsHypr|
-//            ------+------└─Fn──┴─Num─┴-Mse-   -Cfg-┴─Sym─┴─Nav─┘------+------
-//  *
-//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-//  *                        | PgUp | PgDn |MsCtl/|SymNr/|NavFn/|  |  Adj/|SymNr/|NavFn/|      |      |
-//  *                        |      |      |  Esc |  Ent | Menu |  |  BSp |  Spc |  Tab |      |      |
-//  *                        `----------------------------------'  `----------------------------------'
-//  */
+
+// /* Standard thumb cluster */
 #define __THUMB_2_L___2_                                           NF_ESC,  SY_ENT
 #define __THUMB_2_R___2_                                           SN_SPC,  NF_TAB
 #define _________THUMB_2_2_______4_                                __THUMB_2_L___2_, __THUMB_2_R___2_
@@ -247,15 +239,6 @@ to add/remove underscores to keep the lengths consistent.
 #define __________________NUMBERS________________5_               DE_0,    DE_1,    DE_2,    DE_4,    DE_8
 #define _________________FUNCTIONS_______________5_               KC_F10,  KC_F1,   KC_F2,   KC_F4,   KC_F8
 
-// ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐------
-// │  @  │  _  │  [  │  ]  │ ^ ° │             │ 0 = │ 1 ! │ 2 " │ 4 $ │ 8 ( │  !   |
-// ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
-// │  \  │  /  │  {  │  }  │  *  │             │ < > │  (  │  )  │ - _ │  &  │  =   |
-// ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------
-// │ # ' │  $  │  |  │  ~  │  ´  │             │ + * │  %  │  "  │  '  │  €  │      |
-// └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘------
-//                   │  §  │     │     │ │     │     │  ¢  │
-//                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
 #define ________________SYMBOLS_L1_______________5_               DE_AT,   DE_UNDS, DE_LBRC, DE_RBRC, DE_CIRC
 #define ________________SYMBOLS_L2_______________5_               DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR
 #define ________________SYMBOLS_L3_______________5_               DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_ACUT
@@ -332,7 +315,7 @@ to add/remove underscores to keep the lengths consistent.
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
 // │ TOGG│Plain│Brthe│Rainb│Swirl│             │(BtC)│(Bt←)│(Bt0)│(Bt→)│(Out)│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │Speed│ Val │ Sat │ Hue │ Mode│             │EEClr│QWERT│COLDH│BONEO│LYPND│
+// │Speed│ Val │ Sat │ Hue │ Mode│             │EEClr│QWERT│COLMK│ BONE│LYPND│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼Mouse┼─────┼─────┤
 // │ Test│ Xmas│Grdnt│Knght│Snake│             │Reset│ ASET│ARTSN│ XXX │ Sft │
 // └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
