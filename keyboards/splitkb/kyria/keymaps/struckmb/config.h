@@ -18,10 +18,11 @@
 
 #define QWERTZ_ENABLE
 #define BONE_ENABLE
+#define WORKMAN_ENABLE
 #define COLEMAK_ENABLE
 #define LILYPOND_ENABLE
 
-// deactivated some effects for size reasons 
+// deactivated some effects for size reasons
 #ifdef RGBLIGHT_ENABLE
 /* #    define RGBLIGHT_EFFECT_BREATHING */
 #    define RGBLIGHT_EFFECT_RAINBOW_MOOD

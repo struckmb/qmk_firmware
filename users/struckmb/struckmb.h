@@ -63,6 +63,9 @@ enum userspace_layers {
 #   ifdef BONE_ENABLE
     _BONE,
 #   endif // BONE_ENABLE
+#   ifdef WORKMAN_ENABLE
+    _WORKMAN,
+#   endif // WORKMAN_ENABLE
 #   ifdef COLEMAK_ENABLE
     _COLMAK_DH,
 #   endif // COLEMAK_ENABLE

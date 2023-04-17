@@ -17,14 +17,14 @@
 #include "bs-oled.h"
 
 /* #include <string.h> */
-// Grab the print function 
+// Grab the print function
 #ifdef ENCODER_ENABLE
 #   include "bs-encoder.h"
 #endif // ENCODER_ENABLE
 
 /* OLED
  * This contains general purpose oled code
- */ 
+ */
 
 // Allow default to be overwritten by keymap if they return false
 __attribute__ ((weak)) bool oled_task_keymap(void) {return true;}
@@ -83,14 +83,19 @@ void render_keymap(uint8_t col, uint8_t row, uint8_t def_layer) {
             oled_write("BONE", false);
             break;
 #       endif // BONE_ENABLE
+#       ifdef WORKMAN_ENABLE
+        case _WORKMAN:
+            oled_write("WRKMN", false);
+            break;
+#       endif // WORKMAN_ENABLE
 #       ifdef COLEMAK_ENABLE
         case _COLMAK_DH:
-            oled_write("ColDH", false);
+            oled_write("COLMK", false);
             break;
 #       endif // COLEMAK_ENABLE
 #       ifdef LILYPOND_ENABLE
         case _LILYPOND:
-            oled_write("LyPnd", false);
+            oled_write("LYPND", false);
             break;
 #       endif // LILYPOND_ENABLE
 #       ifdef ASETNIOP_ENABLE

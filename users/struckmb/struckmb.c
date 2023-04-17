@@ -1,7 +1,7 @@
 #include "struckmb.h"
 
 #ifdef COMBO_ENABLE
-#include "g/keymap_combo.h"
+#    include "g/keymap_combo.h"
 #endif
 
 /*------------------------*\
@@ -12,8 +12,7 @@
  *  Macro definitions
  *  Audio hooks
  */
-__attribute__ ((weak))
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -22,12 +21,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) clear_oneshot_mods();
         return false;
     }
-    return
-        process_record_keymap(keycode, record)  &&
-#       ifdef ENCODER_ENABLE
-        process_record_encoder(keycode, record) &&
-#       endif // ENCODER_ENABLE
-        true;
+    return process_record_keymap(keycode, record) &&
+#ifdef ENCODER_ENABLE
+           process_record_encoder(keycode, record) &&
+#endif // ENCODER_ENABLE
+           true;
 }
 
 bool caps_word_press_user(uint16_t keycode) {
@@ -35,7 +33,7 @@ bool caps_word_press_user(uint16_t keycode) {
         // Keycodes that continue Caps Word, with shift applied.
         case KC_A ... KC_Z:
         case DE_MINS:
-            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            add_weak_mods(MOD_BIT(KC_LSFT)); // Apply shift to next key.
             return true;
 
         // Keycodes that continue Caps Word, without shifting.
@@ -46,46 +44,32 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
 
         default:
-            return false;  // Deactivate Caps Word.
+            return false; // Deactivate Caps Word.
     }
 }
 
-/* #ifdef ARTSENIO_ENABLE */
-/* void keyboard_post_init_user(void) { */
-/*     if (is_keyboard_left() && is_keyboard_master()) { */
-/*         /1* if (!is_transport_connected()) { *1/ */
-/*             // no right half detected, switch to one handed layout */
-/*             default_layer_set(1UL<<_ARTSENIO); */
-/*         /1* } *1/ */
-/*     } */
-/* } */
-/* #endif // ARTSENIO_ENABLE */
-
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     if (combo_index < ALL_ZZZ) return true;
-#   if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(COLEMAK_ENABLE)
+#if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(WORKMAN_ENABLE) || defined(COLEMAK_ENABLE) || defined(LILYPOND_ENABLE)
     if (combo_index < BASE_ZZZ) {
-#   ifdef LILYPOND_ENABLE
+#ifdef LILYPOND_ENABLE
         return get_highest_layer(default_layer_state) <= _LILYPOND;
-#   endif // LILYPOND_ENABLE
-#   ifdef COLEMAK_ENABLE
+#elifdef COLEMAK_ENABLE
         return get_highest_layer(default_layer_state) <= _COLMAK_DH;
-#   endif // COLEMAK_ENABLE
-#   ifdef BONE_ENABLE
+#elifdef WORKMAN_ENABLE
+        return get_highest_layer(default_layer_state) <= _WORKMAN;
+#elifdef BONE_ENABLE
         return get_highest_layer(default_layer_state) <= _BONE;
-#   endif // BONE_ENABLE
-#   ifdef QWERTZ_ENABLE
+#elifdef QWERTZ_ENABLE
         return get_highest_layer(default_layer_state) <= _QWERTZ;
-#   endif // QWERTZ_ENABLE
+#    endif // QWERTZ_ENABLE, BONE_ENABLE, WORKMAN_ENABLE, COLEMAK_ENABLE, LILYPOND_ENABLE
     }
-#   endif // QWERTZ_ENABLE // BONE_ENABLE // COLEMAK_ENABLE
-#   ifdef ARTSENIO_ENABLE
-    if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ)
-        return get_highest_layer(default_layer_state) == _ARTSENIO;
-#   endif // ARTSENIO_ENABLE
-#   ifdef ASETNIOP_ENABLE
-    if (combo_index > ASET_AAA && combo_index < ASET_ZZZ)
-        return get_highest_layer(default_layer_state) == _ASETNIOP;
-#   endif // ASETNIOP_ENABLE
+#endif // QWERTZ_ENABLE // BONE_ENABLE // WORKMAN_ENABLE // COLEMAK_ENABLE // LILYPOND_ENABLE
+#ifdef ARTSENIO_ENABLE
+    if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ) return get_highest_layer(default_layer_state) == _ARTSENIO;
+#endif // ARTSENIO_ENABLE
+#ifdef ASETNIOP_ENABLE
+    if (combo_index > ASET_AAA && combo_index < ASET_ZZZ) return get_highest_layer(default_layer_state) == _ASETNIOP;
+#endif // ASETNIOP_ENABLE
     return false;
 }
