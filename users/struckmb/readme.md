@@ -65,6 +65,7 @@ If LILYPOND_ENABLE is defined, you can switch to the following map using LILYPON
 | Sft │  y  │  x  │  k  │  v  │  ö  │             │  n  │  m  │ , ; │ . : │  ß  │     |
 '-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
 ```
+(Note names are located on the home row.)
 
 # Other layers
 
@@ -76,10 +77,27 @@ If LILYPOND_ENABLE is defined, you can switch to the following map using LILYPON
 |     │  \  │  /  │  {  │  }  │  *  │             │ < > │  (  │  )  │ - _ │  &  │  =   |
 |-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------|
 |     │ # ' │  $  │  |  │  ~  │  ´  │             │ + * │  %  │  "  │  '  │  €  │      |
-'-----└─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘------'
-                        │  §  │     │     │ │     │     │  ¢  │
-                        └─────┴─────┴─────┘ └─────┴─────┴─────┘
+'-----└─────┴─────┴─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┴─────┴─────┘------'
+                  |     │  §  │     │     | |     │     │  ¢  │     |
+                     ---└─────┴─────┴-----' '-----┴─────┴─────┘---
 ```
+The missing numeric keys can be achieved by means of combos. E.g.
+simultaniously pressing 1 and 4 yields 5.
+
+## Navigation/Fn layer
+```
+.-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐------.
+|     │ PgUp│ BSp │  ↑  │ Del │ PgDn│             │ F10 │  F1 │  F2 │  F4 │  F8 │  F11 |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------|
+|     │ Home│  ←  │  ↓  │  →  │ End │             │OsAlt│OsCtl│OsGui│OsSft│ RSft│  F12 |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------|
+|     │ Ins │ Cut │ Copy│Paste│PrScr│             │Power│OsAGr│OsMeh│OsHyp│CapsW│CapsW |
+'-----└─────┴─────┴─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┴─────┴─────┘------'
+                  |     │ Adj │     │     | |     │ App │ Adj │     |
+                     ---└─────┴─────┴-----' '-----┴─────┴─────┘---
+```
+The missing Fn keys can be achieved by means of combos. E.g. simultaniously
+pressing F10 and F2 yields F12.
 
 # Copyright
 Copyright 2023 Björn Struckmeier bstruckmeier@gmail.com @struckmb
