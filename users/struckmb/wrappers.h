@@ -63,6 +63,36 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
                  KC_TRNS, KC_TRNS, K33, K34, K35,      K36, K37, K38, KC_TRNS, KC_TRNS \
     )
 
+// 4 rows, 6 columns, 4 thumbs (iris)
+#define LAYOUT_4x6_4_base( \
+    K00, K01, K02, K03, K04, K05,   K06, K07, K08, K09, K0A, K0B, \
+    K10, K11, K12, K13, K14, K15,   K16, K17, K18, K19, K1A, K1B, \
+    K20, K21, K22, K23, K24, K25,   K26, K27, K28, K29, K2A, K2B, \
+    K30, K31, K32, K33, K34, K35,   K36, K37, K38, K39, K3A, K3B, \
+              K42, K43, K44, K45,   K46, K47, K48, K49 \
+  ) \
+  LAYOUT_wrapper( \
+      K00,        K01,        K02, K03,        K04,        K05,                          K06,        K07,        K08,        K09,              K0A,         K0B,        \
+      K10,        K11,        K12, K13,        K14,        K15,                          K16,        K17,        K18,        LT(_MSE_CTL,K19), K1A,         K1B,        \
+      CTL_T(K20), K21,        K22, GUI_T(K23), CTL_T(K24), ALT_T(K25),                   ALT_T(K26), CTL_T(K27), GUI_T(K28), K29,              K2A,         ALT_T(K2B), \
+      K30,        SFT_T(K31), K32, K33,        K34,        K35, K45,                K46, K36,        K37,        K38,        K39,              RSFT_T(K3A), K3B,        \
+                                               K42,        K43, K44,                K47, K48,        K49 \
+    )
+#define LAYOUT_4x6_4_layer( \
+    K00, K01, K02, K03, K04, K05,   K06, K07, K08, K09, K0A, K0B, \
+    K10, K11, K12, K13, K14, K15,   K16, K17, K18, K19, K1A, K1B, \
+    K20, K21, K22, K23, K24, K25,   K26, K27, K28, K29, K2A, K2B, \
+    K30, K31, K32, K33, K34, K35,   K36, K37, K38, K39, K3A, K3B, \
+                   K43, K44, K45,   K46, K47, K48 \
+  ) \
+  LAYOUT_wrapper( \
+      K00, K01, K02, K03, K04, K05,                  K06, K07, K08, K09, K0A, K0B, \
+      K10, K11, K12, K13, K14, K15,                  K16, K17, K18, K19, K1A, K1B, \
+      K20, K21, K22, K23, K24, K25,                  K26, K27, K28, K29, K2A, K2B, \
+      K30, K31, K32, K33, K34, K35, K45,        K46, K36, K37, K38, K39, K3A, K3B, \
+                      KC_TRNS, K43, K44,        K47, K48, KC_TRNS \
+    )
+
 // 4 rows, 6 columns, 11 "thumbs" (redox)
 #define LAYOUT_4x6_11_base( \
         K00, K01, K02, K03, K04, K05,   K08, K09, K0A, K0B, K0C, K0D, \

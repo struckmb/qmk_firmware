@@ -54,15 +54,15 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
     if (combo_index < BASE_ZZZ) {
 #ifdef LILYPOND_ENABLE
         return get_highest_layer(default_layer_state) <= _LILYPOND;
-#elifdef COLEMAK_ENABLE
+#elif defined(COLEMAK_ENABLE)
         return get_highest_layer(default_layer_state) <= _COLMAK_DH;
-#elifdef WORKMAN_ENABLE
+#elif defined(WORKMAN_ENABLE)
         return get_highest_layer(default_layer_state) <= _WORKMAN;
-#elifdef BONE_ENABLE
+#elif defined(BONE_ENABLE)
         return get_highest_layer(default_layer_state) <= _BONE;
-#elifdef QWERTZ_ENABLE
+#elif defined(QWERTZ_ENABLE)
         return get_highest_layer(default_layer_state) <= _QWERTZ;
-#    endif // QWERTZ_ENABLE, BONE_ENABLE, WORKMAN_ENABLE, COLEMAK_ENABLE, LILYPOND_ENABLE
+#endif // QWERTZ_ENABLE, BONE_ENABLE, WORKMAN_ENABLE, COLEMAK_ENABLE, LILYPOND_ENABLE
     }
 #endif // QWERTZ_ENABLE // BONE_ENABLE // WORKMAN_ENABLE // COLEMAK_ENABLE // LILYPOND_ENABLE
 #ifdef ARTSENIO_ENABLE

@@ -5,9 +5,9 @@
 #define OSM_ALT OSM(MOD_LALT)
 #define OSM_CTL OSM(MOD_LCTL)
 #define OSM_GUI OSM(MOD_LGUI)
-#define OSM_HYP OSM(MOD_HYPR)
-#define OSM_MEH OSM(MOD_MEH)
 #define OSM_SFT OSM(MOD_LSFT)
+#define OSM_MEH MT(MOD_MEH, KC_PGUP)
+#define OSM_HYP MT(MOD_HYPR, KC_PGDN)
 // HRM
 #define ALT_AE MT(MOD_LALT, DE_ADIA)
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)
@@ -232,7 +232,8 @@ to add/remove underscores to keep the lengths consistent.
 #define __THUMB_2_R___2_ SN_SPC, NF_TAB
 #define _________THUMB_2_2_______4_ __THUMB_2_L___2_, __THUMB_2_R___2_
 #define ______________________THUMB_3_3___________________6_ __THUMB_2_L___2_, MC_APP, AD_BSP, __THUMB_2_R___2_
-#define ________________________________________THUMB_5_5____________________________________10_ KC_PGUP, KC_PGDN, ______________________THUMB_3_3___________________6_, OSM_MEH, OSM_HYP
+#define ______________________________THUMB_4_4___________________________8_ OSM_MEH, ______________________THUMB_3_3___________________6_, OSM_HYP
+#define ________________________________________THUMB_5_5____________________________________10_ KC_NO, ______________________________THUMB_4_4___________________________8_, KC_NO
 
 #ifdef ASETNIOP_ENABLE
 /* ASETNIOP+ layout
@@ -337,7 +338,7 @@ to add/remove underscores to keep the lengths consistent.
 
 #define ___MOUSE_TL___2_ KC_BTN2, KC_BTN1
 #define ___MOUSE_TR___2_ KC_LSFT, KC_BTN3
-#define ______________________MOUSE_TB____________________6_ ___MOUSE_TL___2_, KC_BTN3, _______, ___MOUSE_TR___2_
+#define ______________________MOUSE_TB____________________6_ ___MOUSE_TL___2_, KC_BTN3, KC_TRNS, ___MOUSE_TR___2_
 
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
 // │ TOGG│Plain│Brthe│Rainb│Swirl│             │(BtC)│(Bt←)│(Bt0)│(Bt→)│(Out)│

@@ -11,8 +11,8 @@ This is added to all base layers
 |-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
 | Sft │(Sft)│     │     │     │     │             │     │     │     │     │(Sft)│(RSh)|
 '-----└─────┴─────┴─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┴─────┴─────┘-----'
-            | PUp | PDn │ Esc │Enter│ App | |BkSpc│Space│ Tab │OsMeh|OsHyp|
-            '-----+-----└─Fn──┴─Num─┴-----' '-----┴─Sym─┴─Nav─┘-----+-----'
+                  | PUp │ Esc │Enter│ App | |BkSpc│Space│ Tab │ PDn |
+                  'OsMeh└─Fn──┴─Num─┴-----' '-----┴─Sym─┴─Nav─┘OsHyp'
 ```
 Pressing Fn+Nav simultaniously activates Adj layer
 
