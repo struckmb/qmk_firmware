@@ -318,16 +318,16 @@ to add/remove underscores to keep the lengths consistent.
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
 // │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Next│ Vol-│ XXX │ Prev│
 // ├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │LShft│ MB4 │  ü  │  ä  │ MB5 │             │MsSp-│ Play│ Mute│ XXX │ XXX │
-// └─────┴─────┴─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┴─────┴─────┘
-//                   │ MB2 │ MB1 │ MB3 │ │     │ MB3 │LShft│
-//                   └─────┴─────┴─────┘ └─────┴─────┴─────┘
+// │ MB4 │ XXX │  ü  │  ä  │ MB5 │             │MsSp-│ Play│ Mute│ XXX │ XXX │
+// └─────┴─────┴─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┴─────┴─────┘
+//                   │ MB2 │ MB1 │ MB3 | |     │LShft│ MB3 │
+//                   └─────┴─────┴-----' '-----┴─────┴─────┘
 #define __________________MOUSE_L1_______________5_ KC_WH_D, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U
 #define __________________MOUSE_L2_______________5_ DE_ADIA, KC_MS_L, KC_MS_D, KC_MS_R, KC_PAUSE
-#define __________________MOUSE_L3_______________5_ XXXXXXX, KC_BTN4, KC_BTN3, KC_BTN5, KC_SCRL
+#define __________________MOUSE_L3_______________5_ KC_BTN4, XXXXXXX, DE_UDIA, DE_ADIA, KC_BTN5
 #define __________________MOUSE_R1_______________5_ KC_ACL2, DE_UDIA, KC_VOLU, XXXXXXX, KC_EJCT
 #define __________________MOUSE_R2_______________5_ KC_ACL1, KC_MNXT, KC_VOLD, XXXXXXX, KC_MPRV
-#define __________________MOUSE_R3_______________5_ KC_ACL0, KC_MPLY, KC_MUTE, XXXXXXX, KC_RSFT
+#define __________________MOUSE_R3_______________5_ KC_ACL0, KC_MPLY, KC_MUTE, XXXXXXX, XXXXXXX
 
 #define ______________________MOUSE_L1____________________6_ _______, __________________MOUSE_L1_______________5_
 #define ______________________MOUSE_L2____________________6_ _______, __________________MOUSE_L2_______________5_

@@ -99,6 +99,21 @@ simultaniously pressing 1 and 4 yields 5.
 The missing Fn keys can be achieved by means of combos. E.g. simultaniously
 pressing F10 and F2 yields F12.
 
+## Mouse/Media layer
+```
+.-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐------.
+|     │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│ (v) │Eject│  XXX |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------|
+|     │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Next│ Vol-│ XXX │ Prev│  XXX |
+|-----├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤------|
+|     │ MB4 │ XXX │  ü  │  ä  │ MB5 │             │MsSp-│ Play│ Mute│ XXX │ XXX │      |
+'-----└─────┴─────┴─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┴─────┴─────┘------'
+                  |     │ MB2 │ MB1 │ MB3 | |     │LShft│ MB3 │     |
+                     ---└─────┴─────┴-----' '-----┴─────┴─────┘---
+```
+Scroll up and down buttons are the opposite direction compared to PgUp/PgDn on
+navigation layer to achieve a natural scrolling without tweaking the os.
+
 # Copyright
 Copyright 2023 Björn Struckmeier bstruckmeier@gmail.com @struckmb
 
