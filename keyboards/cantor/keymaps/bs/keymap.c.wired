@@ -1,0 +1,106 @@
+#include "struckmb.h"
+
+/*
+ * The `LAYOUT_*_base` macro is a template to allow the use of identical
+ * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
+ * that there is no need to set them up for each layout, and modify all of
+ * them if I want to change them.  This helps to keep consistency and ease
+ * of use. K## is a placeholder to pass through the individual keycodes
+ */
+// clang-format off
+// 3 rows, 6 columns, 3 thumbs (cantor)
+#define LAYOUT_3x6_3_base( \
+    K00, K01, K02, K03, K04, K05,   K06, K07, K08, K09, K0A, K0B, \
+    K10, K11, K12, K13, K14, K15,   K16, K17, K18, K19, K1A, K1B, \
+    K20, K21, K22, K23, K24, K25,   K26, K27, K28, K29, K2A, K2B, \
+                   K33, K34, K35,   K36, K37, K38 \
+  ) \
+  LAYOUT_split_3x6_3( \
+      K00,        K01,        K02, K03,        K04,        K05,                                    K06,        K07,        K08,        LT(_MSE_CTL,K09), K0A,         K0B,        \
+      CTL_T(K10), K11,        K12, GUI_T(K13), CTL_T(K14), ALT_T(K15),                             ALT_T(K16), CTL_T(K17), GUI_T(K18), K19,              K1A,         ALT_T(K1B), \
+      K20,        SFT_T(K21), K22, K23,        K24,        K25,                                    K26,        K27,        K28,        K29,              RSFT_T(K2A), K2B,        \
+                                                            K33, K34,   K35,        K36,   K37,     K38 \
+    )
+#define LAYOUT_3x6_3_layer( \
+    K00, K01, K02, K03, K04, K05,   K06, K07, K08, K09, K0A, K0B, \
+    K10, K11, K12, K13, K14, K15,   K16, K17, K18, K19, K1A, K1B, \
+    K20, K21, K22, K23, K24, K25,   K26, K27, K28, K29, K2A, K2B, \
+                   K33, K34, K35,   K36, K37, K38 \
+  ) \
+  LAYOUT_split_3x6_3( \
+      K00, K01, K02, K03, K04, K05,   K06, K07, K08, K09, K0A, K0B, \
+      K10, K11, K12, K13, K14, K15,   K16, K17, K18, K19, K1A, K1B, \
+      K20, K21, K22, K23, K24, K25,   K26, K27, K28, K29, K2A, K2B, \
+                     K33, K34, K35,   K36, K37, K38 \
+    )
+
+/* Re-pass though to allow templates to be used */
+#define LAYOUT_cantor_hrm_wrapper(...)       LAYOUT_3x6_3_base(__VA_ARGS__)
+#define LAYOUT_cantor_wrapper(...)           LAYOUT_3x6_3_layer(__VA_ARGS__)
+
+// clang-format on
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    /* [_QWERTZ] = LAYOUT_split_3x6_3( */
+    /*     KC_TAB, DE_Q, DE_W, DE_E, DE_R, DE_T,                 DE_Z, DE_U, DE_I, DE_O, DE_P, DE_UDIA, */
+    /*     CTL_ESC, DE_A, DE_S, DE_D, DE_F, DE_G,                DE_H, DE_J, DE_K, DE_L, DE_ODIA, ALT_AE, */
+    /*     KC_LSFT, DE_Y, DE_X, DE_C, DE_V, DE_B,                DE_N, DE_M, KC_COMM, KC_DOT, DE_SS, KC_RSFT, */
+    /*                       NF_ESC, SY_ENT, MC_APP, AD_BSP, SN_SPC, NF_TAB), */
+#ifdef QWERTZ_ENABLE
+    [_QWERTZ] = LAYOUT_cantor_hrm_wrapper(
+        _____________________QWERTZ_L1____________________6_, _____________________QWERTZ_R1____________________6_,
+        _____________________QWERTZ_L2____________________6_, _____________________QWERTZ_R2____________________6_,
+        _____________________QWERTZ_L3____________________6_, _____________________QWERTZ_R3____________________6_,
+                          ______________________THUMB_3_3___________________6_),
+#endif
+#ifdef BONE_ENABLE
+    [_BONE] = LAYOUT_cantor_hrm_wrapper(
+        _______________________BONE_L1____________________6_, _______________________BONE_R1____________________6_,
+        _______________________BONE_L2____________________6_, _______________________BONE_R2____________________6_,
+        _______________________BONE_L3____________________6_, _______________________BONE_R3____________________6_,
+                          ______________________THUMB_3_3___________________6_),
+#endif // BONE_ENABLE
+#ifdef WORKMAN_ENABLE
+    [_WORKMAN] = LAYOUT_cantor_hrm_wrapper(
+        ____________________WORKMAN_L1____________________6_, ____________________WORKMAN_R1____________________6_,
+        ____________________WORKMAN_L2____________________6_, ____________________WORKMAN_R2____________________6_,
+        ____________________WORKMAN_L3____________________6_, ____________________WORKMAN_R3____________________6_,
+                          ______________________THUMB_3_3___________________6_),
+#endif // WORKMAN_ENABLE
+#ifdef COLEMAK_ENABLE
+    [_COLMAK_DH] = LAYOUT_cantor_hrm_wrapper(
+        ___________________COLEMAK_DH_L1__________________6_, ___________________COLEMAK_DH_R1__________________6_,
+        ___________________COLEMAK_DH_L2__________________6_, ___________________COLEMAK_DH_R2__________________6_,
+        ___________________COLEMAK_DH_L3__________________6_, ___________________COLEMAK_DH_R3__________________6_,
+                          ______________________THUMB_3_3___________________6_),
+#endif // COLEMAK_ENABLE
+#ifdef LILYPOND_ENABLE
+    [_LILYPOND] = LAYOUT_cantor_hrm_wrapper(
+        ____________________LILYPOND_L1___________________6_, ____________________LILYPOND_R1___________________6_,
+        ____________________LILYPOND_L2___________________6_, ____________________LILYPOND_R2___________________6_,
+        ____________________LILYPOND_L3___________________6_, ____________________LILYPOND_R3___________________6_,
+                          ______________________THUMB_3_3___________________6_),
+// #endif // LILYPOND_ENABLE
+    [_SYM_NUM] = LAYOUT_cantor_wrapper(
+        _____________________SYMBOLS_L1___________________6_, _____________________SYMBOLS_R1___________________6_,
+        _____________________SYMBOLS_L2___________________6_, _____________________SYMBOLS_R2___________________6_,
+        _____________________SYMBOLS_L3___________________6_, _____________________SYMBOLS_R3___________________6_,
+                                    _____________________SYMBOLS_TB___________________6_),
+    [_NAV_FUN] = LAYOUT_cantor_wrapper(
+        _______________NAVIGATION_L1______________________6_, _________________FUNCTION_R1______________________6_,
+        _______________NAVIGATION_L2______________________6_, _________________FUNCTION_R2______________________6_,
+        _______________NAVIGATION_L3______________________6_, _________________FUNCTION_R3______________________6_,
+                                    _____________NAVIGATION_AND_FUNCTION_TB___________6_),
+    [_MSE_CTL] = LAYOUT_cantor_wrapper(
+        ______________________MOUSE_L1____________________6_, ______________________MOUSE_R1____________________6_,
+        ______________________MOUSE_L2____________________6_, ______________________MOUSE_R2____________________6_,
+        ______________________MOUSE_L3____________________6_, ______________________MOUSE_R3____________________6_,
+                                    ______________________MOUSE_TB____________________6_),
+#endif // LILYPOND_ENABLE
+    [_ADJUST] = LAYOUT_cantor_wrapper(
+        ____________________CONFIG_L1_____________________6_, ____________________CONFIG_R1_____________________6_,
+        ____________________CONFIG_L2_____________________6_, ____________________CONFIG_R2_____________________6_,
+        ____________________CONFIG_L3_____________________6_, ____________________CONFIG_R3_____________________6_,
+                                    ____________________CONFIG_TB_____________________6_)
+};
+
