@@ -42,8 +42,8 @@ enum userspace_layers {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-     /*
-      * ┌───┬───┬───┬───┬───┬───┐           ┌───┬───┬───┬───┬───┬───┐
+// clang-format off
+     /* ┌───┬───┬───┬───┬───┬───┐           ┌───┬───┬───┬───┬───┬───┐
       * │Tab│ Q │ W │ E │ R │ T │           │ Z │ U │ I │ O │ P │ Ü │
       * ├───┼───┼───┼───┼───┼───┤           ├───┼───┼───┼───┼───┼───┤
       * │ESC│ A │ S │ D │ F │ G │           │ H │ J │ K │ L │ Ö │ Ä │
@@ -56,6 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *               └Nv/Fn┤ Ent │       │ Spc ├Nv/Fn┘
       *                     └Sy/Nr┘       └Sy/Nr┘
       */
+// clang-format on
 #ifdef QWERTZ_ENABLE
     [_QWERTZ] = LAYOUT_split_3x6_3(
         ALT_TAB, DE_Q, DE_W, DE_E, DE_R, DE_T,                          DE_Z,  DE_U, DE_I, MC_O, DE_P, ALT_UE,
@@ -63,7 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, DE_Y, DE_X, DE_C, DE_V, DE_B,                          DE_N,  DE_M, KC_COMM, KC_DOT, DE_SS, KC_RSFT,
                                 MEH_PUP, NF_ESC, SY_ENT,        SN_SPC, NF_TAB, HYP_PDN
     ),
-#endif
+#endif // QWERTZ_ENABLE
+
 #ifdef BONE_ENABLE
     [_BONE] = LAYOUT_split_3x6_3(
         ALT_TAB, DE_J, DE_D, DE_U, DE_A, DE_X,                          DE_P,  DE_H, DE_L, MC_M, DE_W, ALT_SS,
@@ -71,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, DE_F, DE_V, DE_UDIA, DE_ADIA, DE_ODIA,                 DE_Y,  DE_Z, KC_COMM, KC_DOT, DE_K, KC_RSFT,
                                 MEH_PUP, NF_ESC, SY_ENT,        SN_SPC, NF_TAB, HYP_PDN
     ),
-#endif
+#endif // BONE_ENABLE
 
 #ifdef WORKMAN_ENABLE
     [_WORKMAN] = LAYOUT_split_3x6_3(
