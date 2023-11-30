@@ -37,39 +37,39 @@
 
 // Base layers
 #ifdef QWERTZ_ENABLE
-#    define QWERTZ DF(_QWERTZ)
+#    define DF_QWER DF(_QWERTZ)
 #else
-#    define QWERTZ DF(0)
+#    define DF_QWER DF(0)
 #endif // QWERTZ_ENABLE
 #ifdef BONE_ENABLE
-#    define BONE DF(_BONE)
+#    define DF_BONE DF(_BONE)
 #else
-#    define BONE KC_NO
+#    define DF_BONE KC_NO
 #endif // BONE_ENABLE
 #ifdef WORKMAN_ENABLE
-#    define WRKMAN DF(_WORKMAN)
+#    define DF_WORK DF(_WORKMAN)
 #else
-#    define WRKMAN KC_NO
+#    define DF_WORK KC_NO
 #endif // WORKMAN_ENABLE
 #ifdef COLEMAK_ENABLE
-#    define COLMAK DF(_COLMAK_DH)
+#    define DF_COLE DF(_COLMAK_DH)
 #else
-#    define COLMAK KC_NO
+#    define DF_COLE KC_NO
 #endif // COLEMAK_ENABLE
 #ifdef LILYPOND_ENABLE
-#    define LILYPND DF(_LILYPOND)
+#    define DF_LILY DF(_LILYPOND)
 #else
-#    define LILYPND KC_NO
+#    define DF_LILY KC_NO
 #endif // LILYPOND_ENABLE
 #ifdef ASETNIOP_ENABLE
-#    define ASET DF(_ASETNIOP)
+#    define DF_ASET DF(_ASETNIOP)
 #else
-#    define ASET KC_NO
+#    define DF_ASET KC_NO
 #endif // ASETNIOP_ENABLE
 #ifdef ARTSENIO_ENABLE
-#    define ARTSEN DF(_ARTSENIO)
+#    define DF_ARTS DF(_ARTSENIO)
 #else
-#    define ARTSEN KC_NO
+#    define DF_ARTS KC_NO
 #endif // ARTSENIO_ENABLE
 
 // cut copy paste

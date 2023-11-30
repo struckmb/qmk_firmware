@@ -14,39 +14,39 @@
 
 // Base layers
 #ifdef QWERTZ_ENABLE
-#    define QWERTZ DF(_QWERTZ)
+#    define DF_QWER DF(_QWERTZ)
 #else
-#    define QWERTZ KC_NO
+#    define DF_QWER KC_NO
 #endif // QWERTZ_ENABLE
 #ifdef BONE_ENABLE
-#    define BONE DF(_BONE)
+#    define DF_BONE DF(_BONE)
 #else
-#    define BONE KC_NO
+#    define DF_BONE KC_NO
 #endif // BONE_ENABLE
 #ifdef WORKMAN_ENABLE
-#    define WRKMAN DF(_WORKMAN)
+#    define DF_WORK DF(_WORKMAN)
 #else
-#    define WRKMAN KC_NO
+#    define DF_WORK KC_NO
 #endif // WORKMAN_ENABLE
 #ifdef COLEMAK_ENABLE
-#    define COLMAK DF(_COLMAK_DH)
+#    define DF_COLE DF(_COLMAK_DH)
 #else
-#    define COLMAK KC_NO
+#    define DF_COLE KC_NO
 #endif // COLEMAK_ENABLE
 #ifdef LILYPOND_ENABLE
-#    define LILYPND DF(_LILYPOND)
+#    define DF_LILY DF(_LILYPOND)
 #else
-#    define LILYPND KC_NO
+#    define DF_LILY KC_NO
 #endif // LILYPOND_ENABLE
 #ifdef ASETNIOP_ENABLE
-#    define ASET DF(_ASETNIOP)
+#    define DF_ASET DF(_ASETNIOP)
 #else
-#    define ASET KC_NO
+#    define DF_ASET KC_NO
 #endif // ASETNIOP_ENABLE
 #ifdef ARTSENIO_ENABLE
-#    define ARTSEN DF(_ARTSENIO)
+#    define DF_ARTS DF(_ARTSENIO)
 #else
-#    define ARTSEN KC_NO
+#    define DF_ARTS KC_NO
 
 #endif // ARTSENIO_ENABLE
 
@@ -353,8 +353,8 @@ to add/remove underscores to keep the lengths consistent.
 #define _________________CONFIG_L2_______________5_ RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
 #define _________________CONFIG_L3_______________5_ RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
 #define _________________CONFIG_R1_______________5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________CONFIG_R2_______________5_ EE_CLR, QWERTZ, COLMAK, BONE, LILYPND
-#define _________________CONFIG_R3_______________5_ QK_BOOT, WRKMAN, ASET, ARTSEN, KC_LSFT
+#define _________________CONFIG_R2_______________5_ EE_CLR, DF_QWER, DF_COLE, DF_BONE, DF_LILY
+#define _________________CONFIG_R3_______________5_ QK_BOOT, DF_WORK, DF_ASET, DF_ARTS, KC_LSFT
 
 #define ____________________CONFIG_L1_____________________6_ _______, _________________CONFIG_L1_______________5_
 #define ____________________CONFIG_L2_____________________6_ _______, _________________CONFIG_L2_______________5_

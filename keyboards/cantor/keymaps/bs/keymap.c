@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Keyboard adjustments
     [_ADJUST]  = LAYOUT_split_3x6_3(
         _______, RGB_TOG, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
-        _______, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD,        EE_CLR,  QWERTZ,  BONE,    COLMAK,  WRKMAN,  KC_NO,
+        _______, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD,        EE_CLR,  DF_QWER, DF_BONE, DF_COLE, DF_WORK, KC_NO,
         _______, RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN,       QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, _______,
                                    _______, _______, _______,       _______, _______, _______
     )
