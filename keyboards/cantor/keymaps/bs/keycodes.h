@@ -12,23 +12,23 @@
 #define ALT_TAB MT(MOD_LALT, KC_TAB)
 #define CTL_ESC MT(MOD_LCTL, KC_ESC)
 // QWERTZ
-#define ALT_UE  MT(MOD_LALT, DE_UDIA)
-#define CTL_AE  MT(MOD_LCTL, DE_ADIA)
-#define GUI_G   MT(MOD_LGUI, DE_G)
-#define GUI_H   MT(MOD_LGUI, DE_H)
+#define ALT_UE MT(MOD_LALT, DE_UDIA)
+#define CTL_AE MT(MOD_LCTL, DE_ADIA)
+#define GUI_G MT(MOD_LGUI, DE_G)
+#define GUI_H MT(MOD_LGUI, DE_H)
 // BONE
-#define ALT_SS  MT(MOD_LALT, DE_SS)
-#define CTL_Q   MT(MOD_LCTL, DE_Q)
-#define GUI_O   MT(MOD_LGUI, DE_O)
-#define GUI_B   MT(MOD_LGUI, DE_B)
+#define ALT_SS MT(MOD_LALT, DE_SS)
+#define CTL_Q MT(MOD_LCTL, DE_Q)
+#define GUI_O MT(MOD_LGUI, DE_O)
+#define GUI_B MT(MOD_LGUI, DE_B)
 
 // Thumb / layer keys
 #define AD_BSP LT(_ADJUST, KC_BSPC)
 #define HYP_PDN MT(MOD_HYPR, KC_PGDN)
 #define LY_ADJ MO(_ADJUST)
 #define MC_APP LT(_MSE_CTL, KC_APP)
-#define MC_M   LT(_MSE_CTL, DE_M)
-#define MC_O   LT(_MSE_CTL, DE_O)
+#define MC_M LT(_MSE_CTL, DE_M)
+#define MC_O LT(_MSE_CTL, DE_O)
 #define MEH_PUP MT(MOD_MEH, KC_PGUP)
 #define NF_ESC LT(_NAV_FUN, KC_ESC)
 #define NF_TAB LT(_NAV_FUN, KC_TAB)
@@ -117,4 +117,3 @@
 #define DE_MULT S(ALGR(DE_COMM)) // × multiplication operator
 #define DE_DIV S(ALGR(DE_DOT))   // ÷ division operator
 #define DE_EM S(ALGR(DE_MINS))   // — em dash
-
