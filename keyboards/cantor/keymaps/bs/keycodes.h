@@ -56,11 +56,6 @@
 #else
 #    define DF_COLE KC_NO
 #endif // COLEMAK_ENABLE
-#ifdef LILYPOND_ENABLE
-#    define DF_LILY DF(_LILYPOND)
-#else
-#    define DF_LILY KC_NO
-#endif // LILYPOND_ENABLE
 #ifdef ASETNIOP_ENABLE
 #    define DF_ASET DF(_ASETNIOP)
 #else
