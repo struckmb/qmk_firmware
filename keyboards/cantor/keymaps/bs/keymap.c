@@ -1,41 +1,5 @@
-#include QMK_KEYBOARD_H
-#include "keycodes.h"
-#ifdef COMBO_ENABLE
-#    include "g/keymap_combo.h"
-#endif
+#include "bs.h"
 
-/// Enumeration of layers
-enum userspace_layers {
-// Base layers
-#ifdef QWERTZ_ENABLE
-    _QWERTZ,
-#endif // QWERTZ_ENABLE
-#ifdef BONE_ENABLE
-    _BONE,
-#endif // BONE_ENABLE
-#ifdef WORKMAN_ENABLE
-    _WORKMAN,
-#endif // WORKMAN_ENABLE
-#ifdef COLEMAK_ENABLE
-    _COLMAK_DH,
-#endif // COLEMAK_ENABLE
-#ifdef ASETNIOP_ENABLE
-    _ASETNIOP, // ASETNIOP layer
-#endif         // ASETNIOP_ENABLE
-#ifdef ARTSENIO_ENABLE
-    _ARTSENIO, // ARTSENIO layer
-    // Additional layers
-    _ARTS_NUM, // ARTSENIO numbers layer
-    _ARTS_SYM, // ARTSENIO symbols layer
-    _ARTS_PAR, // ARTSENIO parens layer
-    _ARTS_NAV, // ARTSENIO arrows layer
-    _ARTS_MSE, // ARTSENIO mouse layer
-#endif         // ARTSENIO_ENABLE
-    _SYM_NUM,  // L: Symbols layer,    R: Numbers layer
-    _NAV_FUN,  // L: Navigation layer, R: Function keys layer
-    _MSE_CTL,  // L: Mouse keys layer, R: Keyboard adjustments
-    _ADJUST,   // Media and RGB keys
-};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format off
@@ -101,51 +65,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD, DF_COLE, DF_QWER, KC_BRID, XXXXXXX, XXXXXXX, EE_CLR,   //
                                    _______, RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN, DF_WORK, DF_BONE, XXXXXXX, XXXXXXX, KC_LSFT, _______, //
                                    _______, _______, _______, _______, _______, _______)};
-
-#ifdef CAPS_WORD_ENABLE
-bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        // Keycodes that continue Caps Word, with shift applied.
-        case KC_A ... KC_Z:
-            add_weak_mods(MOD_BIT(KC_LSFT)); // Apply shift to next key.
-            return true;
-        // Keycodes that continue Caps Word, without shifting.
-        case KC_1 ... KC_0:
-        case KC_BSPC:
-        case KC_DEL:
-        case DE_MINS:
-        case DE_UNDS:
-            return true;
-        default:
-            return false; // Deactivate Caps Word.
-    }
-}
-#endif
-
-#ifdef COMBO_ENABLE
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    if (combo_index < ALL_ZZZ) return true;
-#    if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(WORKMAN_ENABLE) || defined(COLEMAK_ENABLE) || defined(LILYPOND_ENABLE)
-    if (combo_index < BASE_ZZZ) {
-#        ifdef LILYPOND_ENABLE
-        return get_highest_layer(default_layer_state) <= _LILYPOND;
-#        elif defined(COLEMAK_ENABLE)
-        return get_highest_layer(default_layer_state) <= _COLMAK_DH;
-#        elif defined(WORKMAN_ENABLE)
-        return get_highest_layer(default_layer_state) <= _WORKMAN;
-#        elif defined(BONE_ENABLE)
-        return get_highest_layer(default_layer_state) <= _BONE;
-#        elif defined(QWERTZ_ENABLE)
-        return get_highest_layer(default_layer_state) <= _QWERTZ;
-#        endif // QWERTZ_ENABLE, BONE_ENABLE, WORKMAN_ENABLE, COLEMAK_ENABLE, LILYPOND_ENABLE
-    }
-#    endif // QWERTZ_ENABLE // BONE_ENABLE // WORKMAN_ENABLE // COLEMAK_ENABLE // LILYPOND_ENABLE
-#    ifdef ARTSENIO_ENABLE
-    if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ) return get_highest_layer(default_layer_state) == _ARTSENIO;
-#    endif // ARTSENIO_ENABLE
-#    ifdef ASETNIOP_ENABLE
-    if (combo_index > ASET_AAA && combo_index < ASET_ZZZ) return get_highest_layer(default_layer_state) == _ASETNIOP;
-#    endif // ASETNIOP_ENABLE
-    return false;
-}
-#endif

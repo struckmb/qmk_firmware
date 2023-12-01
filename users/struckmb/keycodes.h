@@ -33,11 +33,6 @@
 #else
 #    define DF_COLE KC_NO
 #endif // COLEMAK_ENABLE
-#ifdef LILYPOND_ENABLE
-#    define DF_LILY DF(_LILYPOND)
-#else
-#    define DF_LILY KC_NO
-#endif // LILYPOND_ENABLE
 #ifdef ASETNIOP_ENABLE
 #    define DF_ASET DF(_ASETNIOP)
 #else
@@ -204,24 +199,6 @@ to add/remove underscores to keep the lengths consistent.
 #    define ___________________COLEMAK_DH_R3__________________6_ _______________COLEMAK_DH_R3_____________5_, KC_RSFT
 #endif // COLEMAK_ENABLE
 
-#ifdef LILYPOND_ENABLE
-// Left half
-#    define ________________LILYPOND_L1______________5_ DE_Q, DE_W, DE_J, DE_R, DE_T
-#    define ________________LILYPOND_L2______________5_ DE_H, DE_C, DE_D, DE_E, DE_I
-#    define ________________LILYPOND_L3______________5_ DE_Y, DE_X, DE_K, DE_V, DE_ODIA
-// Left half
-#    define ________________LILYPOND_R1______________5_ DE_Z, DE_U, DE_L, DE_O, DE_P
-#    define ________________LILYPOND_R2______________5_ DE_S, DE_F, DE_G, DE_A, DE_B
-#    define ________________LILYPOND_R3______________5_ DE_N, DE_M, KC_COMM, KC_DOT, DE_SS
-// nx6 keyboards
-#    define ____________________LILYPOND_L1___________________6_ KC_TAB, ________________LILYPOND_L1______________5_
-#    define ____________________LILYPOND_L2___________________6_ CTL_ESC, ________________LILYPOND_L2______________5_
-#    define ____________________LILYPOND_L3___________________6_ KC_LSFT, ________________LILYPOND_L3______________5_
-#    define ____________________LILYPOND_R1___________________6_ ________________LILYPOND_R1______________5_, DE_UDIA
-#    define ____________________LILYPOND_R2___________________6_ ________________LILYPOND_R2______________5_, ALT_AE
-#    define ____________________LILYPOND_R3___________________6_ ________________LILYPOND_R3______________5_, KC_RSFT
-#endif // LILYPOND_ENABLE
-
 #define _____________________NUMBER_L0____________________6_ KC_NO, KC_1, KC_2, KC_3, KC_4, KC_5
 #define _____________________NUMBER_R0____________________6_ KC_6, KC_7, KC_8, KC_9, KC_0, KC_NO
 #define ______________________FUNC_L0_____________________6_ KC_F11, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5
@@ -316,9 +293,9 @@ to add/remove underscores to keep the lengths consistent.
 // ┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐
 // │ vvv │ <<< │  ↑  │ >>> │ ^^^ │             │MsSp+│  ü  │ Vol+│ (v) │Eject│
 // ├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Next│ Vol-│ XXX │ Prev│
+// │  ä  │  ←  │  ↓  │  →  │Pause│             │MsSpN│ Prev│ Vol-│ XXX │ Next│
 // ├─────┼─────┼Mouse┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤
-// │ MB4 │ XXX │  ü  │  ä  │ MB5 │             │MsSp-│ Play│ Mute│ XXX │ XXX │
+// │ MB4 │ XXX │  ü  │  ä  │ MB5 │             │MsSp-│ Play│ Mute│ Stop│ Sft │
 // └─────┴─────┴─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┴─────┴─────┘
 //                   │ MB2 │ MB1 │ MB3 | |     │LShft│ MB3 │
 //                   └─────┴─────┴-----' '-----┴─────┴─────┘
@@ -326,7 +303,7 @@ to add/remove underscores to keep the lengths consistent.
 #define __________________MOUSE_L2_______________5_ DE_ADIA, KC_MS_L, KC_MS_D, KC_MS_R, KC_PAUSE
 #define __________________MOUSE_L3_______________5_ KC_BTN4, XXXXXXX, DE_UDIA, DE_ADIA, KC_BTN5
 #define __________________MOUSE_R1_______________5_ KC_ACL2, DE_UDIA, KC_VOLU, XXXXXXX, KC_EJCT
-#define __________________MOUSE_R2_______________5_ KC_ACL1, KC_MNXT, KC_VOLD, XXXXXXX, KC_MPRV
+#define __________________MOUSE_R2_______________5_ KC_ACL1, KC_MPRV, KC_VOLD, XXXXXXX, KC_MNXT
 #define __________________MOUSE_R3_______________5_ KC_ACL0, KC_MPLY, KC_MUTE, XXXXXXX, XXXXXXX
 
 #define ______________________MOUSE_L1____________________6_ _______, __________________MOUSE_L1_______________5_
@@ -353,7 +330,7 @@ to add/remove underscores to keep the lengths consistent.
 #define _________________CONFIG_L2_______________5_ RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD
 #define _________________CONFIG_L3_______________5_ RGB_M_T, RGB_M_X, RGB_M_G, RGB_M_K, RGB_M_SN
 #define _________________CONFIG_R1_______________5_ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________CONFIG_R2_______________5_ EE_CLR, DF_QWER, DF_COLE, DF_BONE, DF_LILY
+#define _________________CONFIG_R2_______________5_ EE_CLR, DF_QWER, DF_COLE, DF_BONE, XXXXXXX
 #define _________________CONFIG_R3_______________5_ QK_BOOT, DF_WORK, DF_ASET, DF_ARTS, KC_LSFT
 
 #define ____________________CONFIG_L1_____________________6_ _______, _________________CONFIG_L1_______________5_
