@@ -18,9 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #define QWERTZ_ENABLE
-#define BONE_ENABLE
-#define COLEMAK_ENABLE
-#define LILYPOND_ENABLE
-/* #define ASETNIOP_ENABLE */
-/* #define ARTSENIO_ENABLE */
+// #define BONE_ENABLE
+// #define COLEMAK_ENABLE
+// #define WORKMAN_ENABLE
+// #define ASETNIOP_ENABLE
+#define ARTSENIO_ENABLE
 

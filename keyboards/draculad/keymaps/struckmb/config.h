@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* //comment that out if your trackball is on the left side */
 #define TRACKBALL_RIGHT
 #define POINTING_DEVICE_ROTATION_90
-#ifdef TRACKBALL_RIGHT 
+#ifdef TRACKBALL_RIGHT
     #define POINTING_DEVICE_INVERT_X
     #define POINTING_DEVICE_INVERT_Y
 #endif
@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QWERTZ_ENABLE
 #define BONE_ENABLE
 #define COLEMAK_ENABLE
-#define LILYPOND_ENABLE
+#define WORKMAN_ENABLE
 /* #define ASETNIOP_ENABLE */
 /* #define ARTSENIO_ENABLE */
 

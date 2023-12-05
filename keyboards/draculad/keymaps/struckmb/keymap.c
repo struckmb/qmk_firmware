@@ -1,103 +1,59 @@
-/*
-Copyright 2021 @mangoiv
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 
 #include "struckmb.h"
 
 // clang-format off
-#define LAYOUT_draculad_hrm_wrapper(...)       LAYOUT_3x5_2_3_base(__VA_ARGS__)
-#define LAYOUT_draculad_wrapper(...)           LAYOUT_3x5_2_3_layer(__VA_ARGS__)
+#define LAYOUT_wrapper(...)           LAYOUT(__VA_ARGS__)
 // clang-format on
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef QWERTZ_ENABLE
-    [_QWERTZ] = LAYOUT_draculad_hrm_wrapper(
-        _________________QWERTZ_L1_______________5_, _________________QWERTZ_R1_______________5_,
-        _________________QWERTZ_L2_______________5_, _________________QWERTZ_R2_______________5_,
-        _________________QWERTZ_L3_______________5_, _________________QWERTZ_R3_______________5_,
-                           ______________________THUMB_3_3___________________6_
-    ),
-#endif
+    [_QWERTZ] = LAYOUT_wrapper(_QWER_5_L1_, _QWER_5_R1_, //
+                               _QWER_5_L2_, _QWER_5_R2_, //
+                               _QWER_5_L3_, _QWER_5_R3_, //
+                               NO_NO______, _THUMB_222_),
+#endif // QWERTZ_ENABLE
+
 #ifdef BONE_ENABLE
-    [_BONE] = LAYOUT_draculad_hrm_wrapper(
-        ___________________BONE_L1_______________5_, ___________________BONE_R1_______________5_,
-        ___________________BONE_L2_______________5_, ___________________BONE_R2_______________5_,
-        ___________________BONE_L3_______________5_, ___________________BONE_R3_______________5_,
-                           ______________________THUMB_3_3___________________6_
-    ),
-#endif
+    [_BONE] = LAYOUT_wrapper(_BONE_5_L1_, _BONE_5_R1_, //
+                             _BONE_5_L2_, _BONE_5_R2_, //
+                             _BONE_5_L3_, _BONE_5_R3_, //
+                             NO_NO______, _THUMB_222_),
+#endif // BONE_ENABLE
+
+#ifdef WORKMAN_ENABLE
+    [_WORKMAN] = LAYOUT_wrapper(_WORK_5_L1_, _WORK_5_R1_, //
+                                _WORK_5_L2_, _WORK_5_R2_, //
+                                _WORK_5_L3_, _WORK_5_R3_, //
+                                NO_NO______, _THUMB_222_),
+#endif // WORKMAN_ENABLE
+
 #ifdef COLEMAK_ENABLE
-    [_COLMAK_DH] = LAYOUT_draculad_hrm_wrapper(
-        _______________COLEMAK_DH_L1_____________5_, _______________COLEMAK_DH_R1_____________5_,
-        _______________COLEMAK_DH_L2_____________5_, _______________COLEMAK_DH_R2_____________5_,
-        _______________COLEMAK_DH_L3_____________5_, _______________COLEMAK_DH_R3_____________5_,
-                           ______________________THUMB_3_3___________________6_
-    ),
-#endif
-#ifdef LILYPOND_ENABLE
-    [_LILYPOND] = LAYOUT_draculad_hrm_wrapper(
-        ________________LILYPOND_L1______________5_, ________________LILYPOND_R1______________5_,
-        ________________LILYPOND_L2______________5_, ________________LILYPOND_R2______________5_,
-        ________________LILYPOND_L3______________5_, ________________LILYPOND_R3______________5_,
-                           ______________________THUMB_3_3___________________6_
-    ),
-#endif
-#ifdef ASETNIOP_ENABLE
-    [_ASETNIOP] = LAYOUT_draculad_hrm_wrapper(
-        ______________ASETNIOP_PLUS_L1___________5_, ______________ASETNIOP_PLUS_R1___________5_
-        ______________ASETNIOP_PLUS_L2___________5_, ______________ASETNIOP_PLUS_R2___________5_
-        ______________ASETNIOP_PLUS_L3___________5_, ______________ASETNIOP_PLUS_R3___________5_
-                           ________ASETNIOP_PLUS_THUMB_3_3___________________6_
-    ),
-#endif
-#ifdef ARTSENIO_ENABLE
-    [_ARTSENIO] = LAYOUT_draculad_hrm_wrapper(
-        ______________ARTSENIO_PLUS_L1___________5_, ______________ARTSENIO_PLUS_R1___________5_
-        ______________ARTSENIO_PLUS_L2___________5_, ______________ARTSENIO_PLUS_R2___________5_
-        ______________ARTSENIO_PLUS_L3___________5_, ______________ARTSENIO_PLUS_R3___________5_
-                           ________ARTSENIO_PLUS_THUMB_3_3___________________6_
-    ),
-#endif
+    [_COLEMAK_DH] = LAYOUT_wrapper(_COLE_5_L1_, _COLE_5_R1_, //
+                                   _COLE_5_L2_, _COLE_5_R2_, //
+                                   _COLE_5_L3_, _COLE_5_R3_, //
+                                   NO_NO______, _THUMB_222_),
+#endif // COLEMAK_ENABLE
 
-    [_SYM_NUM] = LAYOUT_draculad_wrapper(
-        ________________SYMBOLS_L1_______________5_, ________________SYMBOLS_R1_______________5_,
-        ________________SYMBOLS_L2_______________5_, ________________SYMBOLS_R2_______________5_,
-        ________________SYMBOLS_L3_______________5_, ________________SYMBOLS_R3_______________5_,
-                           _____________________SYMBOLS_TB___________________6_
-    ),
-    [_NAV_FUN] = LAYOUT_draculad_wrapper(
-        ______________NAVIGATION_L1______________5_, _______________FUNCTION_R1_______________5_,
-        ______________NAVIGATION_L2______________5_, _______________FUNCTION_R2_______________5_,
-        ______________NAVIGATION_L3______________5_, _______________FUNCTION_R3_______________5_,
-                          _____________NAVIGATION_AND_FUNCTION_TB___________6_
-    ),
-    [_MSE_CTL] = LAYOUT_draculad_wrapper(
-        __________________MOUSE_L1_______________5_, __________________MOUSE_R1_______________5_,
-        __________________MOUSE_L2_______________5_, __________________MOUSE_R2_______________5_,
-        __________________MOUSE_L3_______________5_, __________________MOUSE_R3_______________5_,
-                          ______________________MOUSE_TB____________________6_
-    ),
-    [_ADJUST] = LAYOUT_draculad_wrapper(
-        _________________CONFIG_L1_______________5_, _________________CONFIG_R1_______________5_,
-        _________________CONFIG_L2_______________5_, _________________CONFIG_R2_______________5_,
-        _________________CONFIG_L3_______________5_, _________________CONFIG_R3_______________5_,
-                          ____________________CONFIG_TB_____________________6_
-    ),
-
-};
+    // Symbols and Numbers
+    [_SYM_NUM] = LAYOUT_wrapper(_SYMB_5_L1_, _SYMB_5_R1_, //
+                                _SYMB_5_L2_, _SYMB_5_R2_, //
+                                _SYMB_5_L3_, _SYMB_5_R3_, //
+                                NO_NO______, _SYMB_222_TB_),
+    // Navigation and Function
+    [_NAV_FUN] = LAYOUT_wrapper(_NAVI_5_L1_, _FUNC_5_R1_, //
+                                _NAVI_5_L2_, _FUNC_5_R2_, //
+                                _NAVI_5_L3_, _FUNC_5_R3_, //
+                                NO_NO______, _NAFN_222_TB_),
+    // Mouse and Media Control
+    [_MSE_CTL] = LAYOUT_wrapper(_MSME_5_L1_, _MSME_5_R1_, //
+                                _MSME_5_L2_, _MSME_5_R2_, //
+                                _MSME_5_L3_, _MSME_5_R3_, //
+                                NO_NO______, _MSME_222_TB_),
+    // Keyboard adjustments
+    [_ADJUST] = LAYOUT_wrapper(_CONF_5_L1_, _CONF_5_R1_, //
+                               _CONF_5_L2_, _CONF_5_R2_, //
+                               _CONF_5_L3_, _CONF_5_R3_, //
+                               NO_NO______, _CONF_222_TB_)};
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {

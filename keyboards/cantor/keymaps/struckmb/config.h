@@ -6,8 +6,8 @@
 #define BONE_ENABLE
 #define WORKMAN_ENABLE
 #define COLEMAK_ENABLE
-/* #define ASETNIOP_ENABLE */
-/* #define ARTSENIO_ENABLE */
+#define ASETNIOP_ENABLE
+#define ARTSENIO_ENABLE
 
 #ifdef COMBO_ENABLE
 #    define COMBO_SHOULD_TRIGGER

@@ -20,7 +20,8 @@
 #define BONE_ENABLE
 #define WORKMAN_ENABLE
 #define COLEMAK_ENABLE
-#define LILYPOND_ENABLE
+// #define ARTSENIO_ENABLE
+// #define ASETNIOP_ENABLE
 
 // deactivated some effects for size reasons
 #ifdef RGBLIGHT_ENABLE

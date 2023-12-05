@@ -26,6 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BONE_ENABLE
 #define COLEMAK_ENABLE
 #define WORKMAN_ENABLE
+#define ARTSENIO_ENABLE
+#define ASETNIOP_ENABLE
 
 #ifdef RGBLIGHT_ENABLE
 #undef RGBLED_NUM

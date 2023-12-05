@@ -1,8 +1,12 @@
-COMB(BASE_NAV_TAB_LEFT,       S(C(KC_TAB)),   KC_UP, KC_BSPC)
-COMB(BASE_NAV_TAB_RIGHT,      C(KC_TAB),      KC_UP, KC_DEL)
-COMB(BASE_F11,                KC_F11,         KC_F10, KC_F1)
-COMB(BASE_F12,                KC_F12,         KC_F10, KC_F2)
-COMB(BASE_F13,                KC_F13,         KC_F10, KC_F1, KC_F2)
-COMB(BASE_F14,                KC_F14,         KC_F10, KC_F4)
-COMB(BASE_F15,                KC_F15,         KC_F10, KC_F1, KC_F4)
-COMB(BASE_F16,                KC_F16,         KC_F10, KC_F2, KC_F4)
+COMB(BASE_AE,                 DE_ADIA,        DE_A, DE_E)
+COMB(BASE_OE,                 DE_ODIA,        DE_O, DE_E)
+COMB(BASE_UE,                 DE_UDIA,        DE_U, DE_E)
+COMB(BASE_SZ,                 DE_SS,          DE_S, DE_Z)
+
+#if defined(QWERTZ_ENABLE)
+COMB(BASE_QWER_OE,            DE_ODIA,        MC_O, DE_E)
+#endif // QWERTZ_ENABLE
+
+#if defined(COLEMAK_ENABLE)
+COMB(BASE_COLE_SZ,            DE_SS,          DE_S, MC_Z)
+#endif // COLEMAK_ENABLE

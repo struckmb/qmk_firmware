@@ -1,9 +1,9 @@
 #include "combos/common.def"
 COMB(ALL_ZZZ,            KC_NO,          KC_NO)
 
-#if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(COLEMAK_ENABLE)
+#if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(COLEMAK_ENABLE) || defined(WORKMAN_ENABLE)
 #include "combos/base.def"
-#endif // QWERTZ_ENABLE // BONE_ENABLE // COLEMAK_ENABLE
+#endif // QWERTZ_ENABLE // BONE_ENABLE // COLEMAK_ENABLE // WORKMAN_ENABLE
 COMB(BASE_ZZZ,            KC_NO,          KC_NO)
 
 #ifdef ARTSENIO_ENABLE

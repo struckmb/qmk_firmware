@@ -1,7 +1,6 @@
 #pragma once
 
 #define EE_HANDS
-#define ENABLE_COMPILE_KEYCODE
 
 // Space saving
 #ifdef LOCKING_SUPPORT_ENABLE
