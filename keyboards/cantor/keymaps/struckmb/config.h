@@ -3,11 +3,12 @@
 #define EE_HANDS
 
 #define QWERTZ_ENABLE
-#define BONE_ENABLE
-#define WORKMAN_ENABLE
+// #define BONE_ENABLE
 #define COLEMAK_ENABLE
-#define ASETNIOP_ENABLE
-#define ARTSENIO_ENABLE
+#define MINE_ENABLE
+// #define WORKMAN_ENABLE
+// #define ASETNIOP_ENABLE
+// #define ARTSENIO_ENABLE
 
 #ifdef COMBO_ENABLE
 #    define COMBO_SHOULD_TRIGGER
@@ -20,7 +21,6 @@
 #define PERMISSIVE_HOLD
 #define TAPPING_FORCE_HOLD
 #define ONESHOT_TAP_TOGGLE 2
-
 
 // Mousekey mode
 #ifdef MOUSEKEY_ENABLE

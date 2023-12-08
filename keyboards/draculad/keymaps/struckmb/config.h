@@ -31,9 +31,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QWERTZ_ENABLE
 #define BONE_ENABLE
 #define COLEMAK_ENABLE
-#define WORKMAN_ENABLE
-/* #define ASETNIOP_ENABLE */
-/* #define ARTSENIO_ENABLE */
+#define MINE_ENABLE
+// #define WORKMAN_ENABLE
+// #define ASETNIOP_ENABLE
+// #define ARTSENIO_ENABLE
 
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 5

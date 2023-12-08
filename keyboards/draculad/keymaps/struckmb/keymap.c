@@ -1,59 +1,75 @@
-
 #include "struckmb.h"
 
-// clang-format off
 #define LAYOUT_wrapper(...)           LAYOUT(__VA_ARGS__)
-// clang-format on
+#define LAYOUT_hrm_wrapper(...)       LAYOUT_base_wrapper(__VA_ARGS__)
+#define LAYOUT_base_wrapper( \
+        k00,k01,k02,k03,k04,  k05,k06,k07,k08,k09, \
+        k10,k11,k12,k13,k14,  k15,k16,k17,k18,k19, \
+        k20,k21,k22,k23,k24,  k25,k26,k27,k28,k29, \
+        e00,e01,k30,k31,k32,k33,k34,k35) \
+        LAYOUT_wrapper( \
+        MT(MOD_LALT,k00),k01,k02,k03,k04,  k05,k06,k07,k08,MT(MOD_LALT,k09), \
+        MT(MOD_LCTL,k10),k11,k12,k13,k14,  k15,k16,k17,k18,MT(MOD_LCTL,k19), \
+        MT(MOD_LSFT,k20),k21,k22,k23,k24,  k25,k26,k27,k28,MT(MOD_LSFT,k29), \
+        e00,e01,k30,k31,k32,k33,k34,k35)
 
+#define _ENCODERS__ BS_ENC0, BS_ENC1
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef QWERTZ_ENABLE
-    [_QWERTZ] = LAYOUT_wrapper(_QWER_5_L1_, _QWER_5_R1_, //
+    [_QWERTZ] = LAYOUT_hrm_wrapper(_QWER_5_L1_, _QWER_5_R1_, //
                                _QWER_5_L2_, _QWER_5_R2_, //
                                _QWER_5_L3_, _QWER_5_R3_, //
-                               NO_NO______, _THUMB_222_),
+                               _ENCODERS__, _THUMB_222_),
 #endif // QWERTZ_ENABLE
 
 #ifdef BONE_ENABLE
-    [_BONE] = LAYOUT_wrapper(_BONE_5_L1_, _BONE_5_R1_, //
+    [_BONE] = LAYOUT_hrm_wrapper(_BONE_5_L1_, _BONE_5_R1_, //
                              _BONE_5_L2_, _BONE_5_R2_, //
                              _BONE_5_L3_, _BONE_5_R3_, //
-                             NO_NO______, _THUMB_222_),
+                             _ENCODERS__, _THUMB_222_),
 #endif // BONE_ENABLE
 
-#ifdef WORKMAN_ENABLE
-    [_WORKMAN] = LAYOUT_wrapper(_WORK_5_L1_, _WORK_5_R1_, //
-                                _WORK_5_L2_, _WORK_5_R2_, //
-                                _WORK_5_L3_, _WORK_5_R3_, //
-                                NO_NO______, _THUMB_222_),
-#endif // WORKMAN_ENABLE
-
 #ifdef COLEMAK_ENABLE
-    [_COLEMAK_DH] = LAYOUT_wrapper(_COLE_5_L1_, _COLE_5_R1_, //
+    [_COLEMAK_DH] = LAYOUT_hrm_wrapper(_COLE_5_L1_, _COLE_5_R1_, //
                                    _COLE_5_L2_, _COLE_5_R2_, //
                                    _COLE_5_L3_, _COLE_5_R3_, //
-                                   NO_NO______, _THUMB_222_),
+                                   _ENCODERS__, _THUMB_222_),
 #endif // COLEMAK_ENABLE
+
+#ifdef MINE_ENABLE
+    [_MINE] = LAYOUT_hrm_wrapper(_MINE_5_L1_, _MINE_5_R1_, //
+                                _MINE_5_L2_, _MINE_5_R2_, //
+                                _MINE_5_L3_, _MINE_5_R3_, //
+                                _ENCODERS__, _THUMB_222_),
+#endif // MINE_ENABLE
+
+#ifdef WORKMAN_ENABLE
+    [_WORKMAN] = LAYOUT_hrm_wrapper(_WORK_5_L1_, _WORK_5_R1_, //
+                                _WORK_5_L2_, _WORK_5_R2_, //
+                                _WORK_5_L3_, _WORK_5_R3_, //
+                                _ENCODERS__, _THUMB_222_),
+#endif // WORKMAN_ENABLE
 
     // Symbols and Numbers
     [_SYM_NUM] = LAYOUT_wrapper(_SYMB_5_L1_, _SYMB_5_R1_, //
                                 _SYMB_5_L2_, _SYMB_5_R2_, //
                                 _SYMB_5_L3_, _SYMB_5_R3_, //
-                                NO_NO______, _SYMB_222_TB_),
+                                _ENCODERS__, _SYMB_222_TB_),
     // Navigation and Function
     [_NAV_FUN] = LAYOUT_wrapper(_NAVI_5_L1_, _FUNC_5_R1_, //
                                 _NAVI_5_L2_, _FUNC_5_R2_, //
                                 _NAVI_5_L3_, _FUNC_5_R3_, //
-                                NO_NO______, _NAFN_222_TB_),
+                                _ENCODERS__, _NAFN_222_TB_),
     // Mouse and Media Control
     [_MSE_CTL] = LAYOUT_wrapper(_MSME_5_L1_, _MSME_5_R1_, //
                                 _MSME_5_L2_, _MSME_5_R2_, //
                                 _MSME_5_L3_, _MSME_5_R3_, //
-                                NO_NO______, _MSME_222_TB_),
+                                _ENCODERS__, _MSME_222_TB_),
     // Keyboard adjustments
     [_ADJUST] = LAYOUT_wrapper(_CONF_5_L1_, _CONF_5_R1_, //
                                _CONF_5_L2_, _CONF_5_R2_, //
                                _CONF_5_L3_, _CONF_5_R3_, //
-                               NO_NO______, _CONF_222_TB_)};
+                               _ENCODERS__, _CONF_222_TB_)};
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {

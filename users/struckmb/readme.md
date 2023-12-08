@@ -17,33 +17,57 @@ This is added to all base layers
 Pressing Fn+Nav simultaniously activates Adj layer
 
 ## Base Layout - QWERTZ
-If QWERTZ_ENABLE is defined, you can switch to the following map using QWERTZ
+If QWERTZ_ENABLE is defined, you can switch to the following map
 ```
 .-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----.
 | Tab │  q  │  w  │  e  │  r  │  t  │             │  z  │  u  │  i  │  o  │  p  │  ü  |
 |-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
 | C/E │  a  │  s  │  d  │  f  │  g  │             │  h  │  j  │  k  │  l  │  ö  │  ä  |
 |-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
-| Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │     |
+| Sft │  y  │  x  │  c  │  v  │  b  │             │  n  │  m  │ , ; │ . : │ ß ? │ Sft |
 '-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
 ```
 
 ## Base Layout - BONE (matrix)
-If BONE_ENABLE is defined, you can switch to the following map using BONE
+If BONE_ENABLE is defined, you can switch to the following map
 ```
 .-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----.
 | Tab │  j  │  d  │  u  │  a  │  x  │             │  p  │  h  │  l  │  m  │  w  │  ß  |
 |-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
 | C/E │  c  │  t  │  i  │  e  │  o  │             │  b  │  n  │  r  │  s  │  g  │  q  |
 |-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
-| Sft │  f  │  v  │ ß/ü*│ q/ä*│  ö  │             │  y  │  z  │ , ; │ . : │  k  │     |
+| Sft │  f  │  v  │ ß/ü*│ q/ä*│  ö  │             │  y  │  z  │ , ; │ . : │  k  │ Sft |
 '-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
 ```
 *) on 5 column keyboards the missing keys are moved to here. Use the umlauts
 from MOUSE layer in that case.
 
 ## Base Layout - Colemak DH (german variant)
-If COLEMAK_ENABLE is defined, you can switch to the following map using COLMAK
+If COLEMAK_ENABLE is defined, you can switch to the following map
+```
+.-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----.
+| Tab │  q  │  w  │  f  │  p  │  b  │             │  j  │  l  │  u  │  z  │  ö  │  ü  |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
+| C/E │  a  │  r  │  s  │  t  │  g  │             │  m  │  n  │  e  │  i  │  o  │  ä  |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
+| Sft │  y  │  x  │  c  │  d  │  v  │             │  k  │  h  │ , ; │ . : │  ß  │ Sft |
+'-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
+```
+
+## Base Layout - Mine
+If MINE_ENABLE is defined, you can switch to the following map
+```
+.-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----.
+| Tab │  j  │  l  │  u  │  a  │  q  │             │  w  │  b  │  d  │  g  │  y  │  ß  |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
+| C/E │  c  │  r  │  i  │  e  │  o  │             │  m  │  n  │  t  │  s  │  h  │  z  |
+|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
+| Sft │  v  │  x  │  ü  │  ä  │  ö  │             │  p  │  f  │ , ; │ . : │  k  │ Sft |
+'-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
+```
+
+## Base Layout - Workman
+If WORKMAN_ENABLE is defined, you can switch to the following map
 ```
 .-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----.
 | Tab │  q  │  w  │  f  │  p  │  b  │             │  j  │  l  │  u  │  z  │  ö  │  ü  |
@@ -53,19 +77,6 @@ If COLEMAK_ENABLE is defined, you can switch to the following map using COLMAK
 | Sft │  y  │  x  │  c  │  d  │  v  │             │  k  │  h  │ , ; │ . : │  ß  │     |
 '-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
 ```
-
-## Base Layout - Lilypond
-If LILYPOND_ENABLE is defined, you can switch to the following map using LILYPOND
-```
-.-----┌─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┐-----.
-| Tab │  q  │  w  │  j  │  r  │  t  │             │  z  │  u  │  l  │  o  │  p  │  ü  |
-|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
-| C/E │  h  │  c  │  d  │  e  │  i  │             │  s  │  f  │  g  │  a  │  b  │  ä  |
-|-----├─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┤-----|
-| Sft │  y  │  x  │  k  │  v  │  ö  │             │  n  │  m  │ , ; │ . : │  ß  │     |
-'-----└─────┴─────┼─────┼─────┼─────┼-----. .-----┼─────┼─────┼─────┼─────┴─────┘-----'
-```
-(Note names are located on the home row.)
 
 # Other layers
 

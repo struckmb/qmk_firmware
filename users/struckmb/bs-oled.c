@@ -83,16 +83,21 @@ void render_keymap(uint8_t col, uint8_t row, uint8_t def_layer) {
             oled_write("BONE ", false);
             break;
 #       endif // BONE_ENABLE
-#       ifdef WORKMAN_ENABLE
-        case _WORKMAN:
-            oled_write("WRKMN", false);
-            break;
-#       endif // WORKMAN_ENABLE
 #       ifdef COLEMAK_ENABLE
         case _COLEMAK_DH:
             oled_write("COLMK", false);
             break;
 #       endif // COLEMAK_ENABLE
+#       ifdef MINE_ENABLE
+        case _MINE:
+            oled_write("MINE ", false);
+            break;
+#       endif // MINE_ENABLE
+#       ifdef WORKMAN_ENABLE
+        case _WORKMAN:
+            oled_write("WRKMN", false);
+            break;
+#       endif // WORKMAN_ENABLE
 #       ifdef ASETNIOP_ENABLE
         case _ASETNIOP:
             oled_write("ASET+", false);

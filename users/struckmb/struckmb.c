@@ -50,19 +50,21 @@ bool caps_word_press_user(uint16_t keycode) {
 #ifdef COMBO_ENABLE
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     if (combo_index < ALL_ZZZ) return true;
-#    if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(WORKMAN_ENABLE) || defined(COLEMAK_ENABLE)
+#    if defined(QWERTZ_ENABLE) || defined(BONE_ENABLE) || defined(COLEMAK_ENABLE) || defined(MINE_ENABLE) || defined(WORKMAN_ENABLE)
     if (combo_index < BASE_ZZZ) {
-#        ifdef COLEMAK_ENABLE
-        return get_highest_layer(default_layer_state) <= _COLEMAK_DH;
-#        elif defined(WORKMAN_ENABLE)
+#        ifdef WORKMAN_ENABLE
         return get_highest_layer(default_layer_state) <= _WORKMAN;
+#        elif defined(MINE_ENABLE)
+        return get_highest_layer(default_layer_state) <= _MINE;
+#        elif defined(COLEMAK_ENABLE)
+        return get_highest_layer(default_layer_state) <= _COLEMAK_DH;
 #        elif defined(BONE_ENABLE)
         return get_highest_layer(default_layer_state) <= _BONE;
 #        elif defined(QWERTZ_ENABLE)
         return get_highest_layer(default_layer_state) <= _QWERTZ;
 #        endif // QWERTZ_ENABLE, BONE_ENABLE, WORKMAN_ENABLE, COLEMAK_ENABLE
     }
-#    endif // QWERTZ_ENABLE // BONE_ENABLE // WORKMAN_ENABLE // COLEMAK_ENABLE
+#    endif // QWERTZ_ENABLE // BONE_ENABLE // COLEMAK_ENABLE // MINE_ENABLE // WORKMAN_ENABLE
 #    ifdef ARTSENIO_ENABLE
     if (combo_index > ARTS_AAA && combo_index < ARTS_ZZZ) return get_highest_layer(default_layer_state) == _ARTSENIO;
 #    endif // ARTSENIO_ENABLE

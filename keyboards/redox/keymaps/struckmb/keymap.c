@@ -10,29 +10,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _QWER_6_L2_, NO_NO______, _QWER_6_R2_,    //
                                _QWER_6_L3_, NO_NO_NO_NO, _QWER_6_R3_,    //
                                NO_NO______, _THUMB_5_5_, NO_NO______),
-#endif // QWERTZ_ENABLE
-
+    #endif // QWERTZ_ENABLE
 #ifdef BONE_ENABLE
     [_BONE] = LAYOUT_wrapper(_NUMB_6_L0_, /*        */ _NUMB_6_R0_, //
                              _BONE_6_L1_, NO_NO______, _BONE_6_R1_,    //
                              _BONE_6_L2_, NO_NO______, _BONE_6_R2_,    //
                              _BONE_6_L3_, NO_NO_NO_NO, _BONE_6_R3_,    //
                              NO_NO______, _THUMB_5_5_, NO_NO______),
-#endif // BONE_ENABLE
-#ifdef WORKMAN_ENABLE
-    [_WORKMAN] = LAYOUT_wrapper(_NUMB_6_L0_, /*        */ _NUMB_6_R0_, //
-                                _WORK_6_L1_, NO_NO______, _WORK_6_R1_,    //
-                                _WORK_6_L2_, NO_NO______, _WORK_6_R2_,    //
-                                _WORK_6_L3_, NO_NO_NO_NO, _WORK_6_R3_,    //
-                                NO_NO______, _THUMB_5_5_, NO_NO______),
-#endif // WORKMAN_ENABLE
+    #endif // BONE_ENABLE
 #ifdef COLEMAK_ENABLE
     [_COLEMAK_DH] = LAYOUT_wrapper(_NUMB_6_L0_, /*        */ _NUMB_6_R0_, //
                                    _COLE_6_L1_, NO_NO______, _COLE_6_R1_,    //
                                    _COLE_6_L2_, NO_NO______, _COLE_6_R2_,    //
                                    _COLE_6_L3_, NO_NO_NO_NO, _COLE_6_R3_,    //
                                    NO_NO______, _THUMB_5_5_, NO_NO______),
-#endif // COLEMAK_ENABLE
+    #endif // COLEMAK_ENABLE
+#ifdef MINE_ENABLE
+    [_MINE] = LAYOUT_wrapper(_NUMB_6_L0_, /*        */ _NUMB_6_R0_, //
+                             _MINE_6_L1_, NO_NO______, _MINE_6_R1_,    //
+                             _MINE_6_L2_, NO_NO______, _MINE_6_R2_,    //
+                             _MINE_6_L3_, NO_NO_NO_NO, _MINE_6_R3_,    //
+                             NO_NO______, _THUMB_5_5_, NO_NO______),
+    #endif // WORKMAN_ENABLE
+#ifdef WORKMAN_ENABLE
+    [_WORKMAN] = LAYOUT_wrapper(_NUMB_6_L0_, /*        */ _NUMB_6_R0_, //
+                                _WORK_6_L1_, NO_NO______, _WORK_6_R1_,    //
+                                _WORK_6_L2_, NO_NO______, _WORK_6_R2_,    //
+                                _WORK_6_L3_, NO_NO_NO_NO, _WORK_6_R3_,    //
+                                NO_NO______, _THUMB_5_5_, NO_NO______),
+    #endif // WORKMAN_ENABLE
 
     // Symbols and Numbers
     [_SYM_NUM] = LAYOUT_wrapper(_FUNC_6_L0_, /*        */ _FUNC_6_R0_, //

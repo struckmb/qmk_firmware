@@ -2,11 +2,3 @@ COMB(BASE_AE,                 DE_ADIA,        DE_A, DE_E)
 COMB(BASE_OE,                 DE_ODIA,        DE_O, DE_E)
 COMB(BASE_UE,                 DE_UDIA,        DE_U, DE_E)
 COMB(BASE_SZ,                 DE_SS,          DE_S, DE_Z)
-
-#if defined(QWERTZ_ENABLE)
-COMB(BASE_QWER_OE,            DE_ODIA,        MC_O, DE_E)
-#endif // QWERTZ_ENABLE
-
-#if defined(COLEMAK_ENABLE)
-COMB(BASE_COLE_SZ,            DE_SS,          DE_S, MC_Z)
-#endif // COLEMAK_ENABLE

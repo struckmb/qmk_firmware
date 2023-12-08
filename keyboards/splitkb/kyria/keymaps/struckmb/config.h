@@ -17,9 +17,10 @@
 #pragma once
 
 #define QWERTZ_ENABLE
-#define BONE_ENABLE
-#define WORKMAN_ENABLE
+// #define BONE_ENABLE
 #define COLEMAK_ENABLE
+#define MINE_ENABLE
+// #define WORKMAN_ENABLE
 // #define ARTSENIO_ENABLE
 // #define ASETNIOP_ENABLE
 
