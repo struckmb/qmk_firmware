@@ -18,8 +18,15 @@
 *.lst
 *.map
 *.o
+*.a
+*.so
+*.dylib
+*.dll
+*.la
 *.stackdump
 *.sym
+index.html
+firmware_list.json
 
 # Ardux links
 **/ardux
@@ -32,6 +39,10 @@ quantum/version.h
 *.hex
 *.qmk
 *.uf2
+
+# DD config at wrong location
+/keyboards/**/keymaps/*/info.json
+/keyboards/**/keymaps/*/keyboard.json
 
 # Old-style QMK Makefiles
 /keyboards/**/Makefile
@@ -48,7 +59,6 @@ quantum/version.h
 .idea/
 .project
 .settings/
-.vagrant/
 
 # ?
 .dep
@@ -97,6 +107,7 @@ secrets.tar
 # Python things
 __pycache__
 .python-version
+.venv
 
 # Prerequisites for updating ChibiOS
 /util/fmpp*
@@ -109,6 +120,6 @@ compile_commands.json
 .clangd/
 .cache/
 
-# VIA(L) json files that don't belong in QMK repo
+# VIA(L) files that don't belong in QMK repo
 via*.json
-
+/keyboards/**/keymaps/vial/*
