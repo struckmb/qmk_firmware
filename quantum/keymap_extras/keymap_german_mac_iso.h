@@ -27,6 +27,19 @@
 #include "keycodes.h"
 // clang-format off
 
+#define OSM_SC OSM(MOD_LSFT | MOD_LCTL)
+#define OSM_SA OSM(MOD_LSFT | MOD_LALT)
+#define OSM_SG OSM(MOD_LSFT | MOD_LGUI)
+#define OSM_CA OSM(MOD_LCTL | MOD_LALT)
+#define OSM_CG OSM(MOD_LCTL | MOD_LGUI)
+#define OSM_AG OSM(MOD_LALT | MOD_LGUI)
+#define OSM_SCA OSM(MOD_LSFT | MOD_LCTL | MOD_LALT)
+#define OSM_SCG OSM(MOD_LSFT | MOD_LCTL | MOD_LGUI)
+#define OSM_SAG OSM(MOD_LSFT | MOD_LALT | MOD_LGUI)
+#define OSM_CAG OSM(MOD_LCTL | MOD_LALT | MOD_LGUI)
+#define BRI_UP KC_BRMU
+#define BRI_DN KC_BRMD
+
 // Aliases
 #define DE_CIRC KC_GRV  // ^ (dead)
 #define DE_1    KC_1    // 1
