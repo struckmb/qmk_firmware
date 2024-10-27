@@ -31,7 +31,8 @@ enum charybdis_keymap_layers {
     LAYER_LOWER1,
     LAYER_RAISE0,
     LAYER_RAISE1,
-    LAYER_ATTIC,
+    LAYER_ATTIC0,
+    LAYER_ATTIC1,
     LAYER_POINTER,
 };
 
@@ -54,7 +55,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define L1_TAB LT(LAYER_LOWER1, KC_TAB)
 #define RAISE0 MO(LAYER_RAISE0)
 #define RAISE1 MO(LAYER_RAISE1)
-#define ATTIC MO(LAYER_ATTIC)
+#define ATTIC0 MO(LAYER_ATTIC0)
+#define ATTIC1 MO(LAYER_ATTIC1)
 #define SYM_A0 LT(LAYER_SYMB0, DE_A)
 #define SYM_A1 LT(LAYER_SYMB1, DE_A)
 #define SYM_O0 LT(LAYER_SYMB0, DE_ODIA)
@@ -138,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI, XXXXXXX, CP_CUT,  CP_COPY, CP_PSTE, XXXXXXX,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END, KC_INS,  CW_TOGG,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_VOLU, KC_VOLD, _______,      ATTIC, KC_LSFT
+                                  KC_VOLU, KC_VOLD, _______,     ATTIC0, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
   ),
 
@@ -150,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI, XXXXXXX, G(KC_X), G(KC_C), G(KC_V), XXXXXXX,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END, KC_INS,  CW_TOGG,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_VOLU, KC_VOLD, _______,      ATTIC, KC_LSFT
+                                  KC_VOLU, KC_VOLD, _______,     ATTIC1, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
   ),
 
@@ -162,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        GUI_COM, DE_PND, DE_DLR,  DE_CENT, DE_EURO, KC_F11,      KC_F12, DE_PERC, DE_COMM,  DE_DOT, DE_SECT, RGUI_T(DE_MINS),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  BRI_DN,  BRI_UP,  ATTIC,       ATTIC, KC_LSFT
+                                  BRI_DN,  BRI_UP, ATTIC0,      ATTIC0, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
   ),
 
@@ -172,19 +174,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        CTL_DOT, DE_1,    DE_2,    DE_3,    DE_4,    DE_5,         DE_6,    DE_7,    DE_8,    DE_9,    DE_0, LCTL_T(KC_F12),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       GUI_COM,S(A(DE_4)),DE_DLR, A(DE_4), A(DE_E), KC_F11,      KC_F12, DE_PERC, DE_COMM,  DE_DOT, DE_SECT, RGUI_T(DE_MINS),
+       GUI_COM,S(A(DE_4)),DE_DLR, A(DE_4), A(DE_E), KC_F11,     KC_F12, DE_PERC, DE_COMM,  DE_DOT, DE_SECT, RGUI_T(DE_MINS),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  BRI_DN,  BRI_UP,  ATTIC,       ATTIC, KC_LSFT
+                                  BRI_DN,  BRI_UP, ATTIC1,      ATTIC1, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
   ),
 
-  [LAYER_ATTIC] = LAYOUT(
+  [LAYER_ATTIC0] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_LALT, XXXXXXX, XXXXXXX, DE_RDAQ, DE_LDAQ, DE_RDAQ,    DE_IEXL, XXXXXXX, DE_SLQU, DE_LSQU, DE_SQUE, LALT_T(XXXXXXX),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  DE_EURO,    DE_IQUE, XXXXXXX, DE_MDOT, DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
+       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  XXXXXXX,    DE_IQUE, XXXXXXX, DE_MDOT, DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LGUI, DE_DIV,  DE_MULT, EE_CLR,  QK_BOOT, DE_CENT,    DE_NDSH, DE_MDSH, DE_DLQU, DE_LDQU, DE_RDQU, XXXXXXX,
+       KC_LGUI, DE_DIV,  DE_MULT, EE_CLR,  QK_BOOT, XXXXXXX,    DE_NDSH, DE_MDSH, DE_DLQU, DE_LDQU, DE_RDQU, KC_LGUI,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  XXXXXXX, XXXXXXX, _______,    _______, KC_LSFT
+  //                          ╰─────────────────────────────╯ ╰───────────────────╯
+  ),
+
+  [LAYER_ATTIC1] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+      KC_LALT,XXXXXXX,XXXXXXX,S(A(DE_Q)),DE_LDAQ,S(A(DE_Q)),   A(DE_1),XXXXXXX,A(DE_S),A(DE_HASH), DE_QUOT, LALT_T(XXXXXXX),
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  XXXXXXX,   A(DE_SS),XXXXXXX,S(A(DE_9)),DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LGUI,S(A(DE_DOT)),DE_ASTR,EE_CLR, QK_BOOT,XXXXXXX,    DE_NDSH,DE_MDSH,A(DE_CIRC),A(DE_2),S(A(DE_2)),KC_LGUI,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   XXXXXXX, XXXXXXX, _______,    _______, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
