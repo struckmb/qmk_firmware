@@ -27,6 +27,12 @@
 #include "keycodes.h"
 // clang-format off
 
+// one shot shortcuts
+#define OSM_LS OSM(MOD_LSFT)
+#define OSM_LC OSM(MOD_LCTL)
+#define OSM_LA OSM(MOD_LALT)
+#define OSM_RA OSM(MOD_RALT)
+#define OSM_LG OSM(MOD_LGUI)
 #define OSM_SC OSM(MOD_LSFT | MOD_LCTL)
 #define OSM_SA OSM(MOD_LSFT | MOD_LALT)
 #define OSM_SG OSM(MOD_LSFT | MOD_LGUI)
@@ -37,6 +43,22 @@
 #define OSM_SCG OSM(MOD_LSFT | MOD_LCTL | MOD_LGUI)
 #define OSM_SAG OSM(MOD_LSFT | MOD_LALT | MOD_LGUI)
 #define OSM_CAG OSM(MOD_LCTL | MOD_LALT | MOD_LGUI)
+
+#define ALT_BSP LALT_T(KC_BSPC)
+#define ALT_DEL LALT_T(KC_DEL)
+#define ALT_SZ MT(MOD_LALT, DE_SS)
+#define ALT_UE LALT_T(DE_UDIA)
+#define CTL_AE RCTL_T(DE_ADIA)
+#define CTL_ESC LCTL_T(KC_ESC)
+#define CTL_Q MT(MOD_LCTL, DE_Q)
+#define GUI_ENT RGUI_T(KC_ENT)
+#define GUI_LT LGUI_T(DE_LABK)
+#define CTL_DOT LCTL_T(KC_DOT)
+#define GUI_COM LGUI_T(KC_COMM)
+// some shortcuts
+#define CP_CUT G(KC_X)
+#define CP_COPY G(KC_C)
+#define CP_PSTE G(KC_V)
 #define BRI_UP KC_BRMU
 #define BRI_DN KC_BRMD
 
@@ -161,7 +183,7 @@
 #define DE_FI   S(A(DE_5))    // ﬁ
 #define DE_BSLS S(A(DE_7))    // (backslash)
 #define DE_STIL S(A(DE_8))    // ˜
-#define DE_MDDT S(A(DE_9))    // ·
+#define DE_MDOT S(A(DE_9))    // ·
 #define DE_MACR S(A(DE_0))    // ¯
 #define DE_DOTA S(A(DE_SS))   // ˙
 #define DE_RNGA S(A(DE_ACUT)) // ˚
@@ -192,3 +214,6 @@
 #define DE_DIV  S(A(DE_DOT))  // ÷
 #define DE_MDSH S(A(DE_MINS)) // —
 
+// not available
+#define DE_MULT DE_ASTR    // × multiplication operator
+#define DE_SQUE DE_QUOT    // ’ single quote right (en)

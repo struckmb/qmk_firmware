@@ -9,8 +9,8 @@
 #endif /* ifdef MAC_SIDE */
 
 enum layers {
-    _BONE = 0,
-    _QWER,
+    _QWER = 0,
+    _BONE,
     _COLE,
     _NUMS,
     _FUNC,
@@ -24,25 +24,25 @@ enum layers {
  * edit it directly.
  */
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {                                                                              //
-    [_BONE] = LAYOUT_split_3x6_3(LALT_T(KC_BSPC), DE_J, DE_D, DE_U, DE_A, DE_X, DE_P, DE_H, DE_L, DE_M, DE_W, LALT_T(DE_SS),                //
-                                 LCTL_T(KC_ESC), DE_C, DE_T, DE_I, DE_E, DE_O, DE_B, DE_N, DE_R, DE_S, DE_G, RCTL_T(DE_Q),                  //
-                                 LGUI_T(DE_LABK), DE_F, DE_V, DE_UDIA, DE_ADIA, DE_ODIA, DE_Y, DE_Z, KC_COMM, KC_DOT, DE_K, RGUI_T(KC_ENT), //
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {                                                      //
+    [_QWER] = LAYOUT_split_3x6_3(ALT_BSP, DE_Q, DE_W, DE_E, DE_R, DE_T, DE_Z, DE_U, DE_I, DE_O, DE_P, ALT_UE,       //
+                                 CTL_ESC, DE_A, DE_S, DE_D, DE_F, DE_G, DE_H, DE_J, DE_K, DE_L, DE_ODIA, CTL_AE,    //
+                                 GUI_LT, DE_Y, DE_X, DE_C, DE_V, DE_B, DE_N, DE_M, KC_COMM, KC_DOT, DE_SS, GUI_ENT, //
                                  MO(_MSFX), LT(_CTRL, KC_ENT), LSFT_T(KC_TAB), RSFT_T(KC_SPC), OSL(_NUMS), RALT_T(KC_APP)),
 
-    [_QWER] = LAYOUT_split_3x6_3(KC_TRNS, DE_Q, DE_W, DE_E, DE_R, DE_T, DE_Z, DE_U, DE_I, DE_O, DE_P, LALT_T(DE_UDIA),    //
-                                 KC_TRNS, DE_A, DE_S, DE_D, DE_F, DE_G, DE_H, DE_J, DE_K, DE_L, DE_ODIA, RCTL_T(DE_ADIA), //
-                                 KC_TRNS, DE_Y, DE_X, DE_C, DE_V, DE_B, DE_N, DE_M, KC_COMM, KC_DOT, DE_SS, KC_TRNS,      //
+    [_BONE] = LAYOUT_split_3x6_3(ALT_BSP, DE_J, DE_D, DE_U, DE_A, DE_X, DE_P, DE_H, DE_L, DE_M, DE_W, LALT_T(DE_SS),        //
+                                 CTL_ESC, DE_C, DE_T, DE_I, DE_E, DE_O, DE_B, DE_N, DE_R, DE_S, DE_G, RCTL_T(DE_Q),         //
+                                 GUI_LT, DE_F, DE_V, DE_UDIA, DE_ADIA, DE_ODIA, DE_Y, DE_Z, KC_COMM, KC_DOT, DE_K, GUI_ENT, //
                                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
-    [_COLE] = LAYOUT_split_3x6_3(KC_TRNS, DE_Q, DE_W, DE_F, DE_P, DE_B, DE_J, DE_L, DE_U, DE_Y, DE_ODIA, LALT_T(DE_UDIA), //
-                                 KC_TRNS, DE_A, DE_R, DE_S, DE_T, DE_G, DE_M, DE_N, DE_E, DE_I, DE_O, RCTL_T(DE_ADIA),    //
-                                 KC_TRNS, DE_Z, DE_X, DE_C, DE_D, DE_V, DE_K, DE_H, KC_COMM, KC_DOT, DE_SS, KC_TRNS,      //
+    [_COLE] = LAYOUT_split_3x6_3(ALT_BSP, DE_Q, DE_W, DE_F, DE_P, DE_B, DE_J, DE_L, DE_U, DE_Y, DE_ODIA, LALT_T(DE_UDIA), //
+                                 CTL_ESC, DE_A, DE_R, DE_S, DE_T, DE_G, DE_M, DE_N, DE_E, DE_I, DE_O, RCTL_T(DE_ADIA),    //
+                                 GUI_LT, DE_Z, DE_X, DE_C, DE_D, DE_V, DE_K, DE_H, KC_COMM, KC_DOT, DE_SS, GUI_ENT,       //
                                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
-    [_NUMS] = LAYOUT_split_3x6_3(LALT_T(KC_DEL), DE_1, DE_2, DE_3, DE_4, DE_5, DE_6, DE_7, DE_8, DE_9, DE_0, LALT_T(DE_CIRC),                              //
-                                 LCTL_T(KC_DOT), DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR, DE_AMPR, DE_LPRN, DE_RPRN, DE_AT, DE_COLN, RCTL_T(DE_PLUS),  //
-                                 LGUI_T(KC_COMM), DE_HASH, DE_DLR, DE_PIPE, DE_TILD, DE_EXLM, DE_EQL, DE_PERC, DE_DQUO, DE_QUOT, DE_UNDS, RGUI_T(DE_MINS), //
+    [_NUMS] = LAYOUT_split_3x6_3(ALT_DEL, DE_1, DE_2, DE_3, DE_4, DE_5, DE_6, DE_7, DE_8, DE_9, DE_0, LALT_T(DE_CIRC),                             //
+                                 CTL_DOT, DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR, DE_AMPR, DE_LPRN, DE_RPRN, DE_AT, DE_COLN, RCTL_T(DE_PLUS), //
+                                 GUI_COM, DE_HASH, DE_DLR, DE_PIPE, DE_TILD, DE_EXLM, DE_EQL, DE_PERC, DE_DQUO, DE_QUOT, DE_UNDS, RGUI_T(DE_MINS), //
                                  QK_AREP, MO(_MSFX), QK_REP, KC_TRNS, OSL(_FUNC), KC_TRNS),
 
     [_FUNC] = LAYOUT_split_3x6_3(KC_LALT, KC_F1, KC_F2, KC_F3, KC_F4, DE_CENT, DE_PLMN, DE_LABK, DE_RABK, DE_COPY, DE_SECT, LALT_T(DE_ACUT), //
@@ -50,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {                  
                                  KC_LGUI, KC_F9, KC_F10, KC_F11, KC_F12, DE_PND, DE_RDAQ, DE_LDAQ, DE_DLQU, DE_LDQU, DE_RDQU, KC_RGUI,       //
                                  BRI_DN, MO(_MSFX), BRI_UP, KC_TRNS, KC_TRNS, KC_TRNS),
 
-    [_CTRL] = LAYOUT_split_3x6_3(OSM(MOD_LALT), KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, CG_NORM, DF(_BONE), DF(_QWER), DF(_COLE), CG_SWAP, EE_CLR,         //
-                                 OSM(MOD_LCTL), OSM(MOD_LSFT), OSM_SCG, OSM_SA, OSM(MOD_MEH), OSM(MOD_HYPR), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DEL, QK_BOOT, //
-                                 OSM(MOD_LGUI), OSM_SC, OSM_CA, OSM_CG, OSM_SG, OSM_AG, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, CW_TOGG,                     //
-                                 KC_APP, KC_NO, KC_TRNS, CW_TOGG, MO(_MSFX), KC_TRNS),
+    [_CTRL] = LAYOUT_split_3x6_3(OSM(MOD_LALT), OSM_SG, OSM_SA, OSM_SC, OSM_SCG, OSM(MOD_HYPR), KC_MNXT, DF(_QWER), DF(_BONE), DF(_COLE), KC_MPRV, EE_CLR,                   //
+                                 OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_MEH), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DEL, QK_BOOT, //
+                                 OSM(MOD_LGUI), OSM_CG, OSM_CA, OSM_CAG, OSM_SAG, OSM_AG, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, CW_TOGG,                                //
+                                 CG_NORM, KC_NO, CG_SWAP, KC_MPLY, MO(_MSFX), KC_EJCT),
 
     [_MSFX] = LAYOUT_split_3x6_3(KC_LALT, KC_ACL2, KC_BTN4, KC_BTN5, RGB_M_P, RGB_M_B, RGB_TOG, RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, KC_LALT,  //
                                  KC_LCTL, KC_ACL0, KC_BTN3, KC_BTN2, KC_BTN1, RGB_M_R, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, RGB_M_SW, KC_RCTL, //

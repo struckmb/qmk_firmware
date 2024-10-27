@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-#define MAC_SIDE
+// #define MAC_SIDE
 
 #ifdef MAC_SIDE
 #    include "keymap_german_mac_iso.h"
@@ -9,8 +9,8 @@
 #endif /* ifdef MAC_SIDE */
 
 enum layers {
-    _BONE = 0,
-    _QWER,
+    _QWER = 0,
+    _BONE,
     _COLE,
     _NUMS,
     _FUNC,
@@ -24,15 +24,15 @@ enum layers {
  * edit it directly.
  */
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {                                                                                                          //
-    [_BONE] = LAYOUT_split_3x6_5(LALT_T(KC_BSPC), DE_J, DE_D, DE_U, DE_A, DE_X, DE_P, DE_H, DE_L, DE_M, DE_W, LALT_T(DE_SS),                                            //
-                                 LCTL_T(KC_ESC), DE_C, DE_T, DE_I, DE_E, DE_O, DE_B, DE_N, DE_R, DE_S, DE_G, RCTL_T(DE_Q),                                              //
-                                 LGUI_T(DE_LABK), DE_F, DE_V, DE_UDIA, DE_ADIA, DE_ODIA, KC_NO, KC_NO, KC_NO, KC_NO, DE_Y, DE_Z, KC_COMM, KC_DOT, DE_K, RGUI_T(KC_ENT), //
-                                 KC_NO, MO(_MSFX), LT(_CTRL, KC_ENT), LSFT_T(KC_TAB), KC_NO, KC_NO, RSFT_T(KC_SPC), OSL(_NUMS), RALT_T(KC_APP), KC_MUTE),
-
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {                                                                                   //
     [_QWER] = LAYOUT_split_3x6_5(KC_TRNS, DE_Q, DE_W, DE_E, DE_R, DE_T, DE_Z, DE_U, DE_I, DE_O, DE_P, LALT_T(DE_UDIA),                           //
                                  KC_TRNS, DE_A, DE_S, DE_D, DE_F, DE_G, DE_H, DE_J, DE_K, DE_L, DE_ODIA, RCTL_T(DE_ADIA),                        //
                                  KC_TRNS, DE_Y, DE_X, DE_C, DE_V, DE_B, KC_NO, KC_NO, KC_NO, KC_NO, DE_N, DE_M, KC_COMM, KC_DOT, DE_SS, KC_TRNS, //
+                                 KC_NO, MO(_MSFX), LT(_CTRL, KC_ENT), LSFT_T(KC_TAB), KC_NO, KC_NO, RSFT_T(KC_SPC), OSL(_NUMS), RALT_T(KC_APP), KC_MUTE),
+
+    [_BONE] = LAYOUT_split_3x6_5(LALT_T(KC_BSPC), DE_J, DE_D, DE_U, DE_A, DE_X, DE_P, DE_H, DE_L, DE_M, DE_W, LALT_T(DE_SS),                                            //
+                                 LCTL_T(KC_ESC), DE_C, DE_T, DE_I, DE_E, DE_O, DE_B, DE_N, DE_R, DE_S, DE_G, RCTL_T(DE_Q),                                              //
+                                 LGUI_T(DE_LABK), DE_F, DE_V, DE_UDIA, DE_ADIA, DE_ODIA, KC_NO, KC_NO, KC_NO, KC_NO, DE_Y, DE_Z, KC_COMM, KC_DOT, DE_K, RGUI_T(KC_ENT), //
                                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
     [_COLE] = LAYOUT_split_3x6_5(KC_TRNS, DE_Q, DE_W, DE_F, DE_P, DE_B, DE_J, DE_L, DE_U, KC_TRNS, DE_ODIA, LALT_T(DE_UDIA),                     //
@@ -50,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {                  
                                  KC_LGUI, KC_F9, KC_F10, KC_F11, KC_F12, DE_PND, KC_NO, KC_NO, KC_NO, KC_NO, DE_RDAQ, DE_LDAQ, DE_DLQU, DE_LDQU, DE_RDQU, KC_RGUI, //
                                  KC_NO, BRI_DN, MO(_MSFX), BRI_UP, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO),
 
-    [_CTRL] = LAYOUT_split_3x6_5(OSM(MOD_LALT), KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, CG_NORM, DF(_BONE), DF(_QWER), DF(_COLE), CG_SWAP, QK_BOOT,                //
-                                 OSM(MOD_LCTL), OSM(MOD_LSFT), OSM_SCG, OSM_SA, OSM(MOD_MEH), OSM(MOD_HYPR), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DEL, EE_CLR,          //
-                                 OSM(MOD_LGUI), OSM_SC, OSM_CA, OSM_CG, OSM_SG, OSM_AG, KC_NO, KC_NO, KC_NO, KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, CW_TOGG, //
-                                 KC_NO, KC_APP, KC_NO, KC_TRNS, RGB_M_T, KC_NO, CW_TOGG, MO(_MSFX), KC_TRNS, KC_NO),
+    [_CTRL] = LAYOUT_split_3x6_5(OSM(MOD_LALT), OSM_SG, OSM_SA, OSM_SC, OSM_SCG, OSM(MOD_HYPR), KC_MPRV, DF(_QWER), DF(_BONE), DF(_COLE), KC_MNXT, QK_BOOT,                   //
+                                 OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_MEH), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DEL, EE_CLR,   //
+                                 OSM(MOD_LGUI), OSM_CG, OSM_CA, OSM_CAG, OSM_SAG, OSM_AG, KC_NO, KC_NO, CG_NORM, CG_SWAP, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, CW_TOGG, //
+                                 KC_NO, KC_APP, KC_NO, KC_TRNS, RGB_M_T, KC_NO, KC_MPLY, MO(_MSFX), KC_EJCT, KC_MUTE),
 
     [_MSFX] = LAYOUT_split_3x6_5(KC_LALT, KC_ACL2, KC_BTN4, KC_BTN5, RGB_M_P, RGB_M_B, RGB_TOG, RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, KC_LALT,                             //
                                  KC_LCTL, KC_ACL0, KC_BTN3, KC_BTN2, KC_BTN1, RGB_M_R, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, RGB_M_SW, KC_RCTL,                            //
@@ -131,11 +131,11 @@ bool oled_task_user(void) {
         // Host Keyboard Layer Status
         oled_write_P(PSTR("\n\nLayer: "), false);
         switch (get_highest_layer(layer_state | default_layer_state)) {
-            case _BONE:
-                oled_write_P(PSTR("Bone        "), false);
-                break;
             case _QWER:
                 oled_write_P(PSTR("QWERTY      "), false);
+                break;
+            case _BONE:
+                oled_write_P(PSTR("Bone        "), false);
                 break;
             case _COLE:
                 oled_write_P(PSTR("Colemak-DH  "), false);
