@@ -136,11 +136,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_LALT, XXXXXXX, OSM_RA,  DE_RSAQ, DE_LSAQ, DE_RSAQ,    KC_EJCT, KC_MNXT, KC_MPLY, KC_MPRV, KC_MUTE, DE_ACUT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_PSCR, DE_GRV,
+       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  OSM_MEH,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_PSCR, DE_GRV,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI, XXXXXXX, CP_CUT,  CP_COPY, CP_PSTE, XXXXXXX,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END, KC_INS,  CW_TOGG,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_VOLU, KC_VOLD, _______,     ATTIC0, KC_LSFT
+                                  KC_VOLD, KC_VOLU, _______,     ATTIC0, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
   ),
 
@@ -148,11 +148,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
      KC_LALT,XXXXXXX,OSM_RA,S(A(DE_N)),S(A(DE_B)),S(A(DE_N)),   KC_EJCT, KC_MNXT, KC_MPLY, KC_MPRV, KC_MUTE, DE_ACUT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_PSCR, DE_GRV,
+       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  OSM_MEH,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_PSCR, DE_GRV,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI, XXXXXXX, G(KC_X), G(KC_C), G(KC_V), XXXXXXX,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END, KC_INS,  CW_TOGG,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_VOLU, KC_VOLD, _______,     ATTIC1, KC_LSFT
+                                  KC_VOLD, KC_VOLU, _______,     ATTIC1, KC_LSFT
   //                          ╰─────────────────────────────╯ ╰───────────────────╯
   ),
 
@@ -184,7 +184,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_LALT, XXXXXXX, XXXXXXX, DE_RDAQ, DE_LDAQ, DE_RDAQ,    DE_IEXL, XXXXXXX, DE_SLQU, DE_LSQU, DE_SQUE, LALT_T(XXXXXXX),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  XXXXXXX,    DE_IQUE, XXXXXXX, DE_MDOT, DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
+       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  OSM_MEH,    DE_IQUE, XXXXXXX, DE_MDOT, DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI, DE_DIV,  DE_MULT, EE_CLR,  QK_BOOT, XXXXXXX,    DE_NDSH, DE_MDSH, DE_DLQU, DE_LDQU, DE_RDQU, KC_LGUI,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -196,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
       KC_LALT,XXXXXXX,XXXXXXX,S(A(DE_Q)),DE_LDAQ,S(A(DE_Q)),   A(DE_1),XXXXXXX,A(DE_S),A(DE_HASH), DE_QUOT, LALT_T(XXXXXXX),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  XXXXXXX,   A(DE_SS),XXXXXXX,S(A(DE_9)),DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
+       KC_LCTL, OSM_LG,  OSM_LA,  OSM_LC,  OSM_LS,  OSM_MEH,   A(DE_SS),XXXXXXX,S(A(DE_9)),DE_ELLP, XXXXXXX, LALT_T(XXXXXXX),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI,S(A(DE_DOT)),DE_ASTR,EE_CLR, QK_BOOT,XXXXXXX,    DE_NDSH,DE_MDSH,A(DE_CIRC),A(DE_2),S(A(DE_2)),KC_LGUI,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -208,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        DF_BSE0, DF_BSE1, S_D_RMOD,DPI_RMOD,DPI_MOD, S_D_MOD,    S_D_MOD, DPI_MOD,DPI_RMOD,S_D_RMOD, DF_BSE1, DF_BSE0,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_BTN2, KC_BTN1, KC_BTN3, XXXXXXX, XXXXXXX, XXXXXXX,
+       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,      KC_NO, KC_BTN1, KC_BTN2, KC_BTN3, XXXXXXX, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        XXXXXXX, _______, DRG_TOG, DRGSCRL, SNIPING, SNP_TOG,   SNP_TOG, SNIPING, DRGSCRL,  DRG_TOG, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
