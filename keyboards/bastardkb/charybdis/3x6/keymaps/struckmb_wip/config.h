@@ -16,17 +16,24 @@
  */
 #pragma once
 
-// #define MAC_SIDE
-// #define MASTER_LEFT
+#define EE_HANDS
 
+#define BONE_ENABLE
+// #define MAC_SIDE
+
+// #define MASTER_LEFT
 #ifdef MASTER_LEFT
 #    undef MASTER_RIGHT
 #endif // MASTER_LEFT
 
 #ifdef VIA_ENABLE
 /* VIA configuration. */
-#    define DYNAMIC_KEYMAP_LAYER_COUNT 6
-#endif // VIA_ENABLE
+#    ifdef BONE_ENABLE
+#        define DYNAMIC_KEYMAP_LAYER_COUNT 13
+#    else
+#        define DYNAMIC_KEYMAP_LAYER_COUNT 11
+#    endif /* ifdef BONE_ENABLE */
+#endif     // VIA_ENABLE
 
 /* Disable unused features. */
 // #define NO_ACTION_ONESHOT
@@ -34,9 +41,11 @@
 /* Charybdis-specific features. */
 
 #ifdef POINTING_DEVICE_ENABLE
-#    define CHARYBDIS_DRAGSCROLL_REVERSE_Y // invert vertical scrolling
+#    define CHARYBDIS_DRAGSCROLL_REVERSE_Y // natural scrolling
 // Automatically enable the pointer layer when moving the trackball.  See also:
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
+// #    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
+// #    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 8
 // #    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #endif // POINTING_DEVICE_ENABLE
