@@ -19,9 +19,8 @@
 #define EE_HANDS
 
 #define BONE_ENABLE
-// #define MAC_SIDE
 
-// #define MASTER_LEFT
+#define MASTER_LEFT
 #ifdef MASTER_LEFT
 #    undef MASTER_RIGHT
 #endif // MASTER_LEFT
@@ -29,9 +28,9 @@
 #ifdef VIA_ENABLE
 /* VIA configuration. */
 #    ifdef BONE_ENABLE
-#        define DYNAMIC_KEYMAP_LAYER_COUNT 13
+#        define DYNAMIC_KEYMAP_LAYER_COUNT 7
 #    else
-#        define DYNAMIC_KEYMAP_LAYER_COUNT 11
+#        define DYNAMIC_KEYMAP_LAYER_COUNT 6
 #    endif /* ifdef BONE_ENABLE */
 #endif     // VIA_ENABLE
 
